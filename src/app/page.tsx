@@ -10,6 +10,7 @@ import Link from "next/link";
 import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
 import { cn } from '@/lib/utils';
+import { Separator } from '@/components/ui/separator';
 
 const PLACEHOLDER_BANNER_HOME = "https://placehold.co/1200x400.png?text=Configure+Banner";
 
@@ -22,7 +23,7 @@ export default function HomePage() {
 
   const homeBannerSrc = guiMeData?.homePageBannerUrl && guiMeData.homePageBannerUrl.startsWith('http')
     ? guiMeData.homePageBannerUrl
-    : guiMeData?.homePageBannerUrl 
+    : guiMeData?.homePageBannerUrl
     ? PLACEHOLDER_BANNER_HOME
     : null;
 
@@ -36,18 +37,34 @@ export default function HomePage() {
   return (
     <div className="space-y-12 animate-fade-in">
       {homeBannerSrc && (
-        <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
-          <section className={homeBannerContainerClasses}>
-            <Image
-              src={homeBannerSrc}
-              alt="Site Banner - GUI Me Design Philosophy"
-              layout="fill"
-              objectFit="contain"
-              className="transition-transform duration-500 hover:scale-105"
-              data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
-            />
-          </section>
-        </Link>
+        <>
+          <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
+            <section className={homeBannerContainerClasses}>
+              <Image
+                src={homeBannerSrc}
+                alt="Site Banner - GUI Me Design Philosophy"
+                layout="fill"
+                objectFit="contain"
+                className="transition-transform duration-500 hover:scale-105"
+                data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
+              />
+            </section>
+          </Link>
+          <div className="my-8 text-center space-y-4">
+            <Separator className="bg-border/50" />
+            <p className="text-foreground/80 px-2">
+              New to Fanan Team? Please, always read the{" "}
+              <Link href="/how-to-buy" className="text-accent hover:underline font-semibold">
+                &quot;how to buy?&quot;
+              </Link>{" "}
+              instructions before purchasing.
+            </p>
+            <Separator className="bg-border/50" />
+            <p className="text-foreground/80 font-medium px-2">
+              New folks, please, Always try the demo first before purchasing. Never buy before first testing a demo on your system.
+            </p>
+          </div>
+        </>
       )}
 
       <section>
