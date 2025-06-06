@@ -4,93 +4,92 @@
 
 @layer base {
   :root {
-    --background: 0 0% 94%; /* Light gray #F0F0F0 */
-    --foreground: 0 0% 10%; /* Dark gray for text */
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 7%; /* Very Dark Gray / Almost Black #121212 */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 0 0% 7%; /* Very Dark Gray / Almost Black */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 0 0% 7%; /* Very Dark Gray / Almost Black */
 
-    --primary: 262 52% 50%; /* Deep purple #673AB7 */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 38 92% 50%; /* Golden Orange #F9A825 */
+    --primary-foreground: 0 0% 7%; /* Very Dark Gray / Almost Black (for text on primary) */
 
-    --secondary: 262 50% 95%; /* Very light purple */
-    --secondary-foreground: 262 52% 30%; /* Darker purple for text on light secondary */
+    --secondary: 38 90% 95%; /* Very Light Golden Orange #FFF8E1 */
+    --secondary-foreground: 38 80% 25%; /* Dark Golden Orange text #7F5A1F */
 
-    --muted: 0 0% 88%; /* Slightly darker than background */
-    --muted-foreground: 0 0% 40%;
+    --muted: 0 0% 96%; /* Light Gray #F5F5F5 */
+    --muted-foreground: 0 0% 40%; /* Darker Gray #666666 */
 
-    --accent: 231 48% 54%; /* Electric blue #3F51B5 */
-    --accent-foreground: 0 0% 100%; /* White */
+    --accent: 0 0% 7%; /* Very Dark Gray / Almost Black */
+    --accent-foreground: 0 0% 100%; /* White (for text on accent) */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%; /* Default Red */
+    --destructive-foreground: 0 0% 98%; /* Default Light */
 
-    --border: 0 0% 85%; /* Slightly darker than muted for borders */
-    --input: 0 0% 85%;
-    --ring: 262 52% 50%; /* Primary color for rings */
+    --border: 0 0% 87%; /* Light Gray border #DFDFDF */
+    --input: 0 0% 87%; /* Light Gray input border */
+    --ring: 38 92% 50%; /* Golden Orange for rings */
 
     --radius: 0.5rem;
 
-    /* Chart colors - can be adjusted if charts are used */
+    /* Chart colors - kept default */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    /* Sidebar colors (if used, match the theme) */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 262 52% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 262 50% 95%;
-    --sidebar-accent-foreground: 262 52% 30%;
-    --sidebar-border: 0 0% 85%;
-    --sidebar-ring: 262 52% 50%;
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 97%; /* Slightly Off-White #F7F7F7 */
+    --sidebar-foreground: 0 0% 7%; /* Very Dark Gray / Almost Black */
+    --sidebar-primary: 38 92% 50%; /* Golden Orange */
+    --sidebar-primary-foreground: 0 0% 7%; /* Very Dark Gray / Almost Black */
+    --sidebar-accent: 38 90% 90%; /* Very Light Orange #FDEBC7 */
+    --sidebar-accent-foreground: 38 80% 25%; /* Dark Golden Orange text */
+    --sidebar-border: 0 0% 87%; /* Light Gray border */
+    --sidebar-ring: 38 92% 50%; /* Golden Orange for rings */
   }
 
   .dark {
-    /* Define dark theme variables if needed, for now, focusing on light theme */
-    --background: 0 0% 10%; /* Dark gray for background */
-    --foreground: 0 0% 94%; /* Light gray for text */
+    --background: 0 0% 7%; /* Very Dark Gray / Almost Black #121212 */
+    --foreground: 0 0% 93%; /* Light Gray / Off-white #EDEDED */
 
-    --card: 0 0% 15%;
-    --card-foreground: 0 0% 94%;
+    --card: 0 0% 12%; /* Dark Gray #1F1F1F */
+    --card-foreground: 0 0% 93%; /* Light Gray / Off-white */
 
-    --popover: 0 0% 15%;
-    --popover-foreground: 0 0% 94%;
+    --popover: 0 0% 12%; /* Dark Gray */
+    --popover-foreground: 0 0% 93%; /* Light Gray / Off-white */
 
-    --primary: 262 52% 55%; /* Slightly lighter Deep purple */
-    --primary-foreground: 0 0% 100%;
+    --primary: 38 92% 55%; /* Brighter Golden Orange #FAB63B */
+    --primary-foreground: 0 0% 7%; /* Very Dark Gray / Almost Black */
 
-    --secondary: 262 50% 25%; /* Darker light purple */
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 38 80% 15%; /* Very Dark Golden Orange #3D2D10 */
+    --secondary-foreground: 38 70% 75%; /* Lighter Muted Orange text #E4BE8C */
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 20%; /* Medium-Dark Gray #333333 */
+    --muted-foreground: 0 0% 60%; /* Medium Gray #999999 */
 
-    --accent: 231 48% 60%; /* Slightly lighter Electric blue */
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 93%; /* Light Gray / Off-white */
+    --accent-foreground: 0 0% 7%; /* Very Dark Gray / Almost Black */
 
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 70% 50%; /* Default Dark Red */
+    --destructive-foreground: 0 0% 98%; /* Default Light */
 
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
-    --ring: 262 52% 55%;
+    --border: 0 0% 20%; /* Medium-Dark Gray border #333333 */
+    --input: 0 0% 20%; /* Medium-Dark Gray input border */
+    --ring: 38 92% 55%; /* Brighter Golden Orange for rings */
 
     /* Sidebar dark theme colors */
-    --sidebar-background: 0 0% 12%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 262 52% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 262 50% 28%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 0 0% 25%;
-    --sidebar-ring: 262 52% 55%;
+    --sidebar-background: 0 0% 10%; /* Dark Gray #1A1A1A */
+    --sidebar-foreground: 0 0% 93%; /* Light Gray / Off-white */
+    --sidebar-primary: 38 92% 55%; /* Brighter Golden Orange */
+    --sidebar-primary-foreground: 0 0% 7%; /* Very Dark Gray / Almost Black */
+    --sidebar-accent: 38 80% 20%; /* Dark Desaturated Orange */
+    --sidebar-accent-foreground: 38 70% 75%; /* Lighter Muted Orange text */
+    --sidebar-border: 0 0% 20%; /* Medium-Dark Gray border */
+    --sidebar-ring: 38 92% 55%; /* Brighter Golden Orange for rings */
   }
 }
 

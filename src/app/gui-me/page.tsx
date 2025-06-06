@@ -1,6 +1,6 @@
 // src/app/gui-me/page.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { VenetianMask, Eye, Palette, MousePointerSquare } from "lucide-react";
+import { VenetianMask, Eye, Palette, MousePointerSquareDashed } from "lucide-react";
 import Image from "next/image";
 
 export default function GuiMePage() {
@@ -40,7 +40,7 @@ export default function GuiMePage() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MousePointerSquare className="h-6 w-6 text-accent mt-1 shrink-0" />
+                  <MousePointerSquareDashed className="h-6 w-6 text-accent mt-1 shrink-0" />
                   <span className="text-foreground/80">
                     <strong className="font-semibold text-foreground">Workflow Efficiency:</strong> Logically grouped controls and intuitive navigation to speed up your sound design process.
                   </span>
