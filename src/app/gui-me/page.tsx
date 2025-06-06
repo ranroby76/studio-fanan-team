@@ -1,11 +1,46 @@
 // src/app/gui-me/page.tsx
+"use client";
+
+import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { VenetianMask, Eye, Palette, MousePointerSquareDashed } from "lucide-react";
 import Image from "next/image";
+import type { GuiMeContent } from '@/lib/types';
+import { getGuiMeContent } from '@/lib/gui-me-service';
+import { Separator } from '@/components/ui/separator';
 
 export default function GuiMePage() {
+  const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
+
+  useEffect(() => {
+    setGuiMeData(getGuiMeContent());
+  }, []);
+
+  const renderTextSection = (title?: string, text?: string) => {
+    if (!title && !text) return null;
+    return (
+      <div className="mb-6">
+        {title && <h2 className="text-3xl font-headline text-primary mb-2">{title}</h2>}
+        {text && <p className="text-lg text-foreground/80 leading-relaxed whitespace-pre-line">{text}</p>}
+      </div>
+    );
+  };
+
   return (
     <div className="animate-fade-in space-y-12">
+      {guiMeData?.guiMePageBannerUrl && (
+        <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl mb-12">
+          <Image
+            src={guiMeData.guiMePageBannerUrl}
+            alt="GUI Me Page Banner"
+            layout="fill"
+            objectFit="cover"
+            className="transition-transform duration-500 hover:scale-105"
+            data-ai-hint="design abstract"
+          />
+        </div>
+      )}
+
       <Card className="shadow-xl overflow-hidden">
         <CardHeader className="bg-gradient-to-r from-primary to-accent p-8 text-primary-foreground">
           <div className="flex items-center gap-4">
@@ -19,6 +54,16 @@ export default function GuiMePage() {
           </div>
         </CardHeader>
         <CardContent className="p-8 space-y-6">
+          {renderTextSection(guiMeData?.title1, guiMeData?.text1)}
+          { (guiMeData?.title1 || guiMeData?.text1) && (guiMeData?.title2 || guiMeData?.text2 || guiMeData?.title3 || guiMeData?.text3) && <Separator className="my-8" />}
+          
+          {renderTextSection(guiMeData?.title2, guiMeData?.text2)}
+          { (guiMeData?.title2 || guiMeData?.text2) && (guiMeData?.title3 || guiMeData?.text3) && <Separator className="my-8" />}
+
+          {renderTextSection(guiMeData?.title3, guiMeData?.text3)}
+
+          {(guiMeData?.title1 || guiMeData?.text1 || guiMeData?.title2 || guiMeData?.text2 || guiMeData?.title3 || guiMeData?.text3) && <Separator className="my-8" />}
+
           <p className="text-lg text-foreground/90 leading-relaxed">
             At Fanan Team, we believe that a great VST plugin is not just about powerful sound engines, but also about an enjoyable and efficient user experience. Our "GUI Me" philosophy centers around creating Graphical User Interfaces (GUIs) that are both aesthetically pleasing and highly functional.
           </p>

@@ -1,12 +1,37 @@
+// src/app/page.tsx
+"use client";
+
+import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { GuiMeContent } from '@/lib/types';
+import { getGuiMeContent } from '@/lib/gui-me-service';
 
 export default function HomePage() {
+  const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
+
+  useEffect(() => {
+    setGuiMeData(getGuiMeContent());
+  }, []);
+
   return (
     <div className="space-y-12 animate-fade-in">
+      {guiMeData?.homePageBannerUrl && (
+        <section className="mb-12 relative w-full h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
+          <Image
+            src={guiMeData.homePageBannerUrl}
+            alt="Site Banner"
+            layout="fill"
+            objectFit="cover"
+            className="transition-transform duration-500 hover:scale-105"
+            data-ai-hint="promotion website"
+          />
+        </section>
+      )}
+
       <section className="text-center py-12 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-lg p-8">
         <h1 className="text-5xl font-headline font-bold text-primary mb-6 animate-slide-in-from-bottom [animation-delay:0.2s]">
           Welcome to Fanan Team Hub
@@ -26,7 +51,6 @@ export default function HomePage() {
       <section>
         <h2 className="text-3xl font-headline font-semibold text-center mb-8 text-primary">Featured Products</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Placeholder for featured products. In a real app, this would be dynamic. */}
           {[1, 2, 3].map((item) => (
             <Card key={item} className="overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
               <CardHeader className="p-0">
