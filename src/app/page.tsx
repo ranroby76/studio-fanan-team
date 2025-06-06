@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
+import { cn } from '@/lib/utils';
 
 const PLACEHOLDER_BANNER_HOME = "https://placehold.co/1200x400.png?text=Configure+Banner";
 
@@ -25,20 +26,28 @@ export default function HomePage() {
     ? PLACEHOLDER_BANNER_HOME
     : null;
 
+  const isHomeBannerPng = homeBannerSrc && homeBannerSrc.toLowerCase().endsWith('.png');
+
+  const homeBannerContainerClasses = cn(
+    "relative w-full h-64 md:h-80 overflow-hidden bg-muted/20",
+    !isHomeBannerPng && "mb-12 rounded-xl shadow-lg"
+  );
 
   return (
     <div className="space-y-12 animate-fade-in">
       {homeBannerSrc && (
-        <section className="mb-12 relative w-full h-64 md:h-80 rounded-xl overflow-hidden shadow-lg bg-muted/20">
-          <Image
-            src={homeBannerSrc}
-            alt="Site Banner"
-            layout="fill"
-            objectFit="contain"
-            className="transition-transform duration-500 hover:scale-105"
-            data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
-          />
-        </section>
+        <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
+          <section className={homeBannerContainerClasses}>
+            <Image
+              src={homeBannerSrc}
+              alt="Site Banner - GUI Me Design Philosophy"
+              layout="fill"
+              objectFit="contain"
+              className="transition-transform duration-500 hover:scale-105"
+              data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
+            />
+          </section>
+        </Link>
       )}
 
       <section>

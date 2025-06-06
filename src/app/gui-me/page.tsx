@@ -8,6 +8,7 @@ import Image from "next/image";
 import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
 import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
 
 const PLACEHOLDER_BANNER_GUIME = "https://placehold.co/874x200.png?text=Configure+GUI+Me+Banner";
 
@@ -34,16 +35,24 @@ export default function GuiMePage() {
     ? PLACEHOLDER_BANNER_GUIME
     : null;
 
+  const isGuiMeBannerPng = guiMeBannerSrc && guiMeBannerSrc.toLowerCase().endsWith('.png');
+
+  const guiMeBannerContainerClasses = cn(
+    "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20", // No rounded-xl or shadow-2xl for "no frame"
+    !isGuiMeBannerPng && "mb-12" // Add mb-12 only if NOT a PNG
+  );
+
+
   return (
     <div className="animate-fade-in space-y-12">
       {guiMeBannerSrc && (
-        <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl mb-12 bg-muted/20">
+        <div className={guiMeBannerContainerClasses}>
           <Image
             src={guiMeBannerSrc}
             alt="GUI Me Page Banner"
             layout="fill"
             objectFit="contain"
-            className="transition-transform duration-500 hover:scale-105"
+            className="transition-transform duration-500" // Removed hover:scale-105
             data-ai-hint={guiMeBannerSrc === PLACEHOLDER_BANNER_GUIME ? "placeholder" : "design abstract"}
           />
         </div>
@@ -71,7 +80,7 @@ export default function GuiMePage() {
           {renderTextSection(guiMeData?.title3, guiMeData?.text3)}
 
           {(guiMeData?.title1 || guiMeData?.text1 || guiMeData?.title2 || guiMeData?.text2 || guiMeData?.title3 || guiMeData?.text3) && <Separator className="my-8" />}
-
+          
           <p className="text-lg text-foreground/90 leading-relaxed">
             At Fanan Team, we believe that a great VST plugin is not just about powerful sound engines, but also about an enjoyable and efficient user experience. Our "GUI Me" philosophy centers around creating Graphical User Interfaces (GUIs) that are both aesthetically pleasing and highly functional.
           </p>
