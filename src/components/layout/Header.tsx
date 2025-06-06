@@ -37,10 +37,10 @@ export default function Header() {
   };
 
   // Original size: 562x244. Aspect ratio: 562/244 = 2.303
-  // Target height for header: ~36px
-  // Target width: 36 * 2.303 = ~83px
-  const logoDisplayWidth = 83;
-  const logoDisplayHeight = 36;
+  // Target height for header: ~36px * 2 = ~72px
+  // Target width: 72 * 2.303 = ~166px
+  const logoDisplayWidth = 166;
+  const logoDisplayHeight = 72;
 
   return (
     <header className="bg-card border-b shadow-md sticky top-0 z-50">
