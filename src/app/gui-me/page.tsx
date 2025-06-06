@@ -3,13 +3,13 @@
 
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { VenetianMask, Eye, Palette, MousePointerSquareDashed } from "lucide-react";
+import { VenetianMask } from "lucide-react";
 import Image from "next/image";
 import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
 import { Separator } from '@/components/ui/separator';
 
-const PLACEHOLDER_BANNER_GUIME = "https://placehold.co/1200x600.png?text=Configure+GUI+Me+Banner";
+const PLACEHOLDER_BANNER_GUIME = "https://placehold.co/874x200.png?text=Configure+GUI+Me+Banner";
 
 export default function GuiMePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
@@ -75,52 +75,18 @@ export default function GuiMePage() {
           <p className="text-lg text-foreground/90 leading-relaxed">
             At Fanan Team, we believe that a great VST plugin is not just about powerful sound engines, but also about an enjoyable and efficient user experience. Our "GUI Me" philosophy centers around creating Graphical User Interfaces (GUIs) that are both aesthetically pleasing and highly functional.
           </p>
+          
+          <Separator className="my-8" />
 
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-headline text-primary mb-3">Key Principles:</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <Eye className="h-6 w-6 text-accent mt-1 shrink-0" />
-                  <span className="text-foreground/80">
-                    <strong className="font-semibold text-foreground">Clarity & Readability:</strong> Easy-to-understand layouts with clear labeling and visual hierarchy. No more guessing what a knob does!
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Palette className="h-6 w-6 text-accent mt-1 shrink-0" />
-                  <span className="text-foreground/80">
-                    <strong className="font-semibold text-foreground">Aesthetic Appeal:</strong> Visually engaging designs that inspire creativity without being distracting. We aim for a modern, clean look.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <MousePointerSquareDashed className="h-6 w-6 text-accent mt-1 shrink-0" />
-                  <span className="text-foreground/80">
-                    <strong className="font-semibold text-foreground">Workflow Efficiency:</strong> Logically grouped controls and intuitive navigation to speed up your sound design process.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-accent mt-1 shrink-0 lucide lucide-scaling"><path d="M21.5 7.5v5.5a4 4 0 0 1-4 4H7.5a4 4 0 0 1-4-4v-5a4 4 0 0 1 4-4h5"/><path d="M15 3.5V9h5.5"/><path d="M12 12H4M12 12V4M12 12l7.5 7.5"/></svg>
-                  <span className="text-foreground/80">
-                    <strong className="font-semibold text-foreground">Scalability & Responsiveness:</strong> GUIs that adapt to different screen sizes and resolutions, ensuring a comfortable experience on any setup.
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="flex justify-center">
-              <Image 
-                src="https://placehold.co/500x350.png" 
-                alt="Example of a VST GUI" 
-                width={500} 
-                height={350} 
-                className="rounded-lg shadow-lg object-cover"
-                data-ai-hint="software interface" 
-              />
-            </div>
+          <div>
+            <h3 className="text-2xl font-headline text-primary mb-3">Interested in our GUI Design Services?</h3>
+            <p className="text-lg text-foreground/80 leading-relaxed mb-2">
+              If you'd like us to design a custom GUI for your audio plugin or software, we'd love to hear from you!
+            </p>
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              Please contact us at: <a href="mailto:fanantem@gmail.com" className="font-semibold text-accent hover:underline">fanantem@gmail.com</a> to discuss your project requirements and how we can help bring your vision to life.
+            </p>
           </div>
-
-          <p className="text-lg text-foreground/90 leading-relaxed">
-            We're constantly refining our approach, incorporating user feedback, and exploring new design trends to make our plugins not just tools, but true extensions of your musical imagination. If you have suggestions or feedback on our GUIs, please don't hesitate to <a href="/contact-us" className="text-accent hover:underline font-semibold">contact us</a>!
-          </p>
         </CardContent>
       </Card>
     </div>
