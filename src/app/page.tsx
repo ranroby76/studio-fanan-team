@@ -50,9 +50,9 @@ export default function HomePage() {
               />
             </section>
           </Link>
-          <div className="my-8 text-center space-y-4">
+          <div className="my-8 text-center space-y-4 bg-secondary/30 p-6 rounded-lg shadow-md">
             <Separator className="bg-border/50" />
-            <p className="text-foreground/80 px-2">
+            <p className="text-foreground/80">
               New to Fanan Team? Please, always read the{" "}
               <Link href="/how-to-buy" className="text-accent hover:underline font-semibold">
                 &quot;how to buy?&quot;
@@ -60,7 +60,7 @@ export default function HomePage() {
               instructions before purchasing.
             </p>
             <Separator className="bg-border/50" />
-            <p className="text-foreground/80 font-medium px-2">
+            <p className="text-foreground/80 font-medium">
               New folks, please, Always try the demo first before purchasing. Never buy before first testing a demo on your system.
             </p>
           </div>
