@@ -50,7 +50,7 @@ export default function HomePage() {
               />
             </section>
           </Link>
-          <div className="my-8 text-center space-y-4 bg-secondary/30 p-6 rounded-lg shadow-md">
+          <div className="my-8 text-center space-y-3 bg-primary/15 p-3 rounded-lg shadow-sm max-w-lg mx-auto">
             <Separator className="bg-border/50" />
             <p className="text-foreground/80">
               New to Fanan Team? Please, always read the{" "}
