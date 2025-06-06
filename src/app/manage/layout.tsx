@@ -7,12 +7,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
-import { Edit, Package, Box, Settings } from 'lucide-react';
+import { Edit, Package, Box, Settings, ImageIcon } from 'lucide-react'; // Added ImageIcon
 import type React from 'react';
 
 const manageNavLinks = [
   { href: '/manage/gui-me-editor', label: 'GUI ME EDITOR', icon: Edit },
-  { href: '/manage/products', label: 'Products', icon: Package },
+  { href: '/manage/logos', label: 'Logos', icon: ImageIcon }, // Changed from Products to Logos
+  { href: '/manage/products', label: 'Products', icon: Package }, // Kept products for now, user can advise if this should be removed or repositioned
   { href: '/manage/item-3', label: 'Item 3', icon: Box },
   { href: '/manage/item-4', label: 'Item 4', icon: Box },
   { href: '/manage/item-5', label: 'Item 5', icon: Box },
@@ -30,6 +31,24 @@ export default function ManageLayout({
 }) {
   const pathname = usePathname();
 
+  // Adjust active link logic for paths like /manage/products/add or /manage/products/edit/[id]
+  const isActive = (baseHref: string, currentPath: string) => {
+    if (baseHref === currentPath) return true;
+    // Check if currentPath starts with baseHref AND baseHref is not a generic starting point like '/'
+    if (currentPath.startsWith(baseHref) && baseHref !== '/' && baseHref.length > 1) {
+      // More specific check for /manage/products to avoid matching /manage/products-something-else
+      if (baseHref === '/manage/products' && (currentPath.startsWith('/manage/products/add') || currentPath.startsWith('/manage/products/edit/'))) {
+        return true;
+      }
+       if (baseHref === '/manage/gui-me-editor' && currentPath === '/manage/gui-me-editor') return true;
+       if (baseHref === '/manage/logos' && currentPath === '/manage/logos') return true;
+       // For other items, simple startsWith is fine
+       if (baseHref !== '/manage/products' && baseHref !== '/manage/gui-me-editor' && baseHref !== '/manage/logos') return true;
+    }
+    return false;
+  };
+
+
   return (
     <div className="flex flex-col md:flex-row gap-6 min-h-[calc(100vh-theme(spacing.32))]">
       <aside className="w-full md:w-64">
@@ -39,7 +58,7 @@ export default function ManageLayout({
               <Settings className="h-6 w-6 text-primary" />
               <h2 className="text-xl font-headline font-semibold text-primary">Management</h2>
             </div>
-            <ScrollArea className="h-[calc(100vh-theme(spacing.56))] md:h-auto"> {/* Adjust height as needed */}
+            <ScrollArea className="h-[calc(100vh-theme(spacing.56))] md:h-auto">
               <nav className="flex flex-col space-y-1">
                 {manageNavLinks.map((link) => (
                   <Button
@@ -48,7 +67,7 @@ export default function ManageLayout({
                     asChild
                     className={cn(
                       "w-full justify-start text-left h-auto py-2.5 px-3",
-                      pathname === link.href || (pathname.startsWith(link.href) && link.href !== '/manage/gui-me-editor' && link.href !== '/manage/products' && pathname.includes('edit')) // Special handling for edit/add under products
+                       isActive(link.href, pathname)
                         ? "bg-accent text-accent-foreground hover:bg-accent/90"
                         : "hover:bg-muted/50"
                     )}
