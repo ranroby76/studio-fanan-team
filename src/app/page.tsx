@@ -10,6 +10,8 @@ import Link from "next/link";
 import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
 
+const PLACEHOLDER_BANNER_HOME = "https://placehold.co/1200x400.png?text=Configure+Banner";
+
 export default function HomePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
 
@@ -17,17 +19,24 @@ export default function HomePage() {
     setGuiMeData(getGuiMeContent());
   }, []);
 
+  const homeBannerSrc = guiMeData?.homePageBannerUrl && guiMeData.homePageBannerUrl.startsWith('http')
+    ? guiMeData.homePageBannerUrl
+    : guiMeData?.homePageBannerUrl // Only use placeholder if URL exists but is invalid, otherwise don't render
+    ? PLACEHOLDER_BANNER_HOME
+    : null;
+
+
   return (
     <div className="space-y-12 animate-fade-in">
-      {guiMeData?.homePageBannerUrl && (
+      {homeBannerSrc && (
         <section className="mb-12 relative w-full h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
           <Image
-            src={guiMeData.homePageBannerUrl}
+            src={homeBannerSrc}
             alt="Site Banner"
             layout="fill"
             objectFit="cover"
             className="transition-transform duration-500 hover:scale-105"
-            data-ai-hint="promotion website"
+            data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
           />
         </section>
       )}

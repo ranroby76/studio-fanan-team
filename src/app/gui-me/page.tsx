@@ -9,6 +9,8 @@ import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
 import { Separator } from '@/components/ui/separator';
 
+const PLACEHOLDER_BANNER_GUIME = "https://placehold.co/1200x600.png?text=Configure+GUI+Me+Banner";
+
 export default function GuiMePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
 
@@ -26,17 +28,23 @@ export default function GuiMePage() {
     );
   };
 
+  const guiMeBannerSrc = guiMeData?.guiMePageBannerUrl && guiMeData.guiMePageBannerUrl.startsWith('http')
+    ? guiMeData.guiMePageBannerUrl
+    : guiMeData?.guiMePageBannerUrl // Only use placeholder if URL exists but is invalid, otherwise don't render
+    ? PLACEHOLDER_BANNER_GUIME
+    : null;
+
   return (
     <div className="animate-fade-in space-y-12">
-      {guiMeData?.guiMePageBannerUrl && (
+      {guiMeBannerSrc && (
         <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl mb-12">
           <Image
-            src={guiMeData.guiMePageBannerUrl}
+            src={guiMeBannerSrc}
             alt="GUI Me Page Banner"
             layout="fill"
             objectFit="cover"
             className="transition-transform duration-500 hover:scale-105"
-            data-ai-hint="design abstract"
+            data-ai-hint={guiMeBannerSrc === PLACEHOLDER_BANNER_GUIME ? "placeholder" : "design abstract"}
           />
         </div>
       )}
