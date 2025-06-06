@@ -30,19 +30,21 @@ export default function GuiMePage() {
 
   const guiMeBannerSrc = guiMeData?.guiMePageBannerUrl && guiMeData.guiMePageBannerUrl.startsWith('http')
     ? guiMeData.guiMePageBannerUrl
-    : guiMeData?.guiMePageBannerUrl // Only use placeholder if URL exists but is invalid, otherwise don't render
+    : guiMeData?.guiMePageBannerUrl 
     ? PLACEHOLDER_BANNER_GUIME
     : null;
 
   return (
     <div className="animate-fade-in space-y-12">
       {guiMeBannerSrc && (
-        <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl mb-12">
+        <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl mb-12 bg-muted/20">
           <Image
             src={guiMeBannerSrc}
             alt="GUI Me Page Banner"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
+            width={874}
+            height={200}
             className="transition-transform duration-500 hover:scale-105"
             data-ai-hint={guiMeBannerSrc === PLACEHOLDER_BANNER_GUIME ? "placeholder" : "design abstract"}
           />

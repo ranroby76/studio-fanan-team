@@ -21,7 +21,7 @@ export default function HomePage() {
 
   const homeBannerSrc = guiMeData?.homePageBannerUrl && guiMeData.homePageBannerUrl.startsWith('http')
     ? guiMeData.homePageBannerUrl
-    : guiMeData?.homePageBannerUrl // Only use placeholder if URL exists but is invalid, otherwise don't render
+    : guiMeData?.homePageBannerUrl 
     ? PLACEHOLDER_BANNER_HOME
     : null;
 
@@ -29,33 +29,19 @@ export default function HomePage() {
   return (
     <div className="space-y-12 animate-fade-in">
       {homeBannerSrc && (
-        <section className="mb-12 relative w-full h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
+        <section className="mb-12 relative w-full h-64 md:h-80 rounded-xl overflow-hidden shadow-lg bg-muted/20">
           <Image
             src={homeBannerSrc}
             alt="Site Banner"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
+            width={1405}
+            height={669}
             className="transition-transform duration-500 hover:scale-105"
             data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
           />
         </section>
       )}
-
-      <section className="text-center py-12 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-lg p-8">
-        <h1 className="text-5xl font-headline font-bold text-primary mb-6 animate-slide-in-from-bottom [animation-delay:0.2s]">
-          Welcome to Fanan Team Hub
-        </h1>
-        <p className="text-xl text-foreground/80 max-w-2xl mx-auto mb-8 animate-slide-in-from-bottom [animation-delay:0.4s]">
-          Discover our innovative VST instruments and audio plugins, designed to inspire your creativity and elevate your sound.
-        </p>
-        <div className="animate-slide-in-from-bottom [animation-delay:0.6s]">
-          <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transform hover:scale-105 transition-transform duration-300">
-            <Link href="/products">
-              Explore Products <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
-      </section>
 
       <section>
         <h2 className="text-3xl font-headline font-semibold text-center mb-8 text-primary">Featured Products</h2>
