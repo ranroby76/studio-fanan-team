@@ -82,13 +82,19 @@ export default function GuiMeEditorPage() {
           <CardContent className="space-y-6">
             <div>
               <Label htmlFor="homePageBannerUrl" className="font-semibold">Home Page Banner Image URL</Label>
-              <Input id="homePageBannerUrl" {...register('homePageBannerUrl')} className="mt-1" placeholder="https://placehold.co/1200x300.png" />
+              <Input id="homePageBannerUrl" {...register('homePageBannerUrl')} className="mt-1" placeholder="https://firebasestorage.googleapis.com/..." />
+              <p className="text-xs text-muted-foreground mt-1">
+                Please use the full HTTPS download URL from Firebase Storage (it starts with "https://firebasestorage.googleapis.com/..."). Do not use "gs://" links.
+              </p>
               {errors.homePageBannerUrl && <p className="text-sm text-destructive mt-1">{errors.homePageBannerUrl.message}</p>}
             </div>
 
             <div>
               <Label htmlFor="guiMePageBannerUrl" className="font-semibold">GUI Me Page Banner Image URL</Label>
-              <Input id="guiMePageBannerUrl" {...register('guiMePageBannerUrl')} className="mt-1" placeholder="https://placehold.co/1200x400.png" />
+              <Input id="guiMePageBannerUrl" {...register('guiMePageBannerUrl')} className="mt-1" placeholder="https://firebasestorage.googleapis.com/..." />
+              <p className="text-xs text-muted-foreground mt-1">
+                Please use the full HTTPS download URL from Firebase Storage (it starts with "https://firebasestorage.googleapis.com/..."). Do not use "gs://" links.
+              </p>
               {errors.guiMePageBannerUrl && <p className="text-sm text-destructive mt-1">{errors.guiMePageBannerUrl.message}</p>}
             </div>
             
