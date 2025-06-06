@@ -43,8 +43,6 @@ export default function GuiMePage() {
             alt="GUI Me Page Banner"
             layout="fill"
             objectFit="contain"
-            width={874}
-            height={200}
             className="transition-transform duration-500 hover:scale-105"
             data-ai-hint={guiMeBannerSrc === PLACEHOLDER_BANNER_GUIME ? "placeholder" : "design abstract"}
           />

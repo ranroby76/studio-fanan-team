@@ -35,8 +35,6 @@ export default function HomePage() {
             alt="Site Banner"
             layout="fill"
             objectFit="contain"
-            width={1405}
-            height={669}
             className="transition-transform duration-500 hover:scale-105"
             data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
           />
