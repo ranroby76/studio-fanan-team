@@ -31,13 +31,23 @@ export const saveLogosContent = async (data: FirmLogosFormData): Promise<void> =
     await uploadString(storageRef, jsonString, 'raw', { contentType: 'application/json' });
     console.log("Logos content saved to Firebase Storage.");
   } catch (error: any) {
-    console.error("Error saving logos content to Firebase Storage:", error);
+    // Log the full error structure for internal debugging if this issue persists
+    console.error("Original Firebase Error saving Logos content:", JSON.stringify(error, Object.getOwnPropertyNames(error)));
+
     let detailedMessage = 'Failed to save Logos content to Firebase Storage.';
-    if (error && error.message) {
-      detailedMessage += ` Firebase Error: ${error.message}`;
-    }
-    if (error && error.code) {
-      detailedMessage += ` (Code: ${error.code})`;
+    if (error && typeof error === 'object') {
+      if ('message' in error && error.message) {
+        detailedMessage += ` Firebase Message: ${error.message}`;
+      }
+      if ('code' in error && error.code) {
+        detailedMessage += ` (Code: ${error.code})`;
+      }
+      // Add name if code is not present but name is, and message doesn't already seem to contain the name.
+      if ('name' in error && error.name && !('code' in error && error.code) && !(typeof error.message === 'string' && error.message.includes(error.name as string))) {
+        detailedMessage += ` (Name: ${error.name})`;
+      }
+    } else if (typeof error === 'string') {
+      detailedMessage += ` Details: ${error}`;
     }
     throw new Error(detailedMessage);
   }
