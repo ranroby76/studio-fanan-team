@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { VenetianMask } from "lucide-react";
+import { VenetianMask, Loader2 } from "lucide-react";
 import Image from "next/image";
 import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
@@ -14,9 +14,23 @@ const PLACEHOLDER_BANNER_GUIME = "https://placehold.co/874x200.png?text=Configur
 
 export default function GuiMePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
+  const [isLoadingContent, setIsLoadingContent] = useState(true);
 
   useEffect(() => {
-    setGuiMeData(getGuiMeContent());
+    async function loadContent() {
+      setIsLoadingContent(true);
+      try {
+        const data = await getGuiMeContent();
+        setGuiMeData(data);
+      } catch (error) {
+        console.error("Failed to load GUI Me content:", error);
+        const localDefaults = await getGuiMeContent();
+        setGuiMeData(localDefaults);
+      } finally {
+        setIsLoadingContent(false);
+      }
+    }
+    loadContent();
   }, []);
 
   const renderTextSection = (title?: string, text?: string) => {
@@ -29,19 +43,26 @@ export default function GuiMePage() {
     );
   };
 
-  const guiMeBannerSrc = guiMeData?.guiMePageBannerUrl && guiMeData.guiMePageBannerUrl.startsWith('http')
+  const guiMeBannerSrc = guiMeData?.guiMePageBannerUrl && (guiMeData.guiMePageBannerUrl.startsWith('http://') || guiMeData.guiMePageBannerUrl.startsWith('https://'))
     ? guiMeData.guiMePageBannerUrl
-    : guiMeData?.guiMePageBannerUrl 
-    ? PLACEHOLDER_BANNER_GUIME
-    : null;
-
+    : PLACEHOLDER_BANNER_GUIME;
+    
   const isGuiMeBannerPng = guiMeBannerSrc && guiMeBannerSrc.toLowerCase().endsWith('.png');
 
   const guiMeBannerContainerClasses = cn(
-    "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20", // No rounded-xl or shadow-2xl for "no frame"
-    !isGuiMeBannerPng && "mb-12" // Add mb-12 only if NOT a PNG
+    "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20",
+    !isGuiMeBannerPng && "mb-12"
   );
 
+
+  if (isLoadingContent) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
+        <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
+        <p className="text-lg text-muted-foreground">Loading GUI Me page...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="animate-fade-in space-y-12">
@@ -52,8 +73,9 @@ export default function GuiMePage() {
             alt="GUI Me Page Banner"
             layout="fill"
             objectFit="contain"
-            className="transition-transform duration-500" // Removed hover:scale-105
+            className="transition-transform duration-500"
             data-ai-hint={guiMeBannerSrc === PLACEHOLDER_BANNER_GUIME ? "placeholder" : "design abstract"}
+            priority
           />
         </div>
       )}
@@ -79,11 +101,11 @@ export default function GuiMePage() {
 
           {renderTextSection(guiMeData?.title3, guiMeData?.text3)}
 
-          {(guiMeData?.title1 || guiMeData?.text1 || guiMeData?.title2 || guiMeData?.text2 || guiMeData?.title3 || guiMeData?.text3) && <Separator className="my-8" />}
-          
-          <p className="text-lg text-foreground/90 leading-relaxed">
-            At Fanan Team, we believe that a great VST plugin is not just about powerful sound engines, but also about an enjoyable and efficient user experience. Our "GUI Me" philosophy centers around creating Graphical User Interfaces (GUIs) that are both aesthetically pleasing and highly functional.
-          </p>
+          {(!guiMeData?.title1 && !guiMeData?.text1 && !guiMeData?.title2 && !guiMeData?.text2 && !guiMeData?.title3 && !guiMeData?.text3) && (
+            <p className="text-lg text-foreground/90 leading-relaxed">
+              At Fanan Team, we believe that a great VST plugin is not just about powerful sound engines, but also about an enjoyable and efficient user experience. Our "GUI Me" philosophy centers around creating Graphical User Interfaces (GUIs) that are both aesthetically pleasing and highly functional. This content can be updated in the management section.
+            </p>
+          )}
           
           <Separator className="my-8" />
 

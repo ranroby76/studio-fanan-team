@@ -1,7 +1,7 @@
 // src/app/manage/logos/page.tsx
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -10,9 +10,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { ImageIcon, Save } from 'lucide-react';
+import { ImageIcon, Save, Loader2 } from 'lucide-react';
 import type { FirmLogosFormData } from '@/lib/types';
-import { getLogosContent } from '@/lib/logo-service'; // saveLogosContent is removed
+import { getLogosContent, saveLogosContent } from '@/lib/logo-service';
 
 const logosFormSchema = z.object({
   firmLogoUrl: z.string().url("Must be a valid URL or empty").or(z.literal('')).optional(),
@@ -38,9 +38,10 @@ const logoFields: LogoField[] = [
 
 export default function LogosEditorPage() {
   const { toast } = useToast();
+  const [isLoadingContent, setIsLoadingContent] = useState(true);
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FirmLogosFormData>({
     resolver: zodResolver(logosFormSchema),
-    defaultValues: { // Default values will be overridden by useEffect -> reset
+    defaultValues: {
       firmLogoUrl: '',
       proPackLogoUrl: '',
       madMidiMachinesLogoUrl: '',
@@ -50,22 +51,55 @@ export default function LogosEditorPage() {
   });
 
   useEffect(() => {
-    const currentContent = getLogosContent();
-    if (currentContent) {
-      reset(currentContent);
+    async function loadContent() {
+      setIsLoadingContent(true);
+      try {
+        const currentContent = await getLogosContent();
+        if (currentContent) {
+          reset(currentContent);
+        }
+      } catch (error) {
+        console.error("Failed to load Logos content:", error);
+        toast({
+          title: 'Error Loading URLs',
+          description: 'Could not fetch logo URLs. Displaying defaults.',
+          variant: 'destructive',
+        });
+        const localDefaults = await getLogosContent();
+        reset(localDefaults);
+      } finally {
+        setIsLoadingContent(false);
+      }
     }
-  }, [reset]);
+    loadContent();
+  }, [reset, toast]);
 
   const onSubmit: SubmitHandler<FirmLogosFormData> = async (data) => {
-    console.log("Logos Content to save (provide this to AI assistant):", JSON.stringify(data, null, 2));
-    toast({
-      title: 'Logo URLs Ready for AI Assistant',
-      description: 'Form data has been logged to the browser console. Please copy it (JSON format) and provide it to the AI assistant to save the changes to the project files.',
-      duration: 15000, // Longer duration
-      variant: 'default',
-    });
-    // Removed call to saveLogosContent
+    try {
+      await saveLogosContent(data);
+      toast({
+        title: 'Logo URLs Saved!',
+        description: 'Logo URLs have been successfully saved to Firebase Storage.',
+        variant: 'default',
+      });
+    } catch (error) {
+       console.error("Error saving Logos content:", error);
+      toast({
+        title: 'Save Failed',
+        description: (error as Error).message || 'Could not save logo URLs. Please try again.',
+        variant: 'destructive',
+      });
+    }
   };
+  
+  if (isLoadingContent) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <p className="ml-4 text-muted-foreground">Loading logo editor...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="animate-fade-in">
@@ -76,8 +110,7 @@ export default function LogosEditorPage() {
             <CardTitle className="text-4xl font-headline text-primary">Manage Logos</CardTitle>
           </div>
           <CardDescription className="text-lg text-foreground/80">
-            Update the URLs for various company and product pack logos.
-            To save changes, submit the form and provide the console output to the AI assistant.
+            Update the URLs for various company and product pack logos. Changes are saved to Firebase Storage.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -99,9 +132,9 @@ export default function LogosEditorPage() {
             ))}
           </CardContent>
           <CardFooter>
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting}>
-              <Save className="mr-2 h-5 w-5" />
-              {isSubmitting ? 'Processing...' : 'Prepare URLs for AI Save'}
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting || isLoadingContent}>
+              {isSubmitting ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Save className="mr-2 h-5 w-5" />}
+              {isSubmitting ? 'Saving...' : 'Save URLs'}
             </Button>
           </CardFooter>
         </form>

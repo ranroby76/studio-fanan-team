@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { GuiMeContent } from '@/lib/types';
@@ -16,17 +16,31 @@ const PLACEHOLDER_BANNER_HOME = "https://placehold.co/1200x400.png?text=Configur
 
 export default function HomePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
+  const [isLoadingBanner, setIsLoadingBanner] = useState(true);
 
   useEffect(() => {
-    setGuiMeData(getGuiMeContent());
+    async function loadBannerData() {
+      setIsLoadingBanner(true);
+      try {
+        const data = await getGuiMeContent();
+        setGuiMeData(data);
+      } catch (error) {
+        console.error("Failed to load GUI Me content for homepage banner:", error);
+        // Fallback to local defaults is handled by getGuiMeContent,
+        // so we can just re-call it to get the default if an error specific to fetching occurs.
+         const localDefaults = await getGuiMeContent();
+         setGuiMeData(localDefaults);
+      } finally {
+        setIsLoadingBanner(false);
+      }
+    }
+    loadBannerData();
   }, []);
 
-  const homeBannerSrc = guiMeData?.homePageBannerUrl && guiMeData.homePageBannerUrl.startsWith('http')
+  const homeBannerSrc = guiMeData?.homePageBannerUrl && (guiMeData.homePageBannerUrl.startsWith('http://') || guiMeData.homePageBannerUrl.startsWith('https://'))
     ? guiMeData.homePageBannerUrl
-    : guiMeData?.homePageBannerUrl
-    ? PLACEHOLDER_BANNER_HOME
-    : null;
-
+    : PLACEHOLDER_BANNER_HOME;
+    
   const isHomeBannerPng = homeBannerSrc && homeBannerSrc.toLowerCase().endsWith('.png');
 
   const homeBannerContainerClasses = cn(
@@ -36,7 +50,11 @@ export default function HomePage() {
 
   return (
     <div className="space-y-12 animate-fade-in">
-      {homeBannerSrc && (
+      {isLoadingBanner ? (
+        <div className="flex items-center justify-center h-64 md:h-80 bg-muted/20 rounded-xl shadow-lg">
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+      ) : homeBannerSrc ? (
         <>
           <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
             <section className={homeBannerContainerClasses}>
@@ -47,6 +65,7 @@ export default function HomePage() {
                 objectFit="contain"
                 className="transition-transform duration-500 hover:scale-105"
                 data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
+                priority // Good to have for LCP element
               />
             </section>
           </Link>
@@ -65,7 +84,7 @@ export default function HomePage() {
             </p>
           </div>
         </>
-      )}
+      ) : null}
 
       <section>
         <h2 className="text-3xl font-headline font-semibold text-center mb-8 text-primary">Featured Products</h2>

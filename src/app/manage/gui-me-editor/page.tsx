@@ -1,7 +1,7 @@
 // src/app/manage/gui-me-editor/page.tsx
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -11,9 +11,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Palette, Save } from 'lucide-react';
+import { Palette, Save, Loader2 } from 'lucide-react';
 import type { GuiMeContentFormData } from '@/lib/types';
-import { getGuiMeContent } from '@/lib/gui-me-service'; // saveGuiMeContent is removed
+import { getGuiMeContent, saveGuiMeContent } from '@/lib/gui-me-service';
 
 const guiMeFormSchema = z.object({
   homePageBannerUrl: z.string().url("Must be a valid URL for Home Page Banner").or(z.literal('')).optional(),
@@ -28,9 +28,10 @@ const guiMeFormSchema = z.object({
 
 export default function GuiMeEditorPage() {
   const { toast } = useToast();
+  const [isLoadingContent, setIsLoadingContent] = useState(true);
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<GuiMeContentFormData>({
     resolver: zodResolver(guiMeFormSchema),
-    defaultValues: { // Default values will be overridden by useEffect -> reset
+    defaultValues: {
       homePageBannerUrl: '',
       guiMePageBannerUrl: '',
       title1: '',
@@ -43,22 +44,56 @@ export default function GuiMeEditorPage() {
   });
 
   useEffect(() => {
-    const currentContent = getGuiMeContent();
-    if (currentContent) {
-      reset(currentContent);
+    async function loadContent() {
+      setIsLoadingContent(true);
+      try {
+        const currentContent = await getGuiMeContent();
+        if (currentContent) {
+          reset(currentContent);
+        }
+      } catch (error) {
+        console.error("Failed to load GUI Me content:", error);
+        toast({
+          title: 'Error Loading Content',
+          description: 'Could not fetch GUI Me content. Displaying defaults.',
+          variant: 'destructive',
+        });
+        // Fallback to local defaults is handled by getGuiMeContent itself
+        const localDefaults = await getGuiMeContent(); // Call again to get the fallback
+        reset(localDefaults);
+      } finally {
+        setIsLoadingContent(false);
+      }
     }
-  }, [reset]);
+    loadContent();
+  }, [reset, toast]);
 
   const onSubmit: SubmitHandler<GuiMeContentFormData> = async (data) => {
-    console.log("GUI ME Content to save (provide this to AI assistant):", JSON.stringify(data, null, 2));
-    toast({
-      title: 'Content Ready for AI Assistant',
-      description: 'Form data has been logged to the browser console. Please copy it (JSON format) and provide it to the AI assistant to save the changes to the project files.',
-      duration: 15000, // Longer duration for this important message
-      variant: 'default', // Using default variant, can be customized
-    });
-    // Removed call to saveGuiMeContent as persistence is now handled by AI updating JSON files
+    try {
+      await saveGuiMeContent(data);
+      toast({
+        title: 'Content Saved!',
+        description: 'GUI Me content has been successfully saved to Firebase Storage.',
+        variant: 'default',
+      });
+    } catch (error) {
+      console.error("Error saving GUI Me content:", error);
+      toast({
+        title: 'Save Failed',
+        description: (error as Error).message || 'Could not save GUI Me content. Please try again.',
+        variant: 'destructive',
+      });
+    }
   };
+
+  if (isLoadingContent) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <p className="ml-4 text-muted-foreground">Loading content editor...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="animate-fade-in">
@@ -69,8 +104,7 @@ export default function GuiMeEditorPage() {
             <CardTitle className="text-4xl font-headline text-primary">GUI ME Content Editor</CardTitle>
           </div>
           <CardDescription className="text-lg text-foreground/80">
-            Manage the dynamic content for your Home page banner and the GUI Me page.
-            To save changes, submit the form and provide the console output to the AI assistant.
+            Manage the dynamic content for your Home page banner and the GUI Me page. Changes are saved to Firebase Storage.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -79,7 +113,7 @@ export default function GuiMeEditorPage() {
               <Label htmlFor="homePageBannerUrl" className="font-semibold">Home Page Banner Image URL</Label>
               <Input id="homePageBannerUrl" {...register('homePageBannerUrl')} className="mt-1" placeholder="https://firebasestorage.googleapis.com/..." />
               <p className="text-xs text-muted-foreground mt-1">
-                Please use the full HTTPS download URL from Firebase Storage (it starts with "https://firebasestorage.googleapis.com/..."). Do not use "gs://" links.
+                Please use the full HTTPS download URL from Firebase Storage.
               </p>
               {errors.homePageBannerUrl && <p className="text-sm text-destructive mt-1">{errors.homePageBannerUrl.message}</p>}
             </div>
@@ -88,7 +122,7 @@ export default function GuiMeEditorPage() {
               <Label htmlFor="guiMePageBannerUrl" className="font-semibold">GUI Me Page Banner Image URL</Label>
               <Input id="guiMePageBannerUrl" {...register('guiMePageBannerUrl')} className="mt-1" placeholder="https://firebasestorage.googleapis.com/..." />
               <p className="text-xs text-muted-foreground mt-1">
-                Please use the full HTTPS download URL from Firebase Storage (it starts with "https://firebasestorage.googleapis.com/..."). Do not use "gs://" links.
+                Please use the full HTTPS download URL from Firebase Storage.
               </p>
               {errors.guiMePageBannerUrl && <p className="text-sm text-destructive mt-1">{errors.guiMePageBannerUrl.message}</p>}
             </div>
@@ -131,9 +165,9 @@ export default function GuiMeEditorPage() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting}>
-              <Save className="mr-2 h-5 w-5" />
-              {isSubmitting ? 'Processing...' : 'Prepare Content for AI Save'}
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting || isLoadingContent}>
+              {isSubmitting ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Save className="mr-2 h-5 w-5" />}
+              {isSubmitting ? 'Saving...' : 'Save Content'}
             </Button>
           </CardFooter>
         </form>

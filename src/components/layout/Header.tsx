@@ -1,10 +1,9 @@
-
 // src/components/layout/Header.tsx
 "use client";
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon } from 'lucide-react';
+import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -19,7 +18,7 @@ const navLinks = [
   { href: '/gui-me', label: 'GUI Me', icon: VenetianMask },
   { href: '/how-to-buy', label: 'How to Buy', icon: HelpCircle },
   { href: '/buy-now', label: 'Buy Now', icon: ShoppingCart },
-  { href: '/manage', label: 'Manage Site', icon: Settings }, // Changed label for clarity
+  { href: '/manage', label: 'Manage Site', icon: Settings },
 ];
 
 export default function Header() {
@@ -27,19 +26,31 @@ export default function Header() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [firmLogos, setFirmLogos] = useState<FirmLogosData | null>(null);
+  const [isLoadingLogos, setIsLoadingLogos] = useState(true);
 
   useEffect(() => {
     setMounted(true);
-    setFirmLogos(getLogosContent());
+    async function loadLogos() {
+      setIsLoadingLogos(true);
+      try {
+        const logos = await getLogosContent();
+        setFirmLogos(logos);
+      } catch (error) {
+        console.error("Failed to load firm logos for header:", error);
+        // Fallback to local defaults is handled by getLogosContent
+        const localDefaults = await getLogosContent();
+        setFirmLogos(localDefaults);
+      } finally {
+        setIsLoadingLogos(false);
+      }
+    }
+    loadLogos();
   }, []);
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
-  // Original size: 562x244. Aspect ratio: 562/244 = 2.303
-  // Target height for header: ~36px * 2 = ~72px
-  // Target width: 72 * 2.303 = ~166px
   const logoDisplayWidth = 166;
   const logoDisplayHeight = 72;
 
@@ -48,16 +59,20 @@ export default function Header() {
       <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center">
         <Link 
           href="/" 
-          className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity duration-300 mb-4 sm:mb-0"
+          className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity duration-300 mb-4 sm:mb-0 min-h-[72px]" // Added min-h to prevent layout shift
           aria-label="Fanan Team Home"
         >
-          {firmLogos?.firmLogoUrl ? (
+          {isLoadingLogos ? (
+            <div style={{ width: `${logoDisplayWidth}px`, height: `${logoDisplayHeight}px` }} className="flex items-center justify-center">
+              <Loader2 size={32} className="animate-spin" />
+            </div>
+          ) : firmLogos?.firmLogoUrl && (firmLogos.firmLogoUrl.startsWith('http://') || firmLogos.firmLogoUrl.startsWith('https://')) ? (
             <Image 
               src={firmLogos.firmLogoUrl} 
               alt="Fanan Team Logo" 
               width={logoDisplayWidth} 
               height={logoDisplayHeight}
-              priority // Prioritize loading the logo
+              priority 
             />
           ) : (
             <>
@@ -93,7 +108,7 @@ export default function Header() {
             </Button>
           )}
           {!mounted && (
-             <Button variant="ghost" size="icon" className="h-9 w-9" disabled /> // Placeholder for SSR
+             <Button variant="ghost" size="icon" className="h-9 w-9" disabled /> 
           )}
         </nav>
       </div>
