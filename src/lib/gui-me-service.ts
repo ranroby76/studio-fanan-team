@@ -1,29 +1,14 @@
 // src/lib/gui-me-service.ts
-"use client"; // This service interacts with localStorage, so it's client-side
+// This service now reads directly from a JSON file.
 
 import type { GuiMeContent } from '@/lib/types';
+import guiMeDefaultData from '@/data/gui-me-content.json';
 
-const GUI_ME_CONTENT_STORAGE_KEY = 'fananTeamGuiMeContent';
-
-export const getGuiMeContent = (): GuiMeContent | null => {
-  if (typeof window === 'undefined') return null;
-  const data = localStorage.getItem(GUI_ME_CONTENT_STORAGE_KEY);
-  try {
-    return data ? JSON.parse(data) : null;
-  } catch (error) {
-    console.error("Failed to parse GUI ME content from localStorage", error);
-    return null;
-  }
+export const getGuiMeContent = (): GuiMeContent => {
+  // Returns the imported JSON data.
+  // Type assertion can be used if you are sure the JSON matches the type.
+  return guiMeDefaultData as GuiMeContent;
 };
 
-export const saveGuiMeContent = (content: GuiMeContent): void => {
-  if (typeof window === 'undefined') {
-    console.error("localStorage not available, cannot save GUI ME content.");
-    return;
-  }
-  try {
-    localStorage.setItem(GUI_ME_CONTENT_STORAGE_KEY, JSON.stringify(content));
-  } catch (error) {
-    console.error("Failed to save GUI ME content to localStorage", error);
-  }
-};
+// Saving to project files directly from the client/server in a typical web app flow is not handled here.
+// The editor pages will guide the user to provide the data to the AI assistant for updating the JSON file.

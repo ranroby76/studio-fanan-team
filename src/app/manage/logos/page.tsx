@@ -12,7 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { useToast } from '@/hooks/use-toast';
 import { ImageIcon, Save } from 'lucide-react';
 import type { FirmLogosFormData } from '@/lib/types';
-import { getLogosContent, saveLogosContent } from '@/lib/logo-service';
+import { getLogosContent } from '@/lib/logo-service'; // saveLogosContent is removed
 
 const logosFormSchema = z.object({
   firmLogoUrl: z.string().url("Must be a valid URL or empty").or(z.literal('')).optional(),
@@ -40,7 +40,7 @@ export default function LogosEditorPage() {
   const { toast } = useToast();
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FirmLogosFormData>({
     resolver: zodResolver(logosFormSchema),
-    defaultValues: {
+    defaultValues: { // Default values will be overridden by useEffect -> reset
       firmLogoUrl: '',
       proPackLogoUrl: '',
       madMidiMachinesLogoUrl: '',
@@ -57,20 +57,14 @@ export default function LogosEditorPage() {
   }, [reset]);
 
   const onSubmit: SubmitHandler<FirmLogosFormData> = async (data) => {
-    try {
-      saveLogosContent(data);
-      toast({
-        title: 'Logos Saved!',
-        description: 'Your firm logo URLs have been updated.',
-      });
-    } catch (error) {
-      console.error("Error saving Logos content:", error);
-      toast({
-        title: 'Error',
-        description: 'Failed to save logo URLs. Please try again.',
-        variant: 'destructive',
-      });
-    }
+    console.log("Logos Content to save (provide this to AI assistant):", JSON.stringify(data, null, 2));
+    toast({
+      title: 'Logo URLs Ready for AI Assistant',
+      description: 'Form data has been logged to the browser console. Please copy it (JSON format) and provide it to the AI assistant to save the changes to the project files.',
+      duration: 15000, // Longer duration
+      variant: 'default',
+    });
+    // Removed call to saveLogosContent
   };
 
   return (
@@ -83,6 +77,7 @@ export default function LogosEditorPage() {
           </div>
           <CardDescription className="text-lg text-foreground/80">
             Update the URLs for various company and product pack logos.
+            To save changes, submit the form and provide the console output to the AI assistant.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -106,7 +101,7 @@ export default function LogosEditorPage() {
           <CardFooter>
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting}>
               <Save className="mr-2 h-5 w-5" />
-              {isSubmitting ? 'Saving...' : 'Save Logo URLs'}
+              {isSubmitting ? 'Processing...' : 'Prepare URLs for AI Save'}
             </Button>
           </CardFooter>
         </form>

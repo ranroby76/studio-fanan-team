@@ -1,0 +1,10 @@
+{
+  "homePageBannerUrl": "",
+  "guiMePageBannerUrl": "",
+  "title1": "Our Design Vision (from JSON)",
+  "text1": "This is the default text for section 1, loaded directly from the project's gui-me-content.json file. You can edit this in the GUI ME editor and then provide the updated content to the AI assistant to save it.",
+  "title2": "User-Centric Approach (from JSON)",
+  "text2": "Default content for section 2. We focus on intuitive interfaces that enhance creativity. Loaded from JSON.",
+  "title3": "Aesthetics & Functionality (from JSON)",
+  "text3": "Default content for section 3. Our GUIs aim to be both beautiful and practical. Loaded from JSON."
+}

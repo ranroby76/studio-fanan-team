@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { useToast } from '@/hooks/use-toast';
 import { Palette, Save } from 'lucide-react';
 import type { GuiMeContentFormData } from '@/lib/types';
-import { getGuiMeContent, saveGuiMeContent } from '@/lib/gui-me-service';
+import { getGuiMeContent } from '@/lib/gui-me-service'; // saveGuiMeContent is removed
 
 const guiMeFormSchema = z.object({
   homePageBannerUrl: z.string().url("Must be a valid URL for Home Page Banner").or(z.literal('')).optional(),
@@ -28,9 +28,9 @@ const guiMeFormSchema = z.object({
 
 export default function GuiMeEditorPage() {
   const { toast } = useToast();
-  const { register, handleSubmit, formState: { errors, isSubmitting }, reset, setValue } = useForm<GuiMeContentFormData>({
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<GuiMeContentFormData>({
     resolver: zodResolver(guiMeFormSchema),
-    defaultValues: {
+    defaultValues: { // Default values will be overridden by useEffect -> reset
       homePageBannerUrl: '',
       guiMePageBannerUrl: '',
       title1: '',
@@ -50,20 +50,14 @@ export default function GuiMeEditorPage() {
   }, [reset]);
 
   const onSubmit: SubmitHandler<GuiMeContentFormData> = async (data) => {
-    try {
-      saveGuiMeContent(data);
-      toast({
-        title: 'Content Saved!',
-        description: 'Your GUI Me page content has been updated.',
-      });
-    } catch (error) {
-      console.error("Error saving GUI ME content:", error);
-      toast({
-        title: 'Error',
-        description: 'Failed to save content. Please try again.',
-        variant: 'destructive',
-      });
-    }
+    console.log("GUI ME Content to save (provide this to AI assistant):", JSON.stringify(data, null, 2));
+    toast({
+      title: 'Content Ready for AI Assistant',
+      description: 'Form data has been logged to the browser console. Please copy it (JSON format) and provide it to the AI assistant to save the changes to the project files.',
+      duration: 15000, // Longer duration for this important message
+      variant: 'default', // Using default variant, can be customized
+    });
+    // Removed call to saveGuiMeContent as persistence is now handled by AI updating JSON files
   };
 
   return (
@@ -76,6 +70,7 @@ export default function GuiMeEditorPage() {
           </div>
           <CardDescription className="text-lg text-foreground/80">
             Manage the dynamic content for your Home page banner and the GUI Me page.
+            To save changes, submit the form and provide the console output to the AI assistant.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -138,7 +133,7 @@ export default function GuiMeEditorPage() {
           <CardFooter>
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting}>
               <Save className="mr-2 h-5 w-5" />
-              {isSubmitting ? 'Saving...' : 'Save Changes'}
+              {isSubmitting ? 'Processing...' : 'Prepare Content for AI Save'}
             </Button>
           </CardFooter>
         </form>
