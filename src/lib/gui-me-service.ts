@@ -31,9 +31,15 @@ export const saveGuiMeContent = async (data: GuiMeContentFormData): Promise<void
     const jsonString = JSON.stringify(data, null, 2);
     await uploadString(storageRef, jsonString, 'raw', { contentType: 'application/json' });
     console.log("GUI Me content saved to Firebase Storage.");
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error saving GUI Me content to Firebase Storage:", error);
-    throw new Error('Failed to save GUI Me content to Firebase Storage.');
+    let detailedMessage = 'Failed to save GUI Me content to Firebase Storage.';
+    if (error && error.message) {
+      detailedMessage += ` Firebase Error: ${error.message}`;
+    }
+    if (error && error.code) {
+      detailedMessage += ` (Code: ${error.code})`;
+    }
+    throw new Error(detailedMessage);
   }
 };
-

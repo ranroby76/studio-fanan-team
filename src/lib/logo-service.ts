@@ -30,8 +30,15 @@ export const saveLogosContent = async (data: FirmLogosFormData): Promise<void> =
     const jsonString = JSON.stringify(data, null, 2);
     await uploadString(storageRef, jsonString, 'raw', { contentType: 'application/json' });
     console.log("Logos content saved to Firebase Storage.");
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error saving logos content to Firebase Storage:", error);
-    throw new Error('Failed to save logos content to Firebase Storage.');
+    let detailedMessage = 'Failed to save Logos content to Firebase Storage.';
+    if (error && error.message) {
+      detailedMessage += ` Firebase Error: ${error.message}`;
+    }
+    if (error && error.code) {
+      detailedMessage += ` (Code: ${error.code})`;
+    }
+    throw new Error(detailedMessage);
   }
 };
