@@ -1,13 +1,18 @@
-
 // src/components/layout/Header.tsx
 "use client";
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2, Package, Star, Gift } from 'lucide-react';
+import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2, ChevronDown, Package } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import type { FirmLogosData } from '@/lib/types';
@@ -15,14 +20,18 @@ import { getLogosContent } from '@/lib/logo-service';
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
-  { href: '/pro-pack', label: 'Pro Pack', icon: Star },
-  { href: '/mad-midi-machine-pack', label: 'Mad MIDI', icon: Package },
-  { href: '/free-pack', label: 'Free Pack', icon: Gift },
   { href: '/contact-us', label: 'Contact Us', icon: Mail },
   { href: '/gui-me', label: 'GUI Me', icon: VenetianMask },
   { href: '/how-to-buy', label: 'How to Buy', icon: HelpCircle },
   { href: '/buy-now', label: 'Buy Now', icon: ShoppingCart },
   { href: '/manage', label: 'Manage Site', icon: Settings },
+];
+
+const productLinks = [
+    { href: '/products', label: 'All Products' },
+    { href: '/pro-pack', label: 'Max Pack' },
+    { href: '/mad-midi-machine-pack', label: 'Mad MIDI Machine Pack' },
+    { href: '/free-pack', label: 'Free Pack' },
 ];
 
 export default function Header() {
@@ -85,7 +94,7 @@ export default function Header() {
             </>
           )}
         </Link>
-        <nav className="flex flex-wrap justify-center items-center gap-2 sm:gap-3">
+        <nav className="flex flex-wrap justify-center items-center gap-1 sm:gap-2">
           {navLinks.map(({ href, label, icon: Icon }) => (
             <Button key={href} variant="ghost" asChild className={cn(
               "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
@@ -100,6 +109,33 @@ export default function Header() {
               </Link>
             </Button>
           ))}
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+               <Button variant="ghost" className={cn(
+                "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
+                productLinks.some(p => pathname.startsWith(p.href) && p.href !== '/') 
+                  ? "text-primary bg-primary/10 font-semibold" 
+                  : "text-foreground/70",
+                "flex items-center gap-2 px-3 py-2 rounded-md"
+              )}>
+                <>
+                  <Package size={18} />
+                  <span className="hidden md:inline">Products</span>
+                  <span className="md:hidden">Products</span>
+                  <ChevronDown size={16} className="ml-1" />
+                </>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                {productLinks.map((link) => (
+                    <DropdownMenuItem key={link.href} asChild>
+                        <Link href={link.href}>{link.label}</Link>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
            {mounted && (
             <Button
               variant="ghost"

@@ -26,14 +26,14 @@ export default function ProPackPage() {
     loadLogos();
   }, []);
 
-  const logoUrl = logoData?.proPackLogoUrl ? `/images/${logoData.proPackLogoUrl}` : "https://placehold.co/1200x400.png?text=Pro+Pack";
+  const logoUrl = logoData?.proPackLogoUrl ? `/images/${logoData.proPackLogoUrl}` : "https://placehold.co/1200x400.png?text=Max+Pack";
 
   return (
     <div className="container mx-auto px-4">
       <Card className="shadow-xl text-center">
         <CardHeader>
           <Star className="mx-auto h-12 w-12 text-primary mb-4" />
-          <CardTitle className="text-4xl font-headline text-primary">Pro Pack</CardTitle>
+          <CardTitle className="text-4xl font-headline text-primary">Max Pack</CardTitle>
         </CardHeader>
         <CardContent>
           {isLoading ? (
@@ -44,7 +44,7 @@ export default function ProPackPage() {
              <div className="relative w-full max-w-4xl mx-auto h-auto aspect-[3/1] overflow-hidden bg-muted/20 rounded-lg shadow-lg">
               <Image
                 src={logoUrl}
-                alt="Pro Pack"
+                alt="Max Pack"
                 fill
                 className="object-contain"
                 data-ai-hint="professional audio"
