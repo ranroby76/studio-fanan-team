@@ -46,11 +46,6 @@ export default function GuiMePage() {
   const guiMeBannerSrc = guiMeData?.guiMePageBannerUrl && (guiMeData.guiMePageBannerUrl.startsWith('http://') || guiMeData.guiMePageBannerUrl.startsWith('https://'))
     ? guiMeData.guiMePageBannerUrl
     : "/A2.png";
-    
-  const guiMeBannerContainerClasses = cn(
-    "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20 mb-12"
-  );
-
 
   if (isLoadingContent) {
     return (
@@ -64,15 +59,16 @@ export default function GuiMePage() {
   return (
     <div className="animate-fade-in space-y-12">
       {guiMeBannerSrc && (
-        <div className={guiMeBannerContainerClasses}>
-          <Image
-            src={guiMeBannerSrc}
-            alt="GUI Me Page Banner"
-            fill
-            className="object-contain transition-transform duration-500"
-            data-ai-hint={guiMeBannerSrc === "/A2.png" ? "promotion website" : "design abstract"}
-            priority
-          />
+         <div className="mb-12">
+            <Image
+              src={guiMeBannerSrc}
+              alt="GUI Me Page Banner"
+              width={1405}
+              height={669}
+              className="w-full h-auto rounded-lg shadow-lg object-contain"
+              data-ai-hint={guiMeBannerSrc === "/A2.png" ? "promotion website" : "design abstract"}
+              priority
+            />
         </div>
       )}
 
