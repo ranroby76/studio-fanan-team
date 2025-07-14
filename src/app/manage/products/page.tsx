@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch } from 'lucide-react';
+import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package } from 'lucide-react';
 import type { Product } from '@/lib/types';
 import { getProducts, deleteProduct as deleteProductService } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
