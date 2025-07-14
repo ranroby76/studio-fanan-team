@@ -11,9 +11,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Sparkles, PlusCircle, Trash2, Loader2 } from 'lucide-react';
-import { generateProductContentAction } from '@/app/actions/ai-actions';
-import React, { useState } from 'react';
+import { PlusCircle, Trash2, Loader2 } from 'lucide-react';
+import React from 'react';
 
 const downloadLinkSchema = z.object({
   id: z.string().optional(), // Optional for new links
@@ -41,9 +40,8 @@ interface ProductFormProps {
 
 export default function ProductForm({ initialData, onSubmit, isEditing = false }: ProductFormProps) {
   const { toast } = useToast();
-  const [isAiLoading, setIsAiLoading] = useState(false);
 
-  const { control, register, handleSubmit, formState: { errors, isSubmitting }, watch, setValue, reset } = useForm<ProductFormData>({
+  const { control, register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ProductFormData>({
     resolver: zodResolver(productFormSchema),
     defaultValues: initialData || {
       title: '',
@@ -67,33 +65,6 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     name: "downloadLinks",
   });
 
-  const handleGenerateContent = async () => {
-    const keywords = watch('keywords');
-    if (!keywords || keywords.trim() === '') {
-      toast({
-        title: 'Keywords required',
-        description: 'Please enter some keywords to generate content.',
-        variant: 'destructive',
-      });
-      return;
-    }
-    setIsAiLoading(true);
-    try {
-      const result = await generateProductContentAction({ keywords });
-      if ('error' in result) {
-        toast({ title: 'AI Error', description: result.error, variant: 'destructive' });
-      } else {
-        setValue('description', result.productDescription, { shouldValidate: true });
-        setValue('demoLimitations', result.demoLimitations, { shouldValidate: true });
-        toast({ title: 'Content Generated!', description: 'Description and demo limitations have been populated.' });
-      }
-    } catch (error) {
-      toast({ title: 'Error', description: 'Failed to generate content.', variant: 'destructive' });
-    } finally {
-      setIsAiLoading(false);
-    }
-  };
-
   const processSubmit: SubmitHandler<ProductFormData> = async (data) => {
     await onSubmit(data);
     if (!isEditing) {
@@ -105,7 +76,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     <Card className="shadow-xl w-full max-w-3xl mx-auto">
       <CardHeader>
         <CardTitle className="text-3xl font-headline text-primary">{isEditing ? 'Edit Product' : 'Add New Product'}</CardTitle>
-        <CardDescription>Fill in the details for the VST product. Use the AI assistant for help with descriptions!</CardDescription>
+        <CardDescription>Fill in the details for the VST product.</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit(processSubmit)}>
         <CardContent className="space-y-6">
@@ -144,13 +115,9 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
           </div>
           
           <div>
-            <Label htmlFor="keywords" className="font-semibold">Keywords for AI</Label>
+            <Label htmlFor="keywords" className="font-semibold">Keywords (optional, for reference)</Label>
             <div className="flex items-center gap-2 mt-1">
               <Input id="keywords" {...register('keywords')} placeholder="e.g., analog synth, warm pads, 80s sound" className="flex-grow" />
-              <Button type="button" onClick={handleGenerateContent} disabled={isAiLoading} className="bg-accent hover:bg-accent/90 text-accent-foreground shrink-0">
-                {isAiLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
-                Generate
-              </Button>
             </div>
             {errors.keywords && <p className="text-sm text-destructive mt-1">{errors.keywords.message}</p>}
           </div>

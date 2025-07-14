@@ -1,4 +1,5 @@
 import { config } from 'dotenv';
 config();
 
-import '@/ai/flows/product-page-assistant.ts';
+// All AI flows can be registered here.
+// Example: import '@/ai/flows/my-flow.ts';
