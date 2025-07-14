@@ -14,10 +14,9 @@ import { useToast } from '@/hooks/use-toast';
 import { Palette, Save, Loader2 } from 'lucide-react';
 import type { GuiMeContentFormData } from '@/lib/types';
 import { getGuiMeContent, saveGuiMeContent } from '@/lib/gui-me-service';
+import Image from 'next/image';
 
 const guiMeFormSchema = z.object({
-  homePageBannerUrl: z.string().url("Must be a valid URL for Home Page Banner").or(z.literal('')).optional(),
-  guiMePageBannerUrl: z.string().url("Must be a valid URL for GUI Me Page Banner").or(z.literal('')).optional(),
   title1: z.string().optional(),
   text1: z.string().optional(),
   title2: z.string().optional(),
@@ -32,8 +31,6 @@ export default function GuiMeEditorPage() {
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<GuiMeContentFormData>({
     resolver: zodResolver(guiMeFormSchema),
     defaultValues: {
-      homePageBannerUrl: '',
-      guiMePageBannerUrl: '',
       title1: '',
       text1: '',
       title2: '',
@@ -58,8 +55,7 @@ export default function GuiMeEditorPage() {
           description: 'Could not fetch GUI Me content. Displaying defaults.',
           variant: 'destructive',
         });
-        // Fallback to local defaults is handled by getGuiMeContent itself
-        const localDefaults = await getGuiMeContent(); // Call again to get the fallback
+        const localDefaults = await getGuiMeContent();
         reset(localDefaults);
       } finally {
         setIsLoadingContent(false);
@@ -73,7 +69,7 @@ export default function GuiMeEditorPage() {
       await saveGuiMeContent(data);
       toast({
         title: 'Content Saved!',
-        description: 'GUI Me content has been successfully saved to Firebase Storage.',
+        description: 'GUI Me content has been successfully saved.',
         variant: 'default',
       });
     } catch (error) {
@@ -104,32 +100,30 @@ export default function GuiMeEditorPage() {
             <CardTitle className="text-4xl font-headline text-primary">GUI ME Content Editor</CardTitle>
           </div>
           <CardDescription className="text-lg text-foreground/80">
-            Manage the dynamic content for your Home page banner and the GUI Me page. Changes are saved to Firebase Storage.
+            Manage the dynamic text content for the GUI Me page. The banner images are static and managed within the code.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent className="space-y-6">
-            <div>
-              <Label htmlFor="homePageBannerUrl" className="font-semibold">Home Page Banner Image URL</Label>
-              <Input id="homePageBannerUrl" {...register('homePageBannerUrl')} className="mt-1" placeholder="https://firebasestorage.googleapis.com/..." />
-              <p className="text-xs text-muted-foreground mt-1">
-                Please use the full HTTPS download URL from Firebase Storage.
-              </p>
-              {errors.homePageBannerUrl && <p className="text-sm text-destructive mt-1">{errors.homePageBannerUrl.message}</p>}
-            </div>
 
-            <div>
-              <Label htmlFor="guiMePageBannerUrl" className="font-semibold">GUI Me Page Banner Image URL</Label>
-              <Input id="guiMePageBannerUrl" {...register('guiMePageBannerUrl')} className="mt-1" placeholder="https://firebasestorage.googleapis.com/..." />
-              <p className="text-xs text-muted-foreground mt-1">
-                Please use the full HTTPS download URL from Firebase Storage.
-              </p>
-              {errors.guiMePageBannerUrl && <p className="text-sm text-destructive mt-1">{errors.guiMePageBannerUrl.message}</p>}
+            <div className="space-y-4">
+               <div>
+                <Label className="font-semibold text-muted-foreground">Home Page Banner</Label>
+                <div className="mt-2 rounded-lg border p-2">
+                   <Image src="/A1.png" alt="Home Page Banner Preview (A1.png)" width={800} height={200} className="w-full h-auto rounded-md object-contain" />
+                </div>
+              </div>
+               <div>
+                <Label className="font-semibold text-muted-foreground">GUI Me Page Banner</Label>
+                <div className="mt-2 rounded-lg border p-2">
+                   <Image src="/A2.png" alt="GUI Me Page Banner Preview (A2.png)" width={800} height={400} className="w-full h-auto rounded-md object-contain" />
+                </div>
+              </div>
             </div>
             
             <hr className="my-6 border-border" />
 
-            <h3 className="text-xl font-headline text-primary">GUI Me Page Content Sections</h3>
+            <h3 className="text-xl font-headline text-primary">GUI Me Page Text Sections</h3>
             
             <div>
               <Label htmlFor="title1" className="font-semibold">Title 1</Label>

@@ -1,4 +1,3 @@
-
 // src/app/page.tsx
 "use client";
 
@@ -8,56 +7,34 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ArrowRight, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { GuiMeContent } from '@/lib/types';
-import { getGuiMeContent } from '@/lib/gui-me-service';
-import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 
 export default function HomePage() {
-  const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
-  const [isLoadingBanner, setIsLoadingBanner] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function loadBannerData() {
-      setIsLoadingBanner(true);
-      try {
-        const data = await getGuiMeContent();
-        setGuiMeData(data);
-      } catch (error) {
-        console.error("Failed to load GUI Me content for homepage banner:", error);
-         const localDefaults = await getGuiMeContent();
-         setGuiMeData(localDefaults);
-      } finally {
-        setIsLoadingBanner(false);
-      }
-    }
-    loadBannerData();
+    // Simulate loading if needed, or just set to false.
+    // This hook could be used for fetching other page data in the future.
+    setIsLoading(false);
   }, []);
-
-  const homeBannerSrc = guiMeData?.homePageBannerUrl && (guiMeData.homePageBannerUrl.startsWith('http://') || guiMeData.homePageBannerUrl.startsWith('https://'))
-    ? guiMeData.homePageBannerUrl
-    : "/A2.png";
-    
-  const homeBannerContainerClasses = cn(
-    "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20 mb-12"
-  );
 
   return (
     <div className="space-y-12 animate-fade-in">
-      {isLoadingBanner ? (
-        <div className={cn(homeBannerContainerClasses, "flex items-center justify-center rounded-xl shadow-lg")}>
+      {isLoading ? (
+        <div className="relative w-full h-64 md:h-96 overflow-hidden bg-muted/20 flex items-center justify-center rounded-xl shadow-lg">
           <Loader2 className="h-12 w-12 animate-spin text-primary" />
         </div>
-      ) : homeBannerSrc ? (
+      ) : (
         <>
           <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
-            <section className={homeBannerContainerClasses}>
+            <section className="relative w-full h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
               <Image
-                src={homeBannerSrc}
+                src="/A1.png"
                 alt="Site Banner - GUI Me Design Philosophy"
-                fill
-                className="object-contain transition-transform duration-500 hover:scale-105"
-                data-ai-hint={homeBannerSrc === "/A2.png" ? "promotion website" : "design abstract"}
+                width={1405}
+                height={669}
+                className="object-contain w-full h-auto transition-transform duration-500 hover:scale-105"
+                data-ai-hint="design abstract"
                 priority
               />
             </section>
@@ -77,7 +54,7 @@ export default function HomePage() {
             </p>
           </div>
         </>
-      ) : null}
+      )}
 
       <section>
         <h2 className="text-3xl font-headline font-semibold text-center mb-8 text-primary">Featured Products</h2>
@@ -96,10 +73,10 @@ export default function HomePage() {
                 />
               </CardHeader>
               <CardContent className="pt-6">
-                <CardTitle className="font-headline text-xl mb-2 text-primary">Awesome VST {item}</CardTitle>
-                <CardDescription className="text-foreground/70 line-clamp-3">
+                <h3 className="font-headline text-xl mb-2 text-primary">Awesome VST {item}</h3>
+                <p className="text-foreground/70 line-clamp-3">
                   A brief description of this amazing VST plugin that will change the way you make music. Experience unparalleled sound quality.
-                </CardDescription>
+                </p>
               </CardContent>
               <CardFooter>
                 <Button variant="outline" asChild className="w-full border-primary text-primary hover:bg-primary/10">

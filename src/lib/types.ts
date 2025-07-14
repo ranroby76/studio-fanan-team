@@ -20,8 +20,6 @@ export interface Product {
 export type ProductFormData = Omit<Product, 'id'> & { id?: string };
 
 export interface GuiMeContent {
-  homePageBannerUrl?: string;
-  guiMePageBannerUrl?: string;
   title1?: string;
   text1?: string;
   title2?: string;

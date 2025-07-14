@@ -1,4 +1,3 @@
-
 // src/app/gui-me/page.tsx
 "use client";
 
@@ -9,7 +8,6 @@ import Image from "next/image";
 import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
 import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
 
 export default function GuiMePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
@@ -43,10 +41,6 @@ export default function GuiMePage() {
     );
   };
 
-  const guiMeBannerSrc = guiMeData?.guiMePageBannerUrl && (guiMeData.guiMePageBannerUrl.startsWith('http://') || guiMeData.guiMePageBannerUrl.startsWith('https://'))
-    ? guiMeData.guiMePageBannerUrl
-    : "/A2.png";
-
   if (isLoadingContent) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
@@ -58,19 +52,17 @@ export default function GuiMePage() {
 
   return (
     <div className="animate-fade-in space-y-12">
-      {guiMeBannerSrc && (
-         <div className="mb-12">
-            <Image
-              src={guiMeBannerSrc}
-              alt="GUI Me Page Banner"
-              width={1405}
-              height={669}
-              className="w-full h-auto rounded-lg shadow-lg object-contain"
-              data-ai-hint={guiMeBannerSrc === "/A2.png" ? "promotion website" : "design abstract"}
-              priority
-            />
-        </div>
-      )}
+      <div className="mb-12">
+        <Image
+          src="/A2.png"
+          alt="GUI Me Page Banner"
+          width={1405}
+          height={669}
+          className="w-full h-auto rounded-lg shadow-lg object-contain"
+          data-ai-hint="design abstract"
+          priority
+        />
+      </div>
 
       <Card className="shadow-xl overflow-hidden">
         <CardHeader className="bg-gradient-to-r from-primary to-accent p-8 text-primary-foreground">
