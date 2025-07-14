@@ -18,8 +18,11 @@ import { useEffect, useState } from 'react';
 import type { FirmLogosData } from '@/lib/types';
 import { getLogosContent } from '@/lib/logo-service';
 
-const navLinks = [
+const mainNavLinks = [
   { href: '/', label: 'Home', icon: Home },
+];
+
+const secondaryNavLinks = [
   { href: '/contact-us', label: 'Contact Us', icon: Mail },
   { href: '/gui-me', label: 'GUI Me', icon: VenetianMask },
   { href: '/how-to-buy', label: 'How to Buy', icon: HelpCircle },
@@ -95,12 +98,10 @@ export default function Header() {
           )}
         </Link>
         <nav className="flex flex-wrap justify-center items-center gap-1 sm:gap-2">
-          {navLinks.map(({ href, label, icon: Icon }) => (
+          {mainNavLinks.map(({ href, label, icon: Icon }) => (
             <Button key={href} variant="ghost" asChild className={cn(
               "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
-              (pathname === href || (href === '/manage' && pathname.startsWith('/manage'))) 
-                ? "text-primary bg-primary/10 font-semibold" 
-                : "text-foreground/70"
+              pathname === href ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
             )}>
               <Link href={href} className="flex items-center gap-2 px-3 py-2 rounded-md">
                 <Icon size={18} />
@@ -109,7 +110,7 @@ export default function Header() {
               </Link>
             </Button>
           ))}
-
+          
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
                <Button variant="ghost" className={cn(
@@ -135,6 +136,21 @@ export default function Header() {
                 ))}
             </DropdownMenuContent>
           </DropdownMenu>
+
+          {secondaryNavLinks.map(({ href, label, icon: Icon }) => (
+            <Button key={href} variant="ghost" asChild className={cn(
+              "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
+              (pathname.startsWith(href) && href !== '/')
+                ? "text-primary bg-primary/10 font-semibold" 
+                : "text-foreground/70"
+            )}>
+              <Link href={href} className="flex items-center gap-2 px-3 py-2 rounded-md">
+                <Icon size={18} />
+                <span className="hidden md:inline">{label}</span>
+                <span className="md:hidden">{label.split(' ')[0]}</span>
+              </Link>
+            </Button>
+          ))}
 
            {mounted && (
             <Button
