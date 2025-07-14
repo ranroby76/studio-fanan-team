@@ -11,8 +11,6 @@ import { getGuiMeContent } from '@/lib/gui-me-service';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 
-const PLACEHOLDER_BANNER_GUIME = "/A2.png";
-
 export default function GuiMePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
   const [isLoadingContent, setIsLoadingContent] = useState(true);
@@ -47,7 +45,7 @@ export default function GuiMePage() {
 
   const guiMeBannerSrc = guiMeData?.guiMePageBannerUrl && (guiMeData.guiMePageBannerUrl.startsWith('http://') || guiMeData.guiMePageBannerUrl.startsWith('https://'))
     ? guiMeData.guiMePageBannerUrl
-    : PLACEHOLDER_BANNER_GUIME;
+    : "/A2.png";
     
   const guiMeBannerContainerClasses = cn(
     "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20 mb-12"
@@ -72,7 +70,7 @@ export default function GuiMePage() {
             alt="GUI Me Page Banner"
             fill
             className="object-contain transition-transform duration-500"
-            data-ai-hint={guiMeBannerSrc === PLACEHOLDER_BANNER_GUIME ? "promotion website" : "design abstract"}
+            data-ai-hint={guiMeBannerSrc === "/A2.png" ? "promotion website" : "design abstract"}
             priority
           />
         </div>

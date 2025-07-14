@@ -13,8 +13,6 @@ import { getGuiMeContent } from '@/lib/gui-me-service';
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 
-const PLACEHOLDER_BANNER_HOME = "/A2.png";
-
 export default function HomePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
   const [isLoadingBanner, setIsLoadingBanner] = useState(true);
@@ -23,7 +21,6 @@ export default function HomePage() {
     async function loadBannerData() {
       setIsLoadingBanner(true);
       try {
-        // This now reads from localStorage, not Firebase
         const data = await getGuiMeContent();
         setGuiMeData(data);
       } catch (error) {
@@ -39,7 +36,7 @@ export default function HomePage() {
 
   const homeBannerSrc = guiMeData?.homePageBannerUrl && (guiMeData.homePageBannerUrl.startsWith('http://') || guiMeData.homePageBannerUrl.startsWith('https://'))
     ? guiMeData.homePageBannerUrl
-    : PLACEHOLDER_BANNER_HOME;
+    : "/A2.png";
     
   const homeBannerContainerClasses = cn(
     "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20 mb-12"
@@ -60,7 +57,7 @@ export default function HomePage() {
                 alt="Site Banner - GUI Me Design Philosophy"
                 fill
                 className="object-contain transition-transform duration-500 hover:scale-105"
-                data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "promotion website" : "design abstract"}
+                data-ai-hint={homeBannerSrc === "/A2.png" ? "promotion website" : "design abstract"}
                 priority
               />
             </section>
