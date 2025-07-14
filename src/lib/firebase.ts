@@ -1,7 +1,10 @@
 // src/lib/firebase.ts
 // Import the functions you need from the SDKs you need
 import { initializeApp, type FirebaseApp } from "firebase/app";
-import { getStorage, type FirebaseStorage } from "firebase/storage";
+// Note: getStorage is no longer needed here for GUI Me/Logos content.
+// It might be needed later if other Firebase services like Auth or Firestore are added.
+// import { getStorage, type FirebaseStorage } from "firebase/storage";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,6 +21,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app: FirebaseApp = initializeApp(firebaseConfig);
-const storage: FirebaseStorage = getStorage(app);
+// const storage: FirebaseStorage = getStorage(app); // No longer needed for this functionality
 
-export { app, storage };
+export { app }; // Export only the app instance for now

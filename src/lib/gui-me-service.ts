@@ -1,55 +1,38 @@
 // src/lib/gui-me-service.ts
+"use client"; // This service now interacts with localStorage, so it's client-side
+
 import type { GuiMeContent, GuiMeContentFormData } from '@/lib/types';
 import localGuiMeDefaultData from '@/data/gui-me-content.json';
-import { storage } from './firebase'; // Firebase storage instance
-import { ref, getBytes, uploadString } from 'firebase/storage';
 
-const GUI_ME_STORAGE_PATH = 'fananteam/gui-me-content.json';
+const GUI_ME_STORAGE_KEY = 'fananTeamGuiMeContent';
 
+// The function remains async to avoid breaking the components that call it.
 export const getGuiMeContent = async (): Promise<GuiMeContent> => {
+  if (typeof window === 'undefined') {
+    return localGuiMeDefaultData as GuiMeContent;
+  }
   try {
-    const storageRef = ref(storage, GUI_ME_STORAGE_PATH);
-    const bytes = await getBytes(storageRef);
-    const jsonString = new TextDecoder().decode(bytes);
-    const data = JSON.parse(jsonString);
+    const data = localStorage.getItem(GUI_ME_STORAGE_KEY);
+    const storedData = data ? JSON.parse(data) : {};
     // Merge with local defaults to ensure all keys are present if the stored JSON is partial
-    return { ...localGuiMeDefaultData, ...data } as GuiMeContent;
+    return { ...localGuiMeDefaultData, ...storedData };
   } catch (error: any) {
-    // If file not found (404) or other error, fallback to local default data
-    if (error.code === 'storage/object-not-found') {
-      console.warn(`GUI Me content not found in Storage at ${GUI_ME_STORAGE_PATH}, using local defaults.`);
-    } else {
-      console.error("Error fetching GUI Me content from Firebase Storage:", error);
-    }
+    console.error("Error fetching GUI Me content from localStorage:", error);
     return localGuiMeDefaultData as GuiMeContent;
   }
 };
 
+// The function remains async to avoid breaking the components that call it.
 export const saveGuiMeContent = async (data: GuiMeContentFormData): Promise<void> => {
+  if (typeof window === 'undefined') {
+    throw new Error('localStorage is not available on the server.');
+  }
   try {
-    const storageRef = ref(storage, GUI_ME_STORAGE_PATH);
     const jsonString = JSON.stringify(data, null, 2);
-    await uploadString(storageRef, jsonString, 'raw', { contentType: 'application/json' });
-    console.log("GUI Me content saved to Firebase Storage.");
+    localStorage.setItem(GUI_ME_STORAGE_KEY, jsonString);
+    console.log("GUI Me content saved to localStorage.");
   } catch (error: any) {
-    // Log the full error structure for internal debugging if this issue persists
-    console.error("Original Firebase Error saving GUI Me content:", JSON.stringify(error, Object.getOwnPropertyNames(error)));
-    
-    let detailedMessage = 'Failed to save GUI Me content to Firebase Storage.';
-    if (error && typeof error === 'object') {
-      if ('message' in error && error.message) {
-        detailedMessage += ` Firebase Message: ${error.message}`;
-      }
-      if ('code' in error && error.code) {
-        detailedMessage += ` (Code: ${error.code})`;
-      }
-      // Add name if code is not present but name is, and message doesn't already seem to contain the name.
-      if ('name' in error && error.name && !('code' in error && error.code) && !(typeof error.message === 'string' && error.message.includes(error.name as string))) {
-        detailedMessage += ` (Name: ${error.name})`;
-      }
-    } else if (typeof error === 'string') {
-      detailedMessage += ` Details: ${error}`;
-    }
-    throw new Error(detailedMessage);
+    console.error("Error saving GUI Me content to localStorage:", error);
+    throw new Error('Failed to save GUI Me content to localStorage.');
   }
 };
