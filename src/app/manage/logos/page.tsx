@@ -10,9 +10,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { ImageIcon, Save, Loader2 } from 'lucide-react';
+import { ImageIcon, Save, Loader2, ClipboardCopy } from 'lucide-react';
 import type { FirmLogosFormData } from '@/lib/types';
-import { getLogosContent, saveLogosContent } from '@/lib/logo-service';
+import { getLogosContent, generateLogosJsonString } from '@/lib/logo-service';
+import { Textarea } from '@/components/ui/textarea';
 
 const logosFormSchema = z.object({
   firmLogoUrl: z.string().optional(),
@@ -39,15 +40,10 @@ const logoFields: LogoField[] = [
 export default function LogosEditorPage() {
   const { toast } = useToast();
   const [isLoadingContent, setIsLoadingContent] = useState(true);
+  const [jsonOutput, setJsonOutput] = useState('');
+  
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FirmLogosFormData>({
     resolver: zodResolver(logosFormSchema),
-    defaultValues: {
-      firmLogoUrl: '',
-      proPackLogoUrl: '',
-      madMidiMachinesLogoUrl: '',
-      royalPackLogoUrl: '',
-      freePackLogoUrl: '',
-    },
   });
 
   useEffect(() => {
@@ -62,11 +58,9 @@ export default function LogosEditorPage() {
         console.error("Failed to load Logos content:", error);
         toast({
           title: 'Error Loading Filenames',
-          description: 'Could not fetch logo filenames. Displaying defaults.',
+          description: 'Could not fetch logo filenames from JSON file.',
           variant: 'destructive',
         });
-        const localDefaults = await getLogosContent();
-        reset(localDefaults);
       } finally {
         setIsLoadingContent(false);
       }
@@ -76,20 +70,25 @@ export default function LogosEditorPage() {
 
   const onSubmit: SubmitHandler<FirmLogosFormData> = async (data) => {
     try {
-      await saveLogosContent(data);
+      const jsonString = generateLogosJsonString(data);
+      setJsonOutput(jsonString);
       toast({
-        title: 'Logo Filenames Saved!',
-        description: 'Logo filenames have been successfully saved.',
-        variant: 'default',
+        title: 'JSON Generated!',
+        description: 'Copy the JSON content below and paste it into src/data/logos-content.json.',
       });
     } catch (error) {
-       console.error("Error saving Logos content:", error);
+       console.error("Error generating JSON:", error);
       toast({
-        title: 'Save Failed',
-        description: (error as Error).message || 'Could not save logo filenames. Please try again.',
+        title: 'Generation Failed',
+        description: 'Could not generate JSON. Please try again.',
         variant: 'destructive',
       });
     }
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(jsonOutput);
+    toast({ title: 'Copied to clipboard!' });
   };
   
   if (isLoadingContent) {
@@ -102,7 +101,7 @@ export default function LogosEditorPage() {
   }
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in space-y-4">
       <Card className="shadow-xl w-full max-w-3xl mx-auto">
         <CardHeader>
           <div className="flex items-center gap-3 mb-2">
@@ -110,8 +109,8 @@ export default function LogosEditorPage() {
             <CardTitle className="text-4xl font-headline text-primary">Manage Logos</CardTitle>
           </div>
           <CardDescription className="text-lg text-foreground/80">
-            Update the filenames for various company and product pack logos.
-            The images must be located in the `public/images/` directory.
+            Update the filenames for various logos. The images must be in `public/images/`.
+            After saving, copy the generated JSON to `src/data/logos-content.json`.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -126,7 +125,7 @@ export default function LogosEditorPage() {
                   placeholder={field.placeholder} 
                 />
                 <p className="text-xs text-muted-foreground mt-1">
-                  Enter the exact filename, e.g., `logo.png`. The file must be in `public/images/`.
+                  Enter the exact filename, e.g., `logo.png`.
                 </p>
                 {errors[field.id] && <p className="text-sm text-destructive mt-1">{errors[field.id]?.message}</p>}
               </div>
@@ -135,11 +134,35 @@ export default function LogosEditorPage() {
           <CardFooter>
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting || isLoadingContent}>
               {isSubmitting ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Save className="mr-2 h-5 w-5" />}
-              {isSubmitting ? 'Saving...' : 'Save Filenames'}
+              {isSubmitting ? 'Generating...' : 'Generate JSON'}
             </Button>
           </CardFooter>
         </form>
       </Card>
+
+      {jsonOutput && (
+        <Card className="shadow-xl w-full max-w-3xl mx-auto">
+          <CardHeader>
+            <CardTitle>Generated JSON Output</CardTitle>
+            <CardDescription>Copy this content into `src/data/logos-content.json` and save the file.</CardDescription>
+          </CardHeader>
+          <CardContent className="relative">
+            <Textarea
+              readOnly
+              value={jsonOutput}
+              className="h-48 font-mono text-sm bg-muted"
+            />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-16 right-5 text-muted-foreground"
+              onClick={handleCopy}
+            >
+              <ClipboardCopy className="h-5 w-5" />
+            </Button>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
