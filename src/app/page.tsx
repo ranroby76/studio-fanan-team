@@ -4,32 +4,20 @@
 import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Separator } from '@/components/ui/separator';
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading if needed, or just set to false.
-    // This hook could be used for fetching other page data in the future.
-    setIsLoading(false);
-  }, []);
 
   return (
     <div className="space-y-12 animate-fade-in">
-      {isLoading ? (
-        <div className="relative w-full h-64 md:h-96 overflow-hidden bg-muted/20 flex items-center justify-center rounded-xl shadow-lg">
-          <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        </div>
-      ) : (
         <>
           <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
             <section className="relative w-full h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
               <Image
-                src="/A1.png"
+                src="/images/A1.png"
                 alt="Site Banner - GUI Me Design Philosophy"
                 width={1405}
                 height={669}
@@ -54,7 +42,6 @@ export default function HomePage() {
             </p>
           </div>
         </>
-      )}
 
       <section>
         <h2 className="text-3xl font-headline font-semibold text-center mb-8 text-primary">Featured Products</h2>
