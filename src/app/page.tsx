@@ -14,7 +14,7 @@ export default function HomePage() {
     <div className="space-y-12 animate-fade-in">
         <>
           <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
-            <section className="relative w-full h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
+            <section className="relative w-full max-w-3xl mx-auto h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
               <Image
                 src="/images/A2.png"
                 alt="Site Banner - GUI Me Design Philosophy"
