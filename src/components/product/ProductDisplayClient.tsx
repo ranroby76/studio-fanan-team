@@ -54,9 +54,8 @@ export default function ProductDisplayClient({ productId }: ProductDisplayClient
           <Image
             src={product.mainImage || "https://placehold.co/1200x600.png?text=Main+Image"}
             alt={product.title}
-            layout="fill"
-            objectFit="cover"
-            className="transition-transform duration-500 hover:scale-105"
+            fill
+            className="object-cover transition-transform duration-500 hover:scale-105"
             data-ai-hint="synthesizer keyboard"
           />
         </div>
@@ -79,8 +78,8 @@ export default function ProductDisplayClient({ productId }: ProductDisplayClient
                     <Image
                       src={thumbUrl || `https://placehold.co/200x200.png?text=Thumb+${index + 1}`}
                       alt={`${product.title} thumbnail ${index + 1}`}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      className="object-cover"
                       data-ai-hint="software ui"
                     />
                   </div>

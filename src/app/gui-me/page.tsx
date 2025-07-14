@@ -71,9 +71,8 @@ export default function GuiMePage() {
           <Image
             src={guiMeBannerSrc}
             alt="GUI Me Page Banner"
-            layout="fill"
-            objectFit="contain"
-            className="transition-transform duration-500"
+            fill
+            className="object-contain transition-transform duration-500"
             data-ai-hint={guiMeBannerSrc === PLACEHOLDER_BANNER_GUIME ? "placeholder" : "design abstract"}
             priority
           />

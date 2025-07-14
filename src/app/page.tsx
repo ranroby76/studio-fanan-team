@@ -61,11 +61,10 @@ export default function HomePage() {
               <Image
                 src={homeBannerSrc}
                 alt="Site Banner - GUI Me Design Philosophy"
-                layout="fill"
-                objectFit="contain"
-                className="transition-transform duration-500 hover:scale-105"
+                fill
+                className="object-contain transition-transform duration-500 hover:scale-105"
                 data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
-                priority // Good to have for LCP element
+                priority
               />
             </section>
           </Link>
@@ -89,7 +88,7 @@ export default function HomePage() {
       <section>
         <h2 className="text-3xl font-headline font-semibold text-center mb-8 text-primary">Featured Products</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3].map((item) => (
+          {[1, 2, 3].map((item, index) => (
             <Card key={item} className="overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
               <CardHeader className="p-0">
                 <Image
@@ -99,6 +98,7 @@ export default function HomePage() {
                   height={400}
                   className="object-cover w-full h-48"
                   data-ai-hint="synthesizer audio"
+                  priority={index === 0}
                 />
               </CardHeader>
               <CardContent className="pt-6">
