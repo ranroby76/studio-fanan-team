@@ -25,5 +25,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function ProductPage({ params }: Props) {
-  return <ProductDisplayClient productId={params.productId} />;
+  return (
+    <div className="container mx-auto px-4">
+      <ProductDisplayClient productId={params.productId} />
+    </div>
+  );
 }

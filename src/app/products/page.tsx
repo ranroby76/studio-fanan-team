@@ -43,58 +43,59 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="animate-fade-in space-y-8">
-      <div className="flex items-center gap-3 text-center flex-col">
-         <Music className="h-12 w-12 text-primary" />
-        <h1 className="text-4xl font-headline font-bold text-primary">Our Products</h1>
-        <p className="text-lg text-foreground/80 max-w-xl">
-            Browse our collection of innovative VST plugins designed for modern music production.
-        </p>
-      </div>
-
-      {products.length === 0 ? (
-        <Card className="text-center py-12 shadow-lg">
-          <CardHeader>
-            <PackageSearch className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
-            <CardTitle className="text-2xl font-headline text-primary">No Products Available Yet</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <CardDescription className="text-lg text-foreground/80">
-              We are working hard to bring you amazing VSTs. Check back soon!
-            </CardDescription>
-          </CardContent>
-        </Card>
-      ) : (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <Card key={product.id} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden group">
-              <CardHeader className="relative p-0">
-                <Image
-                  src={product.mainImage || "https://placehold.co/600x400.png?text=No+Image"}
-                  alt={product.title}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-48 transition-transform duration-300 group-hover:scale-105"
-                  data-ai-hint="instrument audio"
-                />
-              </CardHeader>
-              <CardContent className="pt-4 flex-grow">
-                <CardTitle className="font-headline text-xl text-primary mb-1 truncate group-hover:text-accent transition-colors">{product.title}</CardTitle>
-                <CardDescription className="text-sm text-muted-foreground mb-2">Price: ${product.price.toFixed(2)}</CardDescription>
-                <p className="text-sm text-foreground/70 line-clamp-3">{product.description}</p>
-              </CardContent>
-              <CardFooter className="p-4 border-t mt-auto">
-                <Button variant="outline" size="sm" asChild className="w-full border-primary text-primary hover:bg-primary/10 hover:text-primary group-hover:border-accent group-hover:text-accent group-hover:bg-accent/10 transition-colors">
-                  <Link href={`/products/${product.id}`}>
-                    View Details <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+    <div className="container mx-auto px-4">
+      <div className="animate-fade-in space-y-8">
+        <div className="flex items-center gap-3 text-center flex-col">
+           <Music className="h-12 w-12 text-primary" />
+          <h1 className="text-4xl font-headline font-bold text-primary">Our Products</h1>
+          <p className="text-lg text-foreground/80 max-w-xl">
+              Browse our collection of innovative VST plugins designed for modern music production.
+          </p>
         </div>
-      )}
+
+        {products.length === 0 ? (
+          <Card className="text-center py-12 shadow-lg">
+            <CardHeader>
+              <PackageSearch className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
+              <CardTitle className="text-2xl font-headline text-primary">No Products Available Yet</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription className="text-lg text-foreground/80">
+                We are working hard to bring you amazing VSTs. Check back soon!
+              </CardDescription>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {products.map((product) => (
+              <Card key={product.id} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden group">
+                <CardHeader className="relative p-0">
+                  <Image
+                    src={product.mainImage || "https://placehold.co/600x400.png?text=No+Image"}
+                    alt={product.title}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full h-48 transition-transform duration-300 group-hover:scale-105"
+                    data-ai-hint="instrument audio"
+                  />
+                </CardHeader>
+                <CardContent className="pt-4 flex-grow">
+                  <CardTitle className="font-headline text-xl text-primary mb-1 truncate group-hover:text-accent transition-colors">{product.title}</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground mb-2">Price: ${product.price.toFixed(2)}</CardDescription>
+                  <p className="text-sm text-foreground/70 line-clamp-3">{product.description}</p>
+                </CardContent>
+                <CardFooter className="p-4 border-t mt-auto">
+                  <Button variant="outline" size="sm" asChild className="w-full border-primary text-primary hover:bg-primary/10 hover:text-primary group-hover:border-accent group-hover:text-accent group-hover:bg-accent/10 transition-colors">
+                    <Link href={`/products/${product.id}`}>
+                      View Details <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
-

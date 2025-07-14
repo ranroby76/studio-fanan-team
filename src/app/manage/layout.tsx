@@ -42,47 +42,49 @@ export default function ManageLayout({
 
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 min-h-[calc(100vh-theme(spacing.32))]">
-      <aside className="w-full md:w-64">
-        <Card className="shadow-lg h-full">
-          <CardContent className="p-3">
-            <div className="flex items-center gap-2 p-3 border-b mb-2">
-              <Settings className="h-6 w-6 text-primary" />
-              <h2 className="text-xl font-headline font-semibold text-primary">Management</h2>
-            </div>
-            <ScrollArea className="h-[calc(100vh-theme(spacing.56))] md:h-auto">
-              <nav className="flex flex-col space-y-1">
-                {manageNavLinks.map((link) => (
-                  <Button
-                    key={link.href}
-                    variant="ghost"
-                    asChild
-                    className={cn(
-                      "w-full justify-start text-left h-auto py-2.5 px-3",
-                       isActive(link.href, pathname)
-                        ? "bg-accent text-accent-foreground hover:bg-accent/90"
-                        : "hover:bg-muted/50"
-                    )}
-                  >
-                    <Link href={link.href} className="flex items-center w-full">
-                      <link.icon className="mr-3 h-5 w-5 flex-shrink-0" />
-                      <span className="truncate">{link.label}</span>
-                    </Link>
-                  </Button>
-                ))}
-              </nav>
-            </ScrollArea>
-          </CardContent>
-        </Card>
-      </aside>
-      <main className="flex-1 overflow-y-auto relative">
-         <Button variant="ghost" size="icon" asChild className="absolute top-0 right-0 z-10 text-muted-foreground hover:text-foreground">
-          <Link href="/" aria-label="Close management section">
-            <X className="h-6 w-6" />
-          </Link>
-        </Button>
-        {children}
-      </main>
+    <div className="container mx-auto px-4">
+      <div className="flex flex-col md:flex-row gap-6 min-h-[calc(100vh-theme(spacing.32))]">
+        <aside className="w-full md:w-64">
+          <Card className="shadow-lg h-full">
+            <CardContent className="p-3">
+              <div className="flex items-center gap-2 p-3 border-b mb-2">
+                <Settings className="h-6 w-6 text-primary" />
+                <h2 className="text-xl font-headline font-semibold text-primary">Management</h2>
+              </div>
+              <ScrollArea className="h-[calc(100vh-theme(spacing.56))] md:h-auto">
+                <nav className="flex flex-col space-y-1">
+                  {manageNavLinks.map((link) => (
+                    <Button
+                      key={link.href}
+                      variant="ghost"
+                      asChild
+                      className={cn(
+                        "w-full justify-start text-left h-auto py-2.5 px-3",
+                         isActive(link.href, pathname)
+                          ? "bg-accent text-accent-foreground hover:bg-accent/90"
+                          : "hover:bg-muted/50"
+                      )}
+                    >
+                      <Link href={link.href} className="flex items-center w-full">
+                        <link.icon className="mr-3 h-5 w-5 flex-shrink-0" />
+                        <span className="truncate">{link.label}</span>
+                      </Link>
+                    </Button>
+                  ))}
+                </nav>
+              </ScrollArea>
+            </CardContent>
+          </Card>
+        </aside>
+        <main className="flex-1 overflow-y-auto relative">
+           <Button variant="ghost" size="icon" asChild className="absolute top-0 right-0 z-10 text-muted-foreground hover:text-foreground">
+            <Link href="/" aria-label="Close management section">
+              <X className="h-6 w-6" />
+            </Link>
+          </Button>
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

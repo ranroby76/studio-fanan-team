@@ -39,65 +39,67 @@ export default function ContactUsPage() {
   };
 
   return (
-    <div className="animate-fade-in space-y-12">
-      <Card className="shadow-xl">
-        <CardHeader className="text-center">
-          <Mail className="mx-auto h-12 w-12 text-primary mb-4" />
-          <CardTitle className="text-4xl font-headline text-primary">Get In Touch</CardTitle>
-          <CardDescription className="text-lg text-foreground/80">
-            We'd love to hear from you! Send us a message with any questions or feedback.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div>
-              <Label htmlFor="name" className="font-semibold">Full Name</Label>
-              <Input id="name" placeholder="Your Name" {...register("name")} className="mt-1"/>
-              {errors.name && <p className="text-sm text-destructive mt-1">{errors.name.message}</p>}
-            </div>
-            <div>
-              <Label htmlFor="email" className="font-semibold">Email Address</Label>
-              <Input id="email" type="email" placeholder="your@email.com" {...register("email")} className="mt-1"/>
-              {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
-            </div>
-            <div>
-              <Label htmlFor="subject" className="font-semibold">Subject</Label>
-              <Input id="subject" placeholder="Regarding..." {...register("subject")} className="mt-1"/>
-              {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject.message}</p>}
-            </div>
-            <div>
-              <Label htmlFor="message" className="font-semibold">Message</Label>
-              <Textarea id="message" placeholder="Your message here..." {...register("message")} rows={6} className="mt-1"/>
-              {errors.message && <p className="text-sm text-destructive mt-1">{errors.message.message}</p>}
-            </div>
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : <>Send Message <Send className="ml-2 h-5 w-5" /></>}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+    <div className="container mx-auto px-4">
+      <div className="animate-fade-in space-y-12">
+        <Card className="shadow-xl">
+          <CardHeader className="text-center">
+            <Mail className="mx-auto h-12 w-12 text-primary mb-4" />
+            <CardTitle className="text-4xl font-headline text-primary">Get In Touch</CardTitle>
+            <CardDescription className="text-lg text-foreground/80">
+              We'd love to hear from you! Send us a message with any questions or feedback.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="max-w-2xl mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div>
+                <Label htmlFor="name" className="font-semibold">Full Name</Label>
+                <Input id="name" placeholder="Your Name" {...register("name")} className="mt-1"/>
+                {errors.name && <p className="text-sm text-destructive mt-1">{errors.name.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="email" className="font-semibold">Email Address</Label>
+                <Input id="email" type="email" placeholder="your@email.com" {...register("email")} className="mt-1"/>
+                {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="subject" className="font-semibold">Subject</Label>
+                <Input id="subject" placeholder="Regarding..." {...register("subject")} className="mt-1"/>
+                {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="message" className="font-semibold">Message</Label>
+                <Textarea id="message" placeholder="Your message here..." {...register("message")} rows={6} className="mt-1"/>
+                {errors.message && <p className="text-sm text-destructive mt-1">{errors.message.message}</p>}
+              </div>
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : <>Send Message <Send className="ml-2 h-5 w-5" /></>}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <MapPin className="h-8 w-8 text-accent mb-2" />
-            <CardTitle className="font-headline text-2xl text-accent">Our Office</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-foreground/80">123 Music Lane, Sound City, SC 54321</p>
-            <p className="text-foreground/80">Planet Earth</p>
-          </CardContent>
-        </Card>
-        <Card className="shadow-lg">
-          <CardHeader>
-            <Phone className="h-8 w-8 text-accent mb-2" />
-            <CardTitle className="font-headline text-2xl text-accent">Call Us</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-foreground/80">Support: +1 (234) 567-8900</p>
-            <p className="text-foreground/80">Sales: +1 (234) 567-8901</p>
-          </CardContent>
-        </Card>
+        <div className="grid md:grid-cols-2 gap-8">
+          <Card className="shadow-lg">
+            <CardHeader>
+              <MapPin className="h-8 w-8 text-accent mb-2" />
+              <CardTitle className="font-headline text-2xl text-accent">Our Office</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-foreground/80">123 Music Lane, Sound City, SC 54321</p>
+              <p className="text-foreground/80">Planet Earth</p>
+            </CardContent>
+          </Card>
+          <Card className="shadow-lg">
+            <CardHeader>
+              <Phone className="h-8 w-8 text-accent mb-2" />
+              <CardTitle className="font-headline text-2xl text-accent">Call Us</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-foreground/80">Support: +1 (234) 567-8900</p>
+              <p className="text-foreground/80">Sales: +1 (234) 567-8901</p>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );
