@@ -13,19 +13,6 @@ export default function HomePage() {
   return (
     <div className="space-y-12 animate-fade-in">
         <>
-          <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
-            <section className="relative w-full max-w-3xl mx-auto h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
-              <Image
-                src="/images/A2.png"
-                alt="Site Banner - GUI Me Design Philosophy"
-                width={1405}
-                height={669}
-                className="object-contain w-full h-auto transition-transform duration-500 hover:scale-105"
-                data-ai-hint="design abstract"
-                priority
-              />
-            </section>
-          </Link>
           <div className="my-8 text-center space-y-3 bg-primary/15 p-3 rounded-lg shadow-sm max-w-lg mx-auto">
             <Separator className="bg-border/50" />
             <p className="text-foreground/80">
@@ -40,6 +27,19 @@ export default function HomePage() {
               New folks, please, Always try the demo first before purchasing. Never buy before first testing a demo on your system.
             </p>
           </div>
+          <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
+            <section className="relative w-full max-w-3xl mx-auto h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
+              <Image
+                src="/images/A2.png"
+                alt="Site Banner - GUI Me Design Philosophy"
+                width={1405}
+                height={669}
+                className="object-contain w-full h-auto transition-transform duration-500 hover:scale-105"
+                data-ai-hint="design abstract"
+                priority
+              />
+            </section>
+          </Link>
         </>
 
       <section>

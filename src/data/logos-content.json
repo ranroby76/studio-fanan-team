@@ -1,8 +1,7 @@
-
 {
-  "firmLogoUrl": "firm-logo.png",
-  "proPackLogoUrl": "pro-pack-logo.png",
-  "madMidiMachinesLogoUrl": "mad-midi-logo.png",
+  "firmLogoUrl": "A3.png",
+  "proPackLogoUrl": "pro pack.png",
+  "madMidiMachinesLogoUrl": "mad midi machines.png",
   "royalPackLogoUrl": "royal-pack-logo.png",
-  "freePackLogoUrl": "free-pack-logo.png"
+  "freePackLogoUrl": "free pack.png"
 }
