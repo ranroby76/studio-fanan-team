@@ -44,14 +44,14 @@ export default function HomePage() {
   const isHomeBannerPng = homeBannerSrc && homeBannerSrc.toLowerCase().endsWith('.png');
 
   const homeBannerContainerClasses = cn(
-    "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20", // Set a responsive height
-    !isHomeBannerPng && "mb-12 rounded-xl shadow-lg"
+    "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20",
+    !isHomeBannerPng && "mb-12"
   );
 
   return (
     <div className="space-y-12 animate-fade-in">
       {isLoadingBanner ? (
-        <div className="flex items-center justify-center h-64 md:h-96 bg-muted/20 rounded-xl shadow-lg">
+        <div className={cn(homeBannerContainerClasses, "flex items-center justify-center rounded-xl shadow-lg")}>
           <Loader2 className="h-12 w-12 animate-spin text-primary" />
         </div>
       ) : homeBannerSrc ? (
@@ -62,7 +62,7 @@ export default function HomePage() {
                 src={homeBannerSrc}
                 alt="Site Banner - GUI Me Design Philosophy"
                 layout="fill"
-                objectFit="contain" // Changed to contain to respect aspect ratio
+                objectFit="contain"
                 className="transition-transform duration-500 hover:scale-105"
                 data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
                 priority // Good to have for LCP element
