@@ -4,7 +4,7 @@ import localLogosDefaultData from '@/data/logos-content.json';
 import { storage } from './firebase'; // Firebase storage instance
 import { ref, getBytes, uploadString } from 'firebase/storage';
 
-const LOGOS_STORAGE_PATH = 'fanan team/logos-content.json';
+const LOGOS_STORAGE_PATH = 'fananteam/logos-content.json';
 
 export const getLogosContent = async (): Promise<FirmLogosData> => {
   try {

@@ -4,7 +4,7 @@ import localGuiMeDefaultData from '@/data/gui-me-content.json';
 import { storage } from './firebase'; // Firebase storage instance
 import { ref, getBytes, uploadString } from 'firebase/storage';
 
-const GUI_ME_STORAGE_PATH = 'fanan team/gui-me-content.json';
+const GUI_ME_STORAGE_PATH = 'fananteam/gui-me-content.json';
 
 export const getGuiMeContent = async (): Promise<GuiMeContent> => {
   try {
