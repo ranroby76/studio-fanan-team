@@ -45,18 +45,14 @@ export default function GuiMeEditorPage() {
       setIsLoadingContent(true);
       try {
         const currentContent = await getGuiMeContent();
-        if (currentContent) {
-          reset(currentContent);
-        }
+        reset(currentContent);
       } catch (error) {
         console.error("Failed to load GUI Me content:", error);
         toast({
           title: 'Error Loading Content',
-          description: 'Could not fetch GUI Me content. Displaying defaults.',
+          description: 'Could not fetch GUI Me content from local storage.',
           variant: 'destructive',
         });
-        const localDefaults = await getGuiMeContent();
-        reset(localDefaults);
       } finally {
         setIsLoadingContent(false);
       }

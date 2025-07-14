@@ -3,11 +3,12 @@
 
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { VenetianMask, Loader2 } from "lucide-react";
+import { VenetianMask, Info } from "lucide-react";
 import Image from "next/image";
 import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
 import { Separator } from '@/components/ui/separator';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function GuiMePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
@@ -21,9 +22,8 @@ export default function GuiMePage() {
         setGuiMeData(data);
       } catch (error) {
         console.error("Failed to load GUI Me content:", error);
-        // Fallback to local defaults is handled by getGuiMeContent
-        const localDefaults = await getGuiMeContent();
-        setGuiMeData(localDefaults);
+        // In case of error, show empty content
+        setGuiMeData({ title1: '', text1: '', title2: '', text2: '', title3: '', text3: '' });
       } finally {
         setIsLoadingContent(false);
       }
@@ -40,15 +40,8 @@ export default function GuiMePage() {
       </div>
     );
   };
-
-  if (isLoadingContent) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
-        <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
-        <p className="text-lg text-muted-foreground">Loading GUI Me page...</p>
-      </div>
-    );
-  }
+  
+  const noContent = !guiMeData?.title1 && !guiMeData?.text1 && !guiMeData?.title2 && !guiMeData?.text2 && !guiMeData?.title3 && !guiMeData?.text3;
 
   return (
     <div className="animate-fade-in space-y-12">
@@ -77,18 +70,33 @@ export default function GuiMePage() {
           </div>
         </CardHeader>
         <CardContent className="p-8 space-y-6">
-          {renderTextSection(guiMeData?.title1, guiMeData?.text1)}
-          { (guiMeData?.title1 || guiMeData?.text1) && (guiMeData?.title2 || guiMeData?.text2 || guiMeData?.title3 || guiMeData?.text3) && <Separator className="my-8" />}
-          
-          {renderTextSection(guiMeData?.title2, guiMeData?.text2)}
-          { (guiMeData?.title2 || guiMeData?.text2) && (guiMeData?.title3 || guiMeData?.text3) && <Separator className="my-8" />}
+          {isLoadingContent ? (
+            <>
+              <Skeleton className="h-8 w-1/2 rounded-md" />
+              <Skeleton className="h-24 w-full rounded-md" />
+              <Skeleton className="h-8 w-1/2 rounded-md" />
+              <Skeleton className="h-24 w-full rounded-md" />
+            </>
+          ) : (
+            <>
+              {renderTextSection(guiMeData?.title1, guiMeData?.text1)}
+              { (guiMeData?.title1 || guiMeData?.text1) && (guiMeData?.title2 || guiMeData?.text2 || guiMeData?.title3 || guiMeData?.text3) && <Separator className="my-8" />}
+              
+              {renderTextSection(guiMeData?.title2, guiMeData?.text2)}
+              { (guiMeData?.title2 || guiMeData?.text2) && (guiMeData?.title3 || guiMeData?.text3) && <Separator className="my-8" />}
 
-          {renderTextSection(guiMeData?.title3, guiMeData?.text3)}
+              {renderTextSection(guiMeData?.title3, guiMeData?.text3)}
 
-          {(!guiMeData?.title1 && !guiMeData?.text1 && !guiMeData?.title2 && !guiMeData?.text2 && !guiMeData?.title3 && !guiMeData?.text3) && (
-            <p className="text-lg text-foreground/90 leading-relaxed">
-              At Fanan Team, we believe that a great VST plugin is not just about powerful sound engines, but also about an enjoyable and efficient user experience. Our "GUI Me" philosophy centers around creating Graphical User Interfaces (GUIs) that are both aesthetically pleasing and highly functional. This content can be updated in the management section.
-            </p>
+              {noContent && (
+                 <div className="text-center py-10 bg-muted/50 rounded-lg">
+                    <Info className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+                    <h3 className="text-xl font-semibold text-primary">Content Coming Soon</h3>
+                    <p className="text-muted-foreground mt-2">
+                        This section is waiting for content. Please check back later or add content in the management area.
+                    </p>
+                </div>
+              )}
+            </>
           )}
           
           <Separator className="my-8" />
