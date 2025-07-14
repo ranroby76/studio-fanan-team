@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
-import { Edit, Package, Settings, ImageIcon } from 'lucide-react';
+import { Edit, Package, Settings, ImageIcon, X } from 'lucide-react';
 import type React from 'react';
 
 const manageNavLinks = [
@@ -75,7 +75,12 @@ export default function ManageLayout({
           </CardContent>
         </Card>
       </aside>
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto relative">
+         <Button variant="ghost" size="icon" asChild className="absolute top-0 right-0 z-10 text-muted-foreground hover:text-foreground">
+          <Link href="/" aria-label="Close management section">
+            <X className="h-6 w-6" />
+          </Link>
+        </Button>
         {children}
       </main>
     </div>
