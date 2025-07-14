@@ -1,3 +1,4 @@
+
 // src/app/gui-me/page.tsx
 "use client";
 
@@ -81,10 +82,10 @@ export default function GuiMePage() {
           <div className="flex items-center gap-4">
             <VenetianMask size={48} />
             <div>
-              <CardTitle as="h1" className="text-4xl font-headline">GUI Me: Our Design Philosophy</CardTitle>
-              <CardDescription as="p" className="text-lg text-primary-foreground/80">
+              <h1 className="text-4xl font-headline font-semibold leading-none tracking-tight">GUI Me: Our Design Philosophy</h1>
+              <p className="text-lg text-primary-foreground/80 mt-2">
                 Crafting intuitive and inspiring user interfaces for your creative flow.
-              </CardDescription>
+              </p>
             </div>
           </div>
         </CardHeader>
