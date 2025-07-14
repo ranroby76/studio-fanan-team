@@ -12,7 +12,7 @@ import { getGuiMeContent } from '@/lib/gui-me-service';
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 
-const PLACEHOLDER_BANNER_HOME = "https://placehold.co/1200x400.png?text=Configure+Banner";
+const PLACEHOLDER_BANNER_HOME = "/A2.png";
 
 export default function HomePage() {
   const [guiMeData, setGuiMeData] = useState<GuiMeContent | null>(null);
