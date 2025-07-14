@@ -15,11 +15,11 @@ import type { FirmLogosFormData } from '@/lib/types';
 import { getLogosContent, saveLogosContent } from '@/lib/logo-service';
 
 const logosFormSchema = z.object({
-  firmLogoUrl: z.string().url("Must be a valid URL or empty").or(z.literal('')).optional(),
-  proPackLogoUrl: z.string().url("Must be a valid URL or empty").or(z.literal('')).optional(),
-  madMidiMachinesLogoUrl: z.string().url("Must be a valid URL or empty").or(z.literal('')).optional(),
-  royalPackLogoUrl: z.string().url("Must be a valid URL or empty").or(z.literal('')).optional(),
-  freePackLogoUrl: z.string().url("Must be a valid URL or empty").or(z.literal('')).optional(),
+  firmLogoUrl: z.string().optional(),
+  proPackLogoUrl: z.string().optional(),
+  madMidiMachinesLogoUrl: z.string().optional(),
+  royalPackLogoUrl: z.string().optional(),
+  freePackLogoUrl: z.string().optional(),
 });
 
 interface LogoField {
@@ -29,11 +29,11 @@ interface LogoField {
 }
 
 const logoFields: LogoField[] = [
-  { id: 'firmLogoUrl', label: 'Firm Logo URL', placeholder: 'https://firebasestorage.googleapis.com/...' },
-  { id: 'proPackLogoUrl', label: 'Pro Pack Logo URL', placeholder: 'https://firebasestorage.googleapis.com/...' },
-  { id: 'madMidiMachinesLogoUrl', label: 'Mad MIDI Machines Logo URL', placeholder: 'https://firebasestorage.googleapis.com/...' },
-  { id: 'royalPackLogoUrl', label: 'Royal Pack Logo URL', placeholder: 'https://firebasestorage.googleapis.com/...' },
-  { id: 'freePackLogoUrl', label: 'Free Pack Logo URL', placeholder: 'https://firebasestorage.googleapis.com/...' },
+  { id: 'firmLogoUrl', label: 'Firm Logo Filename', placeholder: 'firm-logo.png' },
+  { id: 'proPackLogoUrl', label: 'Pro Pack Logo Filename', placeholder: 'pro-pack-logo.png' },
+  { id: 'madMidiMachinesLogoUrl', label: 'Mad MIDI Machines Logo Filename', placeholder: 'mad-midi-logo.png' },
+  { id: 'royalPackLogoUrl', label: 'Royal Pack Logo Filename', placeholder: 'royal-pack-logo.png' },
+  { id: 'freePackLogoUrl', label: 'Free Pack Logo Filename', placeholder: 'free-pack-logo.png' },
 ];
 
 export default function LogosEditorPage() {
@@ -61,8 +61,8 @@ export default function LogosEditorPage() {
       } catch (error) {
         console.error("Failed to load Logos content:", error);
         toast({
-          title: 'Error Loading URLs',
-          description: 'Could not fetch logo URLs. Displaying defaults.',
+          title: 'Error Loading Filenames',
+          description: 'Could not fetch logo filenames. Displaying defaults.',
           variant: 'destructive',
         });
         const localDefaults = await getLogosContent();
@@ -78,15 +78,15 @@ export default function LogosEditorPage() {
     try {
       await saveLogosContent(data);
       toast({
-        title: 'Logo URLs Saved!',
-        description: 'Logo URLs have been successfully saved to Firebase Storage.',
+        title: 'Logo Filenames Saved!',
+        description: 'Logo filenames have been successfully saved.',
         variant: 'default',
       });
     } catch (error) {
        console.error("Error saving Logos content:", error);
       toast({
         title: 'Save Failed',
-        description: (error as Error).message || 'Could not save logo URLs. Please try again.',
+        description: (error as Error).message || 'Could not save logo filenames. Please try again.',
         variant: 'destructive',
       });
     }
@@ -110,7 +110,8 @@ export default function LogosEditorPage() {
             <CardTitle className="text-4xl font-headline text-primary">Manage Logos</CardTitle>
           </div>
           <CardDescription className="text-lg text-foreground/80">
-            Update the URLs for various company and product pack logos. Changes are saved to Firebase Storage.
+            Update the filenames for various company and product pack logos.
+            The images must be located in the `public/images/` directory.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -125,7 +126,7 @@ export default function LogosEditorPage() {
                   placeholder={field.placeholder} 
                 />
                 <p className="text-xs text-muted-foreground mt-1">
-                  Please use the full HTTPS download URL (e.g., from Firebase Storage).
+                  Enter the exact filename, e.g., `logo.png`. The file must be in `public/images/`.
                 </p>
                 {errors[field.id] && <p className="text-sm text-destructive mt-1">{errors[field.id]?.message}</p>}
               </div>
@@ -134,7 +135,7 @@ export default function LogosEditorPage() {
           <CardFooter>
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting || isLoadingContent}>
               {isSubmitting ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Save className="mr-2 h-5 w-5" />}
-              {isSubmitting ? 'Saving...' : 'Save URLs'}
+              {isSubmitting ? 'Saving...' : 'Save Filenames'}
             </Button>
           </CardFooter>
         </form>

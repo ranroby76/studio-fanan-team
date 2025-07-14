@@ -34,13 +34,10 @@ export default function Header() {
     async function loadLogos() {
       setIsLoadingLogos(true);
       try {
-        // This now reads from localStorage, not Firebase
         const logos = await getLogosContent();
         setFirmLogos(logos);
       } catch (error) {
         console.error("Failed to load firm logos for header:", error);
-        const localDefaults = await getLogosContent();
-        setFirmLogos(localDefaults);
       } finally {
         setIsLoadingLogos(false);
       }
@@ -55,24 +52,27 @@ export default function Header() {
   const logoDisplayWidth = 166;
   const logoDisplayHeight = 72;
 
+  const firmLogoPath = firmLogos?.firmLogoUrl ? `/images/${firmLogos.firmLogoUrl}` : '';
+
   return (
     <header className="bg-card border-b shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center">
         <Link 
           href="/" 
-          className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity duration-300 mb-4 sm:mb-0 min-h-[72px]" // Added min-h to prevent layout shift
+          className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity duration-300 mb-4 sm:mb-0 min-h-[72px]"
           aria-label="Fanan Team Home"
         >
           {isLoadingLogos ? (
             <div style={{ width: `${logoDisplayWidth}px`, height: `${logoDisplayHeight}px` }} className="flex items-center justify-center">
               <Loader2 size={32} className="animate-spin" />
             </div>
-          ) : firmLogos?.firmLogoUrl && (firmLogos.firmLogoUrl.startsWith('http://') || firmLogos.firmLogoUrl.startsWith('https://')) ? (
+          ) : firmLogoPath ? (
             <Image 
-              src={firmLogos.firmLogoUrl} 
+              src={firmLogoPath} 
               alt="Fanan Team Logo" 
               width={logoDisplayWidth} 
               height={logoDisplayHeight}
+              className="object-contain"
               priority 
             />
           ) : (

@@ -2,23 +2,30 @@
 "use client"; // This service now interacts with localStorage, so it's client-side
 
 import type { FirmLogosData, FirmLogosFormData } from '@/lib/types';
-import localLogosDefaultData from '@/data/logos-content.json';
 
 const LOGOS_STORAGE_KEY = 'fananTeamLogosContent';
+
+const defaultLogos: FirmLogosData = {
+  firmLogoUrl: '',
+  proPackLogoUrl: '',
+  madMidiMachinesLogoUrl: '',
+  royalPackLogoUrl: '',
+  freePackLogoUrl: '',
+};
 
 // The function remains async to avoid breaking the components that call it.
 export const getLogosContent = async (): Promise<FirmLogosData> => {
   if (typeof window === 'undefined') {
-    return localLogosDefaultData as FirmLogosData;
+    return defaultLogos;
   }
   try {
     const data = localStorage.getItem(LOGOS_STORAGE_KEY);
     const storedData = data ? JSON.parse(data) : {};
-    // Merge with local defaults to ensure all keys are present
-    return { ...localLogosDefaultData, ...storedData };
+    // Merge with defaults to ensure all keys are present
+    return { ...defaultLogos, ...storedData };
   } catch (error: any) {
     console.error("Error fetching logos content from localStorage:", error);
-    return localLogosDefaultData as FirmLogosData;
+    return defaultLogos;
   }
 };
 
