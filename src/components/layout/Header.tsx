@@ -4,7 +4,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2 } from 'lucide-react';
+import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2, Package, Star, Gift } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -15,6 +15,9 @@ import { getLogosContent } from '@/lib/logo-service';
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
+  { href: '/pro-pack', label: 'Pro Pack', icon: Star },
+  { href: '/mad-midi-machine-pack', label: 'Mad MIDI', icon: Package },
+  { href: '/free-pack', label: 'Free Pack', icon: Gift },
   { href: '/contact-us', label: 'Contact Us', icon: Mail },
   { href: '/gui-me', label: 'GUI Me', icon: VenetianMask },
   { href: '/how-to-buy', label: 'How to Buy', icon: HelpCircle },
