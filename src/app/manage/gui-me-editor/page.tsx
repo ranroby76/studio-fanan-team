@@ -110,13 +110,13 @@ export default function GuiMeEditorPage() {
                <div>
                 <Label className="font-semibold text-muted-foreground">Home Page Banner</Label>
                 <div className="mt-2 rounded-lg border p-2">
-                   <Image src="/images/A1.png" alt="Home Page Banner Preview (A1.png)" width={800} height={200} className="w-full h-auto rounded-md object-contain" />
+                   <Image src="/images/A2.png" alt="Home Page Banner Preview (A2.png)" width={800} height={200} className="w-full h-auto rounded-md object-contain" />
                 </div>
               </div>
                <div>
                 <Label className="font-semibold text-muted-foreground">GUI Me Page Banner</Label>
                 <div className="mt-2 rounded-lg border p-2">
-                   <Image src="/images/A2.png" alt="GUI Me Page Banner Preview (A2.png)" width={800} height={400} className="w-full h-auto rounded-md object-contain" />
+                   <Image src="/images/A1.png" alt="GUI Me Page Banner Preview (A1.png)" width={800} height={400} className="w-full h-auto rounded-md object-contain" />
                 </div>
               </div>
             </div>

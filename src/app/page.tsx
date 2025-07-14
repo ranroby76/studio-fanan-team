@@ -1,7 +1,6 @@
 // src/app/page.tsx
 "use client";
 
-import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
@@ -17,7 +16,7 @@ export default function HomePage() {
           <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy">
             <section className="relative w-full h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
               <Image
-                src="/images/A1.png"
+                src="/images/A2.png"
                 alt="Site Banner - GUI Me Design Philosophy"
                 width={1405}
                 height={669}

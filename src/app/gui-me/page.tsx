@@ -54,7 +54,7 @@ export default function GuiMePage() {
     <div className="animate-fade-in space-y-12">
       <div className="mb-12">
         <Image
-          src="/images/A2.png"
+          src="/images/A1.png"
           alt="GUI Me Page Banner"
           width={1405}
           height={669}
