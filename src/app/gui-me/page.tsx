@@ -3,7 +3,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { VenetianMask, Loader2 } from "lucide-react";
 import Image from "next/image";
 import type { GuiMeContent } from '@/lib/types';
@@ -25,6 +25,7 @@ export default function GuiMePage() {
         setGuiMeData(data);
       } catch (error) {
         console.error("Failed to load GUI Me content:", error);
+        // Fallback to local defaults is handled by getGuiMeContent
         const localDefaults = await getGuiMeContent();
         setGuiMeData(localDefaults);
       } finally {
@@ -107,7 +108,7 @@ export default function GuiMePage() {
           <Separator className="my-8" />
 
           <div>
-            <h3 className="text-2xl font-headline text-primary mb-3">Interested in our GUI Design Services?</h3>
+            <h2 className="text-2xl font-headline text-primary mb-3">Interested in our GUI Design Services?</h2>
             <p className="text-lg text-foreground/80 leading-relaxed mb-2">
               If you'd like us to design a custom GUI for your audio plugin or software, we'd love to hear from you!
             </p>

@@ -1,3 +1,4 @@
+
 // src/components/layout/Header.tsx
 "use client";
 
@@ -33,11 +34,11 @@ export default function Header() {
     async function loadLogos() {
       setIsLoadingLogos(true);
       try {
+        // This now reads from localStorage, not Firebase
         const logos = await getLogosContent();
         setFirmLogos(logos);
       } catch (error) {
         console.error("Failed to load firm logos for header:", error);
-        // Fallback to local defaults is handled by getLogosContent
         const localDefaults = await getLogosContent();
         setFirmLogos(localDefaults);
       } finally {

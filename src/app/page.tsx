@@ -1,3 +1,4 @@
+
 // src/app/page.tsx
 "use client";
 
@@ -22,12 +23,11 @@ export default function HomePage() {
     async function loadBannerData() {
       setIsLoadingBanner(true);
       try {
+        // This now reads from localStorage, not Firebase
         const data = await getGuiMeContent();
         setGuiMeData(data);
       } catch (error) {
         console.error("Failed to load GUI Me content for homepage banner:", error);
-        // Fallback to local defaults is handled by getGuiMeContent,
-        // so we can just re-call it to get the default if an error specific to fetching occurs.
          const localDefaults = await getGuiMeContent();
          setGuiMeData(localDefaults);
       } finally {
@@ -41,11 +41,8 @@ export default function HomePage() {
     ? guiMeData.homePageBannerUrl
     : PLACEHOLDER_BANNER_HOME;
     
-  const isHomeBannerPng = homeBannerSrc && homeBannerSrc.toLowerCase().endsWith('.png');
-
   const homeBannerContainerClasses = cn(
-    "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20",
-    !isHomeBannerPng && "mb-12"
+    "relative w-full h-64 md:h-96 overflow-hidden bg-muted/20 mb-12"
   );
 
   return (
@@ -63,7 +60,7 @@ export default function HomePage() {
                 alt="Site Banner - GUI Me Design Philosophy"
                 fill
                 className="object-contain transition-transform duration-500 hover:scale-105"
-                data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "placeholder" : "promotion website"}
+                data-ai-hint={homeBannerSrc === PLACEHOLDER_BANNER_HOME ? "promotion website" : "design abstract"}
                 priority
               />
             </section>
