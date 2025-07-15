@@ -29,16 +29,19 @@ export default function HomePage() {
   return (
     <div className="space-y-12 animate-fade-in">
       
-      <section className="relative flex justify-center w-full mx-auto h-auto overflow-hidden bg-muted/20 shadow-lg">
-        <Image
-          src="/images/A2.png"
-          alt="Site Banner - GUI Me Design Philosophy"
-          width={175.75}
-          height={83.75}
-          className="object-contain h-auto"
-          data-ai-hint="design abstract"
-          priority
-        />
+      <section className="relative flex justify-center w-full mx-auto">
+        <div className="w-full max-w-4xl">
+          <Image
+            src="/images/A2.png"
+            alt="Site Banner - GUI Me Design Philosophy"
+            width={1406}
+            height={670}
+            layout="responsive"
+            className="object-contain shadow-lg rounded-lg"
+            data-ai-hint="design abstract"
+            priority
+          />
+        </div>
       </section>
 
       <section className="w-full py-4 bg-gradient-to-r from-green-200 via-yellow-200 to-orange-200">
@@ -77,8 +80,8 @@ export default function HomePage() {
                 <Image
                     src="/images/mad midi machines.png"
                     alt="Mad MIDI Machines Pack"
-                    width={500}
-                    height={74}
+                    width={750}
+                    height={111}
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="synthesizer abstract"
                 />
@@ -87,8 +90,8 @@ export default function HomePage() {
                 <Image
                     src="/images/pro pack.png"
                     alt="Max Pack"
-                    width={397.5}
-                    height={81}
+                    width={596}
+                    height={121.5}
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="professional audio"
                 />
@@ -97,8 +100,8 @@ export default function HomePage() {
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
-                    width={397.5}
-                    height={81}
+                    width={596}
+                    height={121.5}
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"
                 />
