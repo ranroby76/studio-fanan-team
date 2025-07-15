@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2 } from 'lucide-react';
+import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2, Package, ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,12 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import type { FirmLogosData } from '@/lib/types';
 import { getLogosContent } from '@/lib/logo-service';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const mainNavLinks = [
   { href: '/', label: 'Home', icon: Home },
@@ -18,7 +24,12 @@ const mainNavLinks = [
   { href: '/how-to-buy', label: 'How to Buy', icon: HelpCircle },
   { href: '/buy-now', label: 'Buy Now', icon: ShoppingCart },
   { href: '/contact-us', label: 'Contact Us', icon: Mail },
-  { href: '/manage', label: 'Manage Site', icon: Settings },
+];
+
+const productLinks = [
+    { href: '/pro-pack', label: 'Pro Pack' },
+    { href: '/mad-midi-machine-pack', label: 'Mad MIDI Machines' },
+    { href: '/free-pack', label: 'Free Pack' },
 ];
 
 export default function Header() {
@@ -85,9 +96,7 @@ export default function Header() {
           {mainNavLinks.map(({ href, label, icon: Icon }) => (
             <Button key={href} variant="ghost" asChild className={cn(
               "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
-              (pathname.startsWith(href) && href !== '/') || pathname === href
-                ? "text-primary bg-primary/10 font-semibold" 
-                : "text-foreground/70"
+              pathname === href ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
             )}>
               <Link href={href} className="flex items-center gap-2 px-3 py-2 rounded-md">
                 <Icon size={18} />
@@ -96,6 +105,38 @@ export default function Header() {
               </Link>
             </Button>
           ))}
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className={cn(
+                    "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
+                    productLinks.some(link => pathname.startsWith(link.href)) ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
+                )}>
+                    <Package size={18} />
+                    <span className="hidden md:inline ml-2">Products</span>
+                    <span className="md:hidden">Products</span>
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                {productLinks.map(({ href, label }) => (
+                    <DropdownMenuItem key={href} asChild>
+                        <Link href={href}>{label}</Link>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <Button variant="ghost" asChild className={cn(
+              "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
+              pathname.startsWith('/manage') ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
+            )}>
+              <Link href="/manage" className="flex items-center gap-2 px-3 py-2 rounded-md">
+                <Settings size={18} />
+                <span className="hidden md:inline">Manage Site</span>
+                <span className="md:hidden">Manage</span>
+              </Link>
+          </Button>
 
            {mounted && (
             <Button
