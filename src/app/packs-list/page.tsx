@@ -47,8 +47,8 @@ export default function PacksListPage() {
         </Card>
 
         <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-          <CardHeader className="bg-card-foreground">
-            <CardTitle className="flex items-center gap-3 font-headline text-2xl text-card-background">
+          <CardHeader className="bg-secondary/30">
+            <CardTitle className="flex items-center gap-3 font-headline text-2xl text-secondary-foreground">
               <Box className="h-8 w-8" />
               Mad MIDI Machines Pack
             </CardTitle>
