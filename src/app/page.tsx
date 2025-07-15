@@ -30,13 +30,13 @@ export default function HomePage() {
   return (
     <div className="space-y-12 animate-fade-in">
       
-      <section className="relative w-full  mx-auto h-auto overflow-hidden bg-muted/20  shadow-lg">
+      <section className="relative flex justify-center w-full mx-auto h-auto overflow-hidden bg-muted/20 shadow-lg">
         <Image
           src="/images/A2.png"
           alt="Site Banner - GUI Me Design Philosophy"
           width={175.75}
           height={83.75}
-          className="object-contain w-full h-auto"
+          className="object-contain h-auto"
           data-ai-hint="design abstract"
           priority
         />
@@ -73,34 +73,34 @@ export default function HomePage() {
       </div>
       
       <div className="container mx-auto px-4">
-        <div className="space-y-8">
-            <Link href="/mad-midi-machine-pack" className="block w-full group">
+        <div className="space-y-8 flex flex-col items-center">
+            <Link href="/mad-midi-machine-pack" className="block group">
                 <Image
                     src="/images/mad midi machines.png"
                     alt="Mad MIDI Machines Pack"
                     width={500}
                     height={74}
-                    className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="synthesizer abstract"
                 />
             </Link>
-            <Link href="/pro-pack" className="block w-full group">
+            <Link href="/pro-pack" className="block group">
                 <Image
                     src="/images/pro pack.png"
                     alt="Max Pack"
                     width={397.5}
                     height={81}
-                    className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="professional audio"
                 />
             </Link>
-             <Link href="/free-pack" className="block w-full group">
+             <Link href="/free-pack" className="block group">
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
                     width={397.5}
                     height={81}
-                    className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"
                 />
             </Link>
