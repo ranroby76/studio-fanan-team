@@ -12,6 +12,7 @@ export default function BuyNowPage() {
             src="/images/A5.jpg"
             alt="Synthesizer background"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="w-full h-full rounded-lg shadow-lg object-cover"
             data-ai-hint="synthesizer futuristic"
             priority
@@ -25,6 +26,7 @@ export default function BuyNowPage() {
                 src="/images/A6.jpg"
                 alt="Fanan Store"
                 fill
+                sizes="(max-width: 512px) 100vw, 512px"
                 className="object-contain"
                 data-ai-hint="logo text"
               />
