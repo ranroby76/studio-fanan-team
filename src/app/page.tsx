@@ -34,8 +34,8 @@ export default function HomePage() {
         <Image
           src="/images/A2.png"
           alt="Site Banner - GUI Me Design Philosophy"
-          width={703}
-          height={335}
+          width={351.5}
+          height={167.5}
           className="object-contain w-full h-auto"
           data-ai-hint="design abstract"
           priority
@@ -88,7 +88,7 @@ export default function HomePage() {
                 <Image
                     src="/images/pro pack.png"
                     alt="Max Pack"
-                    width={398}
+                    width={397.5}
                     height={81}
                     className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="professional audio"
@@ -98,7 +98,7 @@ export default function HomePage() {
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
-                    width={398}
+                    width={397.5}
                     height={81}
                     className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"

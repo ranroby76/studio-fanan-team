@@ -19,7 +19,6 @@ const logosFormSchema = z.object({
   firmLogoUrl: z.string().optional(),
   proPackLogoUrl: z.string().optional(),
   madMidiMachinesLogoUrl: z.string().optional(),
-  royalPackLogoUrl: z.string().optional(),
   freePackLogoUrl: z.string().optional(),
 });
 
@@ -33,7 +32,6 @@ const logoFields: LogoField[] = [
   { id: 'firmLogoUrl', label: 'Firm Logo Filename', placeholder: 'firm-logo.png' },
   { id: 'proPackLogoUrl', label: 'Pro Pack Logo Filename', placeholder: 'pro-pack-logo.png' },
   { id: 'madMidiMachinesLogoUrl', label: 'Mad MIDI Machines Logo Filename', placeholder: 'mad-midi-logo.png' },
-  { id: 'royalPackLogoUrl', label: 'Royal Pack Logo Filename', placeholder: 'royal-pack-logo.png' },
   { id: 'freePackLogoUrl', label: 'Free Pack Logo Filename', placeholder: 'free-pack-logo.png' },
 ];
 

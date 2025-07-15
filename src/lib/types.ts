@@ -34,7 +34,6 @@ export interface FirmLogosData {
   firmLogoUrl?: string;
   proPackLogoUrl?: string;
   madMidiMachinesLogoUrl?: string;
-  royalPackLogoUrl?: string;
   freePackLogoUrl?: string;
 }
 
