@@ -1,31 +1,10 @@
 // src/app/page.tsx
-"use client";
-
 import { Button } from "@/components/ui/button";
-import { ArrowRight, PackageSearch, Loader2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Separator } from '@/components/ui/separator';
-import { useEffect, useState } from "react";
-import type { Product } from "@/lib/types";
-import { getProducts } from "@/lib/product-service";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function HomePage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    try {
-      const prods = getProducts();
-      setProducts(prods);
-    } catch (error)      {
-      console.error("Error fetching products:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
   return (
     <div className="space-y-12 animate-fade-in">
       
@@ -87,7 +66,7 @@ export default function HomePage() {
       
       <div className="container mx-auto px-4">
         <div className="space-y-8 flex flex-col items-center">
-            <Link href="/mad-midi-machine-pack" className="block group">
+            <div className="block group">
                 <Image
                     src="/images/mad midi machines.png"
                     alt="Mad MIDI Machines Pack"
@@ -96,8 +75,8 @@ export default function HomePage() {
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="synthesizer abstract"
                 />
-            </Link>
-            <Link href="/pro-pack" className="block group">
+            </div>
+            <div className="block group">
                 <Image
                     src="/images/pro pack.png"
                     alt="Max Pack"
@@ -106,8 +85,8 @@ export default function HomePage() {
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="professional audio"
                 />
-            </Link>
-             <Link href="/free-pack" className="block group">
+            </div>
+             <div className="block group">
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
@@ -116,7 +95,7 @@ export default function HomePage() {
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"
                 />
-            </Link>
+            </div>
         </div>
       </div>
     </div>

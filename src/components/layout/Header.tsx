@@ -3,16 +3,10 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2, ChevronDown, Package } from 'lucide-react';
+import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import type { FirmLogosData } from '@/lib/types';
@@ -20,20 +14,11 @@ import { getLogosContent } from '@/lib/logo-service';
 
 const mainNavLinks = [
   { href: '/', label: 'Home', icon: Home },
-];
-
-const secondaryNavLinks = [
   { href: '/gui-me', label: 'GUI Me', icon: VenetianMask },
   { href: '/how-to-buy', label: 'How to Buy', icon: HelpCircle },
   { href: '/buy-now', label: 'Buy Now', icon: ShoppingCart },
   { href: '/contact-us', label: 'Contact Us', icon: Mail },
   { href: '/manage', label: 'Manage Site', icon: Settings },
-];
-
-const productLinks = [
-    { href: '/pro-pack', label: 'Max Pack' },
-    { href: '/mad-midi-machine-pack', label: 'Mad MIDI Machine Pack' },
-    { href: '/free-pack', label: 'Free Pack' },
 ];
 
 export default function Header() {
@@ -67,11 +52,7 @@ export default function Header() {
   const logoDisplayHeight = 72;
 
   const firmLogoPath = firmLogos?.firmLogoUrl ? `/images/${firmLogos.firmLogoUrl}` : '';
-  const isProductsPageActive = () => {
-      if (pathname === '/products') return true; // Keep main products page active
-      return productLinks.some(p => pathname.startsWith(p.href) && p.href !== '/');
-  }
-
+  
   return (
     <header className="bg-card border-b shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center">
@@ -104,46 +85,7 @@ export default function Header() {
           {mainNavLinks.map(({ href, label, icon: Icon }) => (
             <Button key={href} variant="ghost" asChild className={cn(
               "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
-              pathname === href ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
-            )}>
-              <Link href={href} className="flex items-center gap-2 px-3 py-2 rounded-md">
-                <Icon size={18} />
-                <span className="hidden md:inline">{label}</span>
-                <span className="md:hidden">{label.split(' ')[0]}</span>
-              </Link>
-            </Button>
-          ))}
-          
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-               <Button variant="ghost" className={cn(
-                "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
-                isProductsPageActive()
-                  ? "text-primary bg-primary/10 font-semibold" 
-                  : "text-foreground/70",
-                "flex items-center gap-2 px-3 py-2 rounded-md"
-              )}>
-                <>
-                  <Package size={18} />
-                  <span className="hidden md:inline">Products</span>
-                  <span className="md:hidden">Products</span>
-                  <ChevronDown size={16} className="ml-1" />
-                </>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-                {productLinks.map((link) => (
-                    <DropdownMenuItem key={link.href} asChild>
-                        <Link href={link.href}>{link.label}</Link>
-                    </DropdownMenuItem>
-                ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {secondaryNavLinks.map(({ href, label, icon: Icon }) => (
-            <Button key={href} variant="ghost" asChild className={cn(
-              "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
-              (pathname.startsWith(href) && href !== '/')
+              (pathname.startsWith(href) && href !== '/') || pathname === href
                 ? "text-primary bg-primary/10 font-semibold" 
                 : "text-foreground/70"
             )}>
