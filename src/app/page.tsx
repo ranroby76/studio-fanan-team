@@ -23,21 +23,6 @@ export default function HomePage() {
         </div>
       </section>
       
-      <section className="relative flex justify-center w-full mx-auto">
-        <div className="w-full max-w-4xl">
-          <Image
-            src="/images/A2.png"
-            alt="Site Banner - GUI Me Design Philosophy"
-            width={1406}
-            height={670}
-            layout="responsive"
-            className="object-contain shadow-lg rounded-lg"
-            data-ai-hint="design abstract"
-            priority
-          />
-        </div>
-      </section>
-      
       <section className="container mx-auto px-4 text-center">
         <div className="bg-secondary/50 p-6 rounded-lg shadow-md border border-secondary">
           <p className="text-lg font-semibold text-secondary-foreground">
@@ -113,6 +98,23 @@ export default function HomePage() {
             </div>
         </div>
       </div>
+
+      <section className="container mx-auto px-4 pt-8 text-center">
+        <Link href="/gui-me" className="block group">
+          <div className="w-full max-w-4xl mx-auto">
+            <Image
+              src="/images/A2.png"
+              alt="Site Banner - GUI Me Design Philosophy"
+              width={1406}
+              height={670}
+              layout="responsive"
+              className="object-contain shadow-lg rounded-lg transition-transform duration-300 group-hover:scale-[1.05]"
+              data-ai-hint="design abstract"
+            />
+          </div>
+        </Link>
+      </section>
+
     </div>
   );
 }
