@@ -34,8 +34,8 @@ export default function HomePage() {
         <Image
           src="/images/A2.png"
           alt="Site Banner - GUI Me Design Philosophy"
-          width={351.5}
-          height={167.5}
+          width={175.75}
+          height={83.75}
           className="object-contain w-full h-auto"
           data-ai-hint="design abstract"
           priority
