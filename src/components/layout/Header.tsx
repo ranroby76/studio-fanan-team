@@ -17,6 +17,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { useAuth } from '@/components/auth/AuthProvider';
 import { auth } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
@@ -196,11 +207,29 @@ export default function Header() {
           )}
 
           {user && (
-            <Button variant="ghost" onClick={handleLogout} className="text-sm font-medium text-foreground/70 hover:text-primary hover:bg-primary/10">
-              <LogOut size={18} />
-              <span className="hidden md:inline ml-2">Logout</span>
-              <span className="md:hidden">Logout</span>
-            </Button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="ghost" className="text-sm font-medium text-foreground/70 hover:text-primary hover:bg-primary/10">
+                  <LogOut size={18} />
+                  <span className="hidden md:inline ml-2">Logout</span>
+                  <span className="md:hidden">Logout</span>
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you sure you want to log out?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    You will be returned to the home page and will need to sign in again to access the management area.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={handleLogout} className="bg-destructive hover:bg-destructive/90">
+                    Logout
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           )}
 
            {mounted && (
