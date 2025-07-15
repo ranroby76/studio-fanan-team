@@ -32,6 +32,10 @@ const productLinks = [
     { href: '/free-pack', label: 'Free Pack' },
 ];
 
+const homeLink = mainNavLinks.find(link => link.href === '/');
+const otherNavLinks = mainNavLinks.filter(link => link.href !== '/');
+
+
 export default function Header() {
   const pathname = usePathname();
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -93,18 +97,18 @@ export default function Header() {
           )}
         </Link>
         <nav className="flex flex-wrap justify-center items-center gap-1 sm:gap-2">
-          {mainNavLinks.map(({ href, label, icon: Icon }) => (
-            <Button key={href} variant="ghost" asChild className={cn(
+          {homeLink && (
+             <Button key={homeLink.href} variant="ghost" asChild className={cn(
               "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
-              pathname === href ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
+              pathname === homeLink.href ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
             )}>
-              <Link href={href} className="flex items-center gap-2 px-3 py-2 rounded-md">
-                <Icon size={18} />
-                <span className="hidden md:inline">{label}</span>
-                <span className="md:hidden">{label.split(' ')[0]}</span>
+              <Link href={homeLink.href} className="flex items-center gap-2 px-3 py-2 rounded-md">
+                <homeLink.icon size={18} />
+                <span className="hidden md:inline">{homeLink.label}</span>
+                <span className="md:hidden">{homeLink.label.split(' ')[0]}</span>
               </Link>
             </Button>
-          ))}
+          )}
           
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -126,6 +130,19 @@ export default function Header() {
                 ))}
             </DropdownMenuContent>
           </DropdownMenu>
+
+          {otherNavLinks.map(({ href, label, icon: Icon }) => (
+            <Button key={href} variant="ghost" asChild className={cn(
+              "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
+              pathname === href ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
+            )}>
+              <Link href={href} className="flex items-center gap-2 px-3 py-2 rounded-md">
+                <Icon size={18} />
+                <span className="hidden md:inline">{label}</span>
+                <span className="md:hidden">{label.split(' ')[0]}</span>
+              </Link>
+            </Button>
+          ))}
 
           <Button variant="ghost" asChild className={cn(
               "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
