@@ -34,8 +34,8 @@ export default function HomePage() {
         <Image
           src="/images/A2.png"
           alt="Site Banner - GUI Me Design Philosophy"
-          width={1405}
-          height={669}
+          width={703}
+          height={335}
           className="object-contain w-full h-auto"
           data-ai-hint="design abstract"
           priority
@@ -78,8 +78,8 @@ export default function HomePage() {
                 <Image
                     src="/images/mad midi machines.png"
                     alt="Mad MIDI Machines Pack"
-                    width={1000}
-                    height={148}
+                    width={500}
+                    height={74}
                     className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="synthesizer abstract"
                 />
@@ -88,8 +88,8 @@ export default function HomePage() {
                 <Image
                     src="/images/pro pack.png"
                     alt="Max Pack"
-                    width={795}
-                    height={162}
+                    width={398}
+                    height={81}
                     className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="professional audio"
                 />
@@ -98,8 +98,8 @@ export default function HomePage() {
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
-                    width={795}
-                    height={162}
+                    width={398}
+                    height={81}
                     className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"
                 />
