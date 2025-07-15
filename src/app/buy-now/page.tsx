@@ -21,7 +21,7 @@ export default function BuyNowPage() {
             <h1 className="text-white font-bold text-5xl md:text-7xl lg:text-8xl tracking-wider uppercase font-impact" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
               Welcome To
             </h1>
-            <div className="relative w-full max-w-lg" style={{ aspectRatio: '1015 / 234' }}>
+            <div className="relative w-full max-w-lg transform scale-[1.5] origin-bottom mb-8" style={{ aspectRatio: '1015 / 234' }}>
                <Image
                 src="/images/A6.png"
                 alt="Fanan Store"
