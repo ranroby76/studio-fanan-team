@@ -20,7 +20,7 @@ export default function BuyNowPage() {
             </h1>
             <div className="relative w-full max-w-lg h-1/3">
                <Image
-                src="/images/A6.jpg"
+                src="/A6.jpg"
                 alt="Fanan Store"
                 fill
                 className="object-contain"
