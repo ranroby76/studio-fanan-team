@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2, Package, ChevronDown, List } from 'lucide-react';
+import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2, Package, ChevronDown, List, KeyRound } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -25,6 +25,7 @@ const mainNavLinks = [
   { href: '/how-to-buy', label: 'How to Buy', icon: HelpCircle },
   { href: '/buy-now', label: 'Buy Now', icon: ShoppingCart },
   { href: '/contact-us', label: 'Contact Us', icon: Mail },
+  { href: '/vip-login', label: 'VIP Login', icon: KeyRound },
 ];
 
 const productLinks = [
