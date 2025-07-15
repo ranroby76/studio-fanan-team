@@ -11,9 +11,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Palette, Save, Loader2 } from 'lucide-react';
+import { Palette, Save, Loader2, ClipboardCopy } from 'lucide-react';
 import type { GuiMeContentFormData } from '@/lib/types';
-import { getGuiMeContent, saveGuiMeContent } from '@/lib/gui-me-service';
+import { getGuiMeContent, generateGuiMeJsonString } from '@/lib/gui-me-service';
 import Image from 'next/image';
 
 const guiMeFormSchema = z.object({
@@ -28,6 +28,8 @@ const guiMeFormSchema = z.object({
 export default function GuiMeEditorPage() {
   const { toast } = useToast();
   const [isLoadingContent, setIsLoadingContent] = useState(true);
+  const [jsonOutput, setJsonOutput] = useState('');
+
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<GuiMeContentFormData>({
     resolver: zodResolver(guiMeFormSchema),
     defaultValues: {
@@ -50,7 +52,7 @@ export default function GuiMeEditorPage() {
         console.error("Failed to load GUI Me content:", error);
         toast({
           title: 'Error Loading Content',
-          description: 'Could not fetch GUI Me content from local storage.',
+          description: 'Could not fetch GUI Me content from JSON file.',
           variant: 'destructive',
         });
       } finally {
@@ -62,20 +64,26 @@ export default function GuiMeEditorPage() {
 
   const onSubmit: SubmitHandler<GuiMeContentFormData> = async (data) => {
     try {
-      await saveGuiMeContent(data);
+      const jsonString = generateGuiMeJsonString(data);
+      setJsonOutput(jsonString);
       toast({
-        title: 'Content Saved!',
-        description: 'GUI Me content has been successfully saved.',
+        title: 'JSON Generated!',
+        description: 'Copy the JSON content below and paste it into src/data/gui-me-content.json.',
         variant: 'default',
       });
     } catch (error) {
-      console.error("Error saving GUI Me content:", error);
+      console.error("Error generating JSON:", error);
       toast({
-        title: 'Save Failed',
-        description: (error as Error).message || 'Could not save GUI Me content. Please try again.',
+        title: 'Generation Failed',
+        description: 'Could not generate JSON. Please try again.',
         variant: 'destructive',
       });
     }
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(jsonOutput);
+    toast({ title: 'Copied to clipboard!' });
   };
 
   if (isLoadingContent) {
@@ -88,7 +96,7 @@ export default function GuiMeEditorPage() {
   }
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in space-y-4">
       <Card className="shadow-xl w-full max-w-3xl mx-auto">
         <CardHeader>
           <div className="flex items-center gap-3 mb-2">
@@ -96,29 +104,11 @@ export default function GuiMeEditorPage() {
             <CardTitle className="text-4xl font-headline text-primary">GUI ME Content Editor</CardTitle>
           </div>
           <CardDescription className="text-lg text-foreground/80">
-            Manage the dynamic text content for the GUI Me page. The banner images are static and managed within the code.
+            Manage the dynamic text content for the GUI Me page. After generating, copy the JSON to `src/data/gui-me-content.json`.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent className="space-y-6">
-
-            <div className="space-y-4">
-               <div>
-                <Label className="font-semibold text-muted-foreground">Home Page Banner</Label>
-                <div className="mt-2 rounded-lg border p-2">
-                   <Image src="/images/A2.png" alt="Home Page Banner Preview (A2.png)" width={800} height={200} className="w-full h-auto rounded-md object-contain" />
-                </div>
-              </div>
-               <div>
-                <Label className="font-semibold text-muted-foreground">GUI Me Page Banner</Label>
-                <div className="mt-2 rounded-lg border p-2">
-                   <Image src="/images/A1.png" alt="GUI Me Page Banner Preview (A1.png)" width={800} height={400} className="w-full h-auto rounded-md object-contain" />
-                </div>
-              </div>
-            </div>
-            
-            <hr className="my-6 border-border" />
-
             <h3 className="text-xl font-headline text-primary">GUI Me Page Text Sections</h3>
             
             <div>
@@ -128,7 +118,7 @@ export default function GuiMeEditorPage() {
             </div>
             <div>
               <Label htmlFor="text1" className="font-semibold">Text 1</Label>
-              <Textarea id="text1" {...register('text1')} rows={3} className="mt-1" placeholder="Enter Text 1" />
+              <Textarea id="text1" {...register('text1')} rows={5} className="mt-1" placeholder="Enter Text 1" />
               {errors.text1 && <p className="text-sm text-destructive mt-1">{errors.text1.message}</p>}
             </div>
 
@@ -139,7 +129,7 @@ export default function GuiMeEditorPage() {
             </div>
             <div>
               <Label htmlFor="text2" className="font-semibold">Text 2</Label>
-              <Textarea id="text2" {...register('text2')} rows={3} className="mt-1" placeholder="Enter Text 2" />
+              <Textarea id="text2" {...register('text2')} rows={5} className="mt-1" placeholder="Enter Text 2" />
               {errors.text2 && <p className="text-sm text-destructive mt-1">{errors.text2.message}</p>}
             </div>
 
@@ -150,18 +140,64 @@ export default function GuiMeEditorPage() {
             </div>
             <div>
               <Label htmlFor="text3" className="font-semibold">Text 3</Label>
-              <Textarea id="text3" {...register('text3')} rows={3} className="mt-1" placeholder="Enter Text 3" />
+              <Textarea id="text3" {...register('text3')} rows={5} className="mt-1" placeholder="Enter Text 3" />
               {errors.text3 && <p className="text-sm text-destructive mt-1">{errors.text3.message}</p>}
             </div>
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={isSubmitting || isLoadingContent}>
               {isSubmitting ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Save className="mr-2 h-5 w-5" />}
-              {isSubmitting ? 'Saving...' : 'Save Content'}
+              {isSubmitting ? 'Generating...' : 'Generate JSON'}
             </Button>
           </CardFooter>
         </form>
       </Card>
+
+       {jsonOutput && (
+        <Card className="shadow-xl w-full max-w-3xl mx-auto">
+          <CardHeader>
+            <CardTitle>Generated JSON Output</CardTitle>
+            <CardDescription>Copy this content into `src/data/gui-me-content.json` and save the file.</CardDescription>
+          </CardHeader>
+          <CardContent className="relative">
+            <Textarea
+              readOnly
+              value={jsonOutput}
+              className="h-64 font-mono text-sm bg-muted"
+            />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-16 right-5 text-muted-foreground"
+              onClick={handleCopy}
+            >
+              <ClipboardCopy className="h-5 w-5" />
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
+       <Card className="shadow-xl w-full max-w-3xl mx-auto">
+        <CardHeader>
+            <CardTitle className="font-headline text-primary">Static Page Images</CardTitle>
+            <CardDescription>These images are part of the page layout and not editable here.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+            <div>
+            <Label className="font-semibold text-muted-foreground">Home Page Banner (A2.png)</Label>
+            <div className="mt-2 rounded-lg border p-2">
+                <Image src="/images/A2.png" alt="Home Page Banner Preview" width={800} height={200} className="w-full h-auto rounded-md object-contain" />
+            </div>
+            </div>
+            <div>
+            <Label className="font-semibold text-muted-foreground">GUI Me Page Banner (A1.png)</Label>
+            <div className="mt-2 rounded-lg border p-2">
+                <Image src="/images/A1.png" alt="GUI Me Page Banner Preview" width={800} height={400} className="w-full h-auto rounded-md object-contain" />
+            </div>
+            </div>
+        </CardContent>
+       </Card>
+
     </div>
   );
 }

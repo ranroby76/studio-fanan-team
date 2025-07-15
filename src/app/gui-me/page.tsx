@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { VenetianMask, Info } from "lucide-react";
+import { VenetianMask, Info, Loader2 } from "lucide-react";
 import Image from "next/image";
 import type { GuiMeContent } from '@/lib/types';
 import { getGuiMeContent } from '@/lib/gui-me-service';
@@ -22,7 +22,6 @@ export default function GuiMePage() {
         setGuiMeData(data);
       } catch (error) {
         console.error("Failed to load GUI Me content:", error);
-        // In case of error, show empty content
         setGuiMeData({ title1: '', text1: '', title2: '', text2: '', title3: '', text3: '' });
       } finally {
         setIsLoadingContent(false);
@@ -41,7 +40,7 @@ export default function GuiMePage() {
     );
   };
   
-  const noContent = !guiMeData?.title1 && !guiMeData?.text1 && !guiMeData?.title2 && !guiMeData?.text2 && !guiMeData?.title3 && !guiMeData?.text3;
+  const noContent = !isLoadingContent && (!guiMeData || (!guiMeData.title1 && !guiMeData.text1 && !guiMeData.title2 && !guiMeData.text2 && !guiMeData.title3 && !guiMeData.text3));
 
   return (
     <div className="container mx-auto px-4">
@@ -72,12 +71,10 @@ export default function GuiMePage() {
           </CardHeader>
           <CardContent className="p-8 space-y-6">
             {isLoadingContent ? (
-              <>
-                <Skeleton className="h-8 w-1/2 rounded-md" />
-                <Skeleton className="h-24 w-full rounded-md" />
-                <Skeleton className="h-8 w-1/2 rounded-md" />
-                <Skeleton className="h-24 w-full rounded-md" />
-              </>
+              <div className="flex flex-col items-center justify-center py-10">
+                <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
+                <p className="text-muted-foreground">Loading content...</p>
+              </div>
             ) : (
               <>
                 {renderTextSection(guiMeData?.title1, guiMeData?.text1)}
