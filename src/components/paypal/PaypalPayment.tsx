@@ -20,6 +20,7 @@ export default function PaypalPayment() {
   const [isLoading, setIsLoading] = useState(true);
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const paypalContainerRef = useRef<HTMLDivElement>(null);
+  const customIdRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (window.emailjs) {
@@ -30,62 +31,66 @@ export default function PaypalPayment() {
   useEffect(() => {
     if (scriptLoaded && window.paypal && paypalContainerRef.current) {
       if (paypalContainerRef.current.children.length > 0) {
-        // PayPal button is already rendered, no need to re-render
-        return;
+        return; // Buttons already rendered
       }
+      
       setIsLoading(false);
-      window.paypal.Buttons({
-        createOrder: function(data: any, actions: any) {
-          if (!customId) {
-            alert('Please enter your ID before proceeding to payment.');
-            return false; // Correct way to reject the transaction
-          }
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: '22.00'
-              },
-              custom_id: customId
-            }]
-          });
-        },
-        onApprove: function(data: any, actions: any) {
-          return actions.order.capture().then(function(details: any) {
-            const capturedCustomId = details.purchase_units[0].custom_id;
-            const newSerialNumber = Math.floor(((((((parseInt(capturedCustomId) + 8354) * 2) + 1691) * 2) - 9097) * 0.1));
-            setSerialNumber(newSerialNumber.toString());
-            
-            const customerEmail = details.payer.email_address;
-            
-            const templateParams = {
-              to_email: customerEmail,
-              to_name: details.payer.name.given_name,
-              serial_number: newSerialNumber,
-              amount: details.purchase_units[0].amount.value
-            };
-            
-            window.emailjs.send("service_ygtr2vr", "template_mwkot2m", templateParams)
-              .then(
-                function(response: any) {
-                  console.log("Email SUCCESS:", response);
-                },
-                function(error: any) {
-                  console.log("Email FAILED:", error);
-                }
-              );
 
-            alert('Transaction completed! Check your email for the serial number.');
-          });
-        },
-        onError: function(err: any) {
-            console.error('PayPal Button Error:', err);
-            alert('An error occurred with the payment process. Please try again.');
-        }
-      }).render(paypalContainerRef.current).catch((err: any) => {
+      try {
+        window.paypal.Buttons({
+          createOrder: function(data: any, actions: any) {
+            const currentCustomId = customIdRef.current?.value;
+            if (!currentCustomId) {
+              alert('Please enter your ID before proceeding to payment.');
+              return false;
+            }
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: '22.00'
+                },
+                custom_id: currentCustomId
+              }]
+            });
+          },
+          onApprove: function(data: any, actions: any) {
+            return actions.order.capture().then(function(details: any) {
+              const capturedCustomId = details.purchase_units[0].custom_id;
+              const newSerialNumber = Math.floor(((((((parseInt(capturedCustomId) + 8354) * 2) + 1691) * 2) - 9097) * 0.1));
+              setSerialNumber(newSerialNumber.toString());
+              
+              const customerEmail = details.payer.email_address;
+              
+              const templateParams = {
+                to_email: customerEmail,
+                to_name: details.payer.name.given_name,
+                serial_number: newSerialNumber,
+                amount: details.purchase_units[0].amount.value
+              };
+              
+              window.emailjs.send("service_ygtr2vr", "template_mwkot2m", templateParams)
+                .then(
+                  function(response: any) {
+                    console.log("Email SUCCESS:", response);
+                  },
+                  function(error: any) {
+                    console.log("Email FAILED:", error);
+                  }
+                );
+
+              alert('Transaction completed! Check your email for the serial number.');
+            });
+          },
+          onError: function(err: any) {
+              console.error('PayPal Button Error:', err);
+              alert('An error occurred with the payment process. Please try again.');
+          }
+        }).render(paypalContainerRef.current);
+      } catch (err) {
           console.error('Failed to render PayPal buttons:', err);
-      });
+      }
     }
-  }, [scriptLoaded, customId]);
+  }, [scriptLoaded]);
 
   return (
     <>
@@ -97,7 +102,7 @@ export default function PaypalPayment() {
         }}
         onError={(e) => {
             console.error("PayPal SDK failed to load", e);
-            setIsLoading(false); // Stop loading on error
+            setIsLoading(false);
         }}
       />
       <Script 
@@ -116,10 +121,11 @@ export default function PaypalPayment() {
         <form id="paypal-form" onSubmit={(e) => e.preventDefault()}>
           <label htmlFor="custom_unique_id" className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
           <Input 
+            ref={customIdRef}
             type="text" 
             id="custom_unique_id" 
             placeholder="Enter your ID here" 
-            value={customId}
+            defaultValue={customId}
             onChange={(e) => setCustomId(e.target.value)}
             required
             className="w-full px-3 py-2 mb-4"
