@@ -52,7 +52,7 @@ export default function HomePage() {
           alt="Site Banner - GUI Me Design Philosophy"
           width={1405}
           height={669}
-          className="object-contain w-full h-auto transition-transform duration-500"
+          className="object-contain w-full h-auto"
           data-ai-hint="design abstract"
           priority
         />
@@ -83,6 +83,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-3xl font-headline font-semibold text-primary">Our Plugins Packs</h2>
+      </div>
       
       <div className="container mx-auto px-4">
         <section className="bg-card p-8 rounded-xl shadow-lg mt-8">
