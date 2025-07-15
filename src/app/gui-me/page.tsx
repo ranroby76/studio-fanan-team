@@ -100,12 +100,12 @@ export default function GuiMePage() {
             <Separator className="my-8" />
 
             <div>
-              <h2 className="text-2xl font-headline text-primary mb-3">Interested in our GUI Design Services?</h2>
+              <h2 className="text-2xl font-headline text-primary mb-3">Feedback & Questions</h2>
               <p className="text-lg text-foreground/80 leading-relaxed mb-2">
-                If you'd like us to design a custom GUI for your audio plugin or software, we'd love to hear from you!
+                We'd love to hear from you! Feel free to write to us about anything—whether you have feedback, questions, or just want to say hello.
               </p>
               <p className="text-lg text-foreground/80 leading-relaxed">
-                Please contact us at: <a href="mailto:fanantem@gmail.com" className="font-semibold text-accent hover:underline">fanantem@gmail.com</a> to discuss your project requirements and how we can help bring your vision to life.
+                You can reach us at: <a href="mailto:fananteam@gmail.com" className="font-semibold text-accent hover:underline">fananteam@gmail.com</a>
               </p>
             </div>
           </CardContent>
