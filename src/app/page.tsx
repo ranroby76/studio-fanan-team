@@ -17,6 +17,7 @@ export default function HomePage() {
 
   useEffect(() => {
     try {
+      // "use client" component can't be async, so we use a sync function here.
       const prods = getProducts();
       setProducts(prods);
     } catch (error) {
@@ -55,6 +56,14 @@ export default function HomePage() {
           data-ai-hint="design abstract"
           priority
         />
+      </section>
+
+      <section className="w-full py-8 bg-gradient-to-r from-green-200 via-yellow-200 to-orange-200">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-headline font-bold text-slate-800 tracking-wider uppercase">
+            WE BELIEVE EVERY SEASON IS SALES SEASON
+          </h2>
+        </div>
       </section>
       
       <div className="container mx-auto px-4">
