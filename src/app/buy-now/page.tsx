@@ -1,6 +1,8 @@
 // src/app/buy-now/page.tsx
 import Image from "next/image";
 import PaypalPayment from "@/components/paypal/PaypalPayment";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { HelpCircle, Download, RadioTower, KeyRound, CheckCircle, MailCheck } from "lucide-react";
 
 export default function BuyNowPage() {
   // A5 dimensions: 1472x832 -> aspect-ratio: 1.768
@@ -61,6 +63,32 @@ export default function BuyNowPage() {
                 </div>
                 <PaypalPayment price="12.00" title="$12" />
             </div>
+        </div>
+        <div className="mt-8">
+          <Card className="bg-card/70 shadow-lg border-primary/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-2xl font-headline text-primary">
+                <HelpCircle className="h-8 w-8" />
+                Purchasing Instructions
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-foreground/90">
+              <ol className="list-decimal list-inside space-y-3 pl-2">
+                <li>
+                  <strong>Get Your Machine ID:</strong> Download and install any plugin from your desired bundle. Open it in your DAW and click the "REGISTER" button to find your unique Machine ID.
+                </li>
+                <li>
+                  <strong>Complete Your Purchase:</strong> Return to this page and enter your Machine ID into the corresponding text box for your chosen bundle. Click "BUY NOW" to complete the payment.
+                </li>
+                <li>
+                  <strong>Receive Your Serial Number:</strong> After a successful purchase, your serial number will instantly appear in the box above. It will also be sent to your email address for your records.
+                </li>
+                <li>
+                  <strong>Register Your Plugin:</strong> Copy the serial number, paste it into the plugin's registration window back in your DAW, and click "Save". Registering one plugin activates the entire bundle.
+                </li>
+              </ol>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
