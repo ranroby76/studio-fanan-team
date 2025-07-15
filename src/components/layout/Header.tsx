@@ -23,10 +23,10 @@ const mainNavLinks = [
 ];
 
 const secondaryNavLinks = [
-  { href: '/contact-us', label: 'Contact Us', icon: Mail },
   { href: '/gui-me', label: 'GUI Me', icon: VenetianMask },
   { href: '/how-to-buy', label: 'How to Buy', icon: HelpCircle },
   { href: '/buy-now', label: 'Buy Now', icon: ShoppingCart },
+  { href: '/contact-us', label: 'Contact Us', icon: Mail },
   { href: '/manage', label: 'Manage Site', icon: Settings },
 ];
 
