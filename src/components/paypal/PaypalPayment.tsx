@@ -16,6 +16,7 @@ export default function PaypalPayment() {
   const [customId, setCustomId] = useState('');
   const [serialNumber, setSerialNumber] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
   const paypalContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,9 +26,9 @@ export default function PaypalPayment() {
   }, []);
 
   useEffect(() => {
-    if (window.paypal && paypalContainerRef.current) {
+    if (scriptLoaded && window.paypal && paypalContainerRef.current) {
       if (paypalContainerRef.current.children.length > 0) {
-        // PayPal button is already rendered
+        // PayPal button is already rendered, no need to re-render
         return;
       }
       setIsLoading(false);
@@ -82,7 +83,7 @@ export default function PaypalPayment() {
           console.error('Failed to render PayPal buttons:', err);
       });
     }
-  }, [customId]);
+  }, [scriptLoaded, customId]); // Re-checking on customId change is still good for validation logic inside createOrder
 
   return (
     <>
@@ -90,9 +91,11 @@ export default function PaypalPayment() {
         src="https://www.paypal.com/sdk/js?client-id=AUEpCQ6b-llAtrDDOTPf9TUXoVilqCFYksW0bU05Au-aJ6jhprFO5I1INDGyTmHxzJ1EriiAHe-e6O4T&currency=USD"
         onLoad={() => {
             console.log("PayPal SDK loaded.");
+            setScriptLoaded(true);
         }}
         onError={(e) => {
             console.error("PayPal SDK failed to load", e);
+            setIsLoading(false); // Stop loading on error
         }}
       />
       <Script 
