@@ -23,7 +23,7 @@ export default function BuyNowPage() {
             </h1>
             <div className="relative w-full max-w-lg" style={{ aspectRatio: '1015 / 234' }}>
                <Image
-                src="/images/A6.jpg"
+                src="/images/A6.png"
                 alt="Fanan Store"
                 fill
                 sizes="(max-width: 512px) 100vw, 512px"
