@@ -20,6 +20,7 @@ export default {
         body: ['PT Sans', 'sans-serif'],
         headline: ['Poppins', 'sans-serif'],
         code: ['monospace'],
+        impact: ['Impact', 'Haettenschweiler', "'Arial Narrow Bold'", 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',
