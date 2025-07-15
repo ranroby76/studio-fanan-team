@@ -4,6 +4,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Loader2 } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -36,7 +38,7 @@ export default function PaypalPayment() {
         createOrder: function(data: any, actions: any) {
           if (!customId) {
             alert('Please enter your ID before proceeding to payment.');
-            return actions.reject();
+            return false; // Correct way to reject the transaction
           }
           return actions.order.create({
             purchase_units: [{
@@ -83,7 +85,7 @@ export default function PaypalPayment() {
           console.error('Failed to render PayPal buttons:', err);
       });
     }
-  }, [scriptLoaded, customId]); // Re-checking on customId change is still good for validation logic inside createOrder
+  }, [scriptLoaded, customId]);
 
   return (
     <>
@@ -102,7 +104,9 @@ export default function PaypalPayment() {
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
         onLoad={() => {
             console.log("EmailJS SDK loaded.");
-            window.emailjs.init("nIdzP2wHIUKIQ5XFZ");
+            if (typeof window.emailjs !== 'undefined') {
+                window.emailjs.init("nIdzP2wHIUKIQ5XFZ");
+            }
         }}
         onError={(e) => {
             console.error("EmailJS SDK failed to load", e);
@@ -111,14 +115,14 @@ export default function PaypalPayment() {
       <div className="w-full max-w-sm mx-auto bg-card p-6 rounded-lg shadow-md">
         <form id="paypal-form" onSubmit={(e) => e.preventDefault()}>
           <label htmlFor="custom_unique_id" className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
-          <input 
+          <Input 
             type="text" 
             id="custom_unique_id" 
             placeholder="Enter your ID here" 
             value={customId}
             onChange={(e) => setCustomId(e.target.value)}
             required
-            className="w-full px-3 py-2 mb-4 border border-input rounded-md text-foreground bg-background focus:ring-primary focus:border-primary"
+            className="w-full px-3 py-2 mb-4"
           />
           <div className="w-full mb-4 p-2 bg-muted border border-border rounded-md text-center">
             <div className="bg-yellow-300 text-black inline-block px-3 py-1 text-sm rounded-sm mb-2">Serial Number</div>
@@ -130,7 +134,12 @@ export default function PaypalPayment() {
               )}
             </div>
           </div>
-          {isLoading && <p className="text-center text-muted-foreground">Loading payment options...</p>}
+          {isLoading && 
+            <div className="flex items-center justify-center text-muted-foreground">
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Loading payment options...
+            </div>
+          }
           <div ref={paypalContainerRef} id="paypal-button-container" className="w-full"></div>
         </form>
       </div>
