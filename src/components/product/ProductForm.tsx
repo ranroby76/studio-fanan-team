@@ -1,7 +1,7 @@
 // src/components/product/ProductForm.tsx
 "use client";
 
-import type { ProductFormData, DownloadLink } from '@/lib/types';
+import type { ProductFormData } from '@/lib/types';
 import { useForm, useFieldArray, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -13,6 +13,16 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription }
 import { useToast } from '@/hooks/use-toast';
 import { PlusCircle, Trash2, Loader2 } from 'lucide-react';
 import React from 'react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Controller } from 'react-hook-form';
+
+const packEnum = z.enum(["Pro Pack", "Mad MIDI Machines Pack", "Free Pack"]);
 
 const downloadLinkSchema = z.object({
   id: z.string().optional(), // Optional for new links
@@ -23,6 +33,8 @@ const downloadLinkSchema = z.object({
 const productFormSchema = z.object({
   id: z.string().optional(),
   title: z.string().min(3, "Title must be at least 3 characters"),
+  slug: z.string().min(3, "Slug must be at least 3 characters").regex(/^[a-z0-9-]+$/, "Slug must be lowercase with no spaces"),
+  pack: packEnum,
   mainImage: z.string().url("Main image must be a valid URL"),
   thumbnails: z.array(z.string().url("Thumbnail must be a valid URL")).min(0).max(5, "Maximum 5 thumbnails"),
   keywords: z.string().optional(),
@@ -41,10 +53,12 @@ interface ProductFormProps {
 export default function ProductForm({ initialData, onSubmit, isEditing = false }: ProductFormProps) {
   const { toast } = useToast();
 
-  const { control, register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ProductFormData>({
+  const { control, register, handleSubmit, formState: { errors, isSubmitting }, reset, watch } = useForm<ProductFormData>({
     resolver: zodResolver(productFormSchema),
     defaultValues: initialData || {
       title: '',
+      slug: '',
+      pack: "Pro Pack",
       mainImage: '',
       thumbnails: [],
       keywords: '',
@@ -76,14 +90,42 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     <Card className="shadow-xl w-full max-w-3xl mx-auto">
       <CardHeader>
         <CardTitle className="text-3xl font-headline text-primary">{isEditing ? 'Edit Product' : 'Add New Product'}</CardTitle>
-        <CardDescription>Fill in the details for the VST product.</CardDescription>
+        <CardDescription>Fill in the details for the VST product. The slug will be used for the product page URL.</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit(processSubmit)}>
         <CardContent className="space-y-6">
-          <div>
-            <Label htmlFor="title" className="font-semibold">Product Title</Label>
-            <Input id="title" {...register('title')} className="mt-1" placeholder="e.g., SuperSynth Pro"/>
-            {errors.title && <p className="text-sm text-destructive mt-1">{errors.title.message}</p>}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <Label htmlFor="title" className="font-semibold">Product Title</Label>
+              <Input id="title" {...register('title')} className="mt-1" placeholder="e.g., SuperSynth Pro"/>
+              {errors.title && <p className="text-sm text-destructive mt-1">{errors.title.message}</p>}
+            </div>
+            <div>
+              <Label htmlFor="slug" className="font-semibold">URL Slug</Label>
+              <Input id="slug" {...register('slug')} className="mt-1" placeholder="e.g., supersynth-pro"/>
+              {errors.slug && <p className="text-sm text-destructive mt-1">{errors.slug.message}</p>}
+            </div>
+          </div>
+          
+           <div>
+            <Label htmlFor="pack" className="font-semibold">Product Pack</Label>
+             <Controller
+                control={control}
+                name="pack"
+                render={({ field }) => (
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder="Select a pack" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Pro Pack">Pro Pack</SelectItem>
+                      <SelectItem value="Mad MIDI Machines Pack">Mad MIDI Machines Pack</SelectItem>
+                      <SelectItem value="Free Pack">Free Pack</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+            {errors.pack && <p className="text-sm text-destructive mt-1">{errors.pack.message}</p>}
           </div>
 
           <div>

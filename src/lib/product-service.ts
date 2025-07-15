@@ -24,12 +24,21 @@ export const getProductById = (id: string): Product | undefined => {
   return products.find(p => p.id === id);
 };
 
+export const getProductBySlug = (slug: string): Product | undefined => {
+  if (typeof window === 'undefined') return undefined;
+  const products = getProducts();
+  return products.find(p => p.slug === slug);
+};
+
 export const addProduct = (productData: ProductFormData): Product => {
   if (typeof window === 'undefined') throw new Error("localStorage not available");
   const products = getProducts();
   const newProduct: Product = {
     ...productData,
     id: generateId(),
+    // ensure required fields that might be missing from form data are present
+    slug: productData.slug!,
+    pack: productData.pack!,
     downloadLinks: productData.downloadLinks.map(link => ({...link, id: generateId()})),
   };
   products.push(newProduct);
@@ -47,6 +56,8 @@ export const updateProduct = (id: string, productData: ProductFormData): Product
     ...products[productIndex],
     ...productData,
     id, // Ensure ID is not overwritten if productData doesn't have it
+    slug: productData.slug!,
+    pack: productData.pack!,
     downloadLinks: productData.downloadLinks.map(link => ({...link, id: link.id || generateId()})),
   };
   products[productIndex] = updatedProduct;

@@ -5,9 +5,13 @@ export interface DownloadLink {
   url: string;
 }
 
+export type Pack = "Pro Pack" | "Mad MIDI Machines Pack" | "Free Pack";
+
 export interface Product {
   id: string;
   title: string;
+  slug: string;
+  pack: Pack;
   mainImage: string;
   thumbnails: string[];
   description: string;

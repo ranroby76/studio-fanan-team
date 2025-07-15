@@ -6,10 +6,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package } from 'lucide-react';
+import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, ExternalLink } from 'lucide-react';
 import type { Product } from '@/lib/types';
 import { getProducts, deleteProduct as deleteProductService } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
+import { Badge } from '@/components/ui/badge';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -129,13 +130,19 @@ export default function ProductsManagementPage() {
                   className="object-cover w-full h-48 rounded-t-lg"
                   data-ai-hint="instrument audio"
                 />
+                 <Badge variant="secondary" className="absolute top-2 right-2">{product.pack}</Badge>
               </CardHeader>
               <CardContent className="pt-4 flex-grow">
                 <CardTitle className="font-headline text-xl text-primary mb-1 truncate">{product.title}</CardTitle>
                 <CardDescription className="text-sm text-muted-foreground mb-2">Price: ${product.price.toFixed(2)}</CardDescription>
                 <p className="text-sm text-foreground/70 line-clamp-3">{product.description}</p>
               </CardContent>
-              <CardFooter className="grid grid-cols-2 gap-2 pt-0 p-4 border-t mt-auto">
+              <CardFooter className="grid grid-cols-3 gap-2 pt-0 p-4 border-t mt-auto">
+                <Button variant="outline" size="sm" asChild>
+                    <Link href={`/products/${product.slug}`} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="mr-2 h-4 w-4" /> View
+                    </Link>
+                </Button>
                 <Button variant="outline" size="sm" asChild className="border-accent text-accent hover:bg-accent/10">
                   <Link href={`/manage/edit/${product.id}`}>
                     <Edit3 className="mr-2 h-4 w-4" /> Edit
