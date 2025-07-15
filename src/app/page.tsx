@@ -7,6 +7,21 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <div className="space-y-12 animate-fade-in">
+
+      <section className="relative flex justify-center w-full mx-auto">
+        <div className="w-full">
+          <Image
+            src="/images/SITE TOP.png"
+            alt="Site Top Banner"
+            width={1846}
+            height={739}
+            layout="responsive"
+            className="object-contain"
+            data-ai-hint="site banner abstract"
+            priority
+          />
+        </div>
+      </section>
       
       <section className="relative flex justify-center w-full mx-auto">
         <div className="w-full max-w-4xl">
