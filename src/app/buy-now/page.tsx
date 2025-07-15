@@ -2,7 +2,8 @@
 import Image from "next/image";
 import PaypalPayment from "@/components/paypal/PaypalPayment";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { HelpCircle, Download, RadioTower, KeyRound, CheckCircle, MailCheck } from "lucide-react";
+import { HelpCircle } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 export default function BuyNowPage() {
   // A5 dimensions: 1472x832 -> aspect-ratio: 1.768
@@ -24,7 +25,7 @@ export default function BuyNowPage() {
             <h1 className="text-white font-bold text-5xl md:text-7xl lg:text-8xl tracking-wider uppercase font-impact" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
               Welcome To
             </h1>
-            <div className="relative w-full max-w-lg transform scale-[2] origin-bottom mb-16" style={{ aspectRatio: '4.337' }}>
+            <div className="relative w-full max-w-lg transform scale-150 origin-bottom mb-16" style={{ aspectRatio: '4.337' }}>
                <Image
                 src="/images/A6.png"
                 alt="Fanan Store"
@@ -36,7 +37,10 @@ export default function BuyNowPage() {
             </div>
           </div>
         </div>
-        <div className="mt-4 p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <Separator className="my-6" />
+
+        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <div className="flex flex-col items-center">
                 <div className="mb-4 flex items-center justify-center h-[60px]">
                     <Image
@@ -50,6 +54,9 @@ export default function BuyNowPage() {
                 </div>
                 <PaypalPayment price="22.00" title="$22" />
             </div>
+            
+            <Separator orientation="vertical" className="absolute left-1/2 top-0 h-full -translate-x-1/2 hidden md:block" />
+
             <div className="flex flex-col items-center">
                 <div className="mb-4 flex items-center justify-center h-[60px]">
                     <Image
@@ -64,6 +71,7 @@ export default function BuyNowPage() {
                 <PaypalPayment price="12.00" title="$12" />
             </div>
         </div>
+
         <div className="mt-8">
           <Card className="bg-card/70 shadow-lg border-primary/20">
             <CardHeader>
