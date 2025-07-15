@@ -7,10 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Send, MapPin, Phone } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { sendContactMessage } from "./actions";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -19,7 +20,7 @@ const contactFormSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
-type ContactFormValues = z.infer<typeof contactFormSchema>;
+export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function ContactUsPage() {
   const { toast } = useToast();
@@ -28,14 +29,21 @@ export default function ContactUsPage() {
   });
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log("Contact form submitted:", data);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    reset();
+    const result = await sendContactMessage(data);
+
+    if (result.success) {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+      reset();
+    } else {
+       toast({
+        title: "Error Sending Message",
+        description: result.error || "An unknown error occurred. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -77,29 +85,6 @@ export default function ContactUsPage() {
             </form>
           </CardContent>
         </Card>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card className="shadow-lg">
-            <CardHeader>
-              <MapPin className="h-8 w-8 text-accent mb-2" />
-              <CardTitle className="font-headline text-2xl text-accent">Our Office</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-foreground/80">123 Music Lane, Sound City, SC 54321</p>
-              <p className="text-foreground/80">Planet Earth</p>
-            </CardContent>
-          </Card>
-          <Card className="shadow-lg">
-            <CardHeader>
-              <Phone className="h-8 w-8 text-accent mb-2" />
-              <CardTitle className="font-headline text-2xl text-accent">Call Us</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-foreground/80">Support: +1 (234) 567-8900</p>
-              <p className="text-foreground/80">Sales: +1 (234) 567-8901</p>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </div>
   );
