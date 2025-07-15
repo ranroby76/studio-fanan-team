@@ -27,7 +27,6 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
   const paypalContainerRef = useRef<HTMLDivElement>(null);
   const customIdRef = useRef<HTMLInputElement>(null);
 
-  // Use a unique ID for each PayPal button container to avoid conflicts
   const paypalButtonContainerId = `paypal-button-container-${price.replace('.', '')}`;
 
   useEffect(() => {
@@ -130,7 +129,7 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
             console.error("EmailJS SDK failed to load", e);
         }}
       />
-      <div className="w-full max-w-sm mx-auto bg-card p-6 rounded-lg shadow-md">
+      <div className="w-full max-w-sm mx-auto p-6 rounded-lg">
         <h2 className="text-2xl font-bold text-center mb-4 text-primary">{title}</h2>
         <form id={`paypal-form-${price}`} onSubmit={(e) => e.preventDefault()}>
           <label htmlFor={`custom_unique_id-${price}`} className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
