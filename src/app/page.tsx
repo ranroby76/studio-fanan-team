@@ -2,12 +2,30 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, PackageSearch, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Separator } from '@/components/ui/separator';
+import { useEffect, useState } from "react";
+import type { Product } from "@/lib/types";
+import { getProducts } from "@/lib/product-service";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function HomePage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    try {
+      const prods = getProducts();
+      setProducts(prods);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   return (
     <div className="space-y-12 animate-fade-in">
       <div className="bg-primary/10">
@@ -27,53 +45,53 @@ export default function HomePage() {
         </div>
       </div>
       
-      <Link href="/gui-me" aria-label="Learn more about our GUI design philosophy" className="block container mx-auto px-4">
-        <section className="relative w-full max-w-3xl mx-auto h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
-          <Image
-            src="/images/A2.png"
-            alt="Site Banner - GUI Me Design Philosophy"
-            width={1405}
-            height={669}
-            className="object-contain w-full h-auto transition-transform duration-500 hover:scale-105"
-            data-ai-hint="design abstract"
-            priority
-          />
-        </section>
-      </Link>
+      <section className="relative w-full max-w-3xl mx-auto h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
+        <Image
+          src="/images/A2.png"
+          alt="Site Banner - GUI Me Design Philosophy"
+          width={1405}
+          height={669}
+          className="object-contain w-full h-auto transition-transform duration-500"
+          data-ai-hint="design abstract"
+          priority
+        />
+      </section>
       
       <div className="container mx-auto px-4">
-        <section className="bg-card p-8 rounded-xl shadow-lg mt-16">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1">
-              <h2 className="text-3xl font-headline font-semibold text-primary mb-4">Why Choose Fanan Team?</h2>
-              <p className="text-foreground/80 mb-3">
-                We are dedicated to crafting high-quality, innovative, and affordable VST plugins for musicians and producers of all levels.
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-foreground/70">
-                <li>Unique sound design possibilities.</li>
-                <li>Intuitive and user-friendly interfaces.</li>
-                <li>Regular updates and dedicated support.</li>
-                <li>Great value for exceptional tools.</li>
-              </ul>
-               <div className="text-center md:text-left mt-8">
-                  <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg">
-                      <Link href="/products">
-                          View All Products <ArrowRight className="ml-2 h-5 w-5" />
-                      </Link>
-                  </Button>
-              </div>
+        <section className="bg-card p-8 rounded-xl shadow-lg mt-8">
+           <h2 className="text-3xl font-headline font-semibold text-primary mb-6 text-center">Featured Products</h2>
+           {isLoading ? (
+             <div className="flex justify-center items-center h-64">
+               <Loader2 className="h-12 w-12 animate-spin text-primary" />
+             </div>
+           ) : products.length === 0 ? (
+            <div className="text-center py-10">
+              <PackageSearch className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+              <p className="text-muted-foreground">No featured products to display yet.</p>
             </div>
-            <div className="flex-1">
-              <Image
-                src="https://placehold.co/600x400.png"
-                alt="Music production"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-md object-cover"
-                data-ai-hint="studio music"
-              />
-            </div>
-          </div>
+           ) : (
+             <div className="grid md:grid-cols-2 gap-8">
+               {products.map((product) => (
+                 <Link key={product.id} href={`/products/${product.id}`} className="group block">
+                   <Card className="overflow-hidden h-full transform transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
+                      <div className="relative aspect-video">
+                         <Image
+                           src={product.mainImage || "https://placehold.co/600x400.png"}
+                           alt={product.title}
+                           fill
+                           className="object-cover transition-transform duration-300 group-hover:scale-105"
+                           data-ai-hint="instrument audio"
+                         />
+                      </div>
+                      <div className="p-4 bg-card-foreground text-background">
+                         <CardTitle className="font-headline text-lg truncate text-primary group-hover:text-accent transition-colors">{product.title}</CardTitle>
+                         <CardDescription className="text-sm text-muted-foreground line-clamp-2 mt-1">{product.description}</CardDescription>
+                      </div>
+                   </Card>
+                 </Link>
+               ))}
+             </div>
+           )}
         </section>
       </div>
     </div>
