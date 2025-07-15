@@ -144,7 +144,7 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
             className="w-full px-3 py-2 mb-4"
           />
           <div className="w-full mb-4 p-2 bg-muted border border-border rounded-md text-center">
-            <div className="bg-yellow-300 text-black inline-block px-3 py-1 text-sm rounded-sm mb-2">Serial Number</div>
+            <div className="text-sm mb-2 text-black dark:text-yellow-300">Serial Number</div>
             <div className="font-bold text-green-600 text-lg min-h-[28px] flex items-center justify-center">
               {serialNumber ? (
                 serialNumber
