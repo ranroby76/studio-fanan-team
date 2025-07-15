@@ -14,13 +14,21 @@ declare global {
   }
 }
 
-export default function PaypalPayment() {
+interface PaypalPaymentProps {
+  price: string;
+  title: string;
+}
+
+export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
   const [customId, setCustomId] = useState('');
   const [serialNumber, setSerialNumber] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const paypalContainerRef = useRef<HTMLDivElement>(null);
   const customIdRef = useRef<HTMLInputElement>(null);
+
+  // Use a unique ID for each PayPal button container to avoid conflicts
+  const paypalButtonContainerId = `paypal-button-container-${price.replace('.', '')}`;
 
   useEffect(() => {
     if (window.emailjs) {
@@ -29,68 +37,66 @@ export default function PaypalPayment() {
   }, []);
 
   useEffect(() => {
-    if (scriptLoaded && window.paypal && paypalContainerRef.current) {
-      if (paypalContainerRef.current.children.length > 0) {
-        return; // Buttons already rendered
-      }
-      
-      setIsLoading(false);
-
-      try {
-        window.paypal.Buttons({
-          createOrder: function(data: any, actions: any) {
-            const currentCustomId = customIdRef.current?.value;
-            if (!currentCustomId) {
-              alert('Please enter your ID before proceeding to payment.');
-              return false;
-            }
-            return actions.order.create({
-              purchase_units: [{
-                amount: {
-                  value: '22.00'
-                },
-                custom_id: currentCustomId
-              }]
-            });
-          },
-          onApprove: function(data: any, actions: any) {
-            return actions.order.capture().then(function(details: any) {
-              const capturedCustomId = details.purchase_units[0].custom_id;
-              const newSerialNumber = Math.floor(((((((parseInt(capturedCustomId) + 8354) * 2) + 1691) * 2) - 9097) * 0.1));
-              setSerialNumber(newSerialNumber.toString());
-              
-              const customerEmail = details.payer.email_address;
-              
-              const templateParams = {
-                to_email: customerEmail,
-                to_name: details.payer.name.given_name,
-                serial_number: newSerialNumber,
-                amount: details.purchase_units[0].amount.value
-              };
-              
-              window.emailjs.send("service_ygtr2vr", "template_mwkot2m", templateParams)
-                .then(
-                  function(response: any) {
-                    console.log("Email SUCCESS:", response);
+    if (scriptLoaded && window.paypal) {
+      const paypalContainer = document.getElementById(paypalButtonContainerId);
+      if (paypalContainer && paypalContainer.children.length === 0) {
+        setIsLoading(false);
+        try {
+          window.paypal.Buttons({
+            createOrder: function(data: any, actions: any) {
+              const currentCustomId = customIdRef.current?.value;
+              if (!currentCustomId) {
+                alert('Please enter your ID before proceeding to payment.');
+                return false;
+              }
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: price
                   },
-                  function(error: any) {
-                    console.log("Email FAILED:", error);
-                  }
-                );
+                  custom_id: currentCustomId
+                }]
+              });
+            },
+            onApprove: function(data: any, actions: any) {
+              return actions.order.capture().then(function(details: any) {
+                const capturedCustomId = details.purchase_units[0].custom_id;
+                const newSerialNumber = Math.floor(((((((parseInt(capturedCustomId) + 8354) * 2) + 1691) * 2) - 9097) * 0.1));
+                setSerialNumber(newSerialNumber.toString());
+                
+                const customerEmail = details.payer.email_address;
+                
+                const templateParams = {
+                  to_email: customerEmail,
+                  to_name: details.payer.name.given_name,
+                  serial_number: newSerialNumber,
+                  amount: details.purchase_units[0].amount.value
+                };
+                
+                window.emailjs.send("service_ygtr2vr", "template_mwkot2m", templateParams)
+                  .then(
+                    function(response: any) {
+                      console.log("Email SUCCESS:", response);
+                    },
+                    function(error: any) {
+                      console.log("Email FAILED:", error);
+                    }
+                  );
 
-              alert('Transaction completed! Check your email for the serial number.');
-            });
-          },
-          onError: function(err: any) {
-              console.error('PayPal Button Error:', err);
-              alert('An error occurred with the payment process. Please try again.');
-          }
-        }).render(paypalContainerRef.current);
-      } catch (err) {
-          console.error('Failed to render PayPal buttons:', err);
+                alert('Transaction completed! Check your email for the serial number.');
+              });
+            },
+            onError: function(err: any) {
+                console.error('PayPal Button Error:', err);
+                alert('An error occurred with the payment process. Please try again.');
+            }
+          }).render(`#${paypalButtonContainerId}`);
+        } catch (err) {
+            console.error('Failed to render PayPal buttons:', err);
+        }
       }
     }
-  }, [scriptLoaded]);
+  }, [scriptLoaded, price, paypalButtonContainerId]);
 
   return (
     <>
@@ -118,12 +124,13 @@ export default function PaypalPayment() {
         }}
       />
       <div className="w-full max-w-sm mx-auto bg-card p-6 rounded-lg shadow-md">
-        <form id="paypal-form" onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor="custom_unique_id" className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
+        <h2 className="text-2xl font-bold text-center mb-4 text-primary">{title}</h2>
+        <form id={`paypal-form-${price}`} onSubmit={(e) => e.preventDefault()}>
+          <label htmlFor={`custom_unique_id-${price}`} className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
           <Input 
             ref={customIdRef}
             type="text" 
-            id="custom_unique_id" 
+            id={`custom_unique_id-${price}`}
             placeholder="Enter your ID here" 
             defaultValue={customId}
             onChange={(e) => setCustomId(e.target.value)}
@@ -146,7 +153,7 @@ export default function PaypalPayment() {
               Loading payment options...
             </div>
           }
-          <div ref={paypalContainerRef} id="paypal-button-container" className="w-full"></div>
+          <div id={paypalButtonContainerId} className="w-full min-h-[100px]"></div>
         </form>
       </div>
     </>

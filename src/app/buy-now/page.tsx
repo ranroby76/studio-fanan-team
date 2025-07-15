@@ -34,8 +34,9 @@ export default function BuyNowPage() {
             </div>
           </div>
         </div>
-        <div className="mt-4 p-4">
-            <PaypalPayment />
+        <div className="mt-4 p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <PaypalPayment price="22.00" title="$22" />
+          <PaypalPayment price="12.00" title="$12" />
         </div>
       </div>
     </div>
