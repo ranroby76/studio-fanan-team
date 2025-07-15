@@ -2,9 +2,9 @@
 'use client';
 
 import { useState, useEffect, createContext, useContext, type ReactNode } from 'react';
-import { onAuthStateChanged, type User } from 'firebase/auth';
+import { onAuthStateChanged, isSignInWithEmailLink, signInWithEmailLink, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
-import { Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface AuthContextType {
   user: User | null;
@@ -19,25 +19,53 @@ const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
 
   useEffect(() => {
-    // This is the key part: onAuthStateChanged is a Firebase listener that
-    // triggers whenever the user's sign-in state changes.
+    // Handle the sign-in link verification when the component mounts
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      let email = window.localStorage.getItem('emailForSignIn');
+      if (!email) {
+        // User opened the link on a different device. To prevent session fixation
+        // attacks, ask the user to provide the email again.
+        email = window.prompt('Please provide your email for confirmation');
+      }
+      if (email) {
+        signInWithEmailLink(auth, email, window.location.href)
+          .then((result) => {
+            // Clear email from storage.
+            window.localStorage.removeItem('emailForSignIn');
+            // You can access the new user via result.user
+            // Additional user info profile can be retrieved here.
+            toast({
+              title: 'Success!',
+              description: 'You have been logged in successfully.',
+            });
+          })
+          .catch((error) => {
+             console.error("Error signing in with email link:", error);
+             toast({
+              title: 'Login Failed',
+              description: 'The sign-in link is invalid or has expired. Please try again.',
+              variant: 'destructive',
+            });
+          });
+      }
+    }
+
+
+    // Standard auth state listener
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      // If the user object exists, they are signed in. If it's null, they're signed out.
       setUser(user);
-      // We set loading to false once we've checked the auth state.
       setIsLoading(false);
     });
 
     // Cleanup subscription on unmount
     return () => unsubscribe();
-  }, []);
+  }, [toast]);
 
   const value = { user, isLoading };
 
-  // While we're first checking for the user's status, you could show a global loader,
-  // but for this implementation, we will handle loading state inside the components that use the hook.
   return (
     <AuthContext.Provider value={value}>
       {children}
