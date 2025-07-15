@@ -43,6 +43,17 @@ export default function HomePage() {
           />
         </div>
       </section>
+      
+      <section className="container mx-auto px-4 text-center">
+        <div className="bg-secondary/50 p-6 rounded-lg shadow-md border border-secondary">
+          <p className="text-lg font-semibold text-secondary-foreground">
+            All of our plugins are offered as demos with some limitations. We encourage you to test them before purchase.
+          </p>
+          <p className="text-md mt-2 text-secondary-foreground/80">
+            Please read the registration instructions on the <Link href="/how-to-buy" className="font-bold underline hover:text-primary">How to Buy</Link> page.
+          </p>
+        </div>
+      </section>
 
       <section className="w-full py-4 bg-gradient-to-r from-green-200 via-yellow-200 to-orange-200">
         <div className="container mx-auto px-4">
