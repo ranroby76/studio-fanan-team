@@ -8,7 +8,7 @@ export default function BuyNowPage() {
   return (
     <div className="container mx-auto px-4 flex justify-center items-center">
       <div className="relative w-full max-w-5xl bg-muted/50 p-4 rounded-xl shadow-inner">
-        <div className="relative w-full" style={{ aspectRatio: '1472 / 832' }}>
+        <div className="relative w-full" style={{ aspectRatio: '1.768' }}>
           <Image
             src="/images/A5.jpg"
             alt="Synthesizer background"
@@ -22,7 +22,7 @@ export default function BuyNowPage() {
             <h1 className="text-white font-bold text-5xl md:text-7xl lg:text-8xl tracking-wider uppercase font-impact" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
               Welcome To
             </h1>
-            <div className="relative w-full max-w-lg transform scale-[1.5] origin-bottom mb-8" style={{ aspectRatio: '1015 / 234' }}>
+            <div className="relative w-full max-w-lg transform scale-[2] origin-bottom mb-16" style={{ aspectRatio: '4.337' }}>
                <Image
                 src="/images/A6.png"
                 alt="Fanan Store"
@@ -35,8 +35,32 @@ export default function BuyNowPage() {
           </div>
         </div>
         <div className="mt-4 p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <PaypalPayment price="22.00" title="$22" />
-          <PaypalPayment price="12.00" title="$12" />
+            <div className="flex flex-col items-center">
+                <div className="mb-4">
+                    <Image
+                        src="/images/mad midi machines.png"
+                        alt="Mad MIDI Machines Pack"
+                        width={400}
+                        height={60}
+                        className="object-contain"
+                        data-ai-hint="synthesizer abstract"
+                    />
+                </div>
+                <PaypalPayment price="22.00" title="$22" />
+            </div>
+            <div className="flex flex-col items-center">
+                <div className="mb-4">
+                    <Image
+                        src="/images/pro pack.png"
+                        alt="Pro Pack"
+                        width={400}
+                        height={60}
+                        className="object-contain"
+                        data-ai-hint="professional audio"
+                    />
+                </div>
+                <PaypalPayment price="12.00" title="$12" />
+            </div>
         </div>
       </div>
     </div>
