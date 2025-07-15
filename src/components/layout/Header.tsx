@@ -31,7 +31,6 @@ const secondaryNavLinks = [
 ];
 
 const productLinks = [
-    { href: '/products', label: 'All Products' },
     { href: '/pro-pack', label: 'Max Pack' },
     { href: '/mad-midi-machine-pack', label: 'Mad MIDI Machine Pack' },
     { href: '/free-pack', label: 'Free Pack' },
@@ -68,6 +67,10 @@ export default function Header() {
   const logoDisplayHeight = 72;
 
   const firmLogoPath = firmLogos?.firmLogoUrl ? `/images/${firmLogos.firmLogoUrl}` : '';
+  const isProductsPageActive = () => {
+      if (pathname.startsWith('/products')) return true;
+      return productLinks.some(p => pathname.startsWith(p.href) && p.href !== '/');
+  }
 
   return (
     <header className="bg-card border-b shadow-md sticky top-0 z-50">
@@ -115,7 +118,7 @@ export default function Header() {
             <DropdownMenuTrigger asChild>
                <Button variant="ghost" className={cn(
                 "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
-                productLinks.some(p => pathname.startsWith(p.href) && p.href !== '/') 
+                isProductsPageActive()
                   ? "text-primary bg-primary/10 font-semibold" 
                   : "text-foreground/70",
                 "flex items-center gap-2 px-3 py-2 rounded-md"
