@@ -68,7 +68,7 @@ export default function Header() {
 
   const firmLogoPath = firmLogos?.firmLogoUrl ? `/images/${firmLogos.firmLogoUrl}` : '';
   const isProductsPageActive = () => {
-      if (pathname.startsWith('/products')) return true;
+      if (pathname === '/products') return true; // Keep main products page active
       return productLinks.some(p => pathname.startsWith(p.href) && p.href !== '/');
   }
 
