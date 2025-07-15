@@ -17,7 +17,6 @@ export default function HomePage() {
 
   useEffect(() => {
     try {
-      // "use client" component can't be async, so we use a sync function here.
       const prods = getProducts();
       setProducts(prods);
     } catch (error)      {
