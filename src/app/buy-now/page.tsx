@@ -36,7 +36,7 @@ export default function BuyNowPage() {
         </div>
         <div className="mt-4 p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex flex-col items-center">
-                <div className="mb-4">
+                <div className="mb-4 flex items-center justify-center h-[60px]">
                     <Image
                         src="/images/mad midi machines.png"
                         alt="Mad MIDI Machines Pack"
@@ -49,7 +49,7 @@ export default function BuyNowPage() {
                 <PaypalPayment price="22.00" title="$22" />
             </div>
             <div className="flex flex-col items-center">
-                <div className="mb-4">
+                <div className="mb-4 flex items-center justify-center h-[60px]">
                     <Image
                         src="/images/pro pack.png"
                         alt="Pro Pack"
