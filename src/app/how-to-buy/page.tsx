@@ -9,7 +9,7 @@ const steps = [
     icon: ShoppingCart,
     title: "1. Browse Our Products",
     description: "Explore our range of VST plugins on the products page. Read descriptions, check out demos, and find the perfect tools for your sound.",
-    link: "/products",
+    link: "/pro-pack",
     linkLabel: "Explore Products"
   },
   {
