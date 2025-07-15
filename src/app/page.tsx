@@ -1,3 +1,4 @@
+
 // src/app/page.tsx
 "use client";
 
@@ -20,7 +21,7 @@ export default function HomePage() {
       // "use client" component can't be async, so we use a sync function here.
       const prods = getProducts();
       setProducts(prods);
-    } catch (error) {
+    } catch (error)      {
       console.error("Error fetching products:", error);
     } finally {
       setIsLoading(false);
@@ -29,24 +30,8 @@ export default function HomePage() {
 
   return (
     <div className="space-y-12 animate-fade-in">
-      <div className="bg-primary/10 w-full">
-        <div className="container mx-auto px-4 text-center space-y-3 py-3 rounded-lg shadow-sm">
-          <Separator className="bg-border/50" />
-          <p className="text-foreground/80">
-            New to Fanan Team? Please, always read the{" "}
-            <Link href="/how-to-buy" className="text-accent hover:underline font-semibold">
-              &quot;how to buy?&quot;
-            </Link>{" "}
-            instructions before purchasing.
-          </p>
-          <Separator className="bg-border/50" />
-          <p className="text-foreground/80 font-medium">
-            New folks, please, Always try the demo first before purchasing. Never buy before first testing a demo on your system.
-          </p>
-        </div>
-      </div>
       
-      <section className="relative w-full max-w-3xl mx-auto h-auto overflow-hidden bg-muted/20 rounded-lg shadow-lg">
+      <section className="relative w-full  mx-auto h-auto overflow-hidden bg-muted/20  shadow-lg">
         <Image
           src="/images/A2.png"
           alt="Site Banner - GUI Me Design Philosophy"
@@ -89,41 +74,38 @@ export default function HomePage() {
       </div>
       
       <div className="container mx-auto px-4">
-        <section className="bg-card p-8 rounded-xl shadow-lg mt-8">
-           <h2 className="text-3xl font-headline font-semibold text-primary mb-6 text-center">Featured Products</h2>
-           {isLoading ? (
-             <div className="flex justify-center items-center h-64">
-               <Loader2 className="h-12 w-12 animate-spin text-primary" />
-             </div>
-           ) : products.length === 0 ? (
-            <div className="text-center py-10">
-              <PackageSearch className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-              <p className="text-muted-foreground">No featured products to display yet.</p>
-            </div>
-           ) : (
-             <div className="grid md:grid-cols-2 gap-8">
-               {products.map((product) => (
-                 <Link key={product.id} href={`/products/${product.id}`} className="group block">
-                   <Card className="overflow-hidden h-full transform transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
-                      <div className="relative aspect-video">
-                         <Image
-                           src={product.mainImage || "https://placehold.co/600x400.png"}
-                           alt={product.title}
-                           fill
-                           className="object-cover transition-transform duration-300 group-hover:scale-105"
-                           data-ai-hint="instrument audio"
-                         />
-                      </div>
-                      <div className="p-4 bg-card-foreground text-background">
-                         <CardTitle className="font-headline text-lg truncate text-primary group-hover:text-accent transition-colors">{product.title}</CardTitle>
-                         <CardDescription className="text-sm text-muted-foreground line-clamp-2 mt-1">{product.description}</CardDescription>
-                      </div>
-                   </Card>
-                 </Link>
-               ))}
-             </div>
-           )}
-        </section>
+        <div className="space-y-8">
+            <Link href="/mad-midi-machine-pack" className="block w-full group">
+                <Image
+                    src="/images/mad midi machines.png"
+                    alt="Mad MIDI Machines Pack"
+                    width={1200}
+                    height={400}
+                    className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    data-ai-hint="synthesizer abstract"
+                />
+            </Link>
+            <Link href="/pro-pack" className="block w-full group">
+                <Image
+                    src="/images/pro pack.png"
+                    alt="Max Pack"
+                    width={1200}
+                    height={400}
+                    className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    data-ai-hint="professional audio"
+                />
+            </Link>
+             <Link href="/free-pack" className="block w-full group">
+                <Image
+                    src="/images/free pack.png"
+                    alt="Free Pack"
+                    width={1200}
+                    height={400}
+                    className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    data-ai-hint="gift box"
+                />
+            </Link>
+        </div>
       </div>
     </div>
   );
