@@ -3,8 +3,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2, Package, ChevronDown, List, KeyRound } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { Music2, Home, Mail, VenetianMask, HelpCircle, ShoppingCart, Settings, Sun, Moon, Loader2, Package, ChevronDown, List, KeyRound, LogOut } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useTheme } from 'next-themes';
@@ -16,7 +16,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import { useAuth } from '@/components/auth/AuthProvider';
+import { auth } from '@/lib/firebase';
+import { useToast } from '@/hooks/use-toast';
 
 const mainNavLinks = [
   { href: '/', label: 'Home', icon: Home },
@@ -25,7 +28,6 @@ const mainNavLinks = [
   { href: '/how-to-buy', label: 'How to Buy', icon: HelpCircle },
   { href: '/buy-now', label: 'Buy Now', icon: ShoppingCart },
   { href: '/contact-us', label: 'Contact Us', icon: Mail },
-  { href: '/vip-login', label: 'VIP Login', icon: KeyRound },
 ];
 
 const productLinks = [
@@ -37,10 +39,13 @@ const productLinks = [
 const homeLink = mainNavLinks.find(link => link.href === '/');
 const otherNavLinks = mainNavLinks.filter(link => link.href !== '/');
 
-
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { toast } = useToast();
   const { theme, setTheme, resolvedTheme } = useTheme();
+  const { user, isLoading: isAuthLoading } = useAuth();
+
   const [mounted, setMounted] = useState(false);
   const [firmLogos, setFirmLogos] = useState<FirmLogosData | null>(null);
   const [isLoadingLogos, setIsLoadingLogos] = useState(true);
@@ -63,6 +68,24 @@ export default function Header() {
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  };
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      toast({
+        title: 'Logged Out',
+        description: 'You have been successfully logged out.',
+      });
+      router.push('/');
+    } catch (error) {
+      console.error('Error logging out:', error);
+      toast({
+        title: 'Logout Failed',
+        description: 'An error occurred while logging out. Please try again.',
+        variant: 'destructive',
+      });
+    }
   };
 
   const logoDisplayWidth = 166;
@@ -146,16 +169,39 @@ export default function Header() {
             </Button>
           ))}
 
-          <Button variant="ghost" asChild className={cn(
-              "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
-              pathname.startsWith('/manage') ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
-            )}>
-              <Link href="/manage" className="flex items-center gap-2 px-3 py-2 rounded-md">
-                <Settings size={18} />
-                <span className="hidden md:inline">Manage Site</span>
-                <span className="md:hidden">Manage</span>
-              </Link>
-          </Button>
+          {!isAuthLoading && user && (
+            <Button variant="ghost" asChild className={cn(
+                "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
+                pathname.startsWith('/manage') ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
+              )}>
+                <Link href="/manage" className="flex items-center gap-2 px-3 py-2 rounded-md">
+                  <Settings size={18} />
+                  <span className="hidden md:inline">Manage Site</span>
+                  <span className="md:hidden">Manage</span>
+                </Link>
+            </Button>
+          )}
+
+          {!isAuthLoading && !user && (
+            <Button variant="ghost" asChild className={cn(
+                "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
+                pathname.startsWith('/vip-login') ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
+              )}>
+                <Link href="/vip-login" className="flex items-center gap-2 px-3 py-2 rounded-md">
+                  <KeyRound size={18} />
+                  <span className="hidden md:inline">VIP Login</span>
+                  <span className="md:hidden">VIP</span>
+                </Link>
+            </Button>
+          )}
+
+          {user && (
+            <Button variant="ghost" onClick={handleLogout} className="text-sm font-medium text-foreground/70 hover:text-primary hover:bg-primary/10">
+              <LogOut size={18} />
+              <span className="hidden md:inline ml-2">Logout</span>
+              <span className="md:hidden">Logout</span>
+            </Button>
+          )}
 
            {mounted && (
             <Button

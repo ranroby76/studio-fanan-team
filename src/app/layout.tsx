@@ -1,9 +1,11 @@
+// src/app/layout.tsx
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
+import { AuthProvider } from '@/components/auth/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'Fanan Team Hub',
@@ -31,12 +33,14 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Header />
-          <main className="flex-grow py-8">
-            {children}
-          </main>
-          <Footer />
-          <Toaster />
+          <AuthProvider>
+            <Header />
+            <main className="flex-grow py-8">
+              {children}
+            </main>
+            <Footer />
+            <Toaster />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
