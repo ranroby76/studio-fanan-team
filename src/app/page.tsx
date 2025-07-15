@@ -58,11 +58,29 @@ export default function HomePage() {
         />
       </section>
 
-      <section className="w-full py-8 bg-gradient-to-r from-green-200 via-yellow-200 to-orange-200">
+      <section className="w-full py-4 bg-gradient-to-r from-green-200 via-yellow-200 to-orange-200">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-headline font-bold text-slate-800 tracking-wider uppercase">
-            WE BELIEVE EVERY SEASON IS SALES SEASON
-          </h2>
+           <div className="flex justify-center items-center gap-4">
+            <Image 
+              src="/images/A4.png" 
+              alt="Promo graphic" 
+              width={64} 
+              height={64} 
+              className="hidden sm:block object-contain"
+              data-ai-hint="decorative graphic" 
+            />
+            <h2 className="text-3xl font-headline font-bold text-slate-800 tracking-wider uppercase">
+              WE BELIEVE EVERY SEASON IS SALES SEASON
+            </h2>
+            <Image 
+              src="/images/A4.png" 
+              alt="Promo graphic" 
+              width={64} 
+              height={64} 
+              className="hidden sm:block object-contain"
+              data-ai-hint="decorative graphic"
+            />
+          </div>
         </div>
       </section>
       
