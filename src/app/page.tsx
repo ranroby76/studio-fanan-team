@@ -29,7 +29,7 @@ export default function HomePage() {
 
   return (
     <div className="space-y-12 animate-fade-in">
-      <div className="bg-primary/10">
+      <div className="bg-primary/10 w-full">
         <div className="container mx-auto px-4 text-center space-y-3 py-3 rounded-lg shadow-sm">
           <Separator className="bg-border/50" />
           <p className="text-foreground/80">
@@ -59,24 +59,24 @@ export default function HomePage() {
       </section>
 
       <section className="w-full py-4 bg-gradient-to-r from-green-200 via-yellow-200 to-orange-200">
-        <div className="container mx-auto px-4 text-center">
-           <div className="flex justify-center items-center gap-4">
+        <div className="container mx-auto px-4">
+           <div className="flex justify-between items-center">
             <Image 
               src="/images/A4.png" 
               alt="Promo graphic" 
-              width={64} 
-              height={64} 
+              width={160} 
+              height={160} 
               className="hidden sm:block object-contain"
               data-ai-hint="decorative graphic" 
             />
-            <h2 className="text-3xl font-headline font-bold text-slate-800 tracking-wider uppercase">
+            <h2 className="text-3xl font-headline font-bold text-slate-800 tracking-wider uppercase text-center px-4">
               WE BELIEVE EVERY SEASON IS SALES SEASON
             </h2>
             <Image 
               src="/images/A4.png" 
               alt="Promo graphic" 
-              width={64} 
-              height={64} 
+              width={160} 
+              height={160} 
               className="hidden sm:block object-contain"
               data-ai-hint="decorative graphic"
             />
