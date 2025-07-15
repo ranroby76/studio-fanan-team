@@ -61,7 +61,14 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
             onApprove: function(data: any, actions: any) {
               return actions.order.capture().then(function(details: any) {
                 const capturedCustomId = details.purchase_units[0].custom_id;
-                const newSerialNumber = Math.floor(((((((parseInt(capturedCustomId) + 8354) * 2) + 1691) * 2) - 9097) * 0.1));
+                
+                let newSerialNumber;
+                if (price === "12.00") {
+                  newSerialNumber = (((((parseInt(capturedCustomId) + 7541) * 2) + 2001) * 2) - 9002);
+                } else {
+                  newSerialNumber = Math.floor(((((((parseInt(capturedCustomId) + 8354) * 2) + 1691) * 2) - 9097) * 0.1));
+                }
+
                 setSerialNumber(newSerialNumber.toString());
                 
                 const customerEmail = details.payer.email_address;
