@@ -1,5 +1,6 @@
 // src/app/buy-now/page.tsx
 import Image from "next/image";
+import PaypalPayment from "@/components/paypal/PaypalPayment";
 
 export default function BuyNowPage() {
   // A5 dimensions: 1472x832 -> aspect-ratio: 1.768
@@ -32,6 +33,9 @@ export default function BuyNowPage() {
               />
             </div>
           </div>
+        </div>
+        <div className="mt-4 p-4">
+            <PaypalPayment />
         </div>
       </div>
     </div>
