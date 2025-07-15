@@ -36,8 +36,8 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
   }, []);
 
   useEffect(() => {
-    if (scriptLoaded && window.paypal) {
-      const paypalContainer = document.getElementById(paypalButtonContainerId);
+    if (scriptLoaded && window.paypal && paypalContainerRef.current) {
+      const paypalContainer = paypalContainerRef.current;
       if (paypalContainer && paypalContainer.children.length === 0) {
         setIsLoading(false);
         try {
@@ -63,7 +63,7 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
                 
                 let newSerialNumber;
                 if (price === "12.00") {
-                  newSerialNumber = (((((parseInt(capturedCustomId) + 7541) * 2) + 2001) * 2) - 9002);
+                   newSerialNumber = (((((parseInt(capturedCustomId) + 7541) * 2) + 2001) * 2) - 9002);
                 } else {
                   newSerialNumber = Math.floor(((((((parseInt(capturedCustomId) + 8354) * 2) + 1691) * 2) - 9097) * 0.1));
                 }
@@ -129,8 +129,8 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
             console.error("EmailJS SDK failed to load", e);
         }}
       />
-      <div className="w-full max-w-sm mx-auto p-6 rounded-lg">
-        <h2 className="text-2xl font-bold text-center mb-4 text-primary">{title}</h2>
+      <div className="w-full max-w-sm p-6 rounded-lg">
+        <h2 className="text-5xl font-bold text-center mb-4 text-primary">{title}</h2>
         <form id={`paypal-form-${price}`} onSubmit={(e) => e.preventDefault()}>
           <label htmlFor={`custom_unique_id-${price}`} className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
           <Input 
@@ -159,7 +159,7 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
               Loading payment options...
             </div>
           }
-          <div id={paypalButtonContainerId} className="w-full min-h-[100px]"></div>
+          <div id={paypalButtonContainerId} ref={paypalContainerRef} className="w-full min-h-[100px]"></div>
         </form>
       </div>
     </>
