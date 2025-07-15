@@ -1,8 +1,7 @@
-
 // src/app/how-to-buy/page.tsx
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { HelpCircle, ShieldCheck, DownloadCloud, ShoppingCart, UserCheck, KeyRound, FolderWarning, Contact } from "lucide-react";
+import { HelpCircle, ShieldCheck, DownloadCloud, ShoppingCart, UserCheck, FileWarning, Contact } from "lucide-react";
 import Link from "next/link";
 
 export default function HowToBuyPage() {
@@ -77,7 +76,7 @@ export default function HowToBuyPage() {
 
             <Card className="bg-card/50 shadow-md">
               <CardHeader className="flex flex-row items-center gap-4">
-                <FolderWarning className="h-10 w-10 text-amber-600" />
+                <FileWarning className="h-10 w-10 text-amber-600" />
                 <div>
                   <CardTitle className="font-headline text-2xl text-amber-700">Important: License File Location</CardTitle>
                   <CardDescription>Do not move the license file!</CardDescription>
