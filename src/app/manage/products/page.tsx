@@ -157,7 +157,7 @@ function ProductsManagementComponent() {
                       src={product.mainImage.url}
                       alt={product.title}
                       fill
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                      className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
                       data-ai-hint="instrument audio"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
