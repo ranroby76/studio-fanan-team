@@ -1,13 +1,14 @@
 // src/app/manage/products/page.tsx
 "use client";
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, ExternalLink, ClipboardCopy } from 'lucide-react';
-import type { Product } from '@/lib/types';
+import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, ExternalLink, ClipboardCopy, Star, Box, Gift } from 'lucide-react';
+import type { Product, Pack } from '@/lib/types';
 import { getProducts, generateJsonForDelete } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 import {
@@ -22,6 +23,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
 
 // Helper to format the tags
 const formatTags = (formats: Product['formats']) => {
@@ -34,13 +36,23 @@ const formatTags = (formats: Product['formats']) => {
   if (formats.win64) winFormats.push('64bit');
 
   if (winFormats.length > 0) {
-    parts.push(`Windows ${winFormats.join(', ')}`);
+    parts.push(`Windows ${winFormats.join('/')}`);
   }
   
-  return parts.join(', ');
+  return parts.join(' | ');
 };
 
-export default function ProductsManagementPage() {
+const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
+  "Pro Pack": { icon: Star, title: "Pro Pack" },
+  "Mad MIDI Machines Pack": { icon: Box, title: "Mad MIDI Machines" },
+  "Free Pack": { icon: Gift, title: "Free Pack" },
+};
+
+
+function ProductsManagementComponent() {
+  const searchParams = useSearchParams();
+  const activePack = (searchParams.get('pack') as Pack | null) || "Pro Pack";
+
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [jsonForDelete, setJsonForDelete] = useState('');
@@ -51,8 +63,9 @@ export default function ProductsManagementPage() {
   const fetchProducts = useCallback(() => {
     setIsLoading(true);
     try {
-      const prods = getProducts();
-      setProducts(prods);
+      const allProds = getProducts();
+      const filteredProds = allProds.filter(p => p.pack === activePack);
+      setProducts(filteredProds);
     } catch (error) {
       console.error("Error fetching products:", error);
       toast({
@@ -63,7 +76,7 @@ export default function ProductsManagementPage() {
     } finally {
       setIsLoading(false);
     }
-  }, [toast]);
+  }, [toast, activePack]);
 
   useEffect(() => {
     fetchProducts();
@@ -89,70 +102,81 @@ export default function ProductsManagementPage() {
     toast({ title: 'Copied to clipboard!', description: 'Paste the new content into src/data/products.json to finalize deletion.' });
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
-        <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
-        <p className="text-lg text-muted-foreground">Loading products...</p>
-      </div>
-    );
-  }
+  const ActiveIcon = packConfig[activePack]?.icon || Package;
 
   return (
-    <div className="animate-fade-in space-y-8">
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div className="animate-fade-in space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 border-b pb-4">
         <div className="flex items-center gap-3">
-          <Package className="h-10 w-10 text-primary" />
-          <h1 className="text-4xl font-headline font-bold text-primary">Product Catalog</h1>
+          <ActiveIcon className="h-10 w-10 text-primary" />
+          <h1 className="text-4xl font-headline font-bold text-primary">{packConfig[activePack]?.title || 'Product'} Catalog</h1>
         </div>
+         <div className="flex items-center gap-2 p-1 bg-muted rounded-lg">
+          {(Object.keys(packConfig) as Pack[]).map(pack => (
+            <Button key={pack} asChild variant={activePack === pack ? 'default' : 'ghost'} className="shadow-sm">
+              <Link href={`/manage/products?pack=${encodeURIComponent(pack)}`}>{packConfig[pack].title}</Link>
+            </Button>
+          ))}
+        </div>
+      </div>
+      
+      <div className="flex justify-end">
         <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg transition-shadow">
-          <Link href="/manage/add">
-            <PlusCircle className="mr-2 h-5 w-5" /> Add New Product
+          <Link href={`/manage/add?pack=${encodeURIComponent(activePack)}`}>
+            <PlusCircle className="mr-2 h-5 w-5" /> Add New Product to {packConfig[activePack].title}
           </Link>
         </Button>
       </div>
 
-      {products.length === 0 ? (
+
+      {isLoading ? (
+         <div className="flex flex-col items-center justify-center min-h-[calc(100vh-400px)]">
+            <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
+            <p className="text-lg text-muted-foreground">Loading products for {packConfig[activePack].title}...</p>
+          </div>
+      ) : products.length === 0 ? (
         <Card className="text-center py-12 shadow-lg">
           <CardHeader>
             <PackageSearch className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
-            <CardTitle className="text-2xl font-headline text-primary">No Products Yet</CardTitle>
+            <CardTitle className="text-2xl font-headline text-primary">No Products in {packConfig[activePack].title}</CardTitle>
           </CardHeader>
           <CardContent>
             <CardDescription className="text-lg text-foreground/80">
-              Start by adding your first VST product to the catalog.
+              Start by adding your first product to this pack.
             </CardDescription>
           </CardContent>
-          <CardFooter className="justify-center">
-             <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              <Link href="/manage/add">
-                <PlusCircle className="mr-2 h-5 w-5" /> Add Your First Product
-              </Link>
-            </Button>
-          </CardFooter>
         </Card>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
             <Card key={product.id} className="group flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden bg-card">
               <Link href={`/products/${product.slug}`} className="block">
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={product.mainImage?.url || "https://placehold.co/400x300.png"}
-                    alt={product.title}
-                    width={400}
-                    height={300}
-                    className="object-cover w-full aspect-[4/3] group-hover:scale-105 transition-transform duration-300"
-                    data-ai-hint="instrument audio"
-                  />
+                <div className="relative overflow-hidden aspect-[4/3] bg-muted">
+                  {product.mainImage?.url ? (
+                     <Image
+                      src={product.mainImage.url}
+                      alt={product.title}
+                      fill
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                      data-ai-hint="instrument audio"
+                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                    />
+                  ): (
+                    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                      No Image
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                 </div>
-                <div className="p-4 bg-background">
+                <div className="p-4 bg-background flex-grow flex flex-col">
                   <h3 className="text-xl font-bold font-headline text-primary truncate">{product.title}</h3>
-                  <p className="text-sm text-foreground/80 h-10 line-clamp-2">{product.shortDescription}</p>
-                  <p className="text-xs text-muted-foreground mt-2 truncate">{formatTags(product.formats)}</p>
+                  <p className="text-sm text-foreground/80 h-10 line-clamp-2 flex-grow">{product.shortDescription}</p>
                 </div>
               </Link>
+
+              <div className="p-3 border-t bg-muted/30">
+                 <p className="text-xs text-muted-foreground text-center truncate">{formatTags(product.formats)}</p>
+              </div>
 
               <CardFooter className="grid grid-cols-2 gap-2 mt-auto p-2 border-t bg-muted/50">
                 <Button variant="outline" size="sm" asChild className="border-accent text-accent hover:bg-accent/10">
@@ -202,4 +226,13 @@ export default function ProductsManagementPage() {
       )}
     </div>
   );
+}
+
+
+export default function ProductsManagementPage() {
+  return (
+    <Suspense fallback={<Loader2 className="h-12 w-12 animate-spin text-primary" />}>
+      <ProductsManagementComponent />
+    </Suspense>
+  )
 }

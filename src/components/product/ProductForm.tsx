@@ -1,7 +1,7 @@
 // src/components/product/ProductForm.tsx
 "use client";
 
-import type { Product, ProductFormData } from '@/lib/types';
+import type { Product, ProductFormData, Pack } from '@/lib/types';
 import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -104,6 +104,7 @@ interface ProductFormProps {
   initialData?: Product;
   onSubmit: (data: ProductFormData, jsonString: string) => Promise<void>;
   isEditing?: boolean;
+  preselectedPack?: Pack;
 }
 
 const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | `thumbnails.${number}`, register: any, errors?: any }) => (
@@ -121,7 +122,7 @@ const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | 
 );
 
 
-export default function ProductForm({ initialData, onSubmit, isEditing = false }: ProductFormProps) {
+export default function ProductForm({ initialData, onSubmit, isEditing = false, preselectedPack }: ProductFormProps) {
   const [jsonOutput, setJsonOutput] = useState('');
   const { toast } = useToast();
   
@@ -132,7 +133,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
       : {
           title: '',
           shortDescription: '',
-          pack: "Pro Pack",
+          pack: preselectedPack || "Pro Pack",
           formats: { vst: false, vsti: false, win32: false, win64: false },
           mainImage: { filename: '', width: 0, height: 0 },
           thumbnails: Array(7).fill({ filename: '', width: 0, height: 0 }),
@@ -161,6 +162,13 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     }
   }, [watchedPack, setValue, form]);
 
+  useEffect(() => {
+    if (preselectedPack && !isEditing) {
+      setValue('pack', preselectedPack);
+    }
+  }, [preselectedPack, isEditing, setValue]);
+
+
   const processSubmit: SubmitHandler<ProductFormData> = async (data) => {
     const jsonString = generateProductsJsonString(data, isEditing);
     setJsonOutput(jsonString);
@@ -183,7 +191,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     <div className="space-y-4">
       <Card className="shadow-xl w-full max-w-4xl mx-auto">
         <CardHeader>
-          <CardTitle className="text-3xl font-headline text-primary">{isEditing ? `Edit Product: ${initialData?.title}` : 'Add New Product'}</CardTitle>
+          <CardTitle className="text-3xl font-headline text-primary">{isEditing ? `Edit Product: ${initialData?.title}` : `Add New Product to ${preselectedPack}`}</CardTitle>
           <CardDescription>
             Fill in the details. After generating, copy the JSON output and paste it into `src/data/products.json`.
             Images are relative to `public/images/`.
@@ -212,7 +220,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
                         control={control}
                         name="pack"
                         render={({ field }) => (
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select onValueChange={field.onChange} defaultValue={field.value} disabled={!!preselectedPack && !isEditing}>
                             <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select a pack" />
                             </SelectTrigger>
