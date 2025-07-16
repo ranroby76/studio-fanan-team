@@ -1,7 +1,7 @@
 // src/app/manage/products-order/ProductOrderClientPage.tsx
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   DndContext,
   closestCenter,
@@ -24,7 +24,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Textarea } from '@/components/ui/textarea';
-import { ListOrdered, GripVertical, Save, ClipboardCopy } from 'lucide-react';
+import { ListOrdered, GripVertical, Save, ClipboardCopy, Loader2 } from 'lucide-react';
 
 // Sortable Item Component
 function SortableItem({ product }: { product: Product }) {
@@ -54,7 +54,14 @@ function SortableItem({ product }: { product: Product }) {
 export default function ProductOrderClientPage({ initialProducts }: { initialProducts: Product[] }) {
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [jsonOutput, setJsonOutput] = useState('');
+  const [isClient, setIsClient] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    // This ensures the DndContext and its children only render on the client
+    // where window and other browser APIs are available, preventing hydration errors.
+    setIsClient(true);
+  }, []);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -103,22 +110,29 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <DndContext
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragEnd={handleDragEnd}
-          >
-            <SortableContext items={products.map(p => p.id)} strategy={verticalListSortingStrategy}>
-              <div className="space-y-3">
-                {products.map((product) => (
-                  <SortableItem key={product.id} product={product} />
-                ))}
-              </div>
-            </SortableContext>
-          </DndContext>
+          {!isClient ? (
+            <div className="flex items-center justify-center h-48">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                <p className="ml-4 text-muted-foreground">Loading interactive list...</p>
+            </div>
+          ) : (
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext items={products.map(p => p.id)} strategy={verticalListSortingStrategy}>
+                <div className="space-y-3">
+                  {products.map((product) => (
+                    <SortableItem key={product.id} product={product} />
+                  ))}
+                </div>
+              </SortableContext>
+            </DndContext>
+          )}
         </CardContent>
         <CardFooter>
-          <Button onClick={handleGenerateJson} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3">
+          <Button onClick={handleGenerateJson} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={!isClient}>
             <Save className="mr-2 h-5 w-5" />
             Generate Order JSON
           </Button>
