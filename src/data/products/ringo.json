@@ -1,0 +1,57 @@
+{
+    "id": "5zce03yyg",
+    "slug": "ringo",
+    "title": "Ringo",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/ringo1.jpg",
+      "width": 1153,
+      "height": 903
+    },
+    "thumbnails": [
+      {
+        "url": "/images/ringo2.jpg",
+        "width": 1157,
+        "height": 903
+      },
+      {
+        "url": "/images/ringo3.jpg",
+        "width": 1154,
+        "height": 906
+      },
+      {
+        "url": "/images/ringo4.jpg",
+        "width": 1156,
+        "height": 905
+      },
+      {
+        "url": "/images/ringo5.jpg",
+        "width": 1155,
+        "height": 903
+      }
+    ],
+    "description": "Ringo is back updated with a new design! Ringo is a MIDI groove machine. It is a MIDI tool and doesn't make any sound itself, but only control other VST instruments in the D.A.W. It uses the hardware arranger groove approach to play MIDI groove styles by dividing them into variations, just like the hardware arranger do. This grooving method allow users to build their own drum styles and controlling them instantly with their MIDI keyboards or MIDI pads, even in live sessions. Ringo drives 10 variations. 3 main variations, 3 fill variations, 2 intros and 2 endings. Each variation can be written separately at its own sequencer piano roll and be controlled by its own unique MIDI key. Ringo can control 4 VST instruments at once. It has its own tempo knob (but indeed, can be synced to the D.A.W's tempo as well), it has a crash generator which allows the user determining which note is generating a cymbal crash on transitions and has its own MIDI setup section that routes the MIDI out to a specific MIDI channel in the D.A.W. All the 4 instruments slots can play together or one by one (solo mode). Ringo also offers choosing the user's MIDI styles straight from the GUI. Once the user saved a style in one of Ringo's library folders, it will be shown at the style manager.",
+    "shortDescription": "Midi Groove Machine",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 12,
+    "downloadLinks": [
+      {
+        "id": "949vhhyyx",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/zX7aagDYF4T733ttt2zAX761WQuQ"
+      },
+      {
+        "id": "p3y0honls",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/rtMlyBpC#D2aQxAztaLellOHFQFLvsDXBe6nv9Xt36VCkziqgPyo"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": []
+  }

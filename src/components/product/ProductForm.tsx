@@ -2,7 +2,7 @@
 "use client";
 
 import type { Product, ProductFormData, Pack } from '@/lib/types';
-import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
+import { useForm, type SubmitHandler, Controller, type UseFormSetValue, type Path } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from '@/components/ui/card';
-import { Loader2, Save, ClipboardCopy } from 'lucide-react';
+import { Loader2, Save, ClipboardCopy, Wand2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import {
   Select,
@@ -22,6 +22,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { generateProductJsonString, transformProductToFormData, generateSlug } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
+import { getImageDimensions } from '@/lib/image-service';
 
 const imageSchema = z.object({
   filename: z.string(),
@@ -74,26 +75,98 @@ const productFormSchema = z.object({
     path: ["downloadLink1"], // You can specify a path, but the message is generic enough.
 });
 
+// Helper type for fetching state
+type FetchingState = { [key: string]: boolean };
 
-const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | `thumbnails.${number}`, register: any, errors?: any }) => (
-  <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px_80px] gap-2 items-start">
-    <Input
-      {...register(`${fieldName}.filename`)}
-      placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
-    />
-    <Input {...register(`${fieldName}.width`)} type="number" placeholder="W" />
-    <Input {...register(`${fieldName}.height`)} type="number" placeholder="H" />
-    {errors?.filename && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.filename.message}</p>}
-    {errors?.width && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.width.message}</p>}
-    {errors?.height && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.height.message}</p>}
-  </div>
-);
+const ImageInput = ({
+  fieldName,
+  register,
+  errors,
+  getValues,
+  setValue,
+  fetchingState,
+  setFetchingState,
+}: {
+  fieldName: `mainImage` | `thumbnails.${number}`;
+  register: any;
+  errors?: any;
+  getValues: (name: Path<ProductFormData>) => any;
+  setValue: UseFormSetValue<ProductFormData>;
+  fetchingState: FetchingState;
+  setFetchingState: React.Dispatch<React.SetStateAction<FetchingState>>;
+}) => {
+  const { toast } = useToast();
+
+  const handleFetchDimensions = async () => {
+    const filename = getValues(`${fieldName}.filename`);
+    if (!filename) {
+      toast({
+        title: 'Filename Missing',
+        description: 'Please enter a filename first.',
+        variant: 'destructive',
+      });
+      return;
+    }
+    
+    setFetchingState(prev => ({ ...prev, [fieldName]: true }));
+    try {
+      const result = await getImageDimensions(filename);
+      if (result.error) {
+        toast({
+          title: 'Error',
+          description: result.error,
+          variant: 'destructive',
+        });
+      } else if (result.width && result.height) {
+        setValue(`${fieldName}.width`, result.width);
+        setValue(`${fieldName}.height`, result.height);
+        toast({
+          title: 'Success!',
+          description: `Dimensions set to ${result.width}x${result.height}.`,
+        });
+      }
+    } catch (e) {
+      toast({
+        title: 'Client Error',
+        description: 'An unexpected error occurred.',
+        variant: 'destructive',
+      });
+    } finally {
+      setFetchingState(prev => ({ ...prev, [fieldName]: false }));
+    }
+  };
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_80px_80px] gap-2 items-center">
+      <Input
+        {...register(`${fieldName}.filename`)}
+        placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
+      />
+      <Button
+        type="button"
+        variant="outline"
+        size="icon"
+        onClick={handleFetchDimensions}
+        disabled={fetchingState[fieldName]}
+        className="h-9 w-9"
+      >
+        {fetchingState[fieldName] ? <Loader2 className="h-4 w-4 animate-spin" /> : <Wand2 className="h-4 w-4" />}
+      </Button>
+      <Input {...register(`${fieldName}.width`)} type="number" placeholder="W" />
+      <Input {...register(`${fieldName}.height`)} type="number" placeholder="H" />
+      {errors?.filename && <p className="text-sm text-destructive mt-1 sm:col-span-4">{errors.filename.message}</p>}
+      {errors?.width && <p className="text-sm text-destructive mt-1 sm:col-span-4">{errors.width.message}</p>}
+      {errors?.height && <p className="text-sm text-destructive mt-1 sm:col-span-4">{errors.height.message}</p>}
+    </div>
+  );
+};
 
 
 export default function ProductForm({ initialData, isEditing = false, preselectedPack }: { initialData?: Product; isEditing?: boolean; preselectedPack?: Pack; }) {
   const [jsonOutput, setJsonOutput] = useState('');
   const [targetFilename, setTargetFilename] = useState('');
   const { toast } = useToast();
+  const [fetchingState, setFetchingState] = useState<FetchingState>({});
   
   const { control, register, handleSubmit, formState: { errors, isSubmitting }, reset, watch, setValue, getValues } = useForm<ProductFormData>({
     resolver: zodResolver(productFormSchema),
@@ -250,7 +323,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
             
             <div>
               <Label htmlFor="mainImage.filename" className="font-semibold">Main Image</Label>
-              <ImageInput fieldName="mainImage" register={register} errors={errors.mainImage} />
+              <ImageInput fieldName="mainImage" register={register} errors={errors.mainImage} getValues={getValues} setValue={setValue} fetchingState={fetchingState} setFetchingState={setFetchingState} />
             </div>
 
             <div className="space-y-2">
@@ -258,7 +331,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
                 {[...Array(7)].map((_, index) => (
                   <div key={index}>
-                      <ImageInput fieldName={`thumbnails.${index}`} register={register} errors={errors.thumbnails?.[index]} />
+                      <ImageInput fieldName={`thumbnails.${index}`} register={register} errors={errors.thumbnails?.[index]} getValues={getValues} setValue={setValue} fetchingState={fetchingState} setFetchingState={setFetchingState} />
                   </div>
                 ))}
               </div>
