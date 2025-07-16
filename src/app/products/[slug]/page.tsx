@@ -15,6 +15,8 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogTitle,
+  DialogHeader,
 } from "@/components/ui/dialog";
 
 const getYouTubeVideoId = (url: string): string | null => {
@@ -169,9 +171,12 @@ export default function ProductPage() {
                     </button>
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl h-auto p-2">
+                     <DialogHeader>
+                        <DialogTitle className="sr-only">Full-size view of {product.title}</DialogTitle>
+                     </DialogHeader>
                      <Image
                         src={selectedImage.url}
-                        alt={`Main view of ${product.title}`}
+                        alt={`Full-size view of ${product.title}`}
                         width={selectedImage.width}
                         height={selectedImage.height}
                         className="object-contain rounded-md w-full h-auto"
