@@ -1,30 +1,47 @@
 // src/app/manage/edit/[productId]/page.tsx
+"use client";
+
 import ProductForm from '@/components/product/ProductForm';
 import type { Product } from '@/lib/types';
 import { getProductById } from '@/lib/product-service-server';
 import { AlertTriangle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useEffect, useState } from 'react';
 
-// This is a server component that fetches data
-export default async function EditProductPage({ params }: { params: { productId: string } }) {
+// This is now a client component that fetches data
+export default function EditProductPage({ params }: { params: { productId: string } }) {
   const productId = params.productId;
-  let product: Product | undefined;
-  let error: string | null = null;
+  const [product, setProduct] = useState<Product | undefined>(undefined);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (productId) {
-    try {
-      const foundProduct = await getProductById(productId);
-      if (foundProduct) {
-        product = foundProduct;
-      } else {
-        error = 'Product not found. It may have been deleted or the ID is incorrect.';
-      }
-    } catch (e) {
-      console.error("Error fetching product for edit:", e);
-      error = 'Failed to load product data. Check console for details.';
+  useEffect(() => {
+    if (productId) {
+      getProductById(productId)
+        .then(foundProduct => {
+          if (foundProduct) {
+            setProduct(foundProduct);
+          } else {
+            setError('Product not found. It may have been deleted or the ID is incorrect.');
+          }
+        })
+        .catch(e => {
+          console.error("Error fetching product for edit:", e);
+          setError('Failed to load product data. Check console for details.');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } else {
+      setError('Product ID is missing from the URL.');
+      setIsLoading(false);
     }
-  } else {
-    error = 'Product ID is missing from the URL.';
+  }, [productId]);
+
+
+  if (isLoading) {
+    // You can add a proper loading skeleton here if you want
+    return <p>Loading product...</p>;
   }
 
   if (error || !product) {

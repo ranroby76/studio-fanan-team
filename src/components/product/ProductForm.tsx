@@ -206,7 +206,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
                         control={control}
                         name="pack"
                         render={({ field }) => (
-                        <Select onValueChange={field.onChange} defaultValue={field.value} disabled={!!preselectedPack && !isEditing}>
+                        <Select onValueChange={field.onChange} value={field.value} disabled={!!preselectedPack && !isEditing}>
                             <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select a pack" />
                             </SelectTrigger>

@@ -113,18 +113,19 @@ function ProductsManagementComponent() {
           {products.map((product) => (
             <Card key={product.id} className="group flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden bg-card">
               <Link href={`/products/${product.slug}`} className="block">
-                <div className="relative overflow-hidden aspect-video bg-muted">
-                  {product.mainImage?.url ? (
-                     <Image
+                <div className="relative overflow-hidden bg-muted">
+                  {product.mainImage?.url && product.mainImage.width && product.mainImage.height ? (
+                    <Image
                       src={product.mainImage.url}
                       alt={product.title}
-                      fill
-                      className="object-contain w-full h-full p-2 group-hover:scale-105 transition-transform duration-300"
+                      width={product.mainImage.width}
+                      height={product.mainImage.height}
+                      className="object-contain w-full h-auto p-2 group-hover:scale-105 transition-transform duration-300"
                       data-ai-hint="instrument audio"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                  ): (
-                    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                  ) : (
+                    <div className="w-full h-48 flex items-center justify-center text-muted-foreground">
                       No Image
                     </div>
                   )}
@@ -137,7 +138,7 @@ function ProductsManagementComponent() {
               </Link>
 
               <div className="p-3 border-t bg-muted/30">
-                 <p className="text-lg text-muted-foreground text-center truncate">{formatTags(product.formats)}</p>
+                 <p className="text-base text-muted-foreground text-center truncate w-full">{formatTags(product.formats)}</p>
               </div>
 
               <CardFooter className="grid grid-cols-2 gap-2 mt-auto p-2 border-t bg-muted/50">
