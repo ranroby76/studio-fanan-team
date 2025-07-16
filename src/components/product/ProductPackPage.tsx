@@ -4,13 +4,14 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getProducts, formatTags } from '@/lib/product-service';
+import { formatTags } from '@/lib/product-service';
 import type { Product, Pack } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, PackageSearch } from 'lucide-react';
 
 interface ProductPackPageProps {
   pack: Pack;
+  initialProducts: Product[];
 }
 
 const packLogos: Record<Pack, string> = {
@@ -20,21 +21,14 @@ const packLogos: Record<Pack, string> = {
 };
 
 
-export default function ProductPackPage({ pack }: ProductPackPageProps) {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export default function ProductPackPage({ pack, initialProducts }: ProductPackPageProps) {
+  const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [isLoading, setIsLoading] = useState(false); // Initial data is now passed in
 
   useEffect(() => {
-    try {
-      const allProducts = getProducts();
-      const filteredProducts = allProducts.filter(p => p.pack === pack);
-      setProducts(filteredProducts);
-    } catch (error) {
-      console.error(`Failed to load products for ${pack}:`, error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [pack]);
+    setProducts(initialProducts);
+  }, [initialProducts]);
+
 
   return (
     <div className="container mx-auto px-4 animate-fade-in space-y-8">

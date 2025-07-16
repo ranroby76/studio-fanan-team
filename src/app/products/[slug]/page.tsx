@@ -4,7 +4,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { getProductBySlug } from '@/lib/product-service';
 import type { Product, ImageDetails } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -18,6 +17,7 @@ import {
   DialogTitle,
   DialogHeader,
 } from "@/components/ui/dialog";
+import { getProductBySlug } from '@/lib/product-service-server';
 
 const getYouTubeVideoId = (url: string): string | null => {
     if (!url) return null;
@@ -79,26 +79,30 @@ export default function ProductPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (slug) {
-      try {
-        const foundProduct = getProductBySlug(slug);
-        if (foundProduct) {
-          setProduct(foundProduct);
-          if (foundProduct.mainImage && foundProduct.mainImage.url) {
-            setSelectedImage(foundProduct.mainImage);
+    async function loadProduct() {
+        if (slug) {
+          try {
+            // This is now an async server action call
+            const foundProduct = await getProductBySlug(slug);
+            if (foundProduct) {
+              setProduct(foundProduct);
+              if (foundProduct.mainImage && foundProduct.mainImage.url) {
+                setSelectedImage(foundProduct.mainImage);
+              }
+            } else {
+              notFound();
+            }
+          } catch (e) {
+            console.error("Failed to load product", e);
+            notFound();
+          } finally {
+            setIsLoading(false);
           }
         } else {
-          // Trigger a 404 not found page
-          notFound();
+            setIsLoading(false);
         }
-      } catch (e) {
-        console.error("Failed to load product", e);
-      } finally {
-        setIsLoading(false);
-      }
-    } else {
-        setIsLoading(false);
     }
+    loadProduct();
   }, [slug]);
 
   const packImages: Record<Product['pack'], string> = {
@@ -130,7 +134,6 @@ export default function ProductPage() {
   }
 
   if (!product) {
-    // This will be caught by the notFound() call in useEffect, but as a fallback
     return (
         <Card className="max-w-md mx-auto mt-10 shadow-lg border-destructive">
             <CardHeader className="bg-destructive/10">

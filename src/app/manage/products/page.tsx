@@ -7,9 +7,9 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, ExternalLink, ClipboardCopy, Star, Box, Gift } from 'lucide-react';
+import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, Star, Box, Gift } from 'lucide-react';
 import type { Product, Pack } from '@/lib/types';
-import { getProducts, formatTags, generateSlug } from '@/lib/product-service';
+import { formatTags, generateSlug } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 import {
   AlertDialog,
@@ -22,6 +22,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { getProductsForPack } from '@/lib/product-service-server';
 
 const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
   "Pro Pack": { icon: Star, title: "Pro Pack" },
@@ -40,12 +41,12 @@ function ProductsManagementComponent() {
 
   const { toast } = useToast();
 
-  const fetchProducts = useCallback(() => {
+  const fetchProducts = useCallback(async (pack: Pack) => {
     setIsLoading(true);
     try {
-      const allProds = getProducts();
-      const filteredProds = allProds.filter(p => p.pack === activePack);
-      setProducts(filteredProds);
+      // This is now an async server action call
+      const prods = await getProductsForPack(pack);
+      setProducts(prods);
     } catch (error) {
       console.error("Error fetching products:", error);
       toast({
@@ -56,11 +57,11 @@ function ProductsManagementComponent() {
     } finally {
       setIsLoading(false);
     }
-  }, [toast, activePack]);
+  }, [toast]);
 
   useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
+    fetchProducts(activePack);
+  }, [activePack, fetchProducts]);
 
 
   const ActiveIcon = packConfig[activePack]?.icon || Package;
@@ -108,7 +109,7 @@ function ProductsManagementComponent() {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-8">
           {products.map((product) => (
             <Card key={product.id} className="group flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden bg-card">
               <Link href={`/products/${product.slug}`} className="block">

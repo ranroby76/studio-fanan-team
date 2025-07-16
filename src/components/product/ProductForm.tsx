@@ -89,12 +89,12 @@ const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | 
 );
 
 
-export default function ProductForm({ initialData, onSubmit, isEditing = false, preselectedPack }: { initialData?: Product; onSubmit: (data: ProductFormData, jsonString: string) => Promise<void>; isEditing?: boolean; preselectedPack?: Pack; }) {
+export default function ProductForm({ initialData, isEditing = false, preselectedPack }: { initialData?: Product; isEditing?: boolean; preselectedPack?: Pack; }) {
   const [jsonOutput, setJsonOutput] = useState('');
   const [targetFilename, setTargetFilename] = useState('');
   const { toast } = useToast();
   
-  const form = useForm<ProductFormData>({
+  const { control, register, handleSubmit, formState: { errors, isSubmitting }, reset, watch, setValue, getValues } = useForm<ProductFormData>({
     resolver: zodResolver(productFormSchema),
     defaultValues: initialData 
       ? transformProductToFormData(initialData)
@@ -116,8 +116,6 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
         },
   });
   
-  const { control, register, handleSubmit, formState: { errors, isSubmitting }, reset, watch, setValue } = form;
-  
   const watchedPack = watch('pack');
   const watchedTitle = watch('title');
 
@@ -133,11 +131,11 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
     if (watchedPack === 'Free Pack') {
       setValue('demoLimitations', '');
     } else {
-       if (form.getValues('demoLimitations') === '') {
+       if (getValues('demoLimitations') === '') {
           setValue('demoLimitations', '3 seconds silence every 15 seconds');
        }
     }
-  }, [watchedPack, setValue, form]);
+  }, [watchedPack, setValue, getValues]);
 
   useEffect(() => {
     if (preselectedPack && !isEditing) {
@@ -149,7 +147,10 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
   const processSubmit: SubmitHandler<ProductFormData> = async (data) => {
     const jsonString = generateProductJsonString(data, isEditing);
     setJsonOutput(jsonString);
-    await onSubmit(data, jsonString);
+     toast({
+        title: 'JSON Generated!',
+        description: `Copy the JSON content below.`,
+      });
   };
   
   const handleCopy = () => {
@@ -336,7 +337,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
         <Card className="shadow-xl w-full max-w-4xl mx-auto">
           <CardHeader>
             <CardTitle>Generated JSON Output</CardTitle>
-            <div className="text-sm text-muted-foreground">
+             <div className="text-sm text-muted-foreground">
                 <p>
                     {isEditing ? 'Copy this content and paste it into the file:' : 'Create a new file with this name and paste the content:'}
                 </p>

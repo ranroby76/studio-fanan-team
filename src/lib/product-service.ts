@@ -1,10 +1,10 @@
 // src/lib/product-service.ts
 import type { Product, ProductFormData, DownloadLink, ImageDetails, Formats } from '@/lib/types';
-import fs from 'fs';
-import path from 'path';
+
+// This file contains only client-safe utility functions.
+// All file-system related functions have been moved to product-service-server.ts
 
 const IMAGE_PREFIX = '/images/';
-const PRODUCTS_DIR = path.join(process.cwd(), 'src/data/products');
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
@@ -16,42 +16,7 @@ export const generateSlug = (title: string): string => {
     .replace(/\s+/g, '-'); // replace spaces with hyphens
 };
 
-// --- Data Reading Functions ---
-
-export const getProducts = (): Product[] => {
-  try {
-    const filenames = fs.readdirSync(PRODUCTS_DIR).filter(file => file.endsWith('.json'));
-    const products = filenames.map(filename => {
-      const filePath = path.join(PRODUCTS_DIR, filename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const product = JSON.parse(fileContents) as Product;
-      return product;
-    });
-    return products;
-  } catch (error) {
-    console.error("Could not read products directory:", error);
-    return [];
-  }
-};
-
-export const getProductById = (id: string): Product | undefined => {
-  const products = getProducts();
-  return products.find(p => p.id === id);
-};
-
-export const getProductBySlug = (slug: string): Product | undefined => {
-  try {
-    const filePath = path.join(PRODUCTS_DIR, `${slug}.json`);
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents) as Product;
-  } catch (error) {
-    // If file doesn't exist or is invalid, it will return undefined
-    console.error(`Could not read product file for slug "${slug}":`, error);
-    return undefined;
-  }
-};
-
-// --- JSON Generation for Editor ---
+// --- JSON Generation for Editor (CLIENT-SIDE) ---
 
 const ensureImagePath = (filename: string) => {
     if (!filename) return '';
