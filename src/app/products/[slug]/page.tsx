@@ -2,18 +2,33 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { useParams, notFound } from 'next/navigation';
+import { useParams, notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { getProductBySlug } from '@/lib/product-service';
 import type { Product } from '@/lib/types';
-import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Loader2, ServerCrash, Download, Info } from 'lucide-react';
+import { Loader2, ServerCrash, Download, ShoppingCart, Info, Youtube } from 'lucide-react';
+
+const getYouTubeVideoId = (url: string): string | null => {
+    try {
+        const urlObj = new URL(url);
+        if (urlObj.hostname === 'youtu.be') {
+            return urlObj.pathname.slice(1);
+        }
+        if (urlObj.hostname.includes('youtube.com')) {
+            return urlObj.searchParams.get('v');
+        }
+        return null;
+    } catch (e) {
+        return null;
+    }
+}
 
 export default function ProductPage() {
   const params = useParams();
+  const router = useRouter();
   const slug = typeof params.slug === 'string' ? params.slug : undefined;
   
   const [product, setProduct] = useState<Product | null>(null);
@@ -40,6 +55,12 @@ export default function ProductPage() {
     }
   }, [slug]);
 
+  const packImages: Record<Product['pack'], string> = {
+    "Pro Pack": "/images/pro pack.png",
+    "Mad MIDI Machines Pack": "/images/mad midi machines.png",
+    "Free Pack": "/images/free pack.png",
+  };
+
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
@@ -65,15 +86,19 @@ export default function ProductPage() {
   }
 
   if (!product) {
-    // This function will render the nearest not-found.tsx file
     notFound();
     return null;
   }
 
+  const allImages = [product.mainImage, ...product.thumbnails].filter(Boolean);
+  const videoIds = product.videoUrls?.map(getYouTubeVideoId).filter((id): id is string => !!id) || [];
+
   return (
     <div className="container mx-auto px-4 animate-fade-in">
       <div className="flex justify-between items-start mb-4">
-          <Badge variant="secondary" className="text-lg py-1 px-4">{product.pack}</Badge>
+          <div className="w-48 h-auto">
+            <Image src={packImages[product.pack]} alt={`${product.pack} logo`} width={300} height={60} className="object-contain" />
+          </div>
       </div>
       <h1 className="text-5xl font-bold font-headline text-primary mb-8 text-center">{product.title}</h1>
       
@@ -86,27 +111,27 @@ export default function ProductPage() {
                   src={selectedImage}
                   alt={`Main view of ${product.title}`}
                   fill
-                  className="object-contain"
+                  className="object-contain p-2"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
                   priority
                 />
               </div>
             )}
-            {product.thumbnails && product.thumbnails.length > 0 && (
+            {allImages.length > 1 && (
               <div className="p-2 bg-background border-t">
-                <div className="flex gap-2 justify-center">
-                  {[product.mainImage, ...product.thumbnails].map((thumb, index) => (
+                <div className="flex gap-2 justify-center flex-wrap">
+                  {allImages.map((thumb, index) => (
                      <button 
                         key={index} 
                         onClick={() => setSelectedImage(thumb)}
-                        className={`relative h-16 w-16 rounded-md overflow-hidden border-2 transition-all duration-200 ${selectedImage === thumb ? 'border-primary shadow-lg' : 'border-transparent hover:border-primary/50'}`}
+                        className={`relative h-20 w-20 rounded-md overflow-hidden border-2 transition-all duration-200 ${selectedImage === thumb ? 'border-primary shadow-lg' : 'border-transparent hover:border-primary/50'}`}
                       >
                        <Image
                           src={thumb}
                           alt={`Thumbnail ${index + 1}`}
                           fill
                           className="object-cover"
-                          sizes="64px"
+                          sizes="80px"
                         />
                      </button>
                   ))}
@@ -116,9 +141,68 @@ export default function ProductPage() {
           </Card>
         </div>
         <div className="md:col-span-2">
-            {/* Additional content will go here in next steps */}
+            <Card className="shadow-lg">
+                <CardHeader>
+                    <CardTitle className="font-headline text-2xl text-primary">About this Plugin</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                    <p className="text-foreground/80 whitespace-pre-line">{product.description}</p>
+                    
+                    <Separator />
+                    
+                    <div className="text-center">
+                        <p className="text-4xl font-bold text-accent">
+                            {product.price > 0 ? `$${product.price.toFixed(2)}` : 'Free'}
+                        </p>
+                    </div>
+
+                    {product.price > 0 && (
+                        <div className="bg-secondary/30 p-3 rounded-lg text-center">
+                            <h4 className="font-semibold text-secondary-foreground flex items-center justify-center gap-2"><Info size={16}/>Demo Limitations</h4>
+                            <p className="text-sm text-secondary-foreground/80">{product.demoLimitations}</p>
+                        </div>
+                    )}
+
+                    <div className="space-y-2">
+                        {product.downloadLinks.map(link => (
+                             <Button key={link.id} asChild className="w-full">
+                                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                                    <Download className="mr-2" /> {link.label}
+                                </a>
+                            </Button>
+                        ))}
+                    </div>
+
+                    {product.price > 0 && (
+                        <Button onClick={() => router.push('/buy-now')} className="w-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg py-6">
+                            <ShoppingCart className="mr-2" /> Buy Now
+                        </Button>
+                    )}
+                </CardContent>
+            </Card>
         </div>
       </div>
+       {videoIds.length > 0 && (
+        <section className="mt-12">
+            <h2 className="text-3xl font-headline text-primary mb-4 text-center flex items-center justify-center gap-3"><Youtube /> Videos</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {videoIds.map(videoId => (
+                    <div key={videoId} className="aspect-video rounded-lg overflow-hidden shadow-lg">
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src={`https://www.youtube.com/embed/${videoId}`}
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                ))}
+            </div>
+        </section>
+      )}
+
     </div>
   );
 }

@@ -18,27 +18,21 @@ export interface Product {
   price: number;
   downloadLinks: DownloadLink[];
   demoLimitations: string;
-  keywords?: string; // For AI generation reference
+  keywords?: string; // This field is no longer displayed in the form but kept for potential future use.
+  videoUrls?: string[]; // Array of up to 3 YouTube video URLs
 }
 
-export type ProductFormData = Omit<Product, 'id'> & { id?: string };
-
-export interface GuiMeContent {
-  title1?: string;
-  text1?: string;
-  title2?: string;
-  text2?: string;
-  title3?: string;
-  text3?: string;
+// ProductFormData is now more aligned with what the form actually collects
+export interface ProductFormData {
+  id?: string;
+  title: string;
+  pack: Pack;
+  mainImage: string;
+  thumbnails: (string | undefined)[]; // Can have empty slots
+  description: string;
+  price: number;
+  winVst3Url: string;
+  macVst3Url: string;
+  demoLimitations: string;
+  videoUrls: (string | undefined)[];
 }
-
-export type GuiMeContentFormData = GuiMeContent;
-
-export interface FirmLogosData {
-  firmLogoUrl?: string;
-  proPackLogoUrl?: string;
-  madMidiMachinesLogoUrl?: string;
-  freePackLogoUrl?: string;
-}
-
-export type FirmLogosFormData = FirmLogosData;

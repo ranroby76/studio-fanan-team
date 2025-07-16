@@ -16,16 +16,16 @@ export default function EditProductPage() {
   const productId = typeof params.productId === 'string' ? params.productId : undefined;
   
   const { toast } = useToast();
-  const [initialData, setInitialData] = useState<ProductFormData | undefined>(undefined);
+  const [product, setProduct] = useState<Product | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (productId) {
       try {
-        const product = getProductById(productId);
-        if (product) {
-          setInitialData(product);
+        const foundProduct = getProductById(productId);
+        if (foundProduct) {
+          setProduct(foundProduct);
         } else {
           setError('Product not found.');
         }
@@ -52,7 +52,7 @@ export default function EditProductPage() {
         title: 'Product Updated!',
         description: `${data.title} has been successfully updated.`,
       });
-      router.push('/manage');
+      router.push('/manage/products');
     } catch (e) {
       console.error("Error updating product:", e);
       toast({
@@ -87,14 +87,14 @@ export default function EditProductPage() {
     );
   }
 
-  if (!initialData) {
+  if (!product) {
      // This case should ideally be covered by error state, but as a fallback
     return <p className="text-center text-destructive">Product data could not be loaded.</p>;
   }
 
   return (
     <div className="animate-fade-in">
-      <ProductForm initialData={initialData} onSubmit={handleSubmit} isEditing={true} />
+      <ProductForm initialData={product} onSubmit={handleSubmit} isEditing={true} />
     </div>
   );
 }
