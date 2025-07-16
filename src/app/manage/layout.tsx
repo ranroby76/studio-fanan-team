@@ -77,7 +77,7 @@ export default function ManageLayout({
           </Card>
         </aside>
         <main className="flex-1 overflow-y-auto relative">
-           <Button variant="ghost" size="icon" asChild className="absolute top-0 right-0 z-10 text-muted-foreground hover:text-foreground">
+           <Button variant="ghost" size="icon" asChild className="absolute -top-2 -right-2 z-10 text-muted-foreground hover:text-foreground">
             <Link href="/" aria-label="Close management section">
               <X className="h-6 w-6" />
             </Link>
