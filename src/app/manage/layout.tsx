@@ -25,9 +25,9 @@ export default function ManageLayout({
   const pathname = usePathname();
 
   const isActive = (baseHref: string) => {
-    // Special handling for the "Products" tab and its sub-pages (add/edit).
+    // Special handling for the "Products" tab to include its sub-pages (add/edit).
     if (baseHref === '/manage/products') {
-      return pathname.startsWith('/manage/products') || pathname.startsWith('/manage/add') || pathname.startsWith('/manage/edit');
+      return pathname === '/manage/products' || pathname.startsWith('/manage/add') || pathname.startsWith('/manage/edit/');
     }
     // For all other links, we require an exact match.
     return pathname === baseHref;
