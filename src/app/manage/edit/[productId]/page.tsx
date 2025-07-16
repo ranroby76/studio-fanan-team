@@ -9,8 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useEffect, useState } from 'react';
 
 // This is now a client component that fetches data
-export default function EditProductPage({ params }: { params: { productId: string } }) {
-  const productId = params.productId;
+export default function EditProductPage({ params: { productId } }: { params: { productId: string } }) {
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);

@@ -1,41 +1,43 @@
-
 {
-    "id": "hqp443ma0",
-    "slug": "kitton-stylist",
-    "title": "Kitton Stylist",
-    "pack": "Pro Pack",
-    "mainImage": {
-      "url": "/images/kitton stylist1.jpg",
-      "width": 1529,
-      "height": 915
+  "id": "hqp443ma0",
+  "slug": "kitton-stylist",
+  "title": "Kitton Stylist",
+  "pack": "Pro Pack",
+  "mainImage": {
+    "url": "/images/kitton stylist1.jpg",
+    "width": 1529,
+    "height": 915
+  },
+  "thumbnails": [
+    {
+      "url": "/images/kitton stylist2.jpg",
+      "width": 1528,
+      "height": 913
+    }
+  ],
+  "description": "The evolution continues. Kitton Stylist, which is  based on our 3th generation general midi compatible drum machine, Kitton, 3 now offer the same crafted full featured drumkits + a built-in midi style player engine and a boost of extra kicks and snares that will allow you to play musical styles straight from your midi keyboard or DAW's piano-roll. We kept the possibility to edit the significant kit elements and we also kept the new \"LS\" feature which refers to \"layers simulation\". This feature uses synthesis to simulate real sampled 127 sample layers with only one sample and by that, to keep the plugin's footprint very small - yet realistic. Another new feature is the strike section (per kit element) which allows softening the attack of the element when needed. \\n\\n​`The Kits\\n\\n​#2 Standard kits\\n#2 Power kits\\n#2 Analog kits\\n#2 Modern kits\\n#2 Jazz kits\\n#2 Rock kits\\n#2 Pop kits\\n#2 Hip hop kits\\n#2 Soul kits\\n#2 Room kits\\n\\n`Kit elements\\n\\n#30 kicks\\n#22 general snares\\n#22 secondary snares\\n#6 sticks\\n#8 full tom sets\\n#12 rides (long, medium, short)\\n#12 high crashes (long, medium, short)\\n#12 general crashes (long, medium, short)\\n#7 claps\\n\\n​`Create, play edit and share musical styles easily, integrate your ideas fast in your projects\\n\\n​Kitton Stylist's drums sequencer contains 8 styles cells, each connected to a note key on C0 octave (from note 24 to note 31), so the sequencer can be played straight from the midi keyboard or DAW's piano-roll. The sequencer allows you to create (synced or not synced to DAW's bpm) sharable drums styles in any time signature.  \\n\\n`Edit every drum element separately\\n\\n​Kitton 2 allows editing with ease every drum element in the kit straight from the main pannel. You can easily set the gain and the pitch of each element, apply an innovative round-robin system and lo-pass\\hi pass filters. control the length and even morph the elements with other elements of the same cathegoty.\\n\\n​`Beautiful master effects \\n\\nSpice your drums with built-in eq, saturator. our unique Zelda filter. compressor, beautiful hall reverb and delay\\n\\n`Main features\\n\\n#20 top crafted full GM compatible drumkits\\n#8 cells drum sequencer operated by keyboard \\ piano roll keys\\n#Drums elements editing menu\\n#6 built-in top notch zero latency effects including Zelda filter, Eq, saturation, compressor, reverb, delay and stereo widener\\n#LS feature (layers simulator)\\n#Dedicated pitch shifter per drum element\\n#Innovative round-robin with 3 modes\\n#Hi- pass \\ lo pass per element\\n#Morphing elements with other elements in the categoty   \\n#Midi learning for every significant knob\\button\\n#Individual volume per element\\n#Individual pitch-shfter per element\\n#Individual strike adjuster for softening per element",
+  "shortDescription": "GM Compatible Drum Machine",
+  "formats": {
+    "vst": false,
+    "vsti": true,
+    "win32": true,
+    "win64": true
+  },
+  "price": 12,
+  "downloadLinks": [
+    {
+      "id": "0j7hd6art",
+      "label": "Download Option 1",
+      "url": "https://icedrive.net/s/Q6XNWhZ7AS48a4j1u36k74wkf1Gw"
     },
-    "thumbnails": [
-      {
-        "url": "/images/kitton stylist2.jpg",
-        "width": 1528,
-        "height": 913
-      }
-    ],
-    "description": "The evolution continues. Kitton Stylist, which is  based on our 3th generation general midi compatible drum machine, Kitton, 3 now offer the same crafted full featured drumkits + a built-in midi style player engine and a boost of extra kicks and snares that will allow you to play musical styles straight from your midi keyboard or DAW's piano-roll. We kept the possibility to edit the significant kit elements and we also kept the new \"LS\" feature which refers to \"layers simulation\". This feature uses synthesis to simulate real sampled 127 sample layers with only one sample and by that, to keep the plugin's footprint very small - yet realistic. Another new feature is the strike section (per kit element) which allows softening the attack of the element when needed.\\n\\n`The Kits`\\n#2 Standard kits\\n#2 Power kits\\n#2 Analog kits\\n#2 Modern kits\\n#2 Jazz kits\\n#2 Rock kits\\n#2 Pop kits\\n#2 Hip hop kits\\n#2 Soul kits\\n#2 Room kits\\n\\n`Kit elements`\\n#30 kicks\\n#22 general snares\\n#22 secondary snares\\n#6 sticks\\n#8 full tom sets\\n#12 rides (long, medium, short)\\n#12 high crashes (long, medium, short)\\n#12 general crashes (long, medium, short)\\n#7 claps\\n\\n`Create, play edit and share musical styles easily, integrate your ideas fast in your projects`\\nKitton Stylist's drums sequencer contains 8 styles cells, each connected to a note key on C0 octave (from note 24 to note 31), so the sequencer can be played straight from the midi keyboard or DAW's piano-roll. The sequencer allows you to create (synced or not synced to DAW's bpm) sharable drums styles in any time signature.\\n\\n`Edit every drum element separately`\\nKitton 2 allows editing with ease every drum element in the kit straight from the main pannel. You can easily set the gain and the pitch of each element, apply an innovative round-robin system and lo-pass\\hi pass filters. control the length and even morph the elements with other elements of the same cathegoty.\\n\\n`Beautiful master effects`\\nSpice your drums with built-in eq, saturator. our unique Zelda filter. compressor, beautiful hall reverb and delay\\n\\n`Main features`\\n#20 top crafted full GM compatible drumkits\\n#8 cells drum sequencer operated by keyboard \\ piano roll keys\\n#Drums elements editing menu\\n#6 built-in top notch zero latency effects including Zelda filter, Eq, saturation, compressor, reverb, delay and stereo widener\\n#LS feature (layers simulator)\\n#Dedicated pitch shifter per drum element\\n#Innovative round-robin with 3 modes\\n#Hi- pass \\ lo pass per element\\n#Morphing elements with other elements in the categoty\\n#Midi learning for every significant knob\\button\\n#Individual volume per element\\n#Individual pitch-shfter per element\\n#Individual strike adjuster for softening per element",
-    "shortDescription": "GM Compatible Drum Machine",
-    "formats": {
-      "vst": false,
-      "vsti": true,
-      "win32": true,
-      "win64": true
-    },
-    "price": 12,
-    "downloadLinks": [
-      {
-        "id": "27jlj9jw3",
-        "label": "Download Option 1",
-        "url": "https://icedrive.net/s/Q6XNWhZ7AS48a4j1u36k74wkf1Gw"
-      }
-    ],
-    "demoLimitations": "3 seconds silence every 15 seconds",
-    "videoUrls": [
-      "https://www.youtube.com/watch?v=j_mCsz92Io4&ab_channel=Fananteam"
-    ]
-  }
-
-    
+    {
+      "id": "whg87bkwh",
+      "label": "Download Option 2",
+      "url": "https://mega.nz/file/7oE3lBzR#1MSDrQT69vZ9M6x8L4UyfXdcAlhi_YJXkzR3B8vz6qw"
+    }
+  ],
+  "demoLimitations": "3 seconds silence every 15 seconds",
+  "videoUrls": [
+    "https://www.youtube.com/watch?v=j_mCsz92Io4&ab_channel=Fananteam"
+  ]
+}
