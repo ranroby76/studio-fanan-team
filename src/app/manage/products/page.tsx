@@ -133,7 +133,7 @@ export default function ProductsManagementPage() {
               <CardContent className="pt-4 flex-grow">
                 <CardTitle className="font-headline text-xl text-primary mb-1 truncate">{product.title}</CardTitle>
                 <CardDescription className="text-sm text-muted-foreground mb-2">Price: ${product.price.toFixed(2)}</CardDescription>
-                <p className="text-sm text-foreground/70 line-clamp-3">{product.description}</p>
+                <p className="text-sm text-foreground/70 line-clamp-3">{product.description.split('\\n')[0]}</p>
               </CardContent>
               <CardFooter className="grid grid-cols-3 gap-2 pt-0 p-4 border-t mt-auto">
                 <Button variant="outline" size="sm" asChild>
