@@ -7,13 +7,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
-import { Edit, Package, Settings, ImageIcon, X } from 'lucide-react';
+import { Edit, Package, Settings, ImageIcon, X, ListOrdered } from 'lucide-react';
 import type React from 'react';
 
 const manageNavLinks = [
-  { href: '/manage/gui-me-editor', label: 'GUI ME EDITOR', icon: Edit },
-  { href: '/manage/logos', label: 'Logos', icon: ImageIcon },
+  { href: '/manage/products-order', label: 'Products Order', icon: ListOrdered },
   { href: '/manage/products', label: 'Products', icon: Package },
+  { href: '/manage/gui-me-editor', label: 'GUI ME Editor', icon: Edit },
+  { href: '/manage/logos', label: 'Logos', icon: ImageIcon },
 ];
 
 export default function ManageLayout({
@@ -23,23 +24,12 @@ export default function ManageLayout({
 }) {
   const pathname = usePathname();
 
-  // Adjust active link logic for paths like /manage/products/add or /manage/products/edit/[id]
-  const isActive = (baseHref: string, currentPath: string) => {
-    if (baseHref === currentPath) return true;
-    // Check if currentPath starts with baseHref AND baseHref is not a generic starting point like '/'
-    if (currentPath.startsWith(baseHref) && baseHref !== '/' && baseHref.length > 1) {
-      // More specific check for /manage/products to avoid matching /manage/products-something-else
-      if (baseHref === '/manage/products' && (currentPath.startsWith('/manage/products/add') || currentPath.startsWith('/manage/products/edit/'))) {
-        return true;
-      }
-       if (baseHref === '/manage/gui-me-editor' && currentPath === '/manage/gui-me-editor') return true;
-       if (baseHref === '/manage/logos' && currentPath === '/manage/logos') return true;
-       // For other items, simple startsWith is fine
-       if (baseHref !== '/manage/products' && baseHref !== '/manage/gui-me-editor' && baseHref !== '/manage/logos') return true;
+  const isActive = (baseHref: string) => {
+    if (baseHref === '/manage/products') {
+      return pathname.startsWith('/manage/products');
     }
-    return false;
+    return pathname === baseHref;
   };
-
 
   return (
     <div className="container mx-auto px-4">
@@ -66,7 +56,7 @@ export default function ManageLayout({
                       asChild
                       className={cn(
                         "w-full justify-start text-left h-auto py-2.5 px-3",
-                         isActive(link.href, pathname)
+                         isActive(link.href)
                           ? "bg-accent text-accent-foreground hover:bg-accent/90"
                           : "hover:bg-muted/50"
                       )}
