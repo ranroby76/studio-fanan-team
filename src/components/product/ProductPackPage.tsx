@@ -68,7 +68,7 @@ export default function ProductPackPage({ pack, initialProducts }: ProductPackPa
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {products.map(product => (
             <Card key={product.id} className="group flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden bg-card">
-              <Link href={`/products/${product.slug}`} className="flex flex-col h-full">
+              <Link href={`/products/${product.slug}`} target="_blank" rel="noopener noreferrer" className="flex flex-col h-full">
                 <div className="relative overflow-hidden bg-muted">
                   {product.mainImage?.url && product.mainImage.width && product.mainImage.height ? (
                     <Image
@@ -95,7 +95,7 @@ export default function ProductPackPage({ pack, initialProducts }: ProductPackPa
                   </CardDescription>
                 </CardHeader>
                 <CardFooter className="p-3 border-t bg-muted/30 mt-auto">
-                  <p className="text-xs text-muted-foreground text-center truncate w-full">{formatTags(product.formats)}</p>
+                  <p className="text-base text-muted-foreground text-center truncate w-full">{formatTags(product.formats)}</p>
                 </CardFooter>
               </Link>
             </Card>
