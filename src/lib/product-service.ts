@@ -4,6 +4,7 @@
 import type { Product, ProductFormData, DownloadLink } from '@/lib/types';
 
 const PRODUCTS_STORAGE_KEY = 'fananTeamProducts';
+const IMAGE_PREFIX = '/images/products/';
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
@@ -58,8 +59,10 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
     slug,
     title: formData.title,
     pack: formData.pack,
-    mainImage: formData.mainImage,
-    thumbnails: formData.thumbnails.filter((url): url is string => !!url && url.trim() !== ''),
+    mainImage: formData.mainImage ? `${IMAGE_PREFIX}${formData.mainImage}` : '',
+    thumbnails: formData.thumbnails
+      .filter((name): name is string => !!name && name.trim() !== '')
+      .map(name => `${IMAGE_PREFIX}${name}`),
     description: formData.description,
     price: formData.price,
     demoLimitations: formData.demoLimitations,

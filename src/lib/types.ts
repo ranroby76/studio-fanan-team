@@ -12,13 +12,12 @@ export interface Product {
   title: string;
   slug: string;
   pack: Pack;
-  mainImage: string;
-  thumbnails: string[];
+  mainImage: string; // This will now store the full path, e.g., /images/products/my-image.png
+  thumbnails: string[]; // This will also store full paths
   description: string;
   price: number;
   downloadLinks: DownloadLink[];
   demoLimitations: string;
-  keywords?: string; // This field is no longer displayed in the form but kept for potential future use.
   videoUrls?: string[]; // Array of up to 3 YouTube video URLs
 }
 
@@ -27,12 +26,30 @@ export interface ProductFormData {
   id?: string;
   title: string;
   pack: Pack;
-  mainImage: string;
-  thumbnails: (string | undefined)[]; // Can have empty slots
+  mainImage: string; // This will store just the filename, e.g., my-image.png
+  thumbnails: (string | undefined)[]; // Will also store just filenames
   description: string;
   price: number;
   winVst3Url: string;
   macVst3Url: string;
   demoLimitations: string;
   videoUrls: (string | undefined)[];
+}
+
+export interface GuiMeContent {
+  title1: string;
+  text1: string;
+  title2: string;
+  text2: string;
+  title3: string;
+  text3: string;
+}
+
+export type GuiMeContentFormData = GuiMeContent;
+
+export interface FirmLogosData {
+  firmLogoUrl?: string;
+  proPackLogoUrl?: string;
+  madMidiMachinesLogoUrl?: string;
+  freePackLogoUrl?: string;
 }

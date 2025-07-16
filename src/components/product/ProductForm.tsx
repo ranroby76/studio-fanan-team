@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from '@/components/ui/card';
-import { PlusCircle, Trash2, Loader2, Save } from 'lucide-react';
+import { Loader2, Save } from 'lucide-react';
 import React, { useEffect } from 'react';
 import {
   Select,
@@ -22,12 +22,11 @@ import {
 import { useToast } from '@/hooks/use-toast';
 
 
-// Updated schema to reflect form changes
 const productFormSchema = z.object({
   id: z.string().optional(),
   title: z.string().min(3, "Title must be at least 3 characters"),
   pack: z.enum(["Pro Pack", "Mad MIDI Machines Pack", "Free Pack"]),
-  mainImage: z.string().url("A valid URL for the main image is required"),
+  mainImage: z.string().min(1, "A main image filename is required"),
   thumbnails: z.array(z.string().optional()).max(7),
   description: z.string().min(10, "Description must be at least 10 characters"),
   price: z.coerce.number().min(0, "Price must be a positive number"),
@@ -37,9 +36,11 @@ const productFormSchema = z.object({
   videoUrls: z.array(z.string().optional()).max(3),
 });
 
+const IMAGE_PREFIX = '/images/products/';
+
 // Helper to transform full Product data to form-compatible data for editing
 const transformProductToFormData = (product: Product): ProductFormData => {
-  const thumbnails = [...product.thumbnails];
+  const thumbnails = [...product.thumbnails.map(t => t.replace(IMAGE_PREFIX, ''))];
   while (thumbnails.length < 7) {
     thumbnails.push('');
   }
@@ -51,7 +52,7 @@ const transformProductToFormData = (product: Product): ProductFormData => {
     id: product.id,
     title: product.title,
     pack: product.pack,
-    mainImage: product.mainImage,
+    mainImage: product.mainImage.replace(IMAGE_PREFIX, ''),
     thumbnails: thumbnails,
     description: product.description,
     price: product.price,
@@ -67,6 +68,21 @@ interface ProductFormProps {
   onSubmit: (data: ProductFormData) => Promise<void>;
   isEditing?: boolean;
 }
+
+const ImageInput = ({ fieldName, register, error }: { fieldName: `mainImage` | `thumbnails.${number}`, register: any, error?: any }) => (
+  <div className="flex items-center">
+    <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm">
+      {IMAGE_PREFIX}
+    </span>
+    <Input
+      {...register(fieldName)}
+      placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
+      className="rounded-l-none"
+    />
+     {error && <p className="text-sm text-destructive mt-1 ml-2 whitespace-nowrap">{error.message}</p>}
+  </div>
+);
+
 
 export default function ProductForm({ initialData, onSubmit, isEditing = false }: ProductFormProps) {
   const { toast } = useToast();
@@ -97,9 +113,11 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     if (watchedPack === 'Free Pack') {
       setValue('demoLimitations', '');
     } else {
-      setValue('demoLimitations', '3 seconds silence every 15 seconds');
+       if (form.getValues('demoLimitations') === '') {
+          setValue('demoLimitations', '3 seconds silence every 15 seconds');
+       }
     }
-  }, [watchedPack, setValue]);
+  }, [watchedPack, setValue, form]);
 
   const processSubmit: SubmitHandler<ProductFormData> = async (data) => {
     await onSubmit(data);
@@ -146,22 +164,16 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
           </div>
           
           <div>
-            <Label htmlFor="mainImage" className="font-semibold">Main Image URL</Label>
-            <Input id="mainImage" {...register('mainImage')} className="mt-1" placeholder="https://.../main-image.png"/>
-            {errors.mainImage && <p className="text-sm text-destructive mt-1">{errors.mainImage.message}</p>}
+            <Label htmlFor="mainImage" className="font-semibold">Main Image Filename</Label>
+            <ImageInput fieldName="mainImage" register={register} error={errors.mainImage} />
           </div>
 
           <div className="space-y-2">
-            <Label className="font-semibold">Thumbnail Image URLs (up to 7)</Label>
+            <Label className="font-semibold">Thumbnail Image Filenames (up to 7)</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
               {[...Array(7)].map((_, index) => (
                 <div key={index}>
-                  <Input
-                    {...register(`thumbnails.${index}` as const)}
-                    placeholder={`Thumbnail ${index + 1} URL`}
-                    className="flex-grow"
-                  />
-                  {errors.thumbnails?.[index] && <p className="text-sm text-destructive mt-1">{errors.thumbnails[index]?.message}</p>}
+                    <ImageInput fieldName={`thumbnails.${index}`} register={register} error={errors.thumbnails?.[index]} />
                 </div>
               ))}
             </div>
@@ -184,7 +196,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
             </div>
              <div>
               <Label htmlFor="demoLimitations" className="font-semibold">Demo Limitations</Label>
-              <Input id="demoLimitations" {...register('demoLimitations')} className="mt-1" readOnly={watchedPack !== 'Free Pack'}/>
+              <Input id="demoLimitations" {...register('demoLimitations')} className="mt-1" readOnly={watchedPack === 'Free Pack'}/>
               {errors.demoLimitations && <p className="text-sm text-destructive mt-1">{errors.demoLimitations.message}</p>}
             </div>
           </div>
