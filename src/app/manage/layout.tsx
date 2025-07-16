@@ -43,7 +43,13 @@ export default function ManageLayout({
 
   return (
     <div className="container mx-auto px-4">
-      <div className="flex flex-col md:flex-row gap-6 min-h-[calc(100vh-theme(spacing.32))]">
+      <div className="relative flex flex-col md:flex-row gap-6 min-h-[calc(100vh-theme(spacing.32))]">
+        <Button variant="ghost" size="icon" asChild className="absolute top-0 right-0 z-10 text-muted-foreground hover:text-foreground">
+            <Link href="/" aria-label="Close management section">
+              <X className="h-6 w-6" />
+            </Link>
+        </Button>
+        
         <aside className="w-full md:w-64">
           <Card className="shadow-lg h-full">
             <CardContent className="p-3">
@@ -76,12 +82,7 @@ export default function ManageLayout({
             </CardContent>
           </Card>
         </aside>
-        <main className="flex-1 overflow-y-auto relative">
-           <Button variant="ghost" size="icon" asChild className="absolute -top-2 -right-2 z-10 text-muted-foreground hover:text-foreground">
-            <Link href="/" aria-label="Close management section">
-              <X className="h-6 w-6" />
-            </Link>
-          </Button>
+        <main className="flex-1 overflow-y-auto">
           {children}
         </main>
       </div>
