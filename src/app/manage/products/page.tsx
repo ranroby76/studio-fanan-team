@@ -147,7 +147,7 @@ function ProductsManagementComponent() {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
           {products.map((product) => (
             <Card key={product.id} className="group flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden bg-card">
               <Link href={`/products/${product.slug}`} className="block">
@@ -159,7 +159,7 @@ function ProductsManagementComponent() {
                       fill
                       className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                       data-ai-hint="instrument audio"
-                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ): (
                     <div className="w-full h-full flex items-center justify-center text-muted-foreground">
