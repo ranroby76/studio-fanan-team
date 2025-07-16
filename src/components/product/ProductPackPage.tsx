@@ -8,7 +8,6 @@ import { getProducts, formatTags } from '@/lib/product-service';
 import type { Product, Pack } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, PackageSearch } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 
 interface ProductPackPageProps {
   pack: Pack;
@@ -72,7 +71,7 @@ export default function ProductPackPage({ pack }: ProductPackPageProps) {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {products.map(product => (
             <Card key={product.id} className="group flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden bg-card">
               <Link href={`/products/${product.slug}`} className="flex flex-col h-full">
@@ -84,7 +83,7 @@ export default function ProductPackPage({ pack }: ProductPackPageProps) {
                       fill
                       className="object-contain w-full h-full p-2 group-hover:scale-105 transition-transform duration-300"
                       data-ai-hint="instrument audio"
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-muted-foreground">
