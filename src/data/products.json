@@ -1,3 +1,4 @@
+
 [
   {
     "id": "gl94hsc18",
@@ -5,18 +6,18 @@
     "title": "Sultana 2",
     "pack": "Pro Pack",
     "mainImage": {
-      "url": "/images/products/sultana1.jpg",
+      "url": "/images/sultana1.jpg",
       "width": 1345,
       "height": 808
     },
     "thumbnails": [
       {
-        "url": "/images/products/sultana2.jpg",
+        "url": "/images/sultana2.jpg",
         "width": 1343,
         "height": 806
       },
       {
-        "url": "/images/products/sultana3.jpg",
+        "url": "/images/sultana3.jpg",
         "width": 1345,
         "height": 810
       }
@@ -25,13 +26,13 @@
     "price": 12,
     "downloadLinks": [
       {
-        "id": "s95f9u234",
-        "label": "Download Sultana 2 (Windows)",
+        "id": "li5xrthvi",
+        "label": "Download Sultana 2",
         "url": "https://icedrive.net/s/ABQZSbbDT5zQVTC67N9f1N35Byv7"
       },
       {
-        "id": "xlfw7oi53",
-        "label": "Download Sultana 2 (macOS)",
+        "id": "owjdhyge6",
+        "label": "Download Sultana 2 (Alternative)",
         "url": "https://mega.nz/file/39VXyQIK#9PI2Ujs1sDSNJ25HGszWiEKU9bgb_E87Z_BS8mfb3Xk"
       }
     ],

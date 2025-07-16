@@ -2,7 +2,7 @@
 import type { Product, ProductFormData, DownloadLink, ImageDetails } from '@/lib/types';
 import allProducts from '@/data/products.json';
 
-const IMAGE_PREFIX = '/images/products/';
+const IMAGE_PREFIX = '/images/';
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
@@ -37,8 +37,20 @@ export const getProductBySlug = (slug: string): Product | undefined => {
 // Helper to ensure the image path is correctly prefixed, only if needed.
 const ensureImagePath = (filename: string) => {
     if (!filename) return '';
-    return filename.startsWith(IMAGE_PREFIX) ? filename : `${IMAGE_PREFIX}${filename}`;
+    // Ensure the prefix is not duplicated
+    if (filename.startsWith(IMAGE_PREFIX)) {
+        return filename;
+    }
+    return `${IMAGE_PREFIX}${filename}`;
 };
+
+const stripImagePath = (prefixedUrl: string) => {
+    if (!prefixedUrl) return '';
+    if (prefixedUrl.startsWith(IMAGE_PREFIX)) {
+        return prefixedUrl.substring(IMAGE_PREFIX.length);
+    }
+    return prefixedUrl;
+}
 
 // Helper to transform form data into the canonical Product structure for JSON generation
 const transformFormDataToProduct = (formData: ProductFormData, existingId?: string): Product => {
@@ -84,6 +96,40 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
   return product;
 };
 
+// Helper to transform full Product data to form-compatible data for editing
+export const transformProductToFormData = (product: Product): ProductFormData => {
+  const thumbnails = product.thumbnails.map(t => ({
+    filename: stripImagePath(t.url),
+    width: t.width,
+    height: t.height,
+  }));
+  while (thumbnails.length < 7) {
+    thumbnails.push({ filename: '', width: 0, height: 0 });
+  }
+
+  const videoUrls = [...(product.videoUrls || [])];
+   while (videoUrls.length < 3) {
+    videoUrls.push('');
+  }
+
+  return {
+    id: product.id,
+    title: product.title,
+    pack: product.pack,
+    mainImage: {
+      filename: stripImagePath(product.mainImage.url),
+      width: product.mainImage.width,
+      height: product.mainImage.height,
+    },
+    thumbnails: thumbnails,
+    description: product.description.replace(/\\n/g, '\n'),
+    price: product.price,
+    winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows'))?.url || '',
+    macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS'))?.url || '',
+    demoLimitations: product.demoLimitations,
+    videoUrls: videoUrls,
+  };
+};
 
 /**
  * Generates a JSON string representing the updated list of all products.
