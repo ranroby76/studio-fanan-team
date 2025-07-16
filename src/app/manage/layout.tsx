@@ -25,12 +25,11 @@ export default function ManageLayout({
   const pathname = usePathname();
 
   const isActive = (baseHref: string) => {
-    // For products, we want to match sub-paths like /manage/products/add or /manage/products/edit/...
-    // The main products page also often has query params, so startsWith is better.
+    // Special handling for the "Products" tab and its sub-pages (add/edit).
     if (baseHref === '/manage/products') {
       return pathname.startsWith('/manage/products') || pathname.startsWith('/manage/add') || pathname.startsWith('/manage/edit');
     }
-    // For all other links, we want an exact match.
+    // For all other links, we require an exact match.
     return pathname === baseHref;
   };
 
