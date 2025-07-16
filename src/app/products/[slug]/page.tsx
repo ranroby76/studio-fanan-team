@@ -150,7 +150,7 @@ export default function ProductPage() {
 
   return (
     <div className="container mx-auto px-4 animate-fade-in">
-      <div className="flex justify-center mb-4">
+       <div className="flex justify-center mb-4">
           <div className="w-96 h-auto">
             <Image src={packImages[product.pack]} alt={`${product.pack} logo`} width={600} height={120} className="object-contain" />
           </div>
@@ -263,9 +263,9 @@ export default function ProductPage() {
        {videoIds.length > 0 && (
         <section className="mt-12">
             <h2 className="text-3xl font-headline text-primary mb-4 text-center flex items-center justify-center gap-3"><Youtube /> Videos</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-col items-center gap-6">
                 {videoIds.map(videoId => (
-                    <div key={videoId} className="aspect-video rounded-lg overflow-hidden shadow-lg">
+                    <div key={videoId} className="w-full md:w-3/4 aspect-video rounded-lg overflow-hidden shadow-lg">
                         <iframe
                             width="100%"
                             height="100%"
