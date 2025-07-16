@@ -56,6 +56,12 @@ const ensureImagePath = (filename: string) => {
     return filename.startsWith(IMAGE_PREFIX) ? filename : `${IMAGE_PREFIX}${filename}`;
 }
 
+const stripImagePath = (url: string) => {
+    if (!url) return '';
+    return url.startsWith(IMAGE_PREFIX) ? url.substring(IMAGE_PREFIX.length) : url;
+}
+
+
 // Helper to transform form data into the canonical Product structure
 const transformFormDataToProduct = (formData: ProductFormData, existingId?: string): Product => {
   const slug = generateSlug(formData.title);
@@ -92,6 +98,7 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
     thumbnails,
     description: formData.description,
     price: formData.price,
+    downloadLinks,
     demoLimitations: formData.demoLimitations || '',
     videoUrls: formData.videoUrls?.filter((url): url is string => !!url && url.trim() !== ''),
   };
@@ -99,6 +106,40 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
   return product;
 };
 
+// Helper to transform full Product data to form-compatible data for editing
+export const transformProductToFormData = (product: Product): ProductFormData => {
+  const thumbnails = product.thumbnails.map(t => ({
+    filename: stripImagePath(t.url),
+    width: t.width,
+    height: t.height,
+  }));
+  while (thumbnails.length < 7) {
+    thumbnails.push({ filename: '', width: 0, height: 0 });
+  }
+
+  const videoUrls = [...(product.videoUrls || [])];
+   while (videoUrls.length < 3) {
+    videoUrls.push('');
+  }
+
+  return {
+    id: product.id,
+    title: product.title,
+    pack: product.pack,
+    mainImage: {
+      filename: stripImagePath(product.mainImage.url),
+      width: product.mainImage.width,
+      height: product.main.height,
+    },
+    thumbnails: thumbnails,
+    description: product.description,
+    price: product.price,
+    winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows'))?.url || '',
+    macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS'))?.url || '',
+    demoLimitations: product.demoLimitations,
+    videoUrls: videoUrls,
+  };
+};
 
 export const addProduct = (productData: ProductFormData): Product => {
   if (typeof window === 'undefined') throw new Error("localStorage not available");
