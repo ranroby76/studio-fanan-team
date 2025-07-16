@@ -2,16 +2,15 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import ProductForm from '@/components/product/ProductForm';
 import type { Product, ProductFormData } from '@/lib/types';
-import { getProductById } from '@/lib/product-service';
+import { getProductById, generateSlug } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, AlertTriangle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function EditProductPage() {
-  const router = useRouter();
   const params = useParams();
   const productId = typeof params.productId === 'string' ? params.productId : undefined;
   
@@ -27,16 +26,16 @@ export default function EditProductPage() {
         if (foundProduct) {
           setProduct(foundProduct);
         } else {
-          setError('Product not found in products.json.');
+          setError('Product not found. It may have been deleted or the ID is incorrect.');
         }
       } catch (e) {
         console.error("Error fetching product for edit:", e);
-        setError('Failed to load product data from JSON file.');
+        setError('Failed to load product data. Check console for details.');
       } finally {
         setIsLoading(false);
       }
     } else {
-      setError('Product ID is missing.');
+      setError('Product ID is missing from the URL.');
       setIsLoading(false);
     }
   }, [productId]);
@@ -47,12 +46,11 @@ export default function EditProductPage() {
       return;
     }
     try {
+      const slug = generateSlug(data.title);
       toast({
         title: 'JSON Generated!',
-        description: `Copy the JSON and replace the content of src/data/products.json to update the product.`,
+        description: `Copy the JSON to update the file at src/data/products/${slug}.json`,
       });
-      // Optionally redirect after a delay
-      // setTimeout(() => router.push('/manage/products'), 2000);
     } catch (e) {
       console.error("Error in edit page:", e);
       toast({

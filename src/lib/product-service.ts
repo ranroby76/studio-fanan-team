@@ -1,12 +1,14 @@
 // src/lib/product-service.ts
 import type { Product, ProductFormData, DownloadLink, ImageDetails, Formats } from '@/lib/types';
-import allProducts from '@/data/products.json';
+import fs from 'fs';
+import path from 'path';
 
 const IMAGE_PREFIX = '/images/';
+const PRODUCTS_DIR = path.join(process.cwd(), 'src/data/products');
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
-const generateSlug = (title: string): string => {
+export const generateSlug = (title: string): string => {
   return title
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '') // remove special chars
@@ -17,9 +19,19 @@ const generateSlug = (title: string): string => {
 // --- Data Reading Functions ---
 
 export const getProducts = (): Product[] => {
-  // Now simply returns the imported JSON data.
-  // The 'as Product[]' cast is safe because we control the data structure.
-  return allProducts as Product[];
+  try {
+    const filenames = fs.readdirSync(PRODUCTS_DIR).filter(file => file.endsWith('.json'));
+    const products = filenames.map(filename => {
+      const filePath = path.join(PRODUCTS_DIR, filename);
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const product = JSON.parse(fileContents) as Product;
+      return product;
+    });
+    return products;
+  } catch (error) {
+    console.error("Could not read products directory:", error);
+    return [];
+  }
 };
 
 export const getProductById = (id: string): Product | undefined => {
@@ -28,27 +40,28 @@ export const getProductById = (id: string): Product | undefined => {
 };
 
 export const getProductBySlug = (slug: string): Product | undefined => {
-  const products = getProducts();
-  return products.find(p => p.slug === slug);
+  try {
+    const filePath = path.join(PRODUCTS_DIR, `${slug}.json`);
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(fileContents) as Product;
+  } catch (error) {
+    // If file doesn't exist or is invalid, it will return undefined
+    console.error(`Could not read product file for slug "${slug}":`, error);
+    return undefined;
+  }
 };
 
 // --- JSON Generation for Editor ---
 
-// Helper to ensure the image path is correctly prefixed, only if needed.
 const ensureImagePath = (filename: string) => {
     if (!filename) return '';
-    // Ensure the prefix is not duplicated
-    if (filename.startsWith(IMAGE_PREFIX)) {
-        return filename;
-    }
+    if (filename.startsWith(IMAGE_PREFIX)) return filename;
     return `${IMAGE_PREFIX}${filename}`;
 };
 
 const stripImagePath = (prefixedUrl: string) => {
     if (!prefixedUrl) return '';
-    if (prefixedUrl.startsWith(IMAGE_PREFIX)) {
-        return prefixedUrl.substring(IMAGE_PREFIX.length);
-    }
+    if (prefixedUrl.startsWith(IMAGE_PREFIX)) return prefixedUrl.substring(IMAGE_PREFIX.length);
     return prefixedUrl;
 }
 
@@ -59,7 +72,6 @@ const downloadLinkLabels = [
     "Download Stand-Alone (Op. 2)"
 ];
 
-// Helper to transform form data into the canonical Product structure for JSON generation
 const transformFormDataToProduct = (formData: ProductFormData, existingId?: string): Product => {
   const slug = generateSlug(formData.title);
   const id = existingId || formData.id || generateId();
@@ -110,7 +122,6 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
   return product;
 };
 
-// Helper to transform full Product data to form-compatible data for editing
 export const transformProductToFormData = (product: Product): ProductFormData => {
   const thumbnails = product.thumbnails.map(t => ({
     filename: stripImagePath(t.url),
@@ -151,45 +162,13 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
   };
 };
 
-/**
- * Generates a JSON string representing the updated list of all products.
- * This string is intended to be copied by the user into the `products.json` file.
- */
-export const generateProductsJsonString = (formData: ProductFormData, isEditing: boolean): string => {
-  const currentProducts = getProducts();
-  const newProduct = transformFormDataToProduct(formData, isEditing ? formData.id : undefined);
-  
-  let updatedProducts: Product[];
 
-  if (isEditing) {
-    // Find and replace the existing product
-    const productIndex = currentProducts.findIndex(p => p.id === newProduct.id);
-    if (productIndex > -1) {
-      currentProducts[productIndex] = newProduct;
-      updatedProducts = currentProducts;
-    } else {
-      // If for some reason it's not found, add it.
-      updatedProducts = [...currentProducts, newProduct];
-    }
-  } else {
-    // Add the new product
-    updatedProducts = [...currentProducts, newProduct];
-  }
-
-  return JSON.stringify(updatedProducts, null, 2);
+export const generateProductJsonString = (formData: ProductFormData, isEditing: boolean): string => {
+  const productData = transformFormDataToProduct(formData, isEditing ? formData.id : undefined);
+  return JSON.stringify(productData, null, 2);
 };
 
-/**
- * Generates a JSON string for deleting a product.
- * The user copies this new array into the products.json file.
- */
-export const generateJsonForDelete = (id: string): string => {
-  const currentProducts = getProducts();
-  const updatedProducts = currentProducts.filter(p => p.id !== id);
-  return JSON.stringify(updatedProducts, null, 2);
-};
 
-// Helper to format the tags
 export const formatTags = (formats: Formats | undefined) => {
   if (!formats) return '';
   const parts: string[] = [];

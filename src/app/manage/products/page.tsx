@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, ExternalLink, ClipboardCopy, Star, Box, Gift } from 'lucide-react';
 import type { Product, Pack } from '@/lib/types';
-import { getProducts, generateJsonForDelete, formatTags } from '@/lib/product-service';
+import { getProducts, formatTags, generateSlug } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 import {
   AlertDialog,
@@ -22,8 +22,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Textarea } from '@/components/ui/textarea';
-import { cn } from '@/lib/utils';
 
 const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
   "Pro Pack": { icon: Star, title: "Pro Pack" },
@@ -38,7 +36,6 @@ function ProductsManagementComponent() {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [jsonForDelete, setJsonForDelete] = useState('');
   const [productToDelete, setProductToDelete] = useState<Product | null>(null);
 
   const { toast } = useToast();
@@ -53,7 +50,7 @@ function ProductsManagementComponent() {
       console.error("Error fetching products:", error);
       toast({
         title: "Error",
-        description: "Could not fetch products from products.json.",
+        description: "Could not fetch products. Check the data source.",
         variant: "destructive",
       });
     } finally {
@@ -65,25 +62,6 @@ function ProductsManagementComponent() {
     fetchProducts();
   }, [fetchProducts]);
 
-  const handleDeleteProduct = (product: Product) => {
-    try {
-      setProductToDelete(product);
-      const jsonString = generateJsonForDelete(product.id);
-      setJsonForDelete(jsonString);
-    } catch (error) {
-       console.error("Error generating delete JSON:", error);
-       toast({
-        title: "Error",
-        description: "Could not prepare the product for deletion.",
-        variant: "destructive",
-      });
-    }
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(jsonForDelete);
-    toast({ title: 'Copied to clipboard!', description: 'Paste the new content into src/data/products.json to finalize deletion.' });
-  };
 
   const ActiveIcon = packConfig[activePack]?.icon || Package;
 
@@ -130,17 +108,17 @@ function ProductsManagementComponent() {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-8">
           {products.map((product) => (
             <Card key={product.id} className="group flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden bg-card">
               <Link href={`/products/${product.slug}`} className="block">
-                <div className="relative overflow-hidden aspect-[4/3] bg-muted">
+                <div className="relative overflow-hidden aspect-video bg-muted">
                   {product.mainImage?.url ? (
                      <Image
                       src={product.mainImage.url}
                       alt={product.title}
                       fill
-                      className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
+                      className="object-contain w-full h-full p-2 group-hover:scale-105 transition-transform duration-300"
                       data-ai-hint="instrument audio"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
@@ -169,7 +147,7 @@ function ProductsManagementComponent() {
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button variant="destructive" size="sm" onClick={() => handleDeleteProduct(product)} className="bg-destructive/90 hover:bg-destructive text-destructive-foreground">
+                    <Button variant="destructive" size="sm" onClick={() => setProductToDelete(product)} className="bg-destructive/90 hover:bg-destructive text-destructive-foreground">
                       <Trash2 className="mr-2 h-4 w-4" /> Delete
                     </Button>
                   </AlertDialogTrigger>
@@ -177,28 +155,18 @@ function ProductsManagementComponent() {
                     <AlertDialogHeader>
                       <AlertDialogTitle className="font-headline">Delete &quot;{productToDelete?.title}&quot;?</AlertDialogTitle>
                       <AlertDialogDescription>
-                        This action will generate an updated JSON array. You must copy it and replace the content of `src/data/products.json` to finalize the deletion.
+                        This action is permanent. To finalize deletion, you must manually delete the following file from your project:
+                        <br />
+                        <code className="bg-muted text-muted-foreground px-2 py-1 rounded-md mt-2 block font-mono text-sm">
+                          src/data/products/{productToDelete ? generateSlug(productToDelete.title) : ''}.json
+                        </code>
                       </AlertDialogDescription>
                     </AlertDialogHeader>
-                    <div className="relative">
-                       <Textarea
-                          readOnly
-                          value={jsonForDelete}
-                          className="h-48 font-mono text-sm bg-muted"
-                          aria-label="Updated JSON content for products"
-                        />
-                         <Button
-                          variant="ghost"
-                          size="icon"
-                          className="absolute top-2 right-2 text-muted-foreground"
-                          onClick={handleCopy}
-                        >
-                          <ClipboardCopy className="h-5 w-5" />
-                        </Button>
-                    </div>
                     <AlertDialogFooter>
-                      <AlertDialogCancel onClick={() => setJsonForDelete('')}>Close</AlertDialogCancel>
-                      <AlertDialogAction onClick={handleCopy}>Copy JSON & Close</AlertDialogAction>
+                      <AlertDialogCancel onClick={() => setProductToDelete(null)}>Cancel</AlertDialogCancel>
+                      <AlertDialogAction asChild>
+                         <Button onClick={() => setProductToDelete(null)} variant="destructive">I Understand, Close</Button>
+                      </AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>

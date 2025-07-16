@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { generateProductsJsonString, transformProductToFormData } from '@/lib/product-service';
+import { generateProductJsonString, transformProductToFormData, generateSlug } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 
 const imageSchema = z.object({
@@ -91,6 +91,7 @@ const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | 
 
 export default function ProductForm({ initialData, onSubmit, isEditing = false, preselectedPack }: { initialData?: Product; onSubmit: (data: ProductFormData, jsonString: string) => Promise<void>; isEditing?: boolean; preselectedPack?: Pack; }) {
   const [jsonOutput, setJsonOutput] = useState('');
+  const [targetFilename, setTargetFilename] = useState('');
   const { toast } = useToast();
   
   const form = useForm<ProductFormData>({
@@ -118,6 +119,15 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
   const { control, register, handleSubmit, formState: { errors, isSubmitting }, reset, watch, setValue } = form;
   
   const watchedPack = watch('pack');
+  const watchedTitle = watch('title');
+
+  useEffect(() => {
+    if (watchedTitle) {
+      setTargetFilename(`src/data/products/${generateSlug(watchedTitle)}.json`);
+    } else {
+      setTargetFilename('');
+    }
+  }, [watchedTitle]);
 
   useEffect(() => {
     if (watchedPack === 'Free Pack') {
@@ -137,7 +147,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
 
 
   const processSubmit: SubmitHandler<ProductFormData> = async (data) => {
-    const jsonString = generateProductsJsonString(data, isEditing);
+    const jsonString = generateProductJsonString(data, isEditing);
     setJsonOutput(jsonString);
     await onSubmit(data, jsonString);
   };
@@ -168,7 +178,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
         <CardHeader>
           <CardTitle className="text-3xl font-headline text-primary">{isEditing ? `Edit Product: ${initialData?.title}` : `Add New Product to ${preselectedPack}`}</CardTitle>
           <CardDescription>
-            Fill in the details. After generating, copy the JSON output and paste it into `src/data/products.json`.
+            Fill in the details. After generating, create a new JSON file with the suggested name and paste the content.
             Images are relative to `public/images/`.
           </CardDescription>
         </CardHeader>
@@ -326,14 +336,19 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
         <Card className="shadow-xl w-full max-w-4xl mx-auto">
           <CardHeader>
             <CardTitle>Generated JSON Output</CardTitle>
-            <CardDescription>Copy this content into `src/data/products.json` and save the file.</CardDescription>
+            <div className="text-sm text-muted-foreground">
+                <p>
+                    {isEditing ? 'Copy this content and paste it into the file:' : 'Create a new file with this name and paste the content:'}
+                </p>
+                <p className="font-semibold font-mono text-accent mt-1">{targetFilename}</p>
+            </div>
           </CardHeader>
           <CardContent className="relative">
             <Textarea
               readOnly
               value={jsonOutput}
               className="h-64 font-mono text-sm bg-muted"
-              aria-label="Generated JSON for products"
+              aria-label="Generated JSON for product"
             />
             <Button
               variant="ghost"
