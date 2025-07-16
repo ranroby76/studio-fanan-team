@@ -4,14 +4,18 @@
 import { useEffect, useState } from 'react';
 import { useParams, notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
 import { getProductBySlug } from '@/lib/product-service';
 import type { Product, ImageDetails } from '@/lib/types';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Loader2, ServerCrash, Download, ShoppingCart, Info, Youtube, Circle } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const getYouTubeVideoId = (url: string): string | null => {
     if (!url) return null;
@@ -139,7 +143,7 @@ export default function ProductPage() {
 
   return (
     <div className="container mx-auto px-4 animate-fade-in">
-      <div className="flex justify-between items-start mb-4">
+      <div className="flex justify-center mb-4">
           <div className="w-96 h-auto">
             <Image src={packImages[product.pack]} alt={`${product.pack} logo`} width={600} height={120} className="object-contain" />
           </div>
@@ -150,17 +154,30 @@ export default function ProductPage() {
         <div className="lg:col-span-3">
           <Card className="shadow-lg overflow-hidden">
              {selectedImage && selectedImage.url && selectedImage.width && selectedImage.height ? (
-              <a href={selectedImage.url} target="_blank" rel="noopener noreferrer" className="block relative w-full bg-muted">
-                <Image
-                  src={selectedImage.url}
-                  alt={`Main view of ${product.title}`}
-                  width={selectedImage.width}
-                  height={selectedImage.height}
-                  className="object-contain p-2 w-full h-auto"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
-                  priority
-                />
-              </a>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button className="block relative w-full bg-muted cursor-zoom-in">
+                      <Image
+                        src={selectedImage.url}
+                        alt={`Main view of ${product.title}`}
+                        width={selectedImage.width}
+                        height={selectedImage.height}
+                        className="object-contain p-2 w-full h-auto"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
+                        priority
+                      />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl h-auto p-2">
+                     <Image
+                        src={selectedImage.url}
+                        alt={`Main view of ${product.title}`}
+                        width={selectedImage.width}
+                        height={selectedImage.height}
+                        className="object-contain rounded-md w-full h-auto"
+                      />
+                  </DialogContent>
+                </Dialog>
             ) : (
                 <div className="w-full aspect-video bg-muted flex items-center justify-center">
                     <p className="text-muted-foreground">No image available</p>
