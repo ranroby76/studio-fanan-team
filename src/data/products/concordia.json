@@ -1,0 +1,37 @@
+{
+    "id": "a0egkoob2",
+    "slug": "concordia",
+    "title": "Concordia",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/CONCORDIA1.jpg",
+      "width": 1540,
+      "height": 703
+    },
+    "thumbnails": [],
+    "description": "Concordia is an ambient accompaniment synth which ables to create a vast of background accompaniment phrases that might enrich any kind musical track or playback at the background. The main method behind the synth are 3 **chord based step sequencers** which able to recognize any kind of chord and follow it for building an inspiring accompaniment. Concordia can handle 1 note, 2 notes, and indeed +3 notes chords (as many as the user just wants) and send the results into any of the 16 sound engines based 3 oscilltors. The chord sequencers can follow (or un-follow) the D.A.W's tempo and allow the user to match the sequence to any time signature. The sequencers also support method randomizing (up, down, random) and additional note key routing for anriching the played chord with more harmonies.\\n\\n​`Additional extras:\\n\\n#The bigger is the played chord - the richer is the harmony\\n\\n #Concordia allow any note stealling technique including fingering, notes holding, notes retriggering andand even double and tripple retriggering\\n\\n#The sequencer's router menu allow on-off randomizing according to 5 synced speeds and indeed, multy-routing\\n\\n \\n\\nOther than that, there is a synthesis\\nsection and 3 high grade master effects. Concordia also supports separated multi-outputting of the 3 oscillators in the D.A.W (separated stereo output for each oscillator).\\n\\n \\n\\n​Demo limitation: 3 seconds silent every 15 seconds.",
+    "shortDescription": "Ambient Accompaniment",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true
+    },
+    "price": 12,
+    "downloadLinks": [
+      {
+        "id": "tg918vnwe",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/5jPz6wQ7v6Xizafvkv8F3XNgxX1T"
+      },
+      {
+        "id": "4rrmf5668",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/Hs8i0TCK#_8Imf7oGeQKpR-z-PIleabFp161UMbma26HW7Ubp3nU"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": [
+      "https://www.youtube.com/watch?v=33fECjhavVE&ab_channel=Fananteam"
+    ]
+  }
