@@ -1,0 +1,48 @@
+{
+    "id": "vrzuff4kh",
+    "slug": "tropicana",
+    "title": "Tropicana",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/tropikana1.jpg",
+      "width": 1639,
+      "height": 795
+    },
+    "thumbnails": [
+      {
+        "url": "/images/tropikana2.jpg",
+        "width": 1090,
+        "height": 812
+      },
+      {
+        "url": "/images/tropikana3.jpg",
+        "width": 1642,
+        "height": 788
+      }
+    ],
+    "description": "Tropicana is a rhythmic synth crafted for producing the caribbeans musical style arpeggios. If you like the tones of calypso, soca, reggae, reggaeton and dancehal, you're on the right place.\\n\\n`What is it?\\n\\nTropicana Is based on 3 independent wavetable/pad oscillators combined with innovative modular chord driven arpeggiator. All the oscillators can perform together or independently. The synthesis section provides a selection between wavetables method sound engine or pad section. It can characterize the overall sound's color by a special \"character\" feature and also equipped with more typical synthis features including 11 types of filters, 1 LFO and 1 env modulation system with 6 simultaneous sends each, ring modulation and uniuqe colored \"Zelda filter\" per oscillator. It can play in both mono or poly modes (per osc) and able to combine 3 mono playing thecnics (hold stolen note, retrigger new note, retrigger stolen note).\\n\\n`The Arp\\n\\nThe modular arpeggiator is actually a combination between a chords driven midi arpeggiator with 1000 built in arpeggios and chords driven midi trance gate with 16 steps (max.). Both the arp and the trance gate recognize played chords and can follow them independently or co-operate together on the same midi arpeggio line. This method ensure endless posibilities and a very easy yet fun programming of new arpeggioes and melodies. Both are sensitive to complex midi keys fingering and know to adopt the DAW's tempo and time signature, which ensures perfect integration with your track. Both are also equipped with randomizing abilities as well, promising hours of fun and creativity.\\n\\n`The MLFO\\n\\nAt the front stage you can also find the \"MLFO\" - motorized LFO feature. This feature allows motorizing knobs and by that, creating interesting modulations which are impossible elseway.",
+    "shortDescription": "Caribbean Rhythmic Synth",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true
+    },
+    "price": 12,
+    "downloadLinks": [
+      {
+        "id": "cfar9z2ut",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/PW1zu7yTVxaGabPTxxiz7TiC88yT"
+      },
+      {
+        "id": "lwkth92cv",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/P4tzBRQb#cXjGP1SpPXLJcmAtba2QyXt_9fh3FwGcyzXZ87Sn3_I"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": [
+      "https://www.youtube.com/watch?v=uG3RDyJJwtE&ab_channel=Fananteam"
+    ]
+  }
