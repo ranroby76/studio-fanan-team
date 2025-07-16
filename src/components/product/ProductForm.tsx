@@ -51,9 +51,7 @@ const productFormSchema = z.object({
   description: z.string().min(10, "Description must be at least 10 characters").transform(val => val.replace(/\n/g, '\\n')),
   price: z.coerce.number().min(0, "Price must be a positive number"),
   winVst3Url: z.string().url("A valid URL is required for the Windows download"),
-  macVst3Url: z.string().url("A valid URL is required for the macOS download"),
   winVst3Url_alt: z.string().url().or(z.literal('')),
-  macVst3Url_alt: z.string().url().or(z.literal('')),
   demoLimitations: z.string().optional(),
   videoUrls: z.array(z.string().url().or(z.literal(''))).max(3),
 });
@@ -92,9 +90,7 @@ const transformProductToFormData = (product: Product): ProductFormData => {
     formats: product.formats,
     price: product.price,
     winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows') && !l.label.includes('Alternative'))?.url || '',
-    macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS') && !l.label.includes('Alternative'))?.url || '',
     winVst3Url_alt: product.downloadLinks.find(l => l.label.includes('Windows') && l.label.includes('Alternative'))?.url || '',
-    macVst3Url_alt: product.downloadLinks.find(l => l.label.includes('macOS') && l.label.includes('Alternative'))?.url || '',
     demoLimitations: product.demoLimitations,
     videoUrls: videoUrls,
   };
@@ -140,9 +136,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
           description: '',
           price: 0,
           winVst3Url: '',
-          macVst3Url: '',
           winVst3Url_alt: '',
-          macVst3Url_alt: '',
           demoLimitations: '3 seconds silence every 15 seconds',
           videoUrls: Array(3).fill(''),
         },
@@ -305,17 +299,9 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
                       <Input {...register('winVst3Url')} placeholder="Windows Download URL"/>
                       {errors.winVst3Url && <p className="text-sm text-destructive mt-1">{errors.winVst3Url.message}</p>}
                   </div>
-                   <div>
-                      <Input {...register('macVst3Url')} placeholder="macOS Download URL"/>
-                      {errors.macVst3Url && <p className="text-sm text-destructive mt-1">{errors.macVst3Url.message}</p>}
-                  </div>
                   <div>
                       <Input {...register('winVst3Url_alt')} placeholder="Windows Download URL (Alternative)"/>
                       {errors.winVst3Url_alt && <p className="text-sm text-destructive mt-1">{errors.winVst3Url_alt.message}</p>}
-                  </div>
-                   <div>
-                      <Input {...register('macVst3Url_alt')} placeholder="macOS Download URL (Alternative)"/>
-                      {errors.macVst3Url_alt && <p className="text-sm text-destructive mt-1">{errors.macVst3Url_alt.message}</p>}
                   </div>
                </div>
             </div>

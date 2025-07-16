@@ -64,13 +64,7 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
    if (formData.winVst3Url_alt) {
     downloadLinks.push({ id: generateId(), label: `Download (Windows) Alternative`, url: formData.winVst3Url_alt });
   }
-  if (formData.macVst3Url) {
-     downloadLinks.push({ id: generateId(), label: `Download (macOS)`, url: formData.macVst3Url });
-  }
-  if (formData.macVst3Url_alt) {
-     downloadLinks.push({ id: generateId(), label: `Download (macOS) Alternative`, url: formData.macVst3Url_alt });
-  }
-
+  
   const mainImage: ImageDetails = {
     url: ensureImagePath(formData.mainImage.filename),
     width: formData.mainImage.width || 0,
@@ -135,9 +129,7 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
     formats: product.formats || { vst: false, vsti: false, win32: false, win64: false },
     price: product.price,
     winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows') && !l.label.includes('Alternative'))?.url || '',
-    macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS') && !l.label.includes('Alternative'))?.url || '',
     winVst3Url_alt: product.downloadLinks.find(l => l.label.includes('Windows') && l.label.includes('Alternative'))?.url || '',
-    macVst3Url_alt: product.downloadLinks.find(l => l.label.includes('macOS') && l.label.includes('Alternative'))?.url || '',
     demoLimitations: product.demoLimitations,
     videoUrls: videoUrls,
   };

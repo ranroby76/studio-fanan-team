@@ -56,9 +56,7 @@ export interface ProductFormData {
   formats: Formats;
   price: number;
   winVst3Url: string;
-  macVst3Url: string;
   winVst3Url_alt?: string;
-  macVst3Url_alt?: string;
   demoLimitations?: string;
   videoUrls: (string | undefined)[];
 }
