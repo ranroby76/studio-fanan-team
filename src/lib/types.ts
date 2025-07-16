@@ -44,6 +44,11 @@ export interface Product {
   videoUrls?: string[]; // Array of up to 3 YouTube video URLs
 }
 
+export interface ProductFormDownloadLink {
+    enabled: boolean;
+    url: string;
+}
+
 // ProductFormData is now more aligned with what the form actually collects
 export interface ProductFormData {
   id?: string;
@@ -55,8 +60,10 @@ export interface ProductFormData {
   shortDescription: string;
   formats: Formats;
   price: number;
-  winVst3Url: string;
-  winVst3Url_alt?: string;
+  downloadLink1: ProductFormDownloadLink;
+  downloadLink2: ProductFormDownloadLink;
+  downloadLink3: ProductFormDownloadLink;
+  downloadLink4: ProductFormDownloadLink;
   demoLimitations?: string;
   videoUrls: (string | undefined)[];
 }

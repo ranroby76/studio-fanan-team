@@ -52,18 +52,30 @@ const stripImagePath = (prefixedUrl: string) => {
     return prefixedUrl;
 }
 
+const downloadLinkLabels = [
+    "Download Option 1",
+    "Download Option 2",
+    "Download Stand-Alone (Op. 1)",
+    "Download Stand-Alone (Op. 2)"
+];
+
 // Helper to transform form data into the canonical Product structure for JSON generation
 const transformFormDataToProduct = (formData: ProductFormData, existingId?: string): Product => {
   const slug = generateSlug(formData.title);
   const id = existingId || formData.id || generateId();
 
+  const formLinks = [formData.downloadLink1, formData.downloadLink2, formData.downloadLink3, formData.downloadLink4];
   const downloadLinks: DownloadLink[] = [];
-  if (formData.winVst3Url) {
-    downloadLinks.push({ id: generateId(), label: `Download (Windows)`, url: formData.winVst3Url });
-  }
-   if (formData.winVst3Url_alt) {
-    downloadLinks.push({ id: generateId(), label: `Download (Windows) Alternative`, url: formData.winVst3Url_alt });
-  }
+
+  formLinks.forEach((link, index) => {
+      if (link.enabled && link.url) {
+          downloadLinks.push({
+              id: generateId(),
+              label: downloadLinkLabels[index],
+              url: link.url
+          });
+      }
+  });
   
   const mainImage: ImageDetails = {
     url: ensureImagePath(formData.mainImage.filename),
@@ -114,6 +126,8 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
     videoUrls.push('');
   }
 
+  const findLink = (label: string) => product.downloadLinks.find(l => l.label === label);
+
   return {
     id: product.id,
     title: product.title,
@@ -128,8 +142,10 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
     shortDescription: product.shortDescription,
     formats: product.formats || { vst: false, vsti: false, win32: false, win64: false },
     price: product.price,
-    winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows') && !l.label.includes('Alternative'))?.url || '',
-    winVst3Url_alt: product.downloadLinks.find(l => l.label.includes('Windows') && l.label.includes('Alternative'))?.url || '',
+    downloadLink1: { enabled: !!findLink(downloadLinkLabels[0]), url: findLink(downloadLinkLabels[0])?.url || '' },
+    downloadLink2: { enabled: !!findLink(downloadLinkLabels[1]), url: findLink(downloadLinkLabels[1])?.url || '' },
+    downloadLink3: { enabled: !!findLink(downloadLinkLabels[2]), url: findLink(downloadLinkLabels[2])?.url || '' },
+    downloadLink4: { enabled: !!findLink(downloadLinkLabels[3]), url: findLink(downloadLinkLabels[3])?.url || '' },
     demoLimitations: product.demoLimitations,
     videoUrls: videoUrls,
   };
@@ -174,7 +190,8 @@ export const generateJsonForDelete = (id: string): string => {
 };
 
 // Helper to format the tags
-export const formatTags = (formats: Product['formats']) => {
+export const formatTags = (formats: Formats | undefined) => {
+  if (!formats) return '';
   const parts: string[] = [];
   if (formats.vst) parts.push('VST');
   if (formats.vsti) parts.push('VSTi');

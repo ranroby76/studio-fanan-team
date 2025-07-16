@@ -35,6 +35,11 @@ const mainImageSchema = imageSchema.extend({
   height: z.coerce.number().min(1, "Height is required"),
 });
 
+const downloadLinkSchema = z.object({
+  enabled: z.boolean(),
+  url: z.string().url().or(z.literal('')),
+});
+
 const productFormSchema = z.object({
   id: z.string().optional(),
   title: z.string().min(3, "Title must be at least 3 characters"),
@@ -50,11 +55,24 @@ const productFormSchema = z.object({
   thumbnails: z.array(imageSchema).max(7),
   description: z.string().min(10, "Description must be at least 10 characters").transform(val => val.replace(/\n/g, '\\n')),
   price: z.coerce.number().min(0, "Price must be a positive number"),
-  winVst3Url: z.string().url("A valid URL is required for the Windows download"),
-  winVst3Url_alt: z.string().url().or(z.literal('')),
+  downloadLink1: downloadLinkSchema,
+  downloadLink2: downloadLinkSchema,
+  downloadLink3: downloadLinkSchema,
+  downloadLink4: downloadLinkSchema,
   demoLimitations: z.string().optional(),
   videoUrls: z.array(z.string().url().or(z.literal(''))).max(3),
+}).refine(data => {
+    // If a link is enabled, its URL must not be empty.
+    if (data.downloadLink1.enabled && !data.downloadLink1.url) return false;
+    if (data.downloadLink2.enabled && !data.downloadLink2.url) return false;
+    if (data.downloadLink3.enabled && !data.downloadLink3.url) return false;
+    if (data.downloadLink4.enabled && !data.downloadLink4.url) return false;
+    return true;
+}, {
+    message: "Enabled download links must have a valid URL.",
+    path: ["downloadLink1"], // You can specify a path, but the message is generic enough.
 });
+
 
 const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | `thumbnails.${number}`, register: any, errors?: any }) => (
   <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px_80px] gap-2 items-start">
@@ -88,8 +106,10 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
           thumbnails: Array(7).fill({ filename: '', width: 0, height: 0 }),
           description: '',
           price: 0,
-          winVst3Url: '',
-          winVst3Url_alt: '',
+          downloadLink1: { enabled: false, url: '' },
+          downloadLink2: { enabled: false, url: '' },
+          downloadLink3: { enabled: false, url: '' },
+          downloadLink4: { enabled: false, url: '' },
           demoLimitations: '3 seconds silence every 15 seconds',
           videoUrls: Array(3).fill(''),
         },
@@ -133,6 +153,14 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
       { id: 'win32', label: 'Windows 32bit' },
       { id: 'win64', label: 'Windows 64bit' },
   ];
+
+  const downloadLinkFields = [
+      { id: 'downloadLink1', label: 'Download Option 1' },
+      { id: 'downloadLink2', label: 'Download Option 2' },
+      { id: 'downloadLink3', label: 'Download Stand-Alone (Op. 1)' },
+      { id: 'downloadLink4', label: 'Download Stand-Alone (Op. 2)' },
+  ] as const;
+
 
   return (
     <div className="space-y-4">
@@ -245,18 +273,28 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false, 
               </div>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
                <Label className="font-semibold">Download Links</Label>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                      <Input {...register('winVst3Url')} placeholder="Windows Download URL"/>
-                      {errors.winVst3Url && <p className="text-sm text-destructive mt-1">{errors.winVst3Url.message}</p>}
-                  </div>
-                  <div>
-                      <Input {...register('winVst3Url_alt')} placeholder="Windows Download URL (Alternative)"/>
-                      {errors.winVst3Url_alt && <p className="text-sm text-destructive mt-1">{errors.winVst3Url_alt.message}</p>}
-                  </div>
-               </div>
+               {downloadLinkFields.map((link) => (
+                   <div key={link.id} className="grid grid-cols-[auto_1fr] items-center gap-4">
+                       <Controller
+                            name={`${link.id}.enabled`}
+                            control={control}
+                            render={({ field }) => (
+                                <div className="flex items-center gap-2">
+                                    <Checkbox id={`${link.id}.enabled`} checked={field.value} onCheckedChange={field.onChange} />
+                                    <Label htmlFor={`${link.id}.enabled`} className="font-normal w-52">{link.label}</Label>
+                                </div>
+                            )}
+                       />
+                       <Input
+                           {...register(`${link.id}.url`)}
+                           placeholder="Enter URL..."
+                       />
+                        {errors[link.id]?.url && <p className="text-sm text-destructive col-span-2">{errors[link.id]?.url?.message}</p>}
+                   </div>
+               ))}
+                {errors.downloadLink1 && !errors.downloadLink1.url && <p className="text-sm text-destructive">{errors.downloadLink1.message}</p>}
             </div>
             
              <div className="space-y-2">
