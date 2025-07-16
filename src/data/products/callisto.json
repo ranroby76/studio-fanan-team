@@ -1,0 +1,50 @@
+{
+    "id": "w250qidof",
+    "slug": "callisto",
+    "title": "Callisto",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/calisto1.jpg",
+      "width": 678,
+      "height": 830
+    },
+    "thumbnails": [
+      {
+        "url": "/images/calisto2.jpg",
+        "width": 1681,
+        "height": 795
+      },
+      {
+        "url": "/images/calisto3.jpg",
+        "width": 1677,
+        "height": 799
+      }
+    ],
+    "description": "The current versions of Callisto (ver.1.8) bring the style based accompaniment to the computer + the traditional mechanisms that can be found in any hardware arranger, like the intros, fills, endings and main variations buttons that switch between it's 10 variations set, according to the well known arranger method. those features are backed by 10 sequencers per instrument which create the midi sequences for each. The sequences should be programmed manually by drawing midi notes in each of the variations piano roll tool and saved as a file. You'll also find one finger\\fingered chord switching methods (+double click to switch between major and minor in one key mode), keyboard splitting button, start on key press feature, piano mode, multi solo mode, automatic crash system, hold variation mode and a tempo knob. You can also use automation to power up any significant button or knob straight from your hardware midi keyboard\\controller (MIDI learn) and an easy to use \"jump to\" menu which determines which variation continues which sequence after a transitions.\\n\\nWe also added a new \"global transpose\" button and semitone and octave controls for the style instruments. In ver 1.8, we also added a new floating style editing window and smoother chords transitions.\\n\\n`Callisto also released as a stand-alone version which allows user to connect it as a total independent software to any DAW by using virtual midi cables. Both versions, VSTi and stand-alone are attached to the download link.",
+    "shortDescription": "Arranger Module",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": true
+    },
+    "price": 12,
+    "downloadLinks": [
+      {
+        "id": "qgiegfqaj",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/B8GSabxjaDNtxCaZkSQ2DRRfzWxG"
+      },
+      {
+        "id": "krnru3lv5",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/v9EmwbjB#ze35u3HC6j3qtiasal9_VZcP65FliNNk2FdogxIW2kI"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": [
+      "https://www.youtube.com/watch?v=FsfPn5w6Sq0&ab_channel=Fananteam",
+      "https://www.youtube.com/watch?v=T_qVGrJUUo8&t=1s&ab_channel=fananteam"
+    ]
+  }

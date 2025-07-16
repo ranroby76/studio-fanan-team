@@ -1,0 +1,47 @@
+{
+    "id": "gzmq3uouk",
+    "slug": "ziggy",
+    "title": "Ziggy",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/zigi1.jpg",
+      "width": 1001,
+      "height": 917
+    },
+    "thumbnails": [
+      {
+        "url": "/images/zigi2.jpg",
+        "width": 1005,
+        "height": 919
+      },
+      {
+        "url": "/images/zigi3.jpg",
+        "width": 1001,
+        "height": 915
+      }
+    ],
+    "description": "Ziggy is based on an improved physical modeling code of a virtual analog oscillators that work on a basis of top crafted wave-forms with an incredible dynamic range and  generates 10 bass guitar emulation, each with it's own size and color. It's light weight and minimalist CPU and ram resources usage makes it an ultimate \"go to\" bass tool.\\n\\n` Mix any 2 bass guitar together \\n\\n​Ziggy can mix and morph any 2 bass guitar together all the way to a new fresh sound. The combination creates dozens of new nuances and unique characters. ​Ziggy has full synthesis section, 2 different midi velocity options, a user friendly global hipass-lopass filter, a new feature called \"note slider\" which allows creating note sliding sequence effect, a full section of built in effects (saturation, chorus, phaser,tremolo, reverb and delay), built-in draw-bars system, an advanced mono mode, full midi map and a resizable and customizable GUI.",
+    "shortDescription": "Advanced Bass Module",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 12,
+    "downloadLinks": [
+      {
+        "id": "xbk68jlqq",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/Ttg8SQvybR4f44iStbf4tFCwW917"
+      },
+      {
+        "id": "4v025bbjg",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/38UXRZQS#72Fbyn1N3ho-oIILGmC2xHUi39nn6o1RyQSCL1wtpG0"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": []
+  }
