@@ -59,10 +59,16 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
 
   const downloadLinks: DownloadLink[] = [];
   if (formData.winVst3Url) {
-    downloadLinks.push({ id: generateId(), label: `Download ${formData.title} (Windows)`, url: formData.winVst3Url });
+    downloadLinks.push({ id: generateId(), label: `Download (Windows)`, url: formData.winVst3Url });
   }
   if (formData.macVst3Url) {
-     downloadLinks.push({ id: generateId(), label: `Download ${formData.title} (macOS)`, url: formData.macVst3Url });
+     downloadLinks.push({ id: generateId(), label: `Download (macOS)`, url: formData.macVst3Url });
+  }
+   if (formData.winVst3Url_alt) {
+    downloadLinks.push({ id: generateId(), label: `Download (Windows) Alternative`, url: formData.winVst3Url_alt });
+  }
+  if (formData.macVst3Url_alt) {
+     downloadLinks.push({ id: generateId(), label: `Download (macOS) Alternative`, url: formData.macVst3Url_alt });
   }
 
   const mainImage: ImageDetails = {
@@ -124,8 +130,10 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
     thumbnails: thumbnails,
     description: product.description.replace(/\\n/g, '\n'),
     price: product.price,
-    winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows'))?.url || '',
-    macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS'))?.url || '',
+    winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows') && !l.label.includes('Alternative'))?.url || '',
+    macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS') && !l.label.includes('Alternative'))?.url || '',
+    winVst3Url_alt: product.downloadLinks.find(l => l.label.includes('Windows') && l.label.includes('Alternative'))?.url || '',
+    macVst3Url_alt: product.downloadLinks.find(l => l.label.includes('macOS') && l.label.includes('Alternative'))?.url || '',
     demoLimitations: product.demoLimitations,
     videoUrls: videoUrls,
   };

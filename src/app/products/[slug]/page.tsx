@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getProductBySlug } from '@/lib/product-service';
 import type { Product, ImageDetails } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -139,8 +140,8 @@ export default function ProductPage() {
   return (
     <div className="container mx-auto px-4 animate-fade-in">
       <div className="flex justify-between items-start mb-4">
-          <div className="w-48 h-auto">
-            <Image src={packImages[product.pack]} alt={`${product.pack} logo`} width={300} height={60} className="object-contain" />
+          <div className="w-96 h-auto">
+            <Image src={packImages[product.pack]} alt={`${product.pack} logo`} width={600} height={120} className="object-contain" />
           </div>
       </div>
       <h1 className="text-5xl font-bold font-headline text-primary mb-8 text-center">{product.title}</h1>
@@ -149,7 +150,7 @@ export default function ProductPage() {
         <div className="lg:col-span-3">
           <Card className="shadow-lg overflow-hidden">
              {selectedImage && selectedImage.url && selectedImage.width && selectedImage.height ? (
-              <div className="relative w-full bg-muted">
+              <a href={selectedImage.url} target="_blank" rel="noopener noreferrer" className="block relative w-full bg-muted">
                 <Image
                   src={selectedImage.url}
                   alt={`Main view of ${product.title}`}
@@ -159,7 +160,7 @@ export default function ProductPage() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
                   priority
                 />
-              </div>
+              </a>
             ) : (
                 <div className="w-full aspect-video bg-muted flex items-center justify-center">
                     <p className="text-muted-foreground">No image available</p>

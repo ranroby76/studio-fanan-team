@@ -44,12 +44,14 @@ const productFormSchema = z.object({
   price: z.coerce.number().min(0, "Price must be a positive number"),
   winVst3Url: z.string().url("A valid URL is required for the Windows download"),
   macVst3Url: z.string().url("A valid URL is required for the macOS download"),
+  winVst3Url_alt: z.string().url().or(z.literal('')),
+  macVst3Url_alt: z.string().url().or(z.literal('')),
   demoLimitations: z.string().optional(),
   videoUrls: z.array(z.string().url().or(z.literal(''))).max(3),
 });
 
 
-const IMAGE_PREFIX = '/images/products/';
+const IMAGE_PREFIX = '/images/';
 
 // Helper to transform full Product data to form-compatible data for editing
 const transformProductToFormData = (product: Product): ProductFormData => {
@@ -79,8 +81,10 @@ const transformProductToFormData = (product: Product): ProductFormData => {
     thumbnails: thumbnails,
     description: product.description.replace(/\\n/g, '\n'),
     price: product.price,
-    winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows'))?.url || '',
-    macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS'))?.url || '',
+    winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows') && !l.label.includes('Alternative'))?.url || '',
+    macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS') && !l.label.includes('Alternative'))?.url || '',
+    winVst3Url_alt: product.downloadLinks.find(l => l.label.includes('Windows') && l.label.includes('Alternative'))?.url || '',
+    macVst3Url_alt: product.downloadLinks.find(l => l.label.includes('macOS') && l.label.includes('Alternative'))?.url || '',
     demoLimitations: product.demoLimitations,
     videoUrls: videoUrls,
   };
@@ -124,6 +128,8 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
           price: 0,
           winVst3Url: '',
           macVst3Url: '',
+          winVst3Url_alt: '',
+          macVst3Url_alt: '',
           demoLimitations: '3 seconds silence every 15 seconds',
           videoUrls: Array(3).fill(''),
         },
@@ -161,7 +167,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
           <CardTitle className="text-3xl font-headline text-primary">{isEditing ? `Edit Product: ${initialData?.title}` : 'Add New Product'}</CardTitle>
           <CardDescription>
             Fill in the details. After generating, copy the JSON output and paste it into `src/data/products.json`.
-            Images are relative to `public/images/products/`.
+            Images are relative to `public/images/`.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(processSubmit)}>
@@ -243,6 +249,14 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
                    <div>
                       <Input {...register('macVst3Url')} placeholder="macOS Download URL"/>
                       {errors.macVst3Url && <p className="text-sm text-destructive mt-1">{errors.macVst3Url.message}</p>}
+                  </div>
+                  <div>
+                      <Input {...register('winVst3Url_alt')} placeholder="Windows Download URL (Alternative)"/>
+                      {errors.winVst3Url_alt && <p className="text-sm text-destructive mt-1">{errors.winVst3Url_alt.message}</p>}
+                  </div>
+                   <div>
+                      <Input {...register('macVst3Url_alt')} placeholder="macOS Download URL (Alternative)"/>
+                      {errors.macVst3Url_alt && <p className="text-sm text-destructive mt-1">{errors.macVst3Url_alt.message}</p>}
                   </div>
                </div>
             </div>
