@@ -123,7 +123,7 @@ export default function ProductsManagementPage() {
             <Card key={product.id} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="relative p-0">
                 <Image
-                  src={product.mainImage || "https://placehold.co/600x400.png?text=No+Image"}
+                  src={product.mainImage?.url || "https://placehold.co/600x400.png"}
                   alt={product.title}
                   width={600}
                   height={400}
