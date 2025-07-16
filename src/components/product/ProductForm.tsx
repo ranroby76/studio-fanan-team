@@ -170,6 +170,9 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
           <div>
             <Label htmlFor="description" className="font-semibold">Product Description</Label>
             <Textarea id="description" {...register('description')} rows={5} className="mt-1" placeholder="Detailed description of the product..."/>
+            <p className="text-xs text-muted-foreground mt-1">
+              Use ` at the start of a line for a title, and # for a list item.
+            </p>
             {errors.description && <p className="text-sm text-destructive mt-1">{errors.description.message}</p>}
           </div>
 
