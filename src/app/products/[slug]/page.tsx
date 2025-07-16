@@ -170,7 +170,7 @@ export default function ProductPage() {
                       />
                     </button>
                   </DialogTrigger>
-                  <DialogContent className="w-auto max-w-[85vw] h-auto max-h-[85vh] p-2">
+                  <DialogContent className="w-[85vw] h-[85vh] max-w-[85vw] max-h-[85vh] p-2 flex justify-center items-center">
                      <DialogHeader>
                         <DialogTitle className="sr-only">Full-size view of {product.title}</DialogTitle>
                      </DialogHeader>
@@ -179,7 +179,7 @@ export default function ProductPage() {
                         alt={`Full-size view of ${product.title}`}
                         width={selectedImage.width}
                         height={selectedImage.height}
-                        className="object-contain rounded-md w-full h-auto"
+                        className="object-contain rounded-md w-auto h-full max-w-full max-h-full"
                       />
                   </DialogContent>
                 </Dialog>
