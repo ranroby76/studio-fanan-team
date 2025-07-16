@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, ExternalLink, ClipboardCopy, Star, Box, Gift } from 'lucide-react';
 import type { Product, Pack } from '@/lib/types';
-import { getProducts, generateJsonForDelete } from '@/lib/product-service';
+import { getProducts, generateJsonForDelete, formatTags } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 import {
   AlertDialog,
@@ -24,23 +24,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
-
-// Helper to format the tags
-const formatTags = (formats: Product['formats']) => {
-  const parts: string[] = [];
-  if (formats.vst) parts.push('VST');
-  if (formats.vsti) parts.push('VSTi');
-  
-  const winFormats: string[] = [];
-  if (formats.win32) winFormats.push('32bit');
-  if (formats.win64) winFormats.push('64bit');
-
-  if (winFormats.length > 0) {
-    parts.push(`Windows ${winFormats.join('/')}`);
-  }
-  
-  return parts.join(' | ');
-};
 
 const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
   "Pro Pack": { icon: Star, title: "Pro Pack" },

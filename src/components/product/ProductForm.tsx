@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { generateProductsJsonString } from '@/lib/product-service';
+import { generateProductsJsonString, transformProductToFormData } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 
 const imageSchema = z.object({
@@ -56,53 +56,6 @@ const productFormSchema = z.object({
   videoUrls: z.array(z.string().url().or(z.literal(''))).max(3),
 });
 
-
-const IMAGE_PREFIX = '/images/';
-
-// Helper to transform full Product data to form-compatible data for editing
-const transformProductToFormData = (product: Product): ProductFormData => {
-  const thumbnails = product.thumbnails.map(t => ({
-    filename: t.url.replace(IMAGE_PREFIX, ''),
-    width: t.width,
-    height: t.height,
-  }));
-  while (thumbnails.length < 7) {
-    thumbnails.push({ filename: '', width: 0, height: 0 });
-  }
-
-  const videoUrls = [...(product.videoUrls || [])];
-   while (videoUrls.length < 3) {
-    videoUrls.push('');
-  }
-
-  return {
-    id: product.id,
-    title: product.title,
-    pack: product.pack,
-    mainImage: {
-      filename: product.mainImage.url.replace(IMAGE_PREFIX, ''),
-      width: product.mainImage.width,
-      height: product.mainImage.height,
-    },
-    thumbnails: thumbnails,
-    description: product.description.replace(/\\n/g, '\n'),
-    shortDescription: product.shortDescription,
-    formats: product.formats,
-    price: product.price,
-    winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows') && !l.label.includes('Alternative'))?.url || '',
-    winVst3Url_alt: product.downloadLinks.find(l => l.label.includes('Windows') && l.label.includes('Alternative'))?.url || '',
-    demoLimitations: product.demoLimitations,
-    videoUrls: videoUrls,
-  };
-};
-
-interface ProductFormProps {
-  initialData?: Product;
-  onSubmit: (data: ProductFormData, jsonString: string) => Promise<void>;
-  isEditing?: boolean;
-  preselectedPack?: Pack;
-}
-
 const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | `thumbnails.${number}`, register: any, errors?: any }) => (
   <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px_80px] gap-2 items-start">
     <Input
@@ -118,7 +71,7 @@ const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | 
 );
 
 
-export default function ProductForm({ initialData, onSubmit, isEditing = false, preselectedPack }: ProductFormProps) {
+export default function ProductForm({ initialData, onSubmit, isEditing = false, preselectedPack }: { initialData?: Product; onSubmit: (data: ProductFormData, jsonString: string) => Promise<void>; isEditing?: boolean; preselectedPack?: Pack; }) {
   const [jsonOutput, setJsonOutput] = useState('');
   const { toast } = useToast();
   

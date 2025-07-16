@@ -172,3 +172,20 @@ export const generateJsonForDelete = (id: string): string => {
   const updatedProducts = currentProducts.filter(p => p.id !== id);
   return JSON.stringify(updatedProducts, null, 2);
 };
+
+// Helper to format the tags
+export const formatTags = (formats: Product['formats']) => {
+  const parts: string[] = [];
+  if (formats.vst) parts.push('VST');
+  if (formats.vsti) parts.push('VSTi');
+  
+  const winFormats: string[] = [];
+  if (formats.win32) winFormats.push('32bit');
+  if (formats.win64) winFormats.push('64bit');
+
+  if (winFormats.length > 0) {
+    parts.push(`Windows ${winFormats.join('/')}`);
+  }
+  
+  return parts.join(' | ');
+};
