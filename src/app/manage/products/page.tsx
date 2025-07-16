@@ -175,7 +175,7 @@ function ProductsManagementComponent() {
               </Link>
 
               <div className="p-3 border-t bg-muted/30">
-                 <p className="text-xs text-muted-foreground text-center truncate">{formatTags(product.formats)}</p>
+                 <p className="text-lg text-muted-foreground text-center truncate">{formatTags(product.formats)}</p>
               </div>
 
               <CardFooter className="grid grid-cols-2 gap-2 mt-auto p-2 border-t bg-muted/50">
