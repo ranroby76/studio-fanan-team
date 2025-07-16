@@ -50,6 +50,7 @@ const productFormSchema = z.object({
     vsti: z.boolean(),
     win32: z.boolean(),
     win64: z.boolean(),
+    standAlone: z.boolean(),
   }),
   mainImage: mainImageSchema,
   thumbnails: z.array(imageSchema).max(7),
@@ -102,7 +103,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
           title: '',
           shortDescription: '',
           pack: preselectedPack || "Pro Pack",
-          formats: { vst: false, vsti: false, win32: false, win64: false },
+          formats: { vst: false, vsti: false, win32: false, win64: false, standAlone: false },
           mainImage: { filename: '', width: 0, height: 0 },
           thumbnails: Array(7).fill({ filename: '', width: 0, height: 0 }),
           description: '',
@@ -163,6 +164,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
       { id: 'vsti', label: 'VSTi' },
       { id: 'win32', label: 'Windows 32bit' },
       { id: 'win64', label: 'Windows 64bit' },
+      { id: 'standAlone', label: 'Stand-Alone' },
   ];
 
   const downloadLinkFields = [
@@ -223,7 +225,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
 
                 <div>
                     <Label className="font-semibold mb-2 block">Formats</Label>
-                    <div className="flex flex-wrap gap-4 items-center mt-3">
+                    <div className="flex flex-wrap gap-x-6 gap-y-4 items-center mt-3">
                         {formatCheckboxes.map(item => (
                             <Controller
                                 key={item.id}

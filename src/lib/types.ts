@@ -5,6 +5,7 @@ export interface Formats {
   vsti: boolean;
   win32: boolean;
   win64: boolean;
+  standAlone: boolean;
 }
 
 export interface DownloadLink {
