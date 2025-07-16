@@ -91,16 +91,10 @@ interface ProductFormProps {
 
 const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | `thumbnails.${number}`, register: any, errors?: any }) => (
   <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px_80px] gap-2 items-start">
-    <div className="flex items-center">
-        <span className="inline-flex items-center px-3 h-10 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm">
-          {IMAGE_PREFIX}
-        </span>
-        <Input
-          {...register(`${fieldName}.filename`)}
-          placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
-          className="rounded-l-none"
-        />
-    </div>
+    <Input
+      {...register(`${fieldName}.filename`)}
+      placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
+    />
     <Input {...register(`${fieldName}.width`)} type="number" placeholder="W" />
     <Input {...register(`${fieldName}.height`)} type="number" placeholder="H" />
     {errors?.filename && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.filename.message}</p>}
@@ -154,7 +148,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     <Card className="shadow-xl w-full max-w-4xl mx-auto">
       <CardHeader>
         <CardTitle className="text-3xl font-headline text-primary">{isEditing ? 'Edit Product' : 'Add New Product'}</CardTitle>
-        <CardDescription>Fill in the details for the product. A URL-friendly slug will be automatically generated from the title.</CardDescription>
+        <CardDescription>Fill in the details for the product. Images are relative to `public/images/products/`.</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit(processSubmit)}>
         <CardContent className="space-y-6">

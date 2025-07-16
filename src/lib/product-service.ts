@@ -21,13 +21,16 @@ export const getProducts = (): Product[] => {
   const data = localStorage.getItem(PRODUCTS_STORAGE_KEY);
   try {
     const products = data ? JSON.parse(data) : [];
-    // Ensure all products have a slug for backward compatibility
+    // Ensure all products have a slug and correct image structure for backward compatibility
     return products.map((p: any) => ({ 
       ...p, 
       slug: p.slug || generateSlug(p.title),
-      // Backward compatibility for old image string format
-      mainImage: typeof p.mainImage === 'string' ? { url: p.mainImage, width: 1600, height: 900 } : p.mainImage,
-      thumbnails: Array.isArray(p.thumbnails) ? p.thumbnails.map((t: any) => typeof t === 'string' ? { url: t, width: 400, height: 300 } : t) : [],
+      mainImage: typeof p.mainImage === 'string' 
+        ? { url: p.mainImage, width: 1600, height: 900 } 
+        : (p.mainImage && p.mainImage.url ? p.mainImage : { url: 'https://placehold.co/600x400.png', width: 600, height: 400 }),
+      thumbnails: Array.isArray(p.thumbnails) 
+        ? p.thumbnails.map((t: any) => typeof t === 'string' ? { url: t, width: 400, height: 300 } : t) 
+        : [],
     }));
   } catch (error) {
     console.error("Failed to parse products from localStorage", error);
