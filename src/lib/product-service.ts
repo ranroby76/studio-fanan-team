@@ -50,6 +50,12 @@ export const getProductBySlug = (slug: string): Product | undefined => {
   return products.find(p => p.slug === slug);
 };
 
+// Helper function to safely add the image prefix
+const ensureImagePath = (filename: string) => {
+    if (!filename) return '';
+    return filename.startsWith(IMAGE_PREFIX) ? filename : `${IMAGE_PREFIX}${filename}`;
+}
+
 // Helper to transform form data into the canonical Product structure
 const transformFormDataToProduct = (formData: ProductFormData, existingId?: string): Product => {
   const slug = generateSlug(formData.title);
@@ -64,7 +70,7 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
   }
 
   const mainImage: ImageDetails = {
-    url: `${IMAGE_PREFIX}${formData.mainImage.filename}`,
+    url: ensureImagePath(formData.mainImage.filename),
     width: formData.mainImage.width || 0,
     height: formData.mainImage.height || 0,
   };
@@ -72,7 +78,7 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
   const thumbnails: ImageDetails[] = formData.thumbnails
     .filter(thumb => thumb.filename && thumb.width && thumb.height)
     .map(thumb => ({
-      url: `${IMAGE_PREFIX}${thumb.filename}`,
+      url: ensureImagePath(thumb.filename),
       width: thumb.width || 0,
       height: thumb.height || 0,
     }));
@@ -87,7 +93,6 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
     description: formData.description,
     price: formData.price,
     demoLimitations: formData.demoLimitations || '',
-    downloadLinks,
     videoUrls: formData.videoUrls?.filter((url): url is string => !!url && url.trim() !== ''),
   };
 
