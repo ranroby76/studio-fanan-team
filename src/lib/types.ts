@@ -1,4 +1,12 @@
 // src/lib/types.ts
+
+export interface Formats {
+  vst: boolean;
+  vsti: boolean;
+  win32: boolean;
+  win64: boolean;
+}
+
 export interface DownloadLink {
   id: string;
   label: string;
@@ -28,6 +36,8 @@ export interface Product {
   mainImage: ImageDetails;
   thumbnails: ImageDetails[];
   description: string;
+  shortDescription: string;
+  formats: Formats;
   price: number;
   downloadLinks: DownloadLink[];
   demoLimitations: string;
@@ -42,6 +52,8 @@ export interface ProductFormData {
   mainImage: ImageFormData;
   thumbnails: ImageFormData[];
   description: string;
+  shortDescription: string;
+  formats: Formats;
   price: number;
   winVst3Url: string;
   macVst3Url: string;

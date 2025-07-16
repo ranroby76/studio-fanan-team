@@ -1,5 +1,5 @@
 // src/lib/product-service.ts
-import type { Product, ProductFormData, DownloadLink, ImageDetails } from '@/lib/types';
+import type { Product, ProductFormData, DownloadLink, ImageDetails, Formats } from '@/lib/types';
 import allProducts from '@/data/products.json';
 
 const IMAGE_PREFIX = '/images/';
@@ -61,11 +61,11 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
   if (formData.winVst3Url) {
     downloadLinks.push({ id: generateId(), label: `Download (Windows)`, url: formData.winVst3Url });
   }
-  if (formData.macVst3Url) {
-     downloadLinks.push({ id: generateId(), label: `Download (macOS)`, url: formData.macVst3Url });
-  }
    if (formData.winVst3Url_alt) {
     downloadLinks.push({ id: generateId(), label: `Download (Windows) Alternative`, url: formData.winVst3Url_alt });
+  }
+  if (formData.macVst3Url) {
+     downloadLinks.push({ id: generateId(), label: `Download (macOS)`, url: formData.macVst3Url });
   }
   if (formData.macVst3Url_alt) {
      downloadLinks.push({ id: generateId(), label: `Download (macOS) Alternative`, url: formData.macVst3Url_alt });
@@ -93,6 +93,8 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
     mainImage,
     thumbnails,
     description: formData.description,
+    shortDescription: formData.shortDescription,
+    formats: formData.formats,
     price: formData.price,
     downloadLinks,
     demoLimitations: formData.demoLimitations || '',
@@ -129,6 +131,8 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
     },
     thumbnails: thumbnails,
     description: product.description.replace(/\\n/g, '\n'),
+    shortDescription: product.shortDescription,
+    formats: product.formats || { vst: false, vsti: false, win32: false, win64: false },
     price: product.price,
     winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows') && !l.label.includes('Alternative'))?.url || '',
     macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS') && !l.label.includes('Alternative'))?.url || '',

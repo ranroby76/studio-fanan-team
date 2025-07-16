@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { generateProductsJsonString } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 
@@ -37,7 +38,14 @@ const mainImageSchema = imageSchema.extend({
 const productFormSchema = z.object({
   id: z.string().optional(),
   title: z.string().min(3, "Title must be at least 3 characters"),
+  shortDescription: z.string().min(3, "Short description is required").max(100, "Short description must be 100 characters or less"),
   pack: z.enum(["Pro Pack", "Mad MIDI Machines Pack", "Free Pack"]),
+  formats: z.object({
+    vst: z.boolean(),
+    vsti: z.boolean(),
+    win32: z.boolean(),
+    win64: z.boolean(),
+  }),
   mainImage: mainImageSchema,
   thumbnails: z.array(imageSchema).max(7),
   description: z.string().min(10, "Description must be at least 10 characters").transform(val => val.replace(/\n/g, '\\n')),
@@ -80,6 +88,8 @@ const transformProductToFormData = (product: Product): ProductFormData => {
     },
     thumbnails: thumbnails,
     description: product.description.replace(/\\n/g, '\n'),
+    shortDescription: product.shortDescription,
+    formats: product.formats,
     price: product.price,
     winVst3Url: product.downloadLinks.find(l => l.label.includes('Windows') && !l.label.includes('Alternative'))?.url || '',
     macVst3Url: product.downloadLinks.find(l => l.label.includes('macOS') && !l.label.includes('Alternative'))?.url || '',
@@ -121,7 +131,9 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
       ? transformProductToFormData(initialData)
       : {
           title: '',
+          shortDescription: '',
           pack: "Pro Pack",
+          formats: { vst: false, vsti: false, win32: false, win64: false },
           mainImage: { filename: '', width: 0, height: 0 },
           thumbnails: Array(7).fill({ filename: '', width: 0, height: 0 }),
           description: '',
@@ -160,6 +172,13 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     toast({ title: 'Copied to clipboard!' });
   };
 
+  const formatCheckboxes: { id: keyof ProductFormData['formats']; label: string }[] = [
+      { id: 'vst', label: 'VST' },
+      { id: 'vsti', label: 'VSTi' },
+      { id: 'win32', label: 'Windows 32bit' },
+      { id: 'win64', label: 'Windows 64bit' },
+  ];
+
   return (
     <div className="space-y-4">
       <Card className="shadow-xl w-full max-w-4xl mx-auto">
@@ -179,26 +198,58 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
                 <Input id="title" {...register('title')} className="mt-1" placeholder="e.g., SuperSynth Pro"/>
                 {errors.title && <p className="text-sm text-destructive mt-1">{errors.title.message}</p>}
               </div>
-              <div>
-                <Label htmlFor="pack" className="font-semibold">Product Pack</Label>
-                 <Controller
-                    control={control}
-                    name="pack"
-                    render={({ field }) => (
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <SelectTrigger className="mt-1">
-                          <SelectValue placeholder="Select a pack" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Pro Pack">Pro Pack</SelectItem>
-                          <SelectItem value="Mad MIDI Machines Pack">Mad MIDI Machines Pack</SelectItem>
-                          <SelectItem value="Free Pack">Free Pack</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    )}
-                  />
-                {errors.pack && <p className="text-sm text-destructive mt-1">{errors.pack.message}</p>}
+               <div>
+                <Label htmlFor="shortDescription" className="font-semibold">Short Description</Label>
+                <Input id="shortDescription" {...register('shortDescription')} className="mt-1" placeholder="e.g., Arranger Module"/>
+                {errors.shortDescription && <p className="text-sm text-destructive mt-1">{errors.shortDescription.message}</p>}
               </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <div>
+                    <Label htmlFor="pack" className="font-semibold">Product Pack</Label>
+                    <Controller
+                        control={control}
+                        name="pack"
+                        render={({ field }) => (
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <SelectTrigger className="mt-1">
+                            <SelectValue placeholder="Select a pack" />
+                            </SelectTrigger>
+                            <SelectContent>
+                            <SelectItem value="Pro Pack">Pro Pack</SelectItem>
+                            <SelectItem value="Mad MIDI Machines Pack">Mad MIDI Machines Pack</SelectItem>
+                            <SelectItem value="Free Pack">Free Pack</SelectItem>
+                            </SelectContent>
+                        </Select>
+                        )}
+                    />
+                    {errors.pack && <p className="text-sm text-destructive mt-1">{errors.pack.message}</p>}
+                </div>
+
+                <div>
+                    <Label className="font-semibold mb-2 block">Formats</Label>
+                    <div className="flex flex-wrap gap-4 items-center mt-3">
+                        {formatCheckboxes.map(item => (
+                            <Controller
+                                key={item.id}
+                                name={`formats.${item.id}`}
+                                control={control}
+                                render={({ field }) => (
+                                    <div className="flex items-center gap-2">
+                                        <Checkbox
+                                            id={item.id}
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                        />
+                                        <Label htmlFor={item.id} className="font-normal">{item.label}</Label>
+                                    </div>
+                                )}
+                            />
+                        ))}
+                    </div>
+                    {errors.formats && <p className="text-sm text-destructive mt-1">Please select at least one format.</p>}
+                </div>
             </div>
             
             <div>

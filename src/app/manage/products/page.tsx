@@ -10,7 +10,6 @@ import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, ExternalLin
 import type { Product } from '@/lib/types';
 import { getProducts, generateJsonForDelete } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
-import { Badge } from '@/components/ui/badge';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,6 +22,23 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Textarea } from '@/components/ui/textarea';
+
+// Helper to format the tags
+const formatTags = (formats: Product['formats']) => {
+  const parts: string[] = [];
+  if (formats.vst) parts.push('VST');
+  if (formats.vsti) parts.push('VSTi');
+  
+  const winFormats: string[] = [];
+  if (formats.win32) winFormats.push('32bit');
+  if (formats.win64) winFormats.push('64bit');
+
+  if (winFormats.length > 0) {
+    parts.push(`Windows ${winFormats.join(', ')}`);
+  }
+  
+  return parts.join(', ');
+};
 
 export default function ProductsManagementPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -116,31 +132,29 @@ export default function ProductsManagementPage() {
           </CardFooter>
         </Card>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
-            <Card key={product.id} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardHeader className="relative p-0">
-                <Image
-                  src={product.mainImage?.url || "https://placehold.co/600x400.png"}
-                  alt={product.title}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-48 rounded-t-lg"
-                  data-ai-hint="instrument audio"
-                />
-                 <Badge variant="secondary" className="absolute top-2 right-2">{product.pack}</Badge>
-              </CardHeader>
-              <CardContent className="pt-4 flex-grow">
-                <CardTitle className="font-headline text-xl text-primary mb-1 truncate">{product.title}</CardTitle>
-                <CardDescription className="text-sm text-muted-foreground mb-2">Price: ${product.price.toFixed(2)}</CardDescription>
-                <p className="text-sm text-foreground/70 line-clamp-3">{product.description.split('\\n')[0]}</p>
-              </CardContent>
-              <CardFooter className="grid grid-cols-3 gap-2 pt-0 p-4 border-t mt-auto">
-                <Button variant="outline" size="sm" asChild>
-                    <Link href={`/products/${product.slug}`} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" /> View
-                    </Link>
-                </Button>
+            <Card key={product.id} className="group flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden bg-card">
+              <Link href={`/products/${product.slug}`} className="block">
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={product.mainImage?.url || "https://placehold.co/400x300.png"}
+                    alt={product.title}
+                    width={400}
+                    height={300}
+                    className="object-cover w-full aspect-[4/3] group-hover:scale-105 transition-transform duration-300"
+                    data-ai-hint="instrument audio"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                </div>
+                <div className="p-4 bg-background">
+                  <h3 className="text-xl font-bold font-headline text-primary truncate">{product.title}</h3>
+                  <p className="text-sm text-foreground/80 h-10 line-clamp-2">{product.shortDescription}</p>
+                  <p className="text-xs text-muted-foreground mt-2 truncate">{formatTags(product.formats)}</p>
+                </div>
+              </Link>
+
+              <CardFooter className="grid grid-cols-2 gap-2 mt-auto p-2 border-t bg-muted/50">
                 <Button variant="outline" size="sm" asChild className="border-accent text-accent hover:bg-accent/10">
                   <Link href={`/manage/edit/${product.id}`}>
                     <Edit3 className="mr-2 h-4 w-4" /> Edit
