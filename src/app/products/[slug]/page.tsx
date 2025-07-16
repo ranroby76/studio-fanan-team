@@ -170,7 +170,7 @@ export default function ProductPage() {
                       />
                     </button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-4xl h-auto p-2">
+                  <DialogContent className="w-auto max-w-[85vw] h-auto max-h-[85vh] p-2">
                      <DialogHeader>
                         <DialogTitle className="sr-only">Full-size view of {product.title}</DialogTitle>
                      </DialogHeader>
