@@ -1,7 +1,7 @@
 // src/lib/product-service.ts
 "use client"; // This service interacts with localStorage, so it's client-side
 
-import type { Product, ProductFormData, DownloadLink } from '@/lib/types';
+import type { Product, ProductFormData, DownloadLink, ImageDetails } from '@/lib/types';
 
 const PRODUCTS_STORAGE_KEY = 'fananTeamProducts';
 const IMAGE_PREFIX = '/images/products/';
@@ -22,7 +22,13 @@ export const getProducts = (): Product[] => {
   try {
     const products = data ? JSON.parse(data) : [];
     // Ensure all products have a slug for backward compatibility
-    return products.map((p: Product) => ({ ...p, slug: p.slug || generateSlug(p.title) }));
+    return products.map((p: any) => ({ 
+      ...p, 
+      slug: p.slug || generateSlug(p.title),
+      // Backward compatibility for old image string format
+      mainImage: typeof p.mainImage === 'string' ? { url: p.mainImage, width: 1600, height: 900 } : p.mainImage,
+      thumbnails: Array.isArray(p.thumbnails) ? p.thumbnails.map((t: any) => typeof t === 'string' ? { url: t, width: 400, height: 300 } : t) : [],
+    }));
   } catch (error) {
     console.error("Failed to parse products from localStorage", error);
     return [];
@@ -54,18 +60,30 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
      downloadLinks.push({ id: generateId(), label: `Download ${formData.title} (macOS)`, url: formData.macVst3Url });
   }
 
+  const mainImage: ImageDetails = {
+    url: `${IMAGE_PREFIX}${formData.mainImage.filename}`,
+    width: formData.mainImage.width || 0,
+    height: formData.mainImage.height || 0,
+  };
+
+  const thumbnails: ImageDetails[] = formData.thumbnails
+    .filter(thumb => thumb.filename && thumb.width && thumb.height)
+    .map(thumb => ({
+      url: `${IMAGE_PREFIX}${thumb.filename}`,
+      width: thumb.width || 0,
+      height: thumb.height || 0,
+    }));
+
   const product: Product = {
     id,
     slug,
     title: formData.title,
     pack: formData.pack,
-    mainImage: formData.mainImage ? `${IMAGE_PREFIX}${formData.mainImage}` : '',
-    thumbnails: formData.thumbnails
-      .filter((name): name is string => !!name && name.trim() !== '')
-      .map(name => `${IMAGE_PREFIX}${name}`),
+    mainImage,
+    thumbnails,
     description: formData.description,
     price: formData.price,
-    demoLimitations: formData.demoLimitations,
+    demoLimitations: formData.demoLimitations || '',
     downloadLinks,
     videoUrls: formData.videoUrls?.filter((url): url is string => !!url && url.trim() !== ''),
   };

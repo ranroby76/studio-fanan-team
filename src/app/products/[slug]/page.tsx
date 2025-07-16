@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useParams, notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { getProductBySlug } from '@/lib/product-service';
-import type { Product } from '@/lib/types';
+import type { Product, ImageDetails } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -62,7 +62,7 @@ export default function ProductPage() {
   const slug = typeof params.slug === 'string' ? params.slug : undefined;
   
   const [product, setProduct] = useState<Product | null>(null);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<ImageDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -120,7 +120,7 @@ export default function ProductPage() {
     return null;
   }
 
-  const allImages = [product.mainImage, ...product.thumbnails].filter(Boolean) as string[];
+  const allImages = [product.mainImage, ...product.thumbnails].filter(Boolean) as ImageDetails[];
   const videoIds = product.videoUrls?.map(getYouTubeVideoId).filter((id): id is string => !!id) || [];
 
   return (
@@ -136,12 +136,13 @@ export default function ProductPage() {
         <div className="lg:col-span-3">
           <Card className="shadow-lg overflow-hidden">
              {selectedImage && (
-              <div className="relative w-full aspect-[16/9] bg-muted">
+              <div className="relative w-full bg-muted" style={{ aspectRatio: `${selectedImage.width} / ${selectedImage.height}`}}>
                 <Image
-                  src={selectedImage}
+                  src={selectedImage.url}
                   alt={`Main view of ${product.title}`}
-                  fill
-                  className="object-contain p-2"
+                  width={selectedImage.width}
+                  height={selectedImage.height}
+                  className="object-contain p-2 w-full h-full"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
                   priority
                 />
@@ -154,10 +155,10 @@ export default function ProductPage() {
                      <button 
                         key={index} 
                         onClick={() => setSelectedImage(thumb)}
-                        className={`relative h-20 w-20 rounded-md overflow-hidden border-2 transition-all duration-200 ${selectedImage === thumb ? 'border-primary shadow-lg' : 'border-transparent hover:border-primary/50'}`}
+                        className={`relative h-20 w-20 rounded-md overflow-hidden border-2 transition-all duration-200 ${selectedImage?.url === thumb.url ? 'border-primary shadow-lg' : 'border-transparent hover:border-primary/50'}`}
                       >
                        <Image
-                          src={thumb}
+                          src={thumb.url}
                           alt={`Thumbnail ${index + 1}`}
                           fill
                           className="object-cover"

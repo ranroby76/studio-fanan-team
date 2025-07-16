@@ -1,7 +1,7 @@
 // src/components/product/ProductForm.tsx
 "use client";
 
-import type { Product, ProductFormData } from '@/lib/types';
+import type { Product, ProductFormData, ImageDetails } from '@/lib/types';
 import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -19,40 +19,60 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useToast } from '@/hooks/use-toast';
 
+const imageSchema = z.object({
+  filename: z.string(),
+  width: z.coerce.number().optional(),
+  height: z.coerce.number().optional(),
+});
+
+const mainImageSchema = imageSchema.extend({
+  filename: z.string().min(1, "A main image filename is required"),
+  width: z.coerce.number().min(1, "Width is required"),
+  height: z.coerce.number().min(1, "Height is required"),
+});
 
 const productFormSchema = z.object({
   id: z.string().optional(),
   title: z.string().min(3, "Title must be at least 3 characters"),
   pack: z.enum(["Pro Pack", "Mad MIDI Machines Pack", "Free Pack"]),
-  mainImage: z.string().min(1, "A main image filename is required"),
-  thumbnails: z.array(z.string().optional()).max(7),
+  mainImage: mainImageSchema,
+  thumbnails: z.array(imageSchema).max(7),
   description: z.string().min(10, "Description must be at least 10 characters"),
   price: z.coerce.number().min(0, "Price must be a positive number"),
   winVst3Url: z.string().url("A valid URL is required for the Windows download"),
   macVst3Url: z.string().url("A valid URL is required for the macOS download"),
   demoLimitations: z.string().optional(),
-  videoUrls: z.array(z.string().optional()).max(3),
+  videoUrls: z.array(z.string().url().or(z.literal(''))).max(3),
 });
 
 const IMAGE_PREFIX = '/images/products/';
 
 // Helper to transform full Product data to form-compatible data for editing
 const transformProductToFormData = (product: Product): ProductFormData => {
-  const thumbnails = [...product.thumbnails.map(t => t.replace(IMAGE_PREFIX, ''))];
+  const thumbnails = product.thumbnails.map(t => ({
+    filename: t.url.replace(IMAGE_PREFIX, ''),
+    width: t.width,
+    height: t.height,
+  }));
   while (thumbnails.length < 7) {
-    thumbnails.push('');
+    thumbnails.push({ filename: '', width: 0, height: 0 });
   }
+
   const videoUrls = [...(product.videoUrls || [])];
    while (videoUrls.length < 3) {
     videoUrls.push('');
   }
+
   return {
     id: product.id,
     title: product.title,
     pack: product.pack,
-    mainImage: product.mainImage.replace(IMAGE_PREFIX, ''),
+    mainImage: {
+      filename: product.mainImage.url.replace(IMAGE_PREFIX, ''),
+      width: product.mainImage.width,
+      height: product.mainImage.height,
+    },
     thumbnails: thumbnails,
     description: product.description,
     price: product.price,
@@ -69,24 +89,28 @@ interface ProductFormProps {
   isEditing?: boolean;
 }
 
-const ImageInput = ({ fieldName, register, error }: { fieldName: `mainImage` | `thumbnails.${number}`, register: any, error?: any }) => (
-  <div className="flex items-center">
-    <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm">
-      {IMAGE_PREFIX}
-    </span>
-    <Input
-      {...register(fieldName)}
-      placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
-      className="rounded-l-none"
-    />
-     {error && <p className="text-sm text-destructive mt-1 ml-2 whitespace-nowrap">{error.message}</p>}
+const ImageInput = ({ fieldName, register, errors }: { fieldName: `mainImage` | `thumbnails.${number}`, register: any, errors?: any }) => (
+  <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px_80px] gap-2 items-start">
+    <div className="flex items-center">
+        <span className="inline-flex items-center px-3 h-10 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm">
+          {IMAGE_PREFIX}
+        </span>
+        <Input
+          {...register(`${fieldName}.filename`)}
+          placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
+          className="rounded-l-none"
+        />
+    </div>
+    <Input {...register(`${fieldName}.width`)} type="number" placeholder="W" />
+    <Input {...register(`${fieldName}.height`)} type="number" placeholder="H" />
+    {errors?.filename && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.filename.message}</p>}
+    {errors?.width && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.width.message}</p>}
+    {errors?.height && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.height.message}</p>}
   </div>
 );
 
 
 export default function ProductForm({ initialData, onSubmit, isEditing = false }: ProductFormProps) {
-  const { toast } = useToast();
-  
   const form = useForm<ProductFormData>({
     resolver: zodResolver(productFormSchema),
     defaultValues: initialData 
@@ -94,8 +118,8 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
       : {
           title: '',
           pack: "Pro Pack",
-          mainImage: '',
-          thumbnails: Array(7).fill(''),
+          mainImage: { filename: '', width: 0, height: 0 },
+          thumbnails: Array(7).fill({ filename: '', width: 0, height: 0 }),
           description: '',
           price: 0,
           winVst3Url: '',
@@ -106,7 +130,7 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
   });
   
   const { control, register, handleSubmit, formState: { errors, isSubmitting }, reset, watch, setValue } = form;
-
+  
   const watchedPack = watch('pack');
 
   useEffect(() => {
@@ -164,16 +188,16 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
           </div>
           
           <div>
-            <Label htmlFor="mainImage" className="font-semibold">Main Image Filename</Label>
-            <ImageInput fieldName="mainImage" register={register} error={errors.mainImage} />
+            <Label htmlFor="mainImage.filename" className="font-semibold">Main Image</Label>
+            <ImageInput fieldName="mainImage" register={register} errors={errors.mainImage} />
           </div>
 
           <div className="space-y-2">
-            <Label className="font-semibold">Thumbnail Image Filenames (up to 7)</Label>
+            <Label className="font-semibold">Thumbnail Images (up to 7)</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
               {[...Array(7)].map((_, index) => (
                 <div key={index}>
-                    <ImageInput fieldName={`thumbnails.${index}`} register={register} error={errors.thumbnails?.[index]} />
+                    <ImageInput fieldName={`thumbnails.${index}`} register={register} errors={errors.thumbnails?.[index]} />
                 </div>
               ))}
             </div>
