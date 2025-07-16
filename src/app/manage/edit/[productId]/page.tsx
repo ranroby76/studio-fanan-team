@@ -2,10 +2,10 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation'; // Corrected import for App Router
+import { useParams, useRouter } from 'next/navigation';
 import ProductForm from '@/components/product/ProductForm';
 import type { Product, ProductFormData } from '@/lib/types';
-import { getProductById, updateProduct } from '@/lib/product-service';
+import { getProductById } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, AlertTriangle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -27,37 +27,37 @@ export default function EditProductPage() {
         if (foundProduct) {
           setProduct(foundProduct);
         } else {
-          setError('Product not found.');
+          setError('Product not found in products.json.');
         }
       } catch (e) {
         console.error("Error fetching product for edit:", e);
-        setError('Failed to load product data.');
+        setError('Failed to load product data from JSON file.');
       } finally {
         setIsLoading(false);
       }
     } else {
-      setError('Product ID is missing.'); // Should not happen with proper routing
+      setError('Product ID is missing.');
       setIsLoading(false);
     }
   }, [productId]);
 
-  const handleSubmit = async (data: ProductFormData) => {
+  const handleGenerateJson = async (data: ProductFormData, jsonString: string) => {
     if (!productId) {
       toast({ title: 'Error', description: 'Product ID is missing.', variant: 'destructive' });
       return;
     }
     try {
-      updateProduct(productId, data);
       toast({
-        title: 'Product Updated!',
-        description: `${data.title} has been successfully updated.`,
+        title: 'JSON Generated!',
+        description: `Copy the JSON and replace the content of src/data/products.json to update the product.`,
       });
-      router.push('/manage/products');
+      // Optionally redirect after a delay
+      // setTimeout(() => router.push('/manage/products'), 2000);
     } catch (e) {
-      console.error("Error updating product:", e);
+      console.error("Error in edit page:", e);
       toast({
         title: 'Error',
-        description: 'Failed to update product. Please try again.',
+        description: 'An unexpected error occurred.',
         variant: 'destructive',
       });
     }
@@ -88,13 +88,12 @@ export default function EditProductPage() {
   }
 
   if (!product) {
-     // This case should ideally be covered by error state, but as a fallback
     return <p className="text-center text-destructive">Product data could not be loaded.</p>;
   }
 
   return (
     <div className="animate-fade-in">
-      <ProductForm initialData={product} onSubmit={handleSubmit} isEditing={true} />
+      <ProductForm initialData={product} onSubmit={handleGenerateJson} isEditing={true} />
     </div>
   );
 }

@@ -3,27 +3,29 @@
 
 import ProductForm from '@/components/product/ProductForm';
 import type { ProductFormData } from '@/lib/types';
-import { addProduct } from '@/lib/product-service';
+import { generateProductsJsonString } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
-import { useRouter } from 'next/navigation'; // Corrected import for App Router
+import { useRouter } from 'next/navigation';
 
 export default function AddProductPage() {
   const { toast } = useToast();
   const router = useRouter();
 
-  const handleSubmit = async (data: ProductFormData) => {
+  const handleGenerateJson = async (data: ProductFormData, jsonString: string) => {
     try {
-      addProduct(data);
+      // The product form now handles showing the JSON output.
+      // We just need to give feedback.
       toast({
-        title: 'Product Added!',
-        description: `${data.title} has been successfully added.`,
+        title: 'JSON Generated!',
+        description: 'Copy the JSON and add it to src/data/products.json to add the new product.',
       });
-      router.push('/manage');
+      // Optionally, redirect after generation
+      // router.push('/manage/products');
     } catch (error) {
-      console.error("Error adding product:", error);
+      console.error("Error in add page:", error);
       toast({
         title: 'Error',
-        description: 'Failed to add product. Please try again.',
+        description: 'An unexpected error occurred.',
         variant: 'destructive',
       });
     }
@@ -31,7 +33,7 @@ export default function AddProductPage() {
 
   return (
     <div className="animate-fade-in">
-      <ProductForm onSubmit={handleSubmit} isEditing={false} />
+      <ProductForm onSubmit={handleGenerateJson} isEditing={false} />
     </div>
   );
 }

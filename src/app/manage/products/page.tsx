@@ -6,9 +6,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, ExternalLink } from 'lucide-react';
+import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, ExternalLink, ClipboardCopy } from 'lucide-react';
 import type { Product } from '@/lib/types';
-import { getProducts, deleteProduct as deleteProductService } from '@/lib/product-service';
+import { getProducts, generateJsonForDelete } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -22,10 +22,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { Textarea } from '@/components/ui/textarea';
 
 export default function ProductsManagementPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [jsonForDelete, setJsonForDelete] = useState('');
+  const [productToDelete, setProductToDelete] = useState<Product | null>(null);
+
   const { toast } = useToast();
 
   const fetchProducts = useCallback(() => {
@@ -37,7 +41,7 @@ export default function ProductsManagementPage() {
       console.error("Error fetching products:", error);
       toast({
         title: "Error",
-        description: "Could not fetch products from local storage.",
+        description: "Could not fetch products from products.json.",
         variant: "destructive",
       });
     } finally {
@@ -49,30 +53,24 @@ export default function ProductsManagementPage() {
     fetchProducts();
   }, [fetchProducts]);
 
-  const handleDeleteProduct = (id: string) => {
+  const handleDeleteProduct = (product: Product) => {
     try {
-      const success = deleteProductService(id);
-      if (success) {
-        toast({
-          title: "Product Deleted",
-          description: "The product has been successfully deleted.",
-        });
-        fetchProducts(); // Re-fetch products to update the list
-      } else {
-        toast({
-          title: "Error",
-          description: "Could not delete the product.",
-          variant: "destructive",
-        });
-      }
+      setProductToDelete(product);
+      const jsonString = generateJsonForDelete(product.id);
+      setJsonForDelete(jsonString);
     } catch (error) {
-       console.error("Error deleting product:", error);
+       console.error("Error generating delete JSON:", error);
        toast({
         title: "Error",
-        description: "An unexpected error occurred while deleting the product.",
+        description: "Could not prepare the product for deletion.",
         variant: "destructive",
       });
     }
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(jsonForDelete);
+    toast({ title: 'Copied to clipboard!', description: 'Paste the new content into src/data/products.json to finalize deletion.' });
   };
 
   if (isLoading) {
@@ -150,22 +148,36 @@ export default function ProductsManagementPage() {
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button variant="destructive" size="sm" className="bg-destructive/90 hover:bg-destructive text-destructive-foreground">
+                    <Button variant="destructive" size="sm" onClick={() => handleDeleteProduct(product)} className="bg-destructive/90 hover:bg-destructive text-destructive-foreground">
                       <Trash2 className="mr-2 h-4 w-4" /> Delete
                     </Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle className="font-headline">Are you sure?</AlertDialogTitle>
+                      <AlertDialogTitle className="font-headline">Delete &quot;{productToDelete?.title}&quot;?</AlertDialogTitle>
                       <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete the product "{product.title}".
+                        This action will generate an updated JSON array. You must copy it and replace the content of `src/data/products.json` to finalize the deletion.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
+                    <div className="relative">
+                       <Textarea
+                          readOnly
+                          value={jsonForDelete}
+                          className="h-48 font-mono text-sm bg-muted"
+                          aria-label="Updated JSON content for products"
+                        />
+                         <Button
+                          variant="ghost"
+                          size="icon"
+                          className="absolute top-2 right-2 text-muted-foreground"
+                          onClick={handleCopy}
+                        >
+                          <ClipboardCopy className="h-5 w-5" />
+                        </Button>
+                    </div>
                     <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction onClick={() => handleDeleteProduct(product.id)} className="bg-destructive hover:bg-destructive/90 text-destructive-foreground">
-                        Yes, delete product
-                      </AlertDialogAction>
+                      <AlertDialogCancel onClick={() => setJsonForDelete('')}>Close</AlertDialogCancel>
+                      <AlertDialogAction onClick={handleCopy}>Copy JSON & Close</AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>

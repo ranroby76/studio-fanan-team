@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Loader2, ServerCrash, Download, ShoppingCart, Info, Youtube, Circle } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const getYouTubeVideoId = (url: string): string | null => {
     if (!url) return null;
@@ -28,7 +29,7 @@ const getYouTubeVideoId = (url: string): string | null => {
 }
 
 const renderDescription = (description: string) => {
-    return description.split('\n').map((line, index) => {
+    return description.split('\\n').map((line, index) => {
         const trimmedLine = line.trim();
         if (trimmedLine.startsWith('`')) {
             return (
@@ -52,7 +53,7 @@ const renderDescription = (description: string) => {
                  </p>
             );
         }
-        return null;
+        return <br key={index} />;
     });
 };
 
@@ -64,7 +65,6 @@ export default function ProductPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedImage, setSelectedImage] = useState<ImageDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (slug) {
@@ -72,16 +72,20 @@ export default function ProductPage() {
         const foundProduct = getProductBySlug(slug);
         if (foundProduct) {
           setProduct(foundProduct);
-          setSelectedImage(foundProduct.mainImage);
+          if (foundProduct.mainImage) {
+            setSelectedImage(foundProduct.mainImage);
+          }
         } else {
-          // This will be caught by the notFound() call outside useEffect
+          // Trigger a 404 not found page
+          notFound();
         }
       } catch (e) {
         console.error("Failed to load product", e);
-        setError("There was an issue loading the product data.");
       } finally {
         setIsLoading(false);
       }
+    } else {
+        setIsLoading(false);
     }
   }, [slug]);
 
@@ -93,31 +97,40 @@ export default function ProductPage() {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
-        <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
-        <p className="text-lg text-muted-foreground">Loading product...</p>
+      <div className="container mx-auto px-4 animate-fade-in space-y-8">
+        <Skeleton className="h-12 w-1/3" />
+        <Skeleton className="h-16 w-2/3 mx-auto" />
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div className="lg:col-span-3">
+                 <Skeleton className="w-full aspect-video" />
+                 <div className="flex gap-2 mt-2">
+                    <Skeleton className="h-20 w-20" />
+                    <Skeleton className="h-20 w-20" />
+                    <Skeleton className="h-20 w-20" />
+                 </div>
+            </div>
+            <div className="lg:col-span-2">
+                 <Skeleton className="h-96 w-full" />
+            </div>
+        </div>
       </div>
     );
   }
 
-  if (error) {
+  if (!product) {
+    // This will be caught by the notFound() call in useEffect, but as a fallback
     return (
         <Card className="max-w-md mx-auto mt-10 shadow-lg border-destructive">
             <CardHeader className="bg-destructive/10">
                 <CardTitle className="flex items-center gap-3 font-headline text-destructive">
-                    <ServerCrash /> An Error Occurred
+                    <ServerCrash /> Product Not Found
                 </CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
-                <p className="text-center">{error}</p>
+                <p className="text-center">The product you are looking for does not exist.</p>
             </CardContent>
         </Card>
     );
-  }
-
-  if (!product) {
-    notFound();
-    return null;
   }
 
   const allImages = [product.mainImage, ...product.thumbnails].filter(Boolean) as ImageDetails[];
@@ -135,18 +148,22 @@ export default function ProductPage() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
         <div className="lg:col-span-3">
           <Card className="shadow-lg overflow-hidden">
-             {selectedImage && (
-              <div className="relative w-full bg-muted" style={{ aspectRatio: `${selectedImage.width} / ${selectedImage.height}`}}>
+             {selectedImage && selectedImage.url && selectedImage.width && selectedImage.height ? (
+              <div className="relative w-full bg-muted">
                 <Image
                   src={selectedImage.url}
                   alt={`Main view of ${product.title}`}
                   width={selectedImage.width}
                   height={selectedImage.height}
-                  className="object-contain p-2 w-full h-full"
+                  className="object-contain p-2 w-full h-auto"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
                   priority
                 />
               </div>
+            ) : (
+                <div className="w-full aspect-video bg-muted flex items-center justify-center">
+                    <p className="text-muted-foreground">No image available</p>
+                </div>
             )}
             {allImages.length > 1 && (
               <div className="p-2 bg-background border-t">
@@ -187,7 +204,7 @@ export default function ProductPage() {
                         </p>
                     </div>
 
-                    {product.price > 0 && (
+                    {product.price > 0 && product.demoLimitations && (
                         <div className="bg-secondary/30 p-3 rounded-lg text-center">
                             <h4 className="font-semibold text-secondary-foreground flex items-center justify-center gap-2"><Info size={16}/>Demo Limitations</h4>
                             <p className="text-sm text-secondary-foreground/80">{product.demoLimitations}</p>
