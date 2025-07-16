@@ -9,9 +9,10 @@ import type { Product } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Loader2, ServerCrash, Download, ShoppingCart, Info, Youtube } from 'lucide-react';
+import { Loader2, ServerCrash, Download, ShoppingCart, Info, Youtube, Circle } from 'lucide-react';
 
 const getYouTubeVideoId = (url: string): string | null => {
+    if (!url) return null;
     try {
         const urlObj = new URL(url);
         if (urlObj.hostname === 'youtu.be') {
@@ -25,6 +26,35 @@ const getYouTubeVideoId = (url: string): string | null => {
         return null;
     }
 }
+
+const renderDescription = (description: string) => {
+    return description.split('\n').map((line, index) => {
+        const trimmedLine = line.trim();
+        if (trimmedLine.startsWith('`')) {
+            return (
+                <h3 key={index} className="text-xl font-headline text-primary mt-4 mb-2">
+                    {trimmedLine.substring(1)}
+                </h3>
+            );
+        }
+        if (trimmedLine.startsWith('#')) {
+            return (
+                <div key={index} className="flex items-start gap-3 my-1.5">
+                    <Circle className="h-2 w-2 mt-[7px] flex-shrink-0 text-primary/70 fill-current" />
+                    <p className="text-foreground/80">{trimmedLine.substring(1).trim()}</p>
+                </div>
+            );
+        }
+        if (trimmedLine) {
+            return (
+                 <p key={index} className="text-foreground/80 my-2">
+                    {trimmedLine}
+                 </p>
+            );
+        }
+        return null;
+    });
+};
 
 export default function ProductPage() {
   const params = useParams();
@@ -90,7 +120,7 @@ export default function ProductPage() {
     return null;
   }
 
-  const allImages = [product.mainImage, ...product.thumbnails].filter(Boolean);
+  const allImages = [product.mainImage, ...product.thumbnails].filter(Boolean) as string[];
   const videoIds = product.videoUrls?.map(getYouTubeVideoId).filter((id): id is string => !!id) || [];
 
   return (
@@ -102,8 +132,8 @@ export default function ProductPage() {
       </div>
       <h1 className="text-5xl font-bold font-headline text-primary mb-8 text-center">{product.title}</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-        <div className="md:col-span-3">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div className="lg:col-span-3">
           <Card className="shadow-lg overflow-hidden">
              {selectedImage && (
               <div className="relative w-full aspect-[16/9] bg-muted">
@@ -140,13 +170,13 @@ export default function ProductPage() {
             )}
           </Card>
         </div>
-        <div className="md:col-span-2">
+        <div className="lg:col-span-2">
             <Card className="shadow-lg">
                 <CardHeader>
                     <CardTitle className="font-headline text-2xl text-primary">About this Plugin</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <p className="text-foreground/80 whitespace-pre-line">{product.description}</p>
+                    <div>{renderDescription(product.description)}</div>
                     
                     <Separator />
                     
