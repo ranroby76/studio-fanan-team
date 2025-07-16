@@ -72,7 +72,7 @@ export default function ProductPage() {
         const foundProduct = getProductBySlug(slug);
         if (foundProduct) {
           setProduct(foundProduct);
-          if (foundProduct.mainImage) {
+          if (foundProduct.mainImage && foundProduct.mainImage.url) {
             setSelectedImage(foundProduct.mainImage);
           }
         } else {
@@ -133,7 +133,7 @@ export default function ProductPage() {
     );
   }
 
-  const allImages = [product.mainImage, ...product.thumbnails].filter(Boolean) as ImageDetails[];
+  const allImages = [product.mainImage, ...product.thumbnails].filter(img => img && img.url) as ImageDetails[];
   const videoIds = product.videoUrls?.map(getYouTubeVideoId).filter((id): id is string => !!id) || [];
 
   return (
@@ -169,6 +169,7 @@ export default function ProductPage() {
               <div className="p-2 bg-background border-t">
                 <div className="flex gap-2 justify-center flex-wrap">
                   {allImages.map((thumb, index) => (
+                    thumb.url && (
                      <button 
                         key={index} 
                         onClick={() => setSelectedImage(thumb)}
@@ -182,6 +183,7 @@ export default function ProductPage() {
                           sizes="80px"
                         />
                      </button>
+                    )
                   ))}
                 </div>
               </div>
