@@ -53,12 +53,17 @@ export const getProductBySlug = (slug: string): Product | undefined => {
 // Helper function to safely add the image prefix
 const ensureImagePath = (filename: string) => {
     if (!filename) return '';
+    // Check if prefix already exists to prevent duplication
     return filename.startsWith(IMAGE_PREFIX) ? filename : `${IMAGE_PREFIX}${filename}`;
 }
 
+// Helper function to safely remove the image prefix for form display
 const stripImagePath = (url: string) => {
     if (!url) return '';
-    return url.startsWith(IMAGE_PREFIX) ? url.substring(IMAGE_PREFIX.length) : url;
+    if (url.startsWith(IMAGE_PREFIX)) {
+        return url.substring(IMAGE_PREFIX.length);
+    }
+    return url;
 }
 
 
@@ -129,7 +134,7 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
     mainImage: {
       filename: stripImagePath(product.mainImage.url),
       width: product.mainImage.width,
-      height: product.main.height,
+      height: product.mainImage.height,
     },
     thumbnails: thumbnails,
     description: product.description,
