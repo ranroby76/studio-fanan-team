@@ -1,1 +1,43 @@
-[]
+[
+    {
+      "id": "gl94hsc18",
+      "slug": "sultana-2",
+      "title": "Sultana 2",
+      "pack": "Pro Pack",
+      "mainImage": {
+        "url": "/images/products/sultana1.jpg",
+        "width": 1345,
+        "height": 808
+      },
+      "thumbnails": [
+        {
+          "url": "/images/products/sultana2.jpg",
+          "width": 1343,
+          "height": 806
+        },
+        {
+          "url": "/images/products/sultana3.jpg",
+          "width": 1345,
+          "height": 810
+        }
+      ],
+      "description": "Sultana 2 is a slot driven Darbuka machine. It brings up some of the most desired features that modern production technology has to offer.\\n\\n `The Sound Section\\n\\nSultana uses 60 elements darbuka kit, which makes it the most detailed darbuka instrument in the market. Each drum element can be tweaked and designed separately. We've also included a new \"color\" tool which can give every sound a unique character (picky, crisp, gllasy or metalic). There are also great built in effects including the zelda filter which interestingly colors the overall sound. \\n\\n​`The Sequencer\\n\\nSultana is not only a top sampler but also styles midi sequencer. It uses the arranger keyboards style sequencer method to run 8 simultaneous midi grooves per style that can be switched instantly with a midi keyboard (octave C4). Each variation gets it's own midi key number and the transitions are synced to the determined tempo. users can also program their own styles as well and then share style files others. \\n\\n​#Full features list\\n#60 sample slots\\n#Each element can be tweaked separately (volume, pitch shifting, round robin, release and color )\\n#Automation file manager\\n6  built in effects\\n#64 steps arranger style sequencer with 8 variations per style, unique time signature per variation, midi keyboard controllable variation switch\\n#Scalable and customizable GUI",
+      "price": 12,
+      "downloadLinks": [
+        {
+          "id": "o7yaj20xx",
+          "label": "Download Sultana 2 (Windows)",
+          "url": "https://icedrive.net/s/ABQZSbbDT5zQVTC67N9f1N35Byv7"
+        },
+        {
+          "id": "ce3fddeys",
+          "label": "Download Sultana 2 (macOS)",
+          "url": "https://mega.nz/file/39VXyQIK#9PI2Ujs1sDSNJ25HGszWiEKU9bgb_E87Z_BS8mfb3Xk"
+        }
+      ],
+      "demoLimitations": "3 seconds silence every 15 seconds",
+      "videoUrls": [
+        "https://www.youtube.com/watch?v=fgQDEDEYG0w&ab_channel=Fananteam"
+      ]
+    }
+  ]

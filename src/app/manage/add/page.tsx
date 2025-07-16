@@ -3,7 +3,6 @@
 
 import ProductForm from '@/components/product/ProductForm';
 import type { ProductFormData } from '@/lib/types';
-import { generateProductsJsonString } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 
