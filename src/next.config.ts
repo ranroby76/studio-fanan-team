@@ -23,7 +23,16 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: '**.cloudworkstations.dev',
+        port: '',
+        pathname: '/**',
+      }
     ],
+  },
+  experimental: {
+    allowedDevOrigins: ['https://6000-firebase-studio-1749223152995.cluster-6frnii43o5blcu522sivebzpii.cloudworkstations.dev'],
   },
 };
 
