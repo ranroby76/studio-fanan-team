@@ -26,10 +26,10 @@ import { useToast } from '@/hooks/use-toast';
 import { Textarea } from '@/components/ui/textarea';
 import { ListOrdered, GripVertical, Save, ClipboardCopy, Loader2, Star, Box, Gift } from 'lucide-react';
 
-const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
-  "Max! Pack": { icon: Star, title: "Max! Pack" },
-  "Mad MIDI Machines Pack": { icon: Box, title: "Mad MIDI Machines" },
-  "Free Pack": { icon: Gift, title: "Free Pack" },
+const packConfig: Record<Pack, { icon: React.ElementType, title: string, orderFile: string }> = {
+  "Max! Pack": { icon: Star, title: "Max! Pack", orderFile: "product-order-max-pack.json" },
+  "Mad MIDI Machines Pack": { icon: Box, title: "Mad MIDI Machines", orderFile: "product-order-mad-midi-machines-pack.json" },
+  "Free Pack": { icon: Gift, title: "Free Pack", orderFile: "product-order-free-pack.json" },
 };
 
 // Sortable Item Component
@@ -57,7 +57,11 @@ function SortableItem({ product }: { product: Product }) {
 
 // Main Page Component
 export default function ProductOrderClientPage({ initialProducts }: { initialProducts: Product[] }) {
-  const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [productsByPack, setProductsByPack] = useState<Record<Pack, Product[]>>({
+    "Max! Pack": [],
+    "Mad MIDI Machines Pack": [],
+    "Free Pack": [],
+  });
   const [activePack, setActivePack] = useState<Pack>("Max! Pack");
   const [jsonOutput, setJsonOutput] = useState('');
   const [isClient, setIsClient] = useState(false);
@@ -65,11 +69,20 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
-  
-  const filteredProducts = useMemo(() => {
-    return products.filter(p => p.pack === activePack);
-  }, [products, activePack]);
+    // Initial population of products into their respective packs
+    const maxPack = initialProducts.filter(p => p.pack === "Max! Pack");
+    const madMidiPack = initialProducts.filter(p => p.pack === "Mad MIDI Machines Pack");
+    const freePack = initialProducts.filter(p => p.pack === "Free Pack");
+    setProductsByPack({
+      "Max! Pack": maxPack,
+      "Mad MIDI Machines Pack": madMidiPack,
+      "Free Pack": freePack,
+    });
+  }, [initialProducts]);
+
+  const activeProducts = useMemo(() => {
+    return productsByPack[activePack] || [];
+  }, [productsByPack, activePack]);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -82,28 +95,30 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
     const { active, over } = event;
 
     if (over && active.id !== over.id) {
-      setProducts((currentProducts) => {
-        const activeProduct = currentProducts.find(p => p.id === active.id);
-        const overProduct = currentProducts.find(p => p.id === over.id);
+      setProductsByPack((currentProductsByPack) => {
+        const packProducts = currentProductsByPack[activePack];
+        const oldIndex = packProducts.findIndex((item) => item.id === active.id);
+        const newIndex = packProducts.findIndex((item) => item.id === over.id);
         
-        // Ensure both products are in the same pack before moving
-        if (activeProduct && overProduct && activeProduct.pack === overProduct.pack) {
-            const oldIndex = currentProducts.findIndex((item) => item.id === active.id);
-            const newIndex = currentProducts.findIndex((item) => item.id === over.id);
-            return arrayMove(currentProducts, oldIndex, newIndex);
+        if (oldIndex !== -1 && newIndex !== -1) {
+          const newOrderedProducts = arrayMove(packProducts, oldIndex, newIndex);
+          return {
+            ...currentProductsByPack,
+            [activePack]: newOrderedProducts,
+          };
         }
-        return currentProducts;
+        return currentProductsByPack;
       });
     }
   }
 
   function handleGenerateJson() {
-    const orderedSlugs = products.map(p => p.slug);
+    const orderedSlugs = productsByPack[activePack].map(p => p.slug);
     const jsonString = JSON.stringify(orderedSlugs, null, 2);
     setJsonOutput(jsonString);
     toast({
-      title: 'JSON Generated!',
-      description: 'Copy the content and paste it into src/data/product-order.json.',
+      title: `JSON for ${packConfig[activePack].title} Generated!`,
+      description: `Copy the content and paste it into src/data/${packConfig[activePack].orderFile}`,
     });
   }
 
@@ -127,7 +142,10 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
                   <Button
                     key={pack}
                     variant={activePack === pack ? 'default' : 'ghost'}
-                    onClick={() => setActivePack(pack)}
+                    onClick={() => {
+                      setActivePack(pack);
+                      setJsonOutput(''); // Clear output when switching packs
+                    }}
                     className="w-full justify-start text-left h-auto py-2.5 px-3"
                   >
                     <Conf.icon className="mr-3 h-5 w-5 flex-shrink-0" />
@@ -163,9 +181,9 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
                 collisionDetection={closestCenter}
                 onDragEnd={handleDragEnd}
               >
-                <SortableContext items={filteredProducts.map(p => p.id)} strategy={verticalListSortingStrategy}>
+                <SortableContext items={activeProducts.map(p => p.id)} strategy={verticalListSortingStrategy}>
                   <div className="space-y-3">
-                    {filteredProducts.map((product) => (
+                    {activeProducts.map((product) => (
                       <SortableItem key={product.id} product={product} />
                     ))}
                   </div>
@@ -176,7 +194,7 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
           <CardFooter>
             <Button onClick={handleGenerateJson} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={!isClient}>
               <Save className="mr-2 h-5 w-5" />
-              Generate Global Order JSON
+              Generate JSON for {packConfig[activePack].title}
             </Button>
           </CardFooter>
         </Card>
@@ -188,7 +206,7 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
               <CardDescription>
                 Copy this content and paste it into the file:
                 <br />
-                <code className="font-mono text-accent">src/data/product-order.json</code>
+                <code className="font-mono text-accent">src/data/{packConfig[activePack].orderFile}</code>
               </CardDescription>
             </CardHeader>
             <CardContent className="relative">

@@ -8,18 +8,30 @@ import path from 'path';
 const DATA_DIR = path.join(process.cwd(), 'src/data');
 const PRODUCTS_DIR = path.join(DATA_DIR, 'products');
 
+const getOrderFilenameForPack = (pack: Pack): string => {
+    switch (pack) {
+        case "Max! Pack":
+            return 'product-order-max-pack.json';
+        case "Mad MIDI Machines Pack":
+            return 'product-order-mad-midi-machines-pack.json';
+        case "Free Pack":
+            return 'product-order-free-pack.json';
+    }
+};
+
 // --- Data Reading Functions (SERVER ONLY) ---
 
-export const getProductOrder = async (): Promise<string[]> => {
+export const getProductOrderForPack = async (pack: Pack): Promise<string[]> => {
     try {
-        const filePath = path.join(DATA_DIR, 'product-order.json');
+        const filename = getOrderFilenameForPack(pack);
+        const filePath = path.join(DATA_DIR, filename);
         const fileContents = await fs.readFile(filePath, 'utf8');
         return JSON.parse(fileContents) as string[];
     } catch (error) {
         if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
             return []; // File doesn't exist, return empty order
         }
-        console.error("Could not read product order file:", error);
+        console.error(`Could not read product order file for ${pack}:`, error);
         return [];
     }
 };
@@ -45,37 +57,38 @@ const getAllProductsUnordered = async (): Promise<Product[]> => {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-    const [allProducts, productOrder] = await Promise.all([
-        getAllProductsUnordered(),
-        getProductOrder()
-    ]);
+    // This function now just gets all products. Sorting happens in getProductsForPack or other callers.
+    return await getAllProductsUnordered();
+}
 
-    if (productOrder.length === 0) {
-        return allProducts; // No specific order, return as is
+const sortProductsByOrder = (products: Product[], order: string[]): Product[] => {
+    if (order.length === 0) {
+        return products;
     }
 
     const orderedProducts: Product[] = [];
-    const productMap = new Map(allProducts.map(p => [p.slug, p]));
+    const productMap = new Map(products.map(p => [p.slug, p]));
     
-    // Add products that are in the order file, in that order
-    productOrder.forEach(slug => {
+    order.forEach(slug => {
         if (productMap.has(slug)) {
             orderedProducts.push(productMap.get(slug)!);
             productMap.delete(slug);
         }
     });
 
-    // Append any remaining products that weren't in the order file
     const remainingProducts = Array.from(productMap.values());
     
     return [...orderedProducts, ...remainingProducts];
 }
 
-
 export const getProductsForPack = async (pack: Pack): Promise<Product[]> => {
-    const allSortedProducts = await getProducts();
-    const packProducts = allSortedProducts.filter(p => p.pack === pack);
-    return packProducts;
+    const [allProducts, productOrder] = await Promise.all([
+        getAllProductsUnordered(),
+        getProductOrderForPack(pack)
+    ]);
+    
+    const packProducts = allProducts.filter(p => p.pack === pack);
+    return sortProductsByOrder(packProducts, productOrder);
 }
 
 export const getProductById = async (id: string): Promise<Product | undefined> => {
