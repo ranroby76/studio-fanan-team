@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
 
 export default function HomePage() {
   return (
@@ -79,7 +80,7 @@ export default function HomePage() {
             <div className="block group">
                 <Image
                     src="/images/pro pack.png"
-                    alt="Max Pack"
+                    alt="Max! Pack"
                     width={596}
                     height={121.5}
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
@@ -97,6 +98,10 @@ export default function HomePage() {
                 />
             </div>
         </div>
+      </div>
+      
+      <div className="container mx-auto px-4">
+        <Separator className="my-8" />
       </div>
 
       <section className="container mx-auto px-4 pt-8 text-center">
