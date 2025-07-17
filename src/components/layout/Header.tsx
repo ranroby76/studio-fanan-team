@@ -140,8 +140,7 @@ export default function Header() {
             )}>
               <Link href={homeLink.href} className="flex items-center gap-2 px-3 py-2 rounded-md">
                 <homeLink.icon size={18} />
-                <span className="hidden md:inline">{homeLink.label}</span>
-                <span className="md:hidden">{homeLink.label.split(' ')[0]}</span>
+                <span>{homeLink.label}</span>
               </Link>
             </Button>
           )}
@@ -153,8 +152,7 @@ export default function Header() {
                     productLinks.some(link => pathname.startsWith(link.href)) ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
                 )}>
                     <Package size={18} />
-                    <span className="hidden md:inline ml-2">Products</span>
-                    <span className="md:hidden">Products</span>
+                    <span className="ml-2">Products</span>
                     <ChevronDown className="ml-1 h-4 w-4" />
                 </Button>
             </DropdownMenuTrigger>
@@ -174,8 +172,7 @@ export default function Header() {
             )}>
               <Link href={href} className="flex items-center gap-2 px-3 py-2 rounded-md">
                 <Icon size={18} />
-                <span className="hidden md:inline">{label}</span>
-                <span className="md:hidden">{label.split(' ')[0]}</span>
+                <span>{label}</span>
               </Link>
             </Button>
           ))}
@@ -187,8 +184,7 @@ export default function Header() {
               )}>
                 <Link href="/manage" className="flex items-center gap-2 px-3 py-2 rounded-md">
                   <Settings size={18} />
-                  <span className="hidden md:inline">Manage Site</span>
-                  <span className="md:hidden">Manage</span>
+                  <span>Manage Site</span>
                 </Link>
             </Button>
           )}
@@ -200,8 +196,7 @@ export default function Header() {
               )}>
                 <Link href="/vip-login" className="flex items-center gap-2 px-3 py-2 rounded-md">
                   <KeyRound size={18} />
-                  <span className="hidden md:inline">VIP Login</span>
-                  <span className="md:hidden">VIP</span>
+                  <span>VIP Login</span>
                 </Link>
             </Button>
           )}
@@ -211,8 +206,7 @@ export default function Header() {
               <AlertDialogTrigger asChild>
                 <Button variant="ghost" className="text-sm font-medium text-foreground/70 hover:text-primary hover:bg-primary/10">
                   <LogOut size={18} />
-                  <span className="hidden md:inline ml-2">Logout</span>
-                  <span className="md:hidden">Logout</span>
+                  <span className="ml-2">Logout</span>
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
