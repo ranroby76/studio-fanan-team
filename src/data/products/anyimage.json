@@ -1,0 +1,36 @@
+{
+    "id": "bfb5czen8",
+    "slug": "anyimage",
+    "title": "AnyImage",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/anyimage1.jpg",
+      "width": 962,
+      "height": 835
+    },
+    "thumbnails": [],
+    "description": "AnyImage is vst instrument plug-in that produces no sound but allows loading any supported image to the vst host whenever there is a need for instant image support. For example, users can load photos of their notation sheet or guitar tabs into AnyImage's 16 slots and switch them or control them with their MIDI hardware equipment. They can also save their created image albums to a preset file and switch instantly between images by using their MIDI hardware.\\n\\n `Features: \\n\\n16 slots for any supported images (bmp, jpeg, tiff, png) \\nMidi assignable zoom knob\\nMidi assignable image switching menu\\nMidi assignable x,y knobs for image scrolling\\nPreset manager for instant album loading\\saving\\nMidi automation manager\\nResizable GUI\\n\\nImports images from the internet in a parallel channel by pasting an image link\\nSaves internet links with the presets\\n\\n​`​Demo limitation: Only 2 of the 16 images slots is active. Presets saving\\loading is not allowed.",
+    "shortDescription": "Image Album Generator",
+    "formats": {
+      "vst": false,
+      "vsti": false,
+      "win32": false,
+      "win64": false,
+      "standAlone": false
+    },
+    "price": 12,
+    "downloadLinks": [
+      {
+        "id": "i1ad3yzr2",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/3NDki1h6bPkjQYg9F9Xtw5RZAYQ3"
+      },
+      {
+        "id": "7gowbz2sp",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/Gk0mnZRC#64cxfZ2ISxlbmBXXeeD7NZiC5-wJQ6DG0J2lagzuZMo"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": []
+  }

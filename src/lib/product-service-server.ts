@@ -24,41 +24,38 @@ export const getProductOrder = async (): Promise<string[]> => {
     }
 };
 
-export const getProducts = async (): Promise<Product[]> => {
-  try {
-    const filenames = await fs.readdir(PRODUCTS_DIR);
-    const products = await Promise.all(
-      filenames
-        .filter(file => file.endsWith('.json'))
-        .map(async filename => {
-          const filePath = path.join(PRODUCTS_DIR, filename);
-          const fileContents = await fs.readFile(filePath, 'utf8');
-          const product = JSON.parse(fileContents) as Product;
-          return product;
-        })
-    );
-    return products;
-  } catch (error) {
-    console.error("Could not read products directory:", error);
-    return [];
-  }
+const getAllProductsUnordered = async (): Promise<Product[]> => {
+    try {
+        const filenames = await fs.readdir(PRODUCTS_DIR);
+        const products = await Promise.all(
+          filenames
+            .filter(file => file.endsWith('.json'))
+            .map(async filename => {
+              const filePath = path.join(PRODUCTS_DIR, filename);
+              const fileContents = await fs.readFile(filePath, 'utf8');
+              const product = JSON.parse(fileContents) as Product;
+              return product;
+            })
+        );
+        return products;
+      } catch (error) {
+        console.error("Could not read products directory:", error);
+        return [];
+      }
 };
 
-
-export const getProductsForPack = async (pack: Pack): Promise<Product[]> => {
+export const getProducts = async (): Promise<Product[]> => {
     const [allProducts, productOrder] = await Promise.all([
-        getProducts(),
+        getAllProductsUnordered(),
         getProductOrder()
     ]);
 
-    const packProducts = allProducts.filter(p => p.pack === pack);
-    
     if (productOrder.length === 0) {
-        return packProducts; // No specific order, return as is
+        return allProducts; // No specific order, return as is
     }
 
     const orderedProducts: Product[] = [];
-    const productMap = new Map(packProducts.map(p => [p.slug, p]));
+    const productMap = new Map(allProducts.map(p => [p.slug, p]));
     
     // Add products that are in the order file, in that order
     productOrder.forEach(slug => {
@@ -74,8 +71,15 @@ export const getProductsForPack = async (pack: Pack): Promise<Product[]> => {
     return [...orderedProducts, ...remainingProducts];
 }
 
+
+export const getProductsForPack = async (pack: Pack): Promise<Product[]> => {
+    const allSortedProducts = await getProducts();
+    const packProducts = allSortedProducts.filter(p => p.pack === pack);
+    return packProducts;
+}
+
 export const getProductById = async (id: string): Promise<Product | undefined> => {
-  const products = await getProducts();
+  const products = await getAllProductsUnordered();
   return products.find(p => p.id === id);
 };
 

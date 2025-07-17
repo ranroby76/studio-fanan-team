@@ -1,7 +1,7 @@
 // src/app/manage/products-order/ProductOrderClientPage.tsx
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   DndContext,
   closestCenter,
@@ -18,13 +18,19 @@ import {
   verticalListSortingStrategy,
   useSortable,
 } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
-import type { Product } from '@/lib/types';
+import type { Product, Pack } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Textarea } from '@/components/ui/textarea';
-import { ListOrdered, GripVertical, Save, ClipboardCopy, Loader2 } from 'lucide-react';
+import { ListOrdered, GripVertical, Save, ClipboardCopy, Loader2, Star, Box, Gift, Package } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
+  "Pro Pack": { icon: Star, title: "Pro Pack" },
+  "Mad MIDI Machines Pack": { icon: Box, title: "Mad MIDI Machines" },
+  "Free Pack": { icon: Gift, title: "Free Pack" },
+};
 
 // Sortable Item Component
 function SortableItem({ product }: { product: Product }) {
@@ -45,7 +51,6 @@ function SortableItem({ product }: { product: Product }) {
     <div ref={setNodeRef} style={style} {...attributes} {...listeners} className="flex items-center bg-card p-3 rounded-lg border shadow-sm touch-none">
       <GripVertical className="h-5 w-5 text-muted-foreground mr-4 cursor-grab" />
       <span className="font-medium text-card-foreground">{product.title}</span>
-      <span className="text-sm text-muted-foreground ml-auto pr-2">({product.pack})</span>
     </div>
   );
 }
@@ -53,15 +58,18 @@ function SortableItem({ product }: { product: Product }) {
 // Main Page Component
 export default function ProductOrderClientPage({ initialProducts }: { initialProducts: Product[] }) {
   const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [activePack, setActivePack] = useState<Pack>("Pro Pack");
   const [jsonOutput, setJsonOutput] = useState('');
   const [isClient, setIsClient] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
-    // This ensures the DndContext and its children only render on the client
-    // where window and other browser APIs are available, preventing hydration errors.
     setIsClient(true);
   }, []);
+  
+  const filteredProducts = useMemo(() => {
+    return products.filter(p => p.pack === activePack);
+  }, [products, activePack]);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -74,10 +82,10 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
     const { active, over } = event;
 
     if (over && active.id !== over.id) {
-      setProducts((items) => {
-        const oldIndex = items.findIndex((item) => item.id === active.id);
-        const newIndex = items.findIndex((item) => item.id === over.id);
-        return arrayMove(items, oldIndex, newIndex);
+      setProducts((currentProducts) => {
+        const oldIndex = currentProducts.findIndex((item) => item.id === active.id);
+        const newIndex = currentProducts.findIndex((item) => item.id === over.id);
+        return arrayMove(currentProducts, oldIndex, newIndex);
       });
     }
   }
@@ -98,74 +106,102 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
   };
 
   return (
-    <>
-      <Card className="shadow-xl w-full max-w-2xl mx-auto">
-        <CardHeader>
-          <div className="flex items-center gap-3 mb-2">
-            <ListOrdered className="h-10 w-10 text-primary" />
-            <CardTitle className="text-4xl font-headline text-primary">Products Order</CardTitle>
-          </div>
-          <CardDescription className="text-lg text-foreground/80">
-            Drag and drop the products to set their display order on the website. The order is global across all packs.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {!isClient ? (
-            <div className="flex items-center justify-center h-48">
-                <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                <p className="ml-4 text-muted-foreground">Loading interactive list...</p>
-            </div>
-          ) : (
-            <DndContext
-              sensors={sensors}
-              collisionDetection={closestCenter}
-              onDragEnd={handleDragEnd}
-            >
-              <SortableContext items={products.map(p => p.id)} strategy={verticalListSortingStrategy}>
-                <div className="space-y-3">
-                  {products.map((product) => (
-                    <SortableItem key={product.id} product={product} />
-                  ))}
-                </div>
-              </SortableContext>
-            </DndContext>
-          )}
-        </CardContent>
-        <CardFooter>
-          <Button onClick={handleGenerateJson} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={!isClient}>
-            <Save className="mr-2 h-5 w-5" />
-            Generate Order JSON
-          </Button>
-        </CardFooter>
-      </Card>
-
-      {jsonOutput && (
-        <Card className="shadow-xl w-full max-w-2xl mx-auto">
-          <CardHeader>
-            <CardTitle>Generated JSON Output</CardTitle>
-            <CardDescription>
-              Copy this content and paste it into the file:
-              <br />
-              <code className="font-mono text-accent">src/data/product-order.json</code>
-            </CardDescription>
+    <div className="flex flex-col md:flex-row gap-6">
+      <aside className="w-full md:w-56">
+        <Card className="shadow-lg">
+          <CardHeader className="p-4 border-b">
+             <CardTitle className="text-xl font-headline text-primary">Packs</CardTitle>
           </CardHeader>
-          <CardContent className="relative">
-            <Textarea
-              readOnly
-              value={jsonOutput}
-              className="h-64 font-mono text-sm bg-muted"
-            />
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-20 right-5 text-muted-foreground"
-              onClick={handleCopy}
-            >
-              <ClipboardCopy className="h-5 w-5" />
-            </Button>
+          <CardContent className="p-2">
+            <div className="flex flex-col space-y-1">
+              {(Object.keys(packConfig) as Pack[]).map(pack => {
+                const Conf = packConfig[pack];
+                return (
+                  <Button
+                    key={pack}
+                    variant={activePack === pack ? 'default' : 'ghost'}
+                    onClick={() => setActivePack(pack)}
+                    className="w-full justify-start text-left h-auto py-2.5 px-3"
+                  >
+                    <Conf.icon className="mr-3 h-5 w-5 flex-shrink-0" />
+                    <span className="truncate">{Conf.title}</span>
+                  </Button>
+                )
+              })}
+            </div>
           </CardContent>
         </Card>
-      )}
-    </>
+      </aside>
+
+      <div className="flex-1 space-y-4">
+        <Card className="shadow-xl w-full max-w-2xl mx-auto">
+          <CardHeader>
+            <div className="flex items-center gap-3 mb-2">
+              <ListOrdered className="h-10 w-10 text-primary" />
+              <CardTitle className="text-4xl font-headline text-primary">Products Order</CardTitle>
+            </div>
+            <CardDescription className="text-lg text-foreground/80">
+              Drag and drop products in the <span className="font-semibold text-accent">{packConfig[activePack].title}</span> to set their order.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {!isClient ? (
+              <div className="flex items-center justify-center h-48">
+                  <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                  <p className="ml-4 text-muted-foreground">Loading interactive list...</p>
+              </div>
+            ) : (
+              <DndContext
+                sensors={sensors}
+                collisionDetection={closestCenter}
+                onDragEnd={handleDragEnd}
+              >
+                <SortableContext items={filteredProducts.map(p => p.id)} strategy={verticalListSortingStrategy}>
+                  <div className="space-y-3">
+                    {filteredProducts.map((product) => (
+                      <SortableItem key={product.id} product={product} />
+                    ))}
+                  </div>
+                </SortableContext>
+              </DndContext>
+            )}
+          </CardContent>
+          <CardFooter>
+            <Button onClick={handleGenerateJson} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-3" disabled={!isClient}>
+              <Save className="mr-2 h-5 w-5" />
+              Generate Global Order JSON
+            </Button>
+          </CardFooter>
+        </Card>
+
+        {jsonOutput && (
+          <Card className="shadow-xl w-full max-w-2xl mx-auto">
+            <CardHeader>
+              <CardTitle>Generated JSON Output</CardTitle>
+              <CardDescription>
+                Copy this content and paste it into the file:
+                <br />
+                <code className="font-mono text-accent">src/data/product-order.json</code>
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="relative">
+              <Textarea
+                readOnly
+                value={jsonOutput}
+                className="h-64 font-mono text-sm bg-muted"
+              />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute top-20 right-5 text-muted-foreground"
+                onClick={handleCopy}
+              >
+                <ClipboardCopy className="h-5 w-5" />
+              </Button>
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    </div>
   );
 }

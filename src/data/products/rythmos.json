@@ -1,0 +1,36 @@
+{
+    "id": "tsezw1t4g",
+    "slug": "rythmos",
+    "title": "Rythmos",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/Rhythmos1.jpg",
+      "width": 1176,
+      "height": 783
+    },
+    "thumbnails": [],
+    "description": "Like it's brother Randommidi, Rythmos can be described as DAW's internal preset manager. This concept allows live performers to play with up to 16 VST instruments on stage or in live jams. By using your keyboard's midi cc buttons, you can instantly switch between instruments that opened in your favorite DAW and you can even split your keyboard into 2 zones and route instruments to keyboard's upper and lower zones. Each instrument button is routing the MIDI signal to the matching  VSTi instrument in the DAW through a matching MIDI channel (from 1 to 16). All you have to do is to connect your midi keyboard to Rythmos and set your VST instruments in your DAW to receive midi signal from Randomidi's midi channel. Rythmos also armed with 16 individual pattern arps which especially crafted to work with chords. Rythmos can also play in multi-mode by triggering several instruments at once (up to 16) and can even determine each keyboard zone's unique octave.\\n\\n`Important Note\\n\\nRythmos doesn't create any sound, but used to control other VSTi's that opened in the DAW via midi channels.",
+    "shortDescription": "Pattern Midi Arp",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 0,
+    "downloadLinks": [
+      {
+        "id": "2sa3iuee4",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/26kQAPBDxBij2RW369tb1yBQtxPv"
+      },
+      {
+        "id": "y5u7xinjx",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/f1U3CKzS#PozOLfYQKVCYWGZqCGrIszaAGp8--SSBYancMw7YBrU"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": []
+  }
