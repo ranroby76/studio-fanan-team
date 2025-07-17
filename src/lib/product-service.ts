@@ -98,7 +98,7 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
   }
 
   const videoUrls = [...(product.videoUrls || [])];
-   while (videoUrls.length < 3) {
+   while (videoUrls.length < 4) {
     videoUrls.push('');
   }
 

@@ -1,0 +1,38 @@
+{
+    "id": "5u1ypzrt6",
+    "slug": "midimotor",
+    "title": "Midimotor",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/midimotor1.jpg",
+      "width": 1179,
+      "height": 786
+    },
+    "thumbnails": [],
+    "description": "MidiMotor is an instrument that controls other vsti's via midi routing inside the DAW and actually acts like a hardware midi controller. It's buttons and knobs can be learnt by knobs and buttons in other vsti's and get powered by them. BUT! there is also an interesting twist: All MidiMotor's knobs and buttons are motorized, so they can let the user run them in a loop from any minimum to maximum point (and backward) by using any midi CC, midi channel, speed or synced speed. That's why motorizing can create a vast of unique sounds and tones from any synth and enrich creativity and exclusiveness. ",
+    "shortDescription": "Motored Midi Controller",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 12,
+    "downloadLinks": [
+      {
+        "id": "glcxxu3ty",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/iY4WbBGNFR9Fw9WjXxy6SaBFPzuW"
+      },
+      {
+        "id": "u1m0j24rz",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/uoFDxYSb#1w3suU8tB3Wi-gJkRqW5gvvA5q-InbYzq6sU_Up_QDc"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": [
+      "https://www.youtube.com/watch?v=EyohFk554QU&ab_channel=Fananteam"
+    ]
+  }

@@ -1,0 +1,36 @@
+{
+    "id": "3msqkqxq5",
+    "slug": "playlisted",
+    "title": "Playlisted",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/Playlisted1.png",
+      "width": 1138,
+      "height": 901
+    },
+    "thumbnails": [],
+    "description": "If you ever wanted to import your playbacks library in a fast and simple way and run it straight from your favorite DAW, Playlisted is probably your best friend. Playlisted is a professional playlist player for the DAW, supporting wav. and mp3 file formats (with english names only!). It allows the users to run up to 24 songs or samples playlist in manual or automatic (the next song starts automatically right after the previous ended) modes and control the player from the midi keyboard. It also saves playlists for future use, sets different volume and pitch for each playback and controls the songs switching delay time. Samples can be loaded manually or just dragged and dropped.",
+    "shortDescription": "Playlist Player",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 12,
+    "downloadLinks": [
+      {
+        "id": "opjbcj4fh",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/9yWWTCY8R21CQfPiFbt5f8R58X1Y"
+      },
+      {
+        "id": "66c8q24ed",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/DlMCVQaA#iLRUSeCuaeCJbVCMhlIbZHhs4ty_-g9C6K65nyhKy0k"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": []
+  }

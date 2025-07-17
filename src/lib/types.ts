@@ -42,7 +42,7 @@ export interface Product {
   price: number;
   downloadLinks: DownloadLink[];
   demoLimitations: string;
-  videoUrls?: string[]; // Array of up to 3 YouTube video URLs
+  videoUrls?: string[]; // Array of up to 4 YouTube video URLs
 }
 
 export interface ProductFormDownloadLink {

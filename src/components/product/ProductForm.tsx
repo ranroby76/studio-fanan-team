@@ -62,7 +62,7 @@ const productFormSchema = z.object({
   downloadLink3: downloadLinkSchema,
   downloadLink4: downloadLinkSchema,
   demoLimitations: z.string().optional(),
-  videoUrls: z.array(z.string().url().or(z.literal(''))).max(3),
+  videoUrls: z.array(z.string().url().or(z.literal(''))).max(4),
 }).refine(data => {
     // If a link is enabled, its URL must not be empty.
     if (data.downloadLink1.enabled && !data.downloadLink1.url) return false;
@@ -186,7 +186,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
           downloadLink3: { enabled: false, url: '' },
           downloadLink4: { enabled: false, url: '' },
           demoLimitations: '3 seconds silence every 15 seconds',
-          videoUrls: Array(3).fill(''),
+          videoUrls: Array(4).fill(''),
         },
   });
   
@@ -384,9 +384,9 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
             </div>
             
              <div className="space-y-2">
-              <Label className="font-semibold">YouTube Video URLs (up to 3)</Label>
+              <Label className="font-semibold">YouTube Video URLs (up to 4)</Label>
               <div className="grid grid-cols-1 gap-2">
-                  {[...Array(3)].map((_, index) => (
+                  {[...Array(4)].map((_, index) => (
                       <Input
                           key={index}
                           {...register(`videoUrls.${index}` as const)}
