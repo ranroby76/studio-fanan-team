@@ -22,7 +22,7 @@ export default function BuyNowPage() {
             priority
           />
           <div className="absolute inset-0 flex flex-col justify-between items-center p-8">
-            <h1 className="text-white font-bold text-5xl md:text-7xl lg:text-8xl tracking-wider uppercase font-impact" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
+            <h1 className="text-white font-bold text-4xl md:text-5xl lg:text-6xl tracking-wider uppercase font-impact" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
               Welcome To
             </h1>
             <div className="relative w-full max-w-lg transform scale-150 origin-bottom mb-16" style={{ aspectRatio: '4.337' }}>
