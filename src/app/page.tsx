@@ -87,13 +87,13 @@ export default function HomePage() {
                     data-ai-hint="professional audio"
                 />
             </Link>
-             <Link href="/free-pack" className="block group">
+             <Link href="/free-pack" className="block group w-10/12 md:w-auto">
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
                     width={560}
                     height={114}
-                    className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="h-auto w-full rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"
                 />
             </Link>
