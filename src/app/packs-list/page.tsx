@@ -36,7 +36,7 @@ export default function PacksListPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-3 font-headline text-2xl text-primary">
               <Star className="h-8 w-8" />
-              MAX! Pack
+              Max! Pack
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">

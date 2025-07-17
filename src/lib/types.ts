@@ -14,7 +14,7 @@ export interface DownloadLink {
   url: string;
 }
 
-export type Pack = "Pro Pack" | "Mad MIDI Machines Pack" | "Free Pack";
+export type Pack = "Max! Pack" | "Mad MIDI Machines Pack" | "Free Pack";
 
 export interface ImageDetails {
   url: string;

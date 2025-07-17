@@ -42,7 +42,7 @@ const mainNavLinks = [
 ];
 
 const productLinks = [
-    { href: '/pro-pack', label: 'Pro Pack' },
+    { href: '/max-pack', label: 'Max! Pack' },
     { href: '/mad-midi-machine-pack', label: 'Mad MIDI Machines' },
     { href: '/free-pack', label: 'Free Pack' },
 ];

@@ -25,7 +25,7 @@ import {
 import { getProductsForPack } from '@/lib/product-service-server';
 
 const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
-  "Pro Pack": { icon: Star, title: "Pro Pack" },
+  "Max! Pack": { icon: Star, title: "Max! Pack" },
   "Mad MIDI Machines Pack": { icon: Box, title: "Mad MIDI Machines" },
   "Free Pack": { icon: Gift, title: "Free Pack" },
 };
@@ -33,7 +33,7 @@ const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
 
 function ProductsManagementComponent() {
   const searchParams = useSearchParams();
-  const activePack = (searchParams.get('pack') as Pack | null) || "Pro Pack";
+  const activePack = (searchParams.get('pack') as Pack | null) || "Max! Pack";
 
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -15,7 +15,7 @@ interface ProductPackPageProps {
 }
 
 const packLogos: Record<Pack, string> = {
-  "Pro Pack": "/images/pro pack.png",
+  "Max! Pack": "/images/pro pack.png",
   "Mad MIDI Machines Pack": "/images/mad midi machines.png",
   "Free Pack": "/images/free pack.png",
 };

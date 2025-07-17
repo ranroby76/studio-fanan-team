@@ -1,0 +1,44 @@
+{
+    "id": "6q4itm2gg",
+    "slug": "truculentus",
+    "title": "Truculentus",
+    "pack": "Mad MIDI Machines Pack",
+    "mainImage": {
+      "url": "/images/truculentus1.jpg",
+      "width": 1472,
+      "height": 890
+    },
+    "thumbnails": [
+      {
+        "url": "/images/truculentus2.jpg",
+        "width": 1474,
+        "height": 892
+      }
+    ],
+    "description": "Truculentus is a comprehensive multiband multi-distortion VST effect designed for detailed audio processing. At its core, the plugin features a 10-band frequency filtering system that divides your incoming audio signal into separate frequency bands, each capable of hosting a different distortion type.\\n\\n​`Key Features\\n​\\nThe plugin offers 9 distinct distortion algorithms that can be applied independently to each frequency band:\\n#Hyperbolic: Applies a hyperbolic function to the waveform, creating harmonically rich distortion that maintains much of the original signal's character while adding pleasing overtones. Creates a \"saturated\" sound that becomes more aggressive at higher drive levels.\\n#Tube: Emulates the natural compression and harmonic enhancement of vacuum tubes. Adds warmth and body to the sound with a smooth transition from clean to overdriven. Creates \"musical\" distortion that tends to be more pleasant to the ear due to its emphasis on even-order harmonics.\\n#Tape: Simulates the natural compression, saturation, and subtle frequency response alterations of magnetic tape. Adds cohesion, warmth, and a vintage character to the sound. Higher drive settings produce a smooth saturation that gradually transforms into a compressed, dense sound.\\n#Transistor: Mimics the harsher clipping characteristics of transistor-based circuits. Creates a more aggressive, \"crunchy\" sound with strong presence in the mid-range. Has a more immediate clipping response compared to tube distortion, producing a tighter, more defined distortion.\\n#Diode: Models the non-linear response of diodes. Produces a bright, cutting distortion with sharp transient response. Can create asymmetrical clipping which adds complex harmonics and a distinctive character to the sound.\\n#Arctangent: Applies an arctangent function to the waveform. Creates smooth compression at low levels that gradually transitions to a pleasing saturation. Provides a controlled clipping that avoids the harshness of hard digital clipping while still producing rich harmonics.\\n#Bitcrasher: Reduces the bit depth and often the sample rate of audio signals. Creates deliberate digital artifacts and quantization noise. Produces a raw, low-fidelity character ranging from subtle digital warmth to extreme, glitchy destruction depending on settings.\\n#Wavefolder: Folds portions of waveforms that exceed certain thresholds back in on themselves. Creates complex harmonic structures not achievable with traditional distortion. Produces distinctive timbres ranging from subtle harmonic enhancement to dramatic, metallic textures with increasing intensity.\\n#Frequency Driven: Applies different amounts or types of distortion based on the frequency content of the input signal. Can selectively distort specific frequency bands while leaving others unaffected. Creates a more dynamic, responsive distortion character that can adapt to the input material, often feeling more \"musical\" and less static than traditional distortion.\\n\\n​`Additional Controls\\n​\\nTruculentus includes independent \"dry\" and \"wet\" gain knobs for precise control over the blend between unprocessed and processed signals. The plugin features two separate multiband systems—one dedicated to the dry signal and another for the wet signal—providing flexible options for sound shaping.\\nThis configuration allows for anything from subtle tonal enhancement to complex sound design, making Truculentus suitable for various audio processing tasks across different musical genres and production styles.",
+    "shortDescription": "Multi Band Multi Distortion",
+    "formats": {
+      "vst": true,
+      "vsti": false,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 22,
+    "downloadLinks": [
+      {
+        "id": "61ldzs7y9",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/QZ3VZ1BTjFgF94gfiQPzgXaWY5vf"
+      },
+      {
+        "id": "e0f97l0st",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/2kdH1KwQ#-pYaezUWWeZJvSmL3SpvcyemkevC5YrmutP9Ux0tiYY"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": [
+      "https://www.youtube.com/watch?v=7BNtwWn5DyM&ab_channel=Fananteam"
+    ]
+  }

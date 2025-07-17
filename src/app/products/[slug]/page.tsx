@@ -106,7 +106,7 @@ export default function ProductPage() {
   }, [slug]);
 
   const packImages: Record<Product['pack'], string> = {
-    "Pro Pack": "/images/pro pack.png",
+    "Max! Pack": "/images/pro pack.png",
     "Mad MIDI Machines Pack": "/images/mad midi machines.png",
     "Free Pack": "/images/free pack.png",
   };

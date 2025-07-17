@@ -45,7 +45,7 @@ const productFormSchema = z.object({
   id: z.string().optional(),
   title: z.string().min(3, "Title must be at least 3 characters"),
   shortDescription: z.string().min(3, "Short description is required").max(100, "Short description must be 100 characters or less"),
-  pack: z.enum(["Pro Pack", "Mad MIDI Machines Pack", "Free Pack"]),
+  pack: z.enum(["Max! Pack", "Mad MIDI Machines Pack", "Free Pack"]),
   formats: z.object({
     vst: z.boolean(),
     vsti: z.boolean(),
@@ -175,7 +175,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
       : {
           title: '',
           shortDescription: '',
-          pack: preselectedPack || "Pro Pack",
+          pack: preselectedPack || "Max! Pack",
           formats: { vst: false, vsti: false, win32: false, win64: false, standAlone: false },
           mainImage: { filename: '', width: 0, height: 0 },
           thumbnails: Array(7).fill({ filename: '', width: 0, height: 0 }),
@@ -286,7 +286,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
                             <SelectValue placeholder="Select a pack" />
                             </SelectTrigger>
                             <SelectContent>
-                            <SelectItem value="Pro Pack">Pro Pack</SelectItem>
+                            <SelectItem value="Max! Pack">Max! Pack</SelectItem>
                             <SelectItem value="Mad MIDI Machines Pack">Mad MIDI Machines Pack</SelectItem>
                             <SelectItem value="Free Pack">Free Pack</SelectItem>
                             </SelectContent>
