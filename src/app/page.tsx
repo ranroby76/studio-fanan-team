@@ -71,8 +71,8 @@ export default function HomePage() {
                 <Image
                     src="/images/mad midi machines.png"
                     alt="Mad MIDI Machines Pack"
-                    width={750}
-                    height={111}
+                    width={700}
+                    height={104}
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="synthesizer abstract"
                 />
@@ -81,8 +81,8 @@ export default function HomePage() {
                 <Image
                     src="/images/pro pack.png"
                     alt="Max! Pack"
-                    width={596}
-                    height={121.5}
+                    width={700}
+                    height={142}
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="professional audio"
                 />
@@ -91,8 +91,8 @@ export default function HomePage() {
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
-                    width={596}
-                    height={121.5}
+                    width={700}
+                    height={142}
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"
                 />
