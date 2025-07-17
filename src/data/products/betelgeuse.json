@@ -1,81 +1,87 @@
 {
-    "id": "nqm5bjqo1",
-    "slug": "betelgeuse",
-    "title": "Betelgeuse",
-    "pack": "Mad MIDI Machines Pack",
-    "mainImage": {
-      "url": "/images/B1.jpg",
+  "id": "nqm5bjqo1",
+  "slug": "betelgeuse",
+  "title": "Betelgeuse",
+  "pack": "Mad MIDI Machines Pack",
+  "mainImage": {
+    "url": "/images/B1.jpg",
+    "width": 1629,
+    "height": 910
+  },
+  "thumbnails": [
+    {
+      "url": "/images/B2.jpg",
       "width": 1629,
+      "height": 908
+    },
+    {
+      "url": "/images/B6.jpg",
+      "width": 1627,
+      "height": 911
+    },
+    {
+      "url": "/images/B3.jpg",
+      "width": 1628,
       "height": 910
     },
-    "thumbnails": [
-      {
-        "url": "/images/B2.jpg",
-        "width": 1629,
-        "height": 908
-      },
-      {
-        "url": "/images/B6.jpg",
-        "width": 1627,
-        "height": 911
-      },
-      {
-        "url": "/images/B3.jpg",
-        "width": 1628,
-        "height": 910
-      },
-      {
-        "url": "/images/B7.jpg",
-        "width": 1631,
-        "height": 913
-      },
-      {
-        "url": "/images/B4.jpg",
-        "width": 1629,
-        "height": 913
-      },
-      {
-        "url": "/images/B8.jpg",
-        "width": 1633,
-        "height": 910
-      },
-      {
-        "url": "/images/B5.jpg",
-        "width": 1630,
-        "height": 910
-      }
-    ],
-    "description": "Welcome to Betelgeuse, the first semi-modular arranger keyboard plugin that brings professional-grade entertainment capabilities to your fingertips. This revolutionary virtual instrument emulates high-end hardware arrangers and workstations, offering more then 430 (and growing!) free loadable and shareable styles from any music genre for dynamic, live-oriented performances and instant, high-quality backing tracks. Betelgeuse is a powerful MIDI engine designed to seamlessly integrate with your Digital Audio\\nWorkstation (DAW). While it doesn't generate sound on its own, it orchestrates your favorite virtual instruments (VSTis) by routing MIDI sequences through various channels, mimicking the functionality of a hardware arranger with enhanced flexibility.\\n\\n\\n`Highlight enefits:\\n\\n#1. Authentic hardware arranger experience with the advantages of software flexibility\\n#2. Vast library of loadable - shareable styles for creating professional backing tracks in any genre\\n#3. Perfect for live performances, jam sessions, studio production, and on-the-fly accompaniment\\n#4. Exceptional sound quality that rivals $5000+ hardware arrangers when paired with modern VSTis\\n#5. Full DAW integration for recording, mixing, and mastering your backing tracks and performances\\n#6. Integration with GM compliant VSTis for robust controling and syncronization\\n\\n​Betelgeuse combines the best of both worlds: the intuitive interface of a hardware arranger with the power and versatility of modern DAW software. This synergy, coupled with today's advanced audio equipment, opens up new horizons in music production, composing and live performance backing.\\n\\n`Whether you're a:\\n\\n#Songwriter looking for instant, professional-grade backing tracks\\n#Composer seeking efficient workflow tools for arrangement and composition\\n#Music student exploring arrangement techniques and style creation\\n#Dedicated hobbyist aiming to elevate your craft with pro-level accompaniment\\n#PRO arranger performer accompanying vocalists on live stages\\n\\n​Betelgeuse is designed to take your creativity and enjoyment to new heights. Experience the future of\\nmusical arrangement and performance – let Betelgeuse be your gateway to unlimited musical\\npossibilities and effortless backing track creation.\\n\\n​`Versions - Betelgeuse comes in 2 versions:\\n\\n#Betelgeuse - Full featured VSTi plugin for windows OS only (no demo mode) - 55$ (no refunds after providing a serial) as a part of Mad Midi Machines pack\\n#Betelgeues Free editions - Totally free 6 variations VSTi plugin that lacks some of extra features compared to the paid edition\\n\\n`​Special thanks to our friend Dave Loftus (DaveyBoy) for his mighty contribution to this project and especially for the positive vibes\\n\\n`Key Features \\n\\n#Dynamic tempo - use style's original tempo, your on defeined tempo, double \\ half tempo or tap tempo\\n#Arranger \\ piano modes - perform in arranger mode when the midi keyboard is splited and defined for classic left hand - right hand performance (style chords and solos)\\n#Single \\ multi modes for solos - play right hand solo instruments one by one or combine up to 6 instruments opened in your DAW together\\n#Dynamic transitions - define the 1 bar \\ 1/2 bar respond times for tansitions between variations\\n#Global semitone - transpose the global semitone of both right \\ left hands role\\n#Save \\ load sets - save and load sets (combination of style + it's unique settings) to a preset file \\n#Midi learn \\ keyboard key controlling - diverse controling possibilities by using midi learning (right click on any significant button \\ knob) or midi keyboard keys (notes 1- 35)\\n#Comments - add text comments to each set to share any critical information about it with others who use it\\n#DAW start - starts playing session of the style whenver the DAW starts playing\\n#Route midi sessions to up to 12 VSTis opened in your DAW - 6 right hand slots + 6 left hand slots can be sent internally in the DAW to any desired instruments to create a full arranger experience. GM compliant instruments are supported and can recieve program change messages from Betelgeuse + controlled by the internal mixer via midi CC messages\\n#Variations - up to 16 variations per style, including intros, main variations, fills, ends and brake\\n#Synced play - prepare playing when any pressed chord is detected\\n#Onpress - Play only when chord keys are pressed\\n#Manual crash - trigger style drumkit's crash cymbal hit manually\\n#Fingered \\ one finger modes - switch chords using 3 notes chord or a single note. use single note mode to achieve both major and minor chords by double-clicking the chord's key\\n#Restart - instantly restart the played style's variation from possition 0\\n#Styles menu- 500 world class inspiring styles divided into 10 categories, covering a vast of musical genres (rock, pop, dance, swing-jazz, R&B, country, latin, ballroom, world). Including \"search\" feature for finding styles by name\\n#Sounds menu - allows selecting sounds from target VSTi's by program change messages and also indicate which instruments are most recommended for a spacific loaded style (which then can by opened manually by the user according to his taste)\\n#Mixer - controls volumes, octaves and pitch scales of playing instruments, ballance between style's volume and solos volume and controls the master volume (whenever a GM compiliant VSTi is targeted). \\n#Favorite sets menu - allows storing favorite sets in a bank file for instantly reloading them by a single button press. Easy sets loading by clicking on the text label under each button. Save \\ load menu buttons are included in the menu stage\\n#Jumps menu - defines the destination of each jumping variation (intros, fills, brake) after they finish their loop cycle\\n#Crash menu - defines the cymbal crash hit's characters; selects which drum element plays the crash's role, it's length and velocity as well as in how many variation cycles the auto crash will hit. \\n#Settings - divided into 3 menus: registration, GUI and outdoor loopMIDI inputs selection:\\nRegistarion is based on ID number. Each user is allocated unique ID that shown in the registration cubical. Use the ID number in our site to generate your matching serial number after purchasing. Betelgeuse will .Once you got a serial inserted and confirmed, Betelgeuse will be ready for use in \"registered\" state. There is no \"DEMO\" mode in the paid version and the plugin will not perform until registered\\n#GUI - allows changing UI size\\n#outdoor loopMIDI inputs selection - allows connecting to Betelgeuse 3 additional midi controllers externally (since this option is not allowed by most DAWs). The connection is done by using \"looMIDI\", free virtual midi cable which can be downloaded from their site. The user then routes his midi gear to an opened midi cable and then routes the midi cable's output directly to Betelgeuse by \"outdoor loopMIDI\" menu \\n #Hold - hold the playing variation and prevent it from jumping\\n #Split keyb. - allows defining the key where the keyboard is actually spllited\\n#DAW integration - performed by using DAW's midi tracks internal channels routing. Betelgeuse should selected as \"midi in\" in each VSTi track. Then the matched channel should be selected. E.g: your drums VSTi in the DAW get's Betelgeuse as \"midi in\" and then the channel set to 10. In this case, the drums sequence will be sent from Betelgeuse to the drums VSTi via channel 10.  The active channels of Betelgeuse are: midi channels 1-6 for solo 1-6, channels 10 - drums, channels 11 - percussion, channel 12 - bass, channels 13-15 - accompany instruments.  \\n#MIDI Keyboard Keys that perform as controllers\\nYou have the option to control all the significant features in Betelgeuse with KEYS. The lower octaves of your midi keyboard (key 1-35) are defined as controllers. So the chords part actually start from note C1 (key 36). Here is the full list of the key controlling festure:\\n\\n`STYLE ELEMENTS ON OFF BY NOTE\\n\\nCHANNEL 10 - 1\\nCHANNEL 11 - 2\\nCHANNEL 12 - 3\\nCHANNEL 13 - 4\\nCHANNEL 14 - 5\\nCHANNEL 15 - 6\\n\\n`SOLO ELEMENTS SWITCH BY NOTE\\n\\n(SINGLE MODE)\\nCHANNEL 1 - 7\\nCHANNEL 2 - 8\\nCHANNEL 3 - 9\\nCHANNEL 4 - 10\\nCHANNEL 5 - 11\\nCHANNEL 6 - 12\\n\\n`CHANGE VARS BY MIDI NOTE PADS\\n\\n13 - INTRO 1\\n14 - INTRO 2\\n15 - INTRO 3\\n16 - INTRO 4\\n17 - VAR 1\\n18 - VAR 2\\n19 - VAR 3\\n20 - VAR 4\\n21 - FIIL 1\\n22 - FILL 2\\n23 - FILL 3\\n24 - FILL 4\\n25 - END 1\\n26 - END 2\\n27 - END 3\\n28 - BREAK\\n\\n`CONTROL FEATURES BY NOTE\\n\\n29 - PLAY \\ STOP\\n30- CRASH\\n31 - RESTART\\n32 - HOLD\\n33 - AUTO CRASH\\n34 - ARRANGER OR PIANO\\n35 - SYNCED PLAY\\n\\n`Stand - Alone version; all you have to know\\n\\nThe Stand - Alone version of Betelgeuse has exactly the same functionality and features as the plugin version. he difference is this version works as independent application while it can communicate with DAWs and other hardware samplers connected to the computer through virtual midi cables. The virtual midi cables (like \"loopmidi\", which we recommend) allow sending midi data through them to any other application or destination, and therefore are the perfect partner for Betelgeuse to perform orchestration with 3th party plugins or hardware samplers.\\nPreparing The Connections In the \"settings\" stage in Betelgeuse, you'll find the \"midi in\" \\ \"midi out\" menu which allows determining the midi inputs and outputs. In the input section, you normally select your midi keyboard or any other midi gear (like controllers) which needed to play left hand\\right hand roles and switch variations and instruments or do any other task. In the midi outs you set the virtual midi cables (e.g loopaMIDI port1, loopaMIDI port2 and so on). You'll need12 cables to support both the style and the solo instruments (upto 6 solo instruments and 6 style's instruments). Betelgeuse then will send each of it's instruments through the matching cable and each with it's own dedicated channel number (solos use channels 1-6, style instruments use channels 10-15 while channel 10 is always a drum channel, channel 11 is percussion, channel 12 is bass and the left 13-15 can be any accompany instrument). Your settings can be then saved to a preset file by using the midi settings dedicated preset manager Installing And Starting The App Betelgeuse Stand-Alone is not sharing the same system folder with the plugin version. It has it's own system folder on your machine so you'll have to install the \"Betelgeuse SA Installer\" to ensure its proper operation. Once you've installed, you'll see a shortcut of the app on your desktop. To ensure proper operation, please use only this shortcut to start the app. If you use a DAW as a source for sounds (virtual instruments) then Betelgeuse should be started before starting the DAW, since the DAW may take control over your midi gear before Betelgeuse does and then your gear won't be available for\\nBetelgeuse. So for proper operation:\\n\\n1. Load Betelgeuse\\n2. Load your preferred midi settings\\n3. Load your DAW\\n4. Load your preferred VSTis which you'd like to use as sound sources\\n5. Set the midi inputs of those VSTis to receive matching data from Betelgeuse and set their midi\\nchannel numbers\\n6. You are ready to play \\n\\n`Possible Issues\\n\\nIf you start your DAW before Betelgeuse, Betelgeuse might give an error message referred to to direct sound\\naudio driver. This message can be safely ignored. If you detect any other problem related to your system or\\npersonal settings, do not hesitate reporting.\\n\\nWatch the guide video in the video section:",
-    "shortDescription": "Arranger Module",
-    "formats": {
-      "vst": true,
-      "vsti": true,
-      "win32": true,
-      "win64": true,
-      "standAlone": true
+    {
+      "url": "/images/B7.jpg",
+      "width": 1631,
+      "height": 913
     },
-    "price": 22,
-    "downloadLinks": [
-      {
-        "id": "zoxek8e9d",
-        "label": "Download Option 2",
-        "url": "https://mega.nz/file/mstEASSC#2GQTTEOXGu6sEyu-MPEIpGRWO3IWKGNoQjNCnnp8WGA"
-      },
-      {
-        "id": "14otjsbsx",
-        "label": "Download Stand-Alone (Op. 1)",
-        "url": "https://icedrive.net/s/QFBtAZTtP562yY4SS25VY4zWb5G1"
-      },
-      {
-        "id": "hnkyr6vxi",
-        "label": "Download Stand-Alone (Op. 2)",
-        "url": "https://mega.nz/file/jgk0UILJ#MmfAcRY2SyYlCQG-izMqCbiecoF17s9AT3oI1fAwuIk"
-      }
-    ],
-    "demoLimitations": "3 seconds silence every 15 seconds",
-    "videoUrls": [
-      "https://www.youtube.com/watch?v=j_WmDV-wTag&ab_channel=Fananteam",
-      "https://www.youtube.com/watch?v=aTWiJScaNko&t=3s&ab_channel=Fananteam",
-      "https://www.youtube.com/watch?v=7Bjeuen5F6g&ab_channel=Fananteam"
-    ]
-  }
+    {
+      "url": "/images/B4.jpg",
+      "width": 1629,
+      "height": 913
+    },
+    {
+      "url": "/images/B8.jpg",
+      "width": 1633,
+      "height": 910
+    },
+    {
+      "url": "/images/B5.jpg",
+      "width": 1630,
+      "height": 910
+    }
+  ],
+  "description": "Welcome to Betelgeuse, the first semi-modular arranger keyboard plugin that brings professional-grade entertainment capabilities to your fingertips. This revolutionary virtual instrument emulates high-end hardware arrangers and workstations, offering more then 430 (and growing!) free loadable and shareable styles from any music genre for dynamic, live-oriented performances and instant, high-quality backing tracks. Betelgeuse is a powerful MIDI engine designed to seamlessly integrate with your Digital Audio\\nWorkstation (DAW). While it doesn't generate sound on its own, it orchestrates your favorite virtual instruments (VSTis) by routing MIDI sequences through various channels, mimicking the functionality of a hardware arranger with enhanced flexibility.\\n\\n\\n`Highlight enefits:\\n\\n#1. Authentic hardware arranger experience with the advantages of software flexibility\\n#2. Vast library of loadable - shareable styles for creating professional backing tracks in any genre\\n#3. Perfect for live performances, jam sessions, studio production, and on-the-fly accompaniment\\n#4. Exceptional sound quality that rivals $5000+ hardware arrangers when paired with modern VSTis\\n#5. Full DAW integration for recording, mixing, and mastering your backing tracks and performances\\n#6. Integration with GM compliant VSTis for robust controling and syncronization\\n\\n​Betelgeuse combines the best of both worlds: the intuitive interface of a hardware arranger with the power and versatility of modern DAW software. This synergy, coupled with today's advanced audio equipment, opens up new horizons in music production, composing and live performance backing.\\n\\n`Whether you're a:\\n\\n#Songwriter looking for instant, professional-grade backing tracks\\n#Composer seeking efficient workflow tools for arrangement and composition\\n#Music student exploring arrangement techniques and style creation\\n#Dedicated hobbyist aiming to elevate your craft with pro-level accompaniment\\n#PRO arranger performer accompanying vocalists on live stages\\n\\n​Betelgeuse is designed to take your creativity and enjoyment to new heights. Experience the future of\\nmusical arrangement and performance – let Betelgeuse be your gateway to unlimited musical\\npossibilities and effortless backing track creation.\\n\\n​`Versions - Betelgeuse comes in 2 versions:\\n\\n#Betelgeuse - Full featured VSTi plugin for windows OS only (no demo mode) - 55$ (no refunds after providing a serial) as a part of Mad Midi Machines pack\\n#Betelgeues Free editions - Totally free 6 variations VSTi plugin that lacks some of extra features compared to the paid edition\\n\\n`​Special thanks to our friend Dave Loftus (DaveyBoy) for his mighty contribution to this project and especially for the positive vibes\\n\\n`Key Features \\n\\n#Dynamic tempo - use style's original tempo, your on defeined tempo, double \\ half tempo or tap tempo\\n#Arranger \\ piano modes - perform in arranger mode when the midi keyboard is splited and defined for classic left hand - right hand performance (style chords and solos)\\n#Single \\ multi modes for solos - play right hand solo instruments one by one or combine up to 6 instruments opened in your DAW together\\n#Dynamic transitions - define the 1 bar \\ 1/2 bar respond times for tansitions between variations\\n#Global semitone - transpose the global semitone of both right \\ left hands role\\n#Save \\ load sets - save and load sets (combination of style + it's unique settings) to a preset file \\n#Midi learn \\ keyboard key controlling - diverse controling possibilities by using midi learning (right click on any significant button \\ knob) or midi keyboard keys (notes 1- 35)\\n#Comments - add text comments to each set to share any critical information about it with others who use it\\n#DAW start - starts playing session of the style whenver the DAW starts playing\\n#Route midi sessions to up to 12 VSTis opened in your DAW - 6 right hand slots + 6 left hand slots can be sent internally in the DAW to any desired instruments to create a full arranger experience. GM compliant instruments are supported and can recieve program change messages from Betelgeuse + controlled by the internal mixer via midi CC messages\\n#Variations - up to 16 variations per style, including intros, main variations, fills, ends and brake\\n#Synced play - prepare playing when any pressed chord is detected\\n#Onpress - Play only when chord keys are pressed\\n#Manual crash - trigger style drumkit's crash cymbal hit manually\\n#Fingered \\ one finger modes - switch chords using 3 notes chord or a single note. use single note mode to achieve both major and minor chords by double-clicking the chord's key\\n#Restart - instantly restart the played style's variation from possition 0\\n#Styles menu- 500 world class inspiring styles divided into 10 categories, covering a vast of musical genres (rock, pop, dance, swing-jazz, R&B, country, latin, ballroom, world). Including \"search\" feature for finding styles by name\\n#Sounds menu - allows selecting sounds from target VSTi's by program change messages and also indicate which instruments are most recommended for a spacific loaded style (which then can by opened manually by the user according to his taste)\\n#Mixer - controls volumes, octaves and pitch scales of playing instruments, ballance between style's volume and solos volume and controls the master volume (whenever a GM compiliant VSTi is targeted). \\n#Favorite sets menu - allows storing favorite sets in a bank file for instantly reloading them by a single button press. Easy sets loading by clicking on the text label under each button. Save \\ load menu buttons are included in the menu stage\\n#Jumps menu - defines the destination of each jumping variation (intros, fills, brake) after they finish their loop cycle\\n#Crash menu - defines the cymbal crash hit's characters; selects which drum element plays the crash's role, it's length and velocity as well as in how many variation cycles the auto crash will hit. \\n#Settings - divided into 3 menus: registration, GUI and outdoor loopMIDI inputs selection:\\nRegistarion is based on ID number. Each user is allocated unique ID that shown in the registration cubical. Use the ID number in our site to generate your matching serial number after purchasing. Betelgeuse will .Once you got a serial inserted and confirmed, Betelgeuse will be ready for use in \"registered\" state. There is no \"DEMO\" mode in the paid version and the plugin will not perform until registered\\n#GUI - allows changing UI size\\n#outdoor loopMIDI inputs selection - allows connecting to Betelgeuse 3 additional midi controllers externally (since this option is not allowed by most DAWs). The connection is done by using \"looMIDI\", free virtual midi cable which can be downloaded from their site. The user then routes his midi gear to an opened midi cable and then routes the midi cable's output directly to Betelgeuse by \"outdoor loopMIDI\" menu \\n #Hold - hold the playing variation and prevent it from jumping\\n #Split keyb. - allows defining the key where the keyboard is actually spllited\\n#DAW integration - performed by using DAW's midi tracks internal channels routing. Betelgeuse should selected as \"midi in\" in each VSTi track. Then the matched channel should be selected. E.g: your drums VSTi in the DAW get's Betelgeuse as \"midi in\" and then the channel set to 10. In this case, the drums sequence will be sent from Betelgeuse to the drums VSTi via channel 10.  The active channels of Betelgeuse are: midi channels 1-6 for solo 1-6, channels 10 - drums, channels 11 - percussion, channel 12 - bass, channels 13-15 - accompany instruments.  \\n#MIDI Keyboard Keys that perform as controllers\\nYou have the option to control all the significant features in Betelgeuse with KEYS. The lower octaves of your midi keyboard (key 1-35) are defined as controllers. So the chords part actually start from note C1 (key 36). Here is the full list of the key controlling festure:\\n\\n`STYLE ELEMENTS ON OFF BY NOTE\\n\\nCHANNEL 10 - 1\\nCHANNEL 11 - 2\\nCHANNEL 12 - 3\\nCHANNEL 13 - 4\\nCHANNEL 14 - 5\\nCHANNEL 15 - 6\\n\\n`SOLO ELEMENTS SWITCH BY NOTE\\n\\n(SINGLE MODE)\\nCHANNEL 1 - 7\\nCHANNEL 2 - 8\\nCHANNEL 3 - 9\\nCHANNEL 4 - 10\\nCHANNEL 5 - 11\\nCHANNEL 6 - 12\\n\\n`CHANGE VARS BY MIDI NOTE PADS\\n\\n13 - INTRO 1\\n14 - INTRO 2\\n15 - INTRO 3\\n16 - INTRO 4\\n17 - VAR 1\\n18 - VAR 2\\n19 - VAR 3\\n20 - VAR 4\\n21 - FIIL 1\\n22 - FILL 2\\n23 - FILL 3\\n24 - FILL 4\\n25 - END 1\\n26 - END 2\\n27 - END 3\\n28 - BREAK\\n\\n`CONTROL FEATURES BY NOTE\\n\\n29 - PLAY \\ STOP\\n30- CRASH\\n31 - RESTART\\n32 - HOLD\\n33 - AUTO CRASH\\n34 - ARRANGER OR PIANO\\n35 - SYNCED PLAY\\n\\n`Stand - Alone version; all you have to know\\n\\nThe Stand - Alone version of Betelgeuse has exactly the same functionality and features as the plugin version. he difference is this version works as independent application while it can communicate with DAWs and other hardware samplers connected to the computer through virtual midi cables. The virtual midi cables (like \"loopmidi\", which we recommend) allow sending midi data through them to any other application or destination, and therefore are the perfect partner for Betelgeuse to perform orchestration with 3th party plugins or hardware samplers.\\nPreparing The Connections In the \"settings\" stage in Betelgeuse, you'll find the \"midi in\" \\ \"midi out\" menu which allows determining the midi inputs and outputs. In the input section, you normally select your midi keyboard or any other midi gear (like controllers) which needed to play left hand\\right hand roles and switch variations and instruments or do any other task. In the midi outs you set the virtual midi cables (e.g loopaMIDI port1, loopaMIDI port2 and so on). You'll need12 cables to support both the style and the solo instruments (upto 6 solo instruments and 6 style's instruments). Betelgeuse then will send each of it's instruments through the matching cable and each with it's own dedicated channel number (solos use channels 1-6, style instruments use channels 10-15 while channel 10 is always a drum channel, channel 11 is percussion, channel 12 is bass and the left 13-15 can be any accompany instrument). Your settings can be then saved to a preset file by using the midi settings dedicated preset manager Installing And Starting The App Betelgeuse Stand-Alone is not sharing the same system folder with the plugin version. It has it's own system folder on your machine so you'll have to install the \"Betelgeuse SA Installer\" to ensure its proper operation. Once you've installed, you'll see a shortcut of the app on your desktop. To ensure proper operation, please use only this shortcut to start the app. If you use a DAW as a source for sounds (virtual instruments) then Betelgeuse should be started before starting the DAW, since the DAW may take control over your midi gear before Betelgeuse does and then your gear won't be available for\\nBetelgeuse. So for proper operation:\\n\\n1. Load Betelgeuse\\n2. Load your preferred midi settings\\n3. Load your DAW\\n4. Load your preferred VSTis which you'd like to use as sound sources\\n5. Set the midi inputs of those VSTis to receive matching data from Betelgeuse and set their midi\\nchannel numbers\\n6. You are ready to play \\n\\n`Possible Issues\\n\\nIf you start your DAW before Betelgeuse, Betelgeuse might give an error message referred to to direct sound\\naudio driver. This message can be safely ignored. If you detect any other problem related to your system or\\npersonal settings, do not hesitate reporting.\\n\\nWatch the guide video in the video section:",
+  "shortDescription": "Arranger Module",
+  "formats": {
+    "vst": true,
+    "vsti": true,
+    "win32": true,
+    "win64": true,
+    "standAlone": true
+  },
+  "price": 22,
+  "downloadLinks": [
+    {
+      "id": "zhb8s256q",
+      "label": "Download Option 1",
+      "url": "https://icedrive.net/s/f6a5BCNP4a7fitDQSXja6bPWbg9G"
+    },
+    {
+      "id": "nnby66qby",
+      "label": "Download Option 2",
+      "url": "https://mega.nz/file/mstEASSC#2GQTTEOXGu6sEyu-MPEIpGRWO3IWKGNoQjNCnnp8WGA"
+    },
+    {
+      "id": "1uifoxbu3",
+      "label": "Download Stand-Alone (Op. 1)",
+      "url": "https://icedrive.net/s/QFBtAZTtP562yY4SS25VY4zWb5G1"
+    },
+    {
+      "id": "msyg7zakx",
+      "label": "Download Stand-Alone (Op. 2)",
+      "url": "https://mega.nz/file/jgk0UILJ#MmfAcRY2SyYlCQG-izMqCbiecoF17s9AT3oI1fAwuIk"
+    }
+  ],
+  "demoLimitations": "3 seconds silence every 15 seconds",
+  "videoUrls": [
+    "https://www.youtube.com/watch?v=j_WmDV-wTag&ab_channel=Fananteam",
+    "https://www.youtube.com/watch?v=aTWiJScaNko&t=3s&ab_channel=Fananteam",
+    "https://www.youtube.com/watch?v=7Bjeuen5F6g&ab_channel=Fananteam",
+    "https://www.youtube.com/watch?v=7Bjeuen5F6g&ab_channel=Fananteam"
+  ]
+}
