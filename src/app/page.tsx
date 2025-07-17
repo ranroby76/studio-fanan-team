@@ -91,8 +91,8 @@ export default function HomePage() {
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
-                    width={700}
-                    height={142}
+                    width={560}
+                    height={114}
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"
                 />
