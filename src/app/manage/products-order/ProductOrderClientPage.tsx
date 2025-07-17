@@ -18,13 +18,13 @@ import {
   verticalListSortingStrategy,
   useSortable,
 } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import type { Product, Pack } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Textarea } from '@/components/ui/textarea';
-import { ListOrdered, GripVertical, Save, ClipboardCopy, Loader2, Star, Box, Gift, Package } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { ListOrdered, GripVertical, Save, ClipboardCopy, Loader2, Star, Box, Gift } from 'lucide-react';
 
 const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
   "Pro Pack": { icon: Star, title: "Pro Pack" },
@@ -83,9 +83,16 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
 
     if (over && active.id !== over.id) {
       setProducts((currentProducts) => {
-        const oldIndex = currentProducts.findIndex((item) => item.id === active.id);
-        const newIndex = currentProducts.findIndex((item) => item.id === over.id);
-        return arrayMove(currentProducts, oldIndex, newIndex);
+        const activeProduct = currentProducts.find(p => p.id === active.id);
+        const overProduct = currentProducts.find(p => p.id === over.id);
+        
+        // Ensure both products are in the same pack before moving
+        if (activeProduct && overProduct && activeProduct.pack === overProduct.pack) {
+            const oldIndex = currentProducts.findIndex((item) => item.id === active.id);
+            const newIndex = currentProducts.findIndex((item) => item.id === over.id);
+            return arrayMove(currentProducts, oldIndex, newIndex);
+        }
+        return currentProducts;
       });
     }
   }
