@@ -1,0 +1,33 @@
+{
+    "id": "rtqu8330n",
+    "slug": "yowlseq-2",
+    "title": "Yowlseq 2",
+    "pack": "Pro Pack",
+    "mainImage": {
+      "url": "/images/Yowlseq1.jpg",
+      "width": 1230,
+      "height": 817
+    },
+    "thumbnails": [],
+    "description": "Yowlseq is vowel phaser-Wah effect that works on motion principle. It can add psychodal yowling effect to any kind of audio material or part of it since the audio effect is applied on frequency basis.\\n\\n Yowlseq is powered by 3 modules:\\n\\n`The motion module\\n\\nThe motion module determines the motion character of each of the phaser-Wah's knobs; It's low range, high range, speed and also it's type: \"in motion\" type (causes the knob raise or fall exponentially) or \"immediate\" type (causes the knob to jump from minimum point to maximum point and vice versa immediately). There is also a \"sync\" feature which syncs the motion to the DAW's tempo.\\n\\n`Action module\\n\\nThis is where all the action occurs. The phaser-Wah knobs can be either powered by the motion module or remain static.\\n\\n`Mix by frequency module\\n\\nThis part determines on which frequency range the effect is being applied. It's built like organ's draw-bars, so the the effect can be easily applied on 9 frequency ranges, from lows to highs.  \\n\\n \\n\\n Yowlseq 2 is also armed with with full automation system and GUI resizing menu.",
+    "shortDescription": "Vowel Phaser - Wah",
+    "formats": {
+      "vst": true,
+      "vsti": false,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 12,
+    "downloadLinks": [
+      {
+        "id": "a31ziqdjx",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/bg0U2IyY#WUeSuAIQj4xuPn9XgJ50wO0pqOjOXpHnOQAK2XFWsK0"
+      }
+    ],
+    "demoLimitations": "3 seconds silence every 15 seconds",
+    "videoUrls": [
+      "https://www.youtube.com/watch?v=dQPlDWvr9uY&ab_channel=Fananteam"
+    ]
+  }
