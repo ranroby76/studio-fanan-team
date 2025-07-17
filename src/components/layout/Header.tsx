@@ -140,7 +140,8 @@ export default function Header() {
             )}>
               <Link href={homeLink.href} className="flex items-center gap-2 px-3 py-2 rounded-md">
                 <homeLink.icon size={18} />
-                <span>{homeLink.label}</span>
+                <span className="hidden md:inline">{homeLink.label}</span>
+                 <span className="md:hidden">Home</span>
               </Link>
             </Button>
           )}
