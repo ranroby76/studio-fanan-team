@@ -67,7 +67,7 @@ export default function HomePage() {
       
       <div className="container mx-auto px-4">
         <div className="space-y-8 flex flex-col items-center">
-            <div className="block group">
+            <Link href="/mad-midi-machine-pack" className="block group">
                 <Image
                     src="/images/mad midi machines.png"
                     alt="Mad MIDI Machines Pack"
@@ -76,8 +76,8 @@ export default function HomePage() {
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="synthesizer abstract"
                 />
-            </div>
-            <div className="block group">
+            </Link>
+            <Link href="/max-pack" className="block group">
                 <Image
                     src="/images/pro pack.png"
                     alt="Max! Pack"
@@ -86,8 +86,8 @@ export default function HomePage() {
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="professional audio"
                 />
-            </div>
-             <div className="block group">
+            </Link>
+             <Link href="/free-pack" className="block group">
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
@@ -96,7 +96,7 @@ export default function HomePage() {
                     className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"
                 />
-            </div>
+            </Link>
         </div>
       </div>
       
