@@ -37,12 +37,12 @@ const getYouTubeVideoId = (url: string): string | null => {
 
 const renderDescription = (description: string) => {
     return description.split('\\n').map((line, index) => {
-        let trimmedLine = line.trim();
-        if (trimmedLine.startsWith('@@')) {
-            trimmedLine = trimmedLine.substring(2).trim();
+        const trimmedLine = line.trim();
+        
+        if (trimmedLine.startsWith('##')) {
             return (
                 <h3 key={index} className="text-xl font-headline text-primary mt-4 mb-2">
-                    {trimmedLine}
+                    {trimmedLine.substring(2).trim()}
                 </h3>
             );
         }
