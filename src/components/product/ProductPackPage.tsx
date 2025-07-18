@@ -126,7 +126,7 @@ export default function ProductPackPage({ pack, initialProducts }: ProductPackPa
                         )}
                         </div>
                         <CardHeader className="flex-grow p-4 bg-slate-200 dark:bg-muted">
-                        <CardTitle className="text-xl font-bold font-headline text-primary truncate group-hover:text-accent transition-colors">
+                        <CardTitle className="text-xl font-bold font-headline text-accent truncate group-hover:text-primary transition-colors">
                             {product.title}
                         </CardTitle>
                         <CardDescription className="text-sm text-foreground/80 h-10 line-clamp-2">
