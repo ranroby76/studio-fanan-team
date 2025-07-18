@@ -38,12 +38,9 @@ const getYouTubeVideoId = (url: string): string | null => {
 const renderDescription = (description: string) => {
     return description.split('\\n').map((line, index) => {
         let trimmedLine = line.trim();
-        if (trimmedLine.startsWith('`')) {
-            // Remove backtick from start and optionally from end
-            trimmedLine = trimmedLine.substring(1);
-            if (trimmedLine.endsWith('`')) {
-                trimmedLine = trimmedLine.slice(0, -1);
-            }
+        if (trimmedLine.startsWith('@@')) {
+            // Remove @@ from start
+            trimmedLine = trimmedLine.substring(2).trim();
             return (
                 <h3 key={index} className="text-xl font-headline text-primary mt-4 mb-2">
                     {trimmedLine}
