@@ -52,13 +52,10 @@ export default function ProductPackPage({ pack, initialProducts }: ProductPackPa
                     {(Object.values(packConfig) as (typeof packConfig)[Pack][]).map(p => (
                          <Button
                             key={p.href}
-                            variant="ghost"
+                            variant={pathname === p.href ? 'default' : 'ghost'}
                             asChild
                             className={cn(
-                                "w-full justify-start text-left h-auto py-2.5 px-3",
-                                pathname === p.href
-                                ? "bg-accent text-accent-foreground hover:bg-accent/90"
-                                : "hover:bg-muted/50"
+                                "w-full justify-start text-left h-auto py-2.5 px-3"
                             )}
                         >
                             <Link href={p.href} className="flex items-center w-full">
