@@ -1,0 +1,36 @@
+{
+    "id": "7wx62ofnc",
+    "slug": "anytext",
+    "title": "AnyText",
+    "pack": "Free Pack",
+    "mainImage": {
+      "url": "/images/anytext1.jpg",
+      "width": 796,
+      "height": 631
+    },
+    "thumbnails": [],
+    "description": "AnyText is a simple vst instrument plug-in that produces no sound but allows writing text comments, saving them and loading them back. Whenever you need textual comments (only english supported), you can simply drop this dude into your project and you're done. It has 6 text pages support, so you can also divide your comments into pages.",
+    "shortDescription": "Textual Comments Generator",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 0,
+    "downloadLinks": [
+      {
+        "id": "93egfocm0",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/edRpKX2hNT"
+      },
+      {
+        "id": "zkh4lzsd3",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/zltlxY7I#QRdpGk88O8z8H2tNsZ4poafBVW7UCqZqLsujzjbMlhs"
+      }
+    ],
+    "demoLimitations": "",
+    "videoUrls": []
+  }

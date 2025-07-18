@@ -1,0 +1,36 @@
+{
+    "id": "o6zwtv569",
+    "slug": "ymer",
+    "title": "Ymer",
+    "pack": "Free Pack",
+    "mainImage": {
+      "url": "/images/ymer1.jpg",
+      "width": 1234,
+      "height": 751
+    },
+    "thumbnails": [],
+    "description": "Ymer is a simple yet powerful distortion plugin that adds massive coloration and some unique analog dirt into any audio source. The main philosophy behind Ymer is to focus on a selected frequency zone of the source material and gaining it to its  extreme power pick point which will make it shine through mix and overshadow the other roles while keeping the effected track loud and clear and yet healthy, with zero clipping.",
+    "shortDescription": "Massive Distortion",
+    "formats": {
+      "vst": false,
+      "vsti": false,
+      "win32": false,
+      "win64": false,
+      "standAlone": false
+    },
+    "price": 0,
+    "downloadLinks": [
+      {
+        "id": "fm89ak3zf",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/4Ciu8vf82SCS1f3BXw4R3Vyby69u"
+      },
+      {
+        "id": "32690f57h",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/K98XmLBb#fF-QbXj7bryvjngNWSAOKtlMrZ4kbNT9dEogKW8vYoE"
+      }
+    ],
+    "demoLimitations": "",
+    "videoUrls": []
+  }

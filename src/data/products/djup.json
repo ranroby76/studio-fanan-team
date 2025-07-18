@@ -1,0 +1,36 @@
+{
+    "id": "3t54ca4wo",
+    "slug": "djup",
+    "title": "Djup",
+    "pack": "Free Pack",
+    "mainImage": {
+      "url": "/images/djup1.jpg",
+      "width": 1040,
+      "height": 786
+    },
+    "thumbnails": [],
+    "description": "Djup is a light weight nordish style bass module that based on 8 classic nordish bass models from the past 40 years. It's main advantage is solid, powerful electric bass sound that can perform loudly in full legato without any additional amplification or compression. It's armed with lo pass - hi pass filter, tube effect, profoundly resonating filter, amp and filter envelopes as well as 4 effects: 8 voices unison, chorus, wah-wah and reverb.\\nIt also equipped with 3 modes portamento effect (mono mode), MIDI learn manager (easy MIDI learning on right mouse click on any knob or button) and resizable GUI.",
+    "shortDescription": "Nordish Bass Module",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 0,
+    "downloadLinks": [
+      {
+        "id": "wywq47zvz",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/uwgRW3f67BhT7AuzXQRvNFiN1t4j"
+      },
+      {
+        "id": "5w7v6ase3",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/yskE0QYR#uBh_jlChyaeLB0vVTgiz91sZ30U5e5vtcjUDXGmD69w"
+      }
+    ],
+    "demoLimitations": "",
+    "videoUrls": []
+  }

@@ -1,0 +1,37 @@
+{
+    "id": "im3b484ed",
+    "slug": "midmid",
+    "title": "Midmid",
+    "pack": "Free Pack",
+    "mainImage": {
+      "url": "/images/midmid1.jpg",
+      "width": 1181,
+      "height": 787
+    },
+    "thumbnails": [
+      {
+        "url": "/images/midmid2.jpg",
+        "width": 1249,
+        "height": 784
+      }
+    ],
+    "description": "Midmid is a multi-channel midi router that allows live performers an easy yet effective connectivity of their midi controller with up to 16 VST instruments that opened in their DAW. Users can instantly switch between instruments with a single button press and thanks to the big control buttons, they can even comfortably use Midmid with touch screens and jump instantly from one instrument to another.\\nMidmid uses DAW's internal midi channels routing system. So once the user sets each VST instrument with it's own unique midi channel number and Midmid as its \"midi in\" source, the midi signal will be routed only to the selected path. But it's only part of the story. Midmid can also split user's keyboard into 2 zones and route instruments to keyboard's upper and lower zones. Moreover, Midmid can also play in \"multi mode\" and allow users to triggers up to 16 instrumets at once. \\n\\n##​Important Note\\n\\nMidmid doesn't create any sound, but used to control other VSTi's that opened in the DAW via midi channels.",
+    "shortDescription": "Multi-Channel Midi Router",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 0,
+    "downloadLinks": [
+      {
+        "id": "1k9n0gq2w",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/b08RTIyJ#QUXjpvE6VbeByAvoocBdV01kEdgkk5h-OykEjYT_iks"
+      }
+    ],
+    "demoLimitations": "",
+    "videoUrls": []
+  }

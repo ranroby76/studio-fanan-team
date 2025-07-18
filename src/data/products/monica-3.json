@@ -1,0 +1,62 @@
+{
+    "id": "h0ebigpev",
+    "slug": "monica-3",
+    "title": "Monica 3",
+    "pack": "Free Pack",
+    "mainImage": {
+      "url": "/images/monica1.jpg",
+      "width": 1065,
+      "height": 800
+    },
+    "thumbnails": [
+      {
+        "url": "/images/monica2.jpg",
+        "width": 1068,
+        "height": 798
+      },
+      {
+        "url": "/images/monica6.jpg",
+        "width": 1067,
+        "height": 797
+      },
+      {
+        "url": "/images/monica3.jpg",
+        "width": 1067,
+        "height": 798
+      },
+      {
+        "url": "/images/monica4.jpg",
+        "width": 1068,
+        "height": 801
+      },
+      {
+        "url": "/images/monica5.jpg",
+        "width": 1068,
+        "height": 797
+      }
+    ],
+    "description": "Monica 3 is the successor to Monica evo. An analog dual-layered 90's style synth with 2 completely different aggressive and incredibly high dynamic range oscillators. The first oscillator is wavetable based with 50 wavetables + additional 50 wavtables for morphing. The second is an old style 8 waveforms pad oscillator that emulates the 90' type monster pads. The oscillators work on dual-layered basis and have each own separate controls, synthesis section, chords driven pattern sequencer and some more new features.\\n\\n##The Arp\\n\\nMonica Evo is armed with an extremely flexible 16 steps built-in chords driven arppeggiator based on played note's position with it's own dedicated pattern file manager and vast of tweaking options including time signature, gate, speed, the total number of steps and DAW syncing.\\n\\n##The modulation options\\n\\n​Monica 3 has 2 different modulation options. The first offers 6 traditional LFO's, 3 per oscillator, each with 50 possible wavetables and BPM syncing option. The second option is MMM - midi clock motorized modulation. The MMM allows motorizing knobs and controls and by that, creating interesting motion effects.\\n\\n##The effects\\n\\n​Monica 3 is equipped with 6 effects:\\n#up to 8 voices unison\\n#Cabinet\\n#Wah\\n#Chorus\\n#Phaser\\n#Delay\\n\\n​Each effect has 2 separate send channels, one for each oscillator (it can also work in global mode).",
+    "shortDescription": "90's Style Dual Layered Synth-Arp",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 0,
+    "downloadLinks": [
+      {
+        "id": "6arxxnhw1",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/D5AVD3RghQ2WQD6b7ZCzR65jPQGQ"
+      },
+      {
+        "id": "rp4hjfldl",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/bs02hTIL#SNhERjYOVZ94s033qXjZX0FMM5AVcAZasIsFpb6jgyk"
+      }
+    ],
+    "demoLimitations": "",
+    "videoUrls": []
+  }

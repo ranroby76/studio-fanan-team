@@ -1,0 +1,36 @@
+{
+    "id": "pn2ilxy08",
+    "slug": "mini-ringo",
+    "title": "Mini Ringo",
+    "pack": "Free Pack",
+    "mainImage": {
+      "url": "/images/mini ringo1.jpg",
+      "width": 843,
+      "height": 783
+    },
+    "thumbnails": [],
+    "description": "Here comes Ringo's little brother, the Mini Ringo.  A free powerful MIDI groove machine that uses the most desired features found at his bigger brother. Mini Ringo is a MIDI tool that doesn't make any sound itself, but only control other VST instruments in the D.A.W. It uses the hardware arranger groove approach to play MIDI groove styles by dividing them into variations, just like the hardware arranger like Korg pa900 and others do. This grooving method allow users to build their own drum styles and controlling them instantly with their MIDI keyboards or MIDI pads, even in live sessions. Ringo drives 10 variations. 3 main variations, 3 fill variations, 2 intros and 2 endings. Each variation can be written separately at its own sequencer piano roll and be controlled by its own unique MIDI key.Its tempo is synced to the D.A.W. it has a crash generator which allows the user determining which note is generating a cymbal crash on transitions and has its own MIDI setup section that routes the MIDI out to a specific MIDI channel in the D.A.W. Mini Ringo also offers choosing the user's MIDI styles straight from the GUI. Once the user saved a style in one of Ringo's library folders, it will be shown at the style manager.",
+    "shortDescription": "Midi Groove",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 0,
+    "downloadLinks": [
+      {
+        "id": "wuk149w74",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/0/1eYTjuz6Sn"
+      },
+      {
+        "id": "qtzadk0e9",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/T01VjCwD#JIYOWiRfPrbEKDRw3GqwMMolZSMgj8Lmw4nlr2Qif3M"
+      }
+    ],
+    "demoLimitations": "",
+    "videoUrls": []
+  }
