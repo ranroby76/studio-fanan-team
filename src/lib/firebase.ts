@@ -7,8 +7,9 @@ import { getAuth, type Auth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// IMPORTANT: Replace with your actual Firebase project configuration.
 const firebaseConfig = {
-  apiKey: "AIzaSyAtmM8NZkILa_EnQ11KY5NLhGtgya5uEmE",
+  apiKey: "YOUR_API_KEY",
   authDomain: "fanan-team-hub.firebaseapp.com",
   projectId: "fanan-team-hub",
   storageBucket: "fanan-team-hub.appspot.com",

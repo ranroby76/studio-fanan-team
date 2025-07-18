@@ -2,36 +2,18 @@
 "use client";
 
 import ProductForm from '@/components/product/ProductForm';
-import type { ProductFormData, Pack } from '@/lib/types';
-import { useToast } from '@/hooks/use-toast';
-import { useRouter, useSearchParams } from 'next/navigation';
+import type { Pack } from '@/lib/types';
+import { useSearchParams } from 'next/navigation';
 
+// This page is a simple wrapper around the ProductForm component for adding new products.
+// The form's internal logic now handles JSON generation and display.
 export default function AddProductPage() {
-  const { toast } = useToast();
-  const router = useRouter();
   const searchParams = useSearchParams();
   const pack = searchParams.get('pack') as Pack | null;
-
-  const handleGenerateJson = async (data: ProductFormData, jsonString: string) => {
-    try {
-      toast({
-        title: 'JSON Generated!',
-        description: 'Copy the JSON and add it to src/data/products.json to add the new product.',
-      });
-    } catch (error) {
-      console.error("Error in add page:", error);
-      toast({
-        title: 'Error',
-        description: 'An unexpected error occurred.',
-        variant: 'destructive',
-      });
-    }
-  };
 
   return (
     <div className="animate-fade-in">
       <ProductForm 
-        onSubmit={handleGenerateJson} 
         isEditing={false} 
         preselectedPack={pack || undefined} 
       />
