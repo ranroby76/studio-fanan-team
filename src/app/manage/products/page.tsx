@@ -25,15 +25,15 @@ import {
 import { getProductsForPack } from '@/lib/product-service-server';
 
 const packConfig: Record<Pack, { icon: React.ElementType, title: string }> = {
-  "Max! Pack": { icon: Star, title: "Max! Pack" },
   "Mad MIDI Machines Pack": { icon: Box, title: "Mad MIDI Machines" },
+  "Max! Pack": { icon: Star, title: "Max! Pack" },
   "Free Pack": { icon: Gift, title: "Free Pack" },
 };
 
 
 function ProductsManagementComponent() {
   const searchParams = useSearchParams();
-  const activePack = (searchParams.get('pack') as Pack | null) || "Max! Pack";
+  const activePack = (searchParams.get('pack') as Pack | null) || "Mad MIDI Machines Pack";
 
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);

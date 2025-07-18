@@ -27,8 +27,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { ListOrdered, GripVertical, Save, ClipboardCopy, Loader2, Star, Box, Gift } from 'lucide-react';
 
 const packConfig: Record<Pack, { icon: React.ElementType, title: string, orderFile: string }> = {
-  "Max! Pack": { icon: Star, title: "Max! Pack", orderFile: "product-order-max-pack.json" },
   "Mad MIDI Machines Pack": { icon: Box, title: "Mad MIDI Machines", orderFile: "product-order-mad-midi-machines-pack.json" },
+  "Max! Pack": { icon: Star, title: "Max! Pack", orderFile: "product-order-max-pack.json" },
   "Free Pack": { icon: Gift, title: "Free Pack", orderFile: "product-order-free-pack.json" },
 };
 
@@ -62,7 +62,7 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
     "Mad MIDI Machines Pack": [],
     "Free Pack": [],
   });
-  const [activePack, setActivePack] = useState<Pack>("Max! Pack");
+  const [activePack, setActivePack] = useState<Pack>("Mad MIDI Machines Pack");
   const [jsonOutput, setJsonOutput] = useState('');
   const [isClient, setIsClient] = useState(false);
   const { toast } = useToast();

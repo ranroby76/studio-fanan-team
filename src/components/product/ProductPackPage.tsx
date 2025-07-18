@@ -19,8 +19,8 @@ interface ProductPackPageProps {
 }
 
 const packConfig: Record<Pack, { logo: string, href: string, title: string, icon: React.ElementType }> = {
-  "Max! Pack": { logo: "/images/pro pack.png", href: "/max-pack", title: "Max! Pack", icon: Star },
   "Mad MIDI Machines Pack": { logo: "/images/mad midi machines.png", href: "/mad-midi-machine-pack", title: "Mad MIDI Machines", icon: Box },
+  "Max! Pack": { logo: "/images/pro pack.png", href: "/max-pack", title: "Max! Pack", icon: Star },
   "Free Pack": { logo: "/images/free pack.png", href: "/free-pack", title: "Free Pack", icon: Gift },
 };
 

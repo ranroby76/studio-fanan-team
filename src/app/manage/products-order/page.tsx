@@ -6,7 +6,7 @@ import type { Pack } from '@/lib/types';
 
 export default async function ProductOrderPage() {
   // Fetch initial data on the server for all packs.
-  const packs: Pack[] = ["Max! Pack", "Mad MIDI Machines Pack", "Free Pack"];
+  const packs: Pack[] = ["Mad MIDI Machines Pack", "Max! Pack", "Free Pack"];
   const allProductsPromises = packs.map(pack => getProductsForPack(pack));
   const allProductsArrays = await Promise.all(allProductsPromises);
   const initialProducts = allProductsArrays.flat();

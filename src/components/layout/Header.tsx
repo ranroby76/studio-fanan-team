@@ -42,8 +42,8 @@ const mainNavLinks = [
 ];
 
 const productLinks = [
-    { href: '/max-pack', label: 'Max! Pack' },
     { href: '/mad-midi-machine-pack', label: 'Mad MIDI Machines' },
+    { href: '/max-pack', label: 'Max! Pack' },
     { href: '/free-pack', label: 'Free Pack' },
 ];
 
