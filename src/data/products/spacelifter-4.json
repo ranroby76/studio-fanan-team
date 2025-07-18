@@ -1,0 +1,52 @@
+{
+    "id": "8mec67uxw",
+    "slug": "spacelifter-4",
+    "title": "Spacelifter 4",
+    "pack": "Free Pack",
+    "mainImage": {
+      "url": "/images/spacelifter1.jpg",
+      "width": 1480,
+      "height": 748
+    },
+    "thumbnails": [
+      {
+        "url": "/images/spacelifter2.jpg",
+        "width": 1481,
+        "height": 748
+      },
+      {
+        "url": "/images/spacelifter3.jpg",
+        "width": 1478,
+        "height": 746
+      },
+      {
+        "url": "/images/spacelifter4.jpg",
+        "width": 1477,
+        "height": 745
+      }
+    ],
+    "description": "Spacelifter 4 represents the next chapter in the evolution of our modular space effect, bringing a big, dramatic echo-reverb sound.\\nIt combines three well-known 3D spacing modules:\\n\\n#Width module with aggressive tails.\\n#Height module with shimmer touch.\\n#Echo module.\\n#Master modulation effects (Includes modulation effects applied to a given frequency range, ping pong, side-chaining, and LFO).\\n\\n​`The aditional key features\\n\\n​#Frequency range module - Acts as a \"wet EQ,\" passing the wet signal at specific frequency values only.\\n#LFO module - Based on five motion engines, it can create constant vibrations or gated effects, depending on the added effect amount.     You can sync it to the host's BPM or manually adjust the speed.\\n#Ping pong module - A panning effect based on two motion techniques: constant (\"in motion\" mode) and immediate (\"immediate\" mode). Sync it to the host's BPM for increased or decreased movement or an immediate jump between panning points.\\n#Side-chaining module - Allows ducking between the dry signal and the wet signal on a frequency basis. Each of the nine drawbars represents a frequency range; pushing a drawbar down ducks the wet signal in that range.\\n\\n​`Special thanks to our friend Rex Basterfield for his phenomenal contribution to this project",
+    "shortDescription": "Modular Echo - Reverb",
+    "formats": {
+      "vst": true,
+      "vsti": false,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 0,
+    "downloadLinks": [
+      {
+        "id": "c9f2b5gfx",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/x3DwvPSz2QkX2Wax3xGZw3a9FNRy"
+      },
+      {
+        "id": "jkine1hla",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/D9VykQaQ#1ZjwGzGLKyTqXjrpM9hfcg2IEbwWQZxB4sIxwtUvmgs"
+      }
+    ],
+    "demoLimitations": "",
+    "videoUrls": []
+  }

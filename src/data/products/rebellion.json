@@ -1,0 +1,33 @@
+{
+  "id": "1s0e17c21",
+  "slug": "rebellion",
+  "title": "Rebellion",
+  "pack": "Free Pack",
+  "mainImage": {
+    "url": "/images/rebellion1.jpg",
+    "width": 1408,
+    "height": 642
+  },
+  "thumbnails": [],
+  "description": "Rebellion is a multibend exciter processor offering 10 types of exciters emulation, from bright to dark color with emphasis on presence and sibilance (bright algos) as well as muffling and bluring (dark algos). It can easily extract high frequency juice from moody vocals or guitar or dim screamy drums and bass. The sound gets soaked per 8 fixed frequency bands separately while the \"tone\" feature determines the shape of the sound and the \"tube\" section adds saturation and warmth.",
+  "shortDescription": "Multi-Band Exciter ",
+  "formats": {
+    "vst": true,
+    "vsti": false,
+    "win32": true,
+    "win64": true,
+    "standAlone": false
+  },
+  "price": 0,
+  "downloadLinks": [
+    {
+      "id": "r2nvpvisu",
+      "label": "Download Option 1",
+      "url": "https://icedrive.net/s/vhfGujQBavfRZh8Pti8v1iVzGwR3"
+    }
+  ],
+  "demoLimitations": "",
+  "videoUrls": [
+    "https://www.youtube.com/watch?v=uasq_FGsrh4&ab_channel=Fananteam"
+  ]
+}

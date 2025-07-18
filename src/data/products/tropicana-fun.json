@@ -1,0 +1,44 @@
+{
+    "id": "d30fe4dsz",
+    "slug": "tropicana-fun",
+    "title": "Tropicana Fun",
+    "pack": "Free Pack",
+    "mainImage": {
+      "url": "/images/TROPIKANA FUN1.jpg",
+      "width": 1379,
+      "height": 786
+    },
+    "thumbnails": [
+      {
+        "url": "/images/TROPIKANA FUN 2.jpg",
+        "width": 1091,
+        "height": 810
+      }
+    ],
+    "description": "Tropicana Fun is a free rhythmic synth based on it's biggerbrother Tropicana.It's crafted for producing the caribbeans musical style arpeggios. It based on 2 independent wavetable \\ pad oscillators combined with innovative modular arpeggiator design. All the oscillators can perform together or independently. The synthesis section provides a selection \\nbetween wavetables method or pad section. It can characterize the overall sound's color by a special \"character\" feature and also equipped with more typical synthis features including 11 types of filters, 1 LFO and 1 env modulation system with\\n6 simultaneous sends each, ring modulation and uniuqe colored \"Zelda filter\" per oscillator. It can play in both mono or poly modes (per osc) and able to combine 3 mono playing thecnics (hold stolen note, retrigger new note, retrigger stolen note).The modular arpeggiator is actually a combination between a **chords driven** midi arpeggiator with 1000 built in arpeggios and **chords driven** midi trance gate with 16 steps (max.). Both the arp and the trance gate **recognize played chords** and can follow them independently or co-operate together on the same midi arpeggio line. This method ensure endless posibilities and a very easy yet fun programming of new arpeggioes and melodies. Both are sensitive to complex midi keys fingering and know to adopt the DAW's tempo and time signature, which ensure\\nperfect integration with your track. Both are also equipped with randomizing abilities as well, promising hours of fun\\nand creativity.",
+    "shortDescription": "Caribbean Rhythmic Synth",
+    "formats": {
+      "vst": false,
+      "vsti": true,
+      "win32": true,
+      "win64": true,
+      "standAlone": false
+    },
+    "price": 0,
+    "downloadLinks": [
+      {
+        "id": "vnvtudu8m",
+        "label": "Download Option 1",
+        "url": "https://icedrive.net/s/RiDj9QYNNSS8wCbkBkzzN3GjgFZy"
+      },
+      {
+        "id": "nsrad3qjf",
+        "label": "Download Option 2",
+        "url": "https://mega.nz/file/zx8V0IoZ#9N3ajMUZ7V2GIyzp6UIO4x5wC4ex8V0OZfmBbAMRcYg"
+      }
+    ],
+    "demoLimitations": "",
+    "videoUrls": [
+      "https://www.youtube.com/watch?v=uG3RDyJJwtE&ab_channel=Fananteam"
+    ]
+  }
