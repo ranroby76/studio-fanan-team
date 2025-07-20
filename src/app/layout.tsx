@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   keywords: ["Fanan Team", "VST", "VSTi", "MIDI plugins", "audio plugins", "music production", "synthesizer", "arranger keyboard", "DAW", "Fanan team plugins", "free VST"],
   authors: [{ name: "Fanan Team", url: siteConfig.url }],
   creator: "Fanan Team",
+  manifest: '/manifest.json',
   metadataBase: new URL(siteConfig.url),
   icons: {
     icon: '/favicon.png',
