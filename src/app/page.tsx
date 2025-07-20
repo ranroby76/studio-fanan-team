@@ -82,7 +82,7 @@ export default function HomePage() {
                     alt="Max! Pack"
                     width={700}
                     height={142}
-                    className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="professional audio"
                 />
             </Link>
