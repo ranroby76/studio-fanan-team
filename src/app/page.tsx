@@ -16,8 +16,7 @@ export default function HomePage() {
             alt="Site Top Banner"
             width={1846}
             height={739}
-            layout="responsive"
-            className="object-contain"
+            className="object-contain w-full h-auto"
             data-ai-hint="site banner abstract"
             priority
           />
@@ -112,8 +111,7 @@ export default function HomePage() {
               alt="Site Banner - GUI Me Design Philosophy"
               width={1406}
               height={670}
-              layout="responsive"
-              className="object-contain shadow-lg rounded-lg transition-transform duration-300 group-hover:scale-[1.05]"
+              className="object-contain w-full h-auto shadow-lg rounded-lg transition-transform duration-300 group-hover:scale-[1.05]"
               data-ai-hint="design abstract"
             />
           </div>
