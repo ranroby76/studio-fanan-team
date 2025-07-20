@@ -19,6 +19,8 @@ export default async function Icon() {
     // We are now reading the favicon.png directly from the public folder.
     const imagePath = path.join(process.cwd(), 'public', 'favicon.png');
     const imageBuffer = await fs.readFile(imagePath);
+    const base64Image = Buffer.from(imageBuffer).toString('base64');
+    const dataUri = `data:image/png;base64,${base64Image}`;
 
     return new ImageResponse(
       (
@@ -34,7 +36,7 @@ export default async function Icon() {
           }}
         >
           <img 
-            src={Buffer.from(imageBuffer).toString('base64')} 
+            src={dataUri} 
             width="32" 
             height="32" 
             alt="Fanan Team Logo" 
