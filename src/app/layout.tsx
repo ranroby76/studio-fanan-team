@@ -7,10 +7,51 @@ import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
 import { AuthProvider } from '@/components/auth/AuthProvider';
 
-export const metadata: Metadata = {
-  title: 'Fanan Team Hub',
-  description: 'Manage and showcase VSTi products by Fanan Team.',
+const siteConfig = {
+  name: 'Fanan Team Hub',
+  description: 'Discover, manage, and purchase VSTi plugins, MIDI machines, and audio tools from Fanan Team. Explore our packs and find the perfect sound for your music production.',
+  url: 'https://fananteampro.com', // Replace with your final domain
+  ogImage: 'https://fananteampro.com/images/A3.png', // A default OG image
 };
+
+export const metadata: Metadata = {
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: ["Fanan Team", "VST", "VSTi", "MIDI plugins", "audio plugins", "music production", "synthesizer", "arranger keyboard", "DAW"],
+  authors: [{ name: "Fanan Team", url: siteConfig.url }],
+  creator: "Fanan Team",
+  metadataBase: new URL(siteConfig.url),
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 166,
+        height: 72,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: '@fananteam', // Replace with your actual Twitter handle if you have one
+  },
+  icons: {
+    icon: '/favicon.ico', // Assuming you'll add a favicon here later
+  },
+};
+
 
 export default function RootLayout({
   children,
