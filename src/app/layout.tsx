@@ -47,6 +47,11 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
     creator: '@fananteam', // Replace with your actual Twitter handle if you have one
   },
+  icons: {
+    icon: '/favicon.png?v=2',
+    shortcut: '/favicon.png?v=2',
+    apple: '/favicon.png?v=2',
+  },
 };
 
 
@@ -63,7 +68,6 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Impact&display=swap" rel="stylesheet" />
-        <meta name="theme-color" content="#121212" />
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen">
         <ThemeProvider

@@ -23,8 +23,8 @@ export default async function Icon() {
     return new ImageResponse(
       (
         <img
-          width={200}
-          height={200}
+          width={size.width}
+          height={size.height}
           src={imageData as any}
           alt="Fanan Team Favicon"
         />
