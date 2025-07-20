@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: ["Fanan Team", "VST", "VSTi", "MIDI plugins", "audio plugins", "music production", "synthesizer", "arranger keyboard", "DAW"],
+  keywords: ["Fanan Team", "VST", "VSTi", "MIDI plugins", "audio plugins", "music production", "synthesizer", "arranger keyboard", "DAW", "Fanan team plugins", "free VST"],
   authors: [{ name: "Fanan Team", url: siteConfig.url }],
   creator: "Fanan Team",
   metadataBase: new URL(siteConfig.url),
@@ -46,9 +46,6 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [siteConfig.ogImage],
     creator: '@fananteam', // Replace with your actual Twitter handle if you have one
-  },
-  icons: {
-    icon: '/favicon.ico',
   },
 };
 
