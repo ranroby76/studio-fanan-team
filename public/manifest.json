@@ -1,26 +1,15 @@
 {
-  "theme_color": "#FAB63B",
-  "background_color": "#121212",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
   "name": "Fanan Team Hub",
-  "short_name": "Fanan Hub",
+  "short_name": "Fanan Team Hub",
   "description": "Discover, manage, and purchase VSTi plugins, MIDI machines, and audio tools from Fanan Team.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#FAB63B",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-384x384.png",
-      "sizes": "384x384",
       "type": "image/png"
     },
     {
