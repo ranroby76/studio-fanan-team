@@ -47,7 +47,6 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
     creator: '@fananteam', // Replace with your actual Twitter handle if you have one
   },
-  manifest: '/manifest.json',
 };
 
 
