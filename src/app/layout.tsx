@@ -8,7 +8,7 @@ import { ThemeProvider } from '@/components/layout/ThemeProvider';
 import { AuthProvider } from '@/components/auth/AuthProvider';
 
 const siteConfig = {
-  name: 'Fanan Team Hub',
+  name: 'Fanan Team',
   description: 'Discover, manage, and purchase VSTi plugins, MIDI machines, and audio tools from Fanan Team. Explore our packs and find the perfect sound for your music production.',
   url: 'https://fananteampro.com', // Replace with your final domain
   ogImage: 'https://fananteampro.com/images/A3.png', // A default OG image
@@ -47,6 +47,7 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
     creator: '@fananteam', // Replace with your actual Twitter handle if you have one
   },
+  manifest: '/manifest.json',
 };
 
 
@@ -63,7 +64,6 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Impact&display=swap" rel="stylesheet" />
-        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#121212" />
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen">

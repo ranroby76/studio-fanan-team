@@ -8,53 +8,39 @@ export const runtime = 'edge';
 
 // Image metadata
 export const size = {
-  width: 32,
-  height: 32,
+  width: 200,
+  height: 200,
 };
+
 export const contentType = 'image/png';
 
 // Image generation
 export default async function Icon() {
   try {
-    // We are now reading the favicon.png directly from the public folder.
     const imagePath = path.join(process.cwd(), 'public', 'favicon.png');
-    const imageBuffer = await fs.readFile(imagePath);
-    const base64Image = Buffer.from(imageBuffer).toString('base64');
-    const dataUri = `data:image/png;base64,${base64Image}`;
-
+    const imageData = await fs.readFile(imagePath);
+    
     return new ImageResponse(
       (
-        <div
-          style={{
-            fontSize: 24,
-            background: 'transparent',
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <img 
-            src={dataUri} 
-            width="32" 
-            height="32" 
-            alt="Fanan Team Logo" 
-          />
-        </div>
+        <img
+          width={200}
+          height={200}
+          src={imageData as any}
+          alt="Fanan Team Favicon"
+        />
       ),
       {
         ...size,
       }
     );
-  } catch (error) {
-    console.error("Error generating icon:", error);
-    // Return a default response in case of error
+  } catch (e) {
+    console.error("Failed to load favicon.png, using fallback.", e);
+    // Fallback if the image cannot be read
     return new ImageResponse(
       (
         <div
           style={{
-            fontSize: 24,
+            fontSize: 128,
             background: 'black',
             width: '100%',
             height: '100%',
@@ -62,6 +48,7 @@ export default async function Icon() {
             alignItems: 'center',
             justifyContent: 'center',
             color: 'white',
+            fontFamily: 'monospace',
           }}
         >
           F
