@@ -15,6 +15,7 @@ const siteConfig = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -23,7 +24,6 @@ export const metadata: Metadata = {
   keywords: ["Fanan Team", "VST", "VSTi", "MIDI plugins", "audio plugins", "music production", "synthesizer", "arranger keyboard", "DAW", "Fanan team plugins", "free VST"],
   authors: [{ name: "Fanan Team", url: siteConfig.url }],
   creator: "Fanan Team",
-  metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -46,11 +46,6 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [siteConfig.ogImage],
     creator: '@fananteam', // Replace with your actual Twitter handle if you have one
-  },
-  icons: {
-    icon: '/favicon.png?v=2',
-    shortcut: '/favicon.png?v=2',
-    apple: '/favicon.png?v=2',
   },
 };
 
