@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Fanan Team", url: siteConfig.url }],
   creator: "Fanan Team",
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
