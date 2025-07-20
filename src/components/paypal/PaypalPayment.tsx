@@ -5,7 +5,8 @@ import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { Loader2 } from 'lucide-react';
+import { Loader2, ShieldCheck } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 declare global {
   interface Window {
@@ -21,10 +22,13 @@ interface PaypalPaymentProps {
 
 export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
   const [customId, setCustomId] = useState('');
+  const [isIdConfirmed, setIsIdConfirmed] = useState(false);
+  const [idError, setIdError] = useState<string | null>(null);
   const [serialNumber, setSerialNumber] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const paypalContainerRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
 
   const paypalButtonContainerId = `paypal-button-container-${price.replace('.', '')}`;
 
@@ -35,18 +39,13 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
   }, []);
 
   useEffect(() => {
-    if (scriptLoaded && window.paypal && paypalContainerRef.current) {
+    if (scriptLoaded && isIdConfirmed && window.paypal && paypalContainerRef.current) {
       const paypalContainer = paypalContainerRef.current;
       if (paypalContainer && paypalContainer.children.length === 0) {
         setIsLoading(false);
         try {
           window.paypal.Buttons({
             createOrder: function(data: any, actions: any) {
-              if (!customId || customId.trim() === '') {
-                alert('Please enter your Machine ID before proceeding to payment.');
-                // Return a rejected promise to stop the payment process
-                return actions.reject();
-              }
               return actions.order.create({
                 purchase_units: [{
                   amount: {
@@ -88,12 +87,19 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
                     }
                   );
 
-                alert('Transaction completed! Check your email for the serial number.');
+                toast({
+                    title: 'Transaction Completed!',
+                    description: 'Check your email for the serial number.',
+                });
               });
             },
             onError: function(err: any) {
                 console.error('PayPal Button Error:', err);
-                alert('An error occurred with the payment process. Please try again.');
+                toast({
+                    title: 'Payment Error',
+                    description: 'An error occurred with the payment process. Please try again.',
+                    variant: 'destructive',
+                });
             }
           }).render(`#${paypalButtonContainerId}`);
         } catch (err) {
@@ -101,15 +107,26 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
         }
       }
     }
-  }, [scriptLoaded, price, paypalButtonContainerId, customId]);
+  }, [scriptLoaded, price, paypalButtonContainerId, customId, isIdConfirmed, toast]);
+
+  const handleIdConfirmation = () => {
+    const isValidId = /^\d{4,}$/.test(customId);
+    if (isValidId) {
+      setIdError(null);
+      setIsIdConfirmed(true);
+    } else {
+      setIdError("ID must be at least 4 digits and contain only numbers.");
+      setIsIdConfirmed(false);
+    }
+  };
 
   return (
     <>
       <Script 
         src="https://www.paypal.com/sdk/js?client-id=AUEpCQ6b-llAtrDDOTPf9TUXoVilqCFYksW0bU05Au-aJ6jhprFO5I1INDGyTmHxzJ1EriiAHe-e6O4T&currency=USD"
         onLoad={() => {
-            console.log("PayPal SDK loaded.");
             setScriptLoaded(true);
+            setIsLoading(false);
         }}
         onError={(e) => {
             console.error("PayPal SDK failed to load", e);
@@ -119,7 +136,6 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
       <Script 
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
         onLoad={() => {
-            console.log("EmailJS SDK loaded.");
             if (typeof window.emailjs !== 'undefined') {
                 window.emailjs.init("nIdzP2wHIUKIQ5XFZ");
             }
@@ -130,18 +146,33 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
       />
       <div className="w-full max-w-sm p-6 rounded-lg">
         <h2 className="text-5xl font-bold text-center mb-4 text-primary">{title}</h2>
-        <form id={`paypal-form-${price}`} onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor={`custom_unique_id-${price}`} className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
-          <Input 
-            type="text" 
-            id={`custom_unique_id-${price}`}
-            placeholder="Enter your ID here" 
-            value={customId}
-            onChange={(e) => setCustomId(e.target.value)}
-            required
-            className="w-full px-3 py-2 mb-4"
-          />
-          <div className="w-full mb-4 p-2 bg-muted border border-border rounded-md text-center">
+        <div className="space-y-4">
+          <div>
+            <label htmlFor={`custom_unique_id-${price}`} className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
+            <Input 
+              type="text" 
+              id={`custom_unique_id-${price}`}
+              placeholder="Enter your ID here" 
+              value={customId}
+              onChange={(e) => {
+                setCustomId(e.target.value);
+                if (isIdConfirmed) setIsIdConfirmed(false); // Force re-confirmation on change
+              }}
+              required
+              disabled={isIdConfirmed}
+              className="w-full px-3 py-2"
+            />
+            {idError && <p className="text-sm text-destructive mt-1">{idError}</p>}
+          </div>
+
+          {!isIdConfirmed && (
+            <Button onClick={handleIdConfirmation} className="w-full">
+                <ShieldCheck className="mr-2 h-4 w-4" />
+                Confirm ID
+            </Button>
+          )}
+          
+          <div className="w-full p-2 bg-muted border border-border rounded-md text-center">
             <div className="text-sm mb-2 text-black dark:text-yellow-300">Serial Number</div>
             <div className="font-bold text-green-600 text-lg min-h-[28px] flex items-center justify-center">
               {serialNumber ? (
@@ -151,14 +182,19 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
               )}
             </div>
           </div>
-          {isLoading && 
-            <div className="flex items-center justify-center text-muted-foreground">
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Loading payment options...
-            </div>
-          }
-          <div id={paypalButtonContainerId} ref={paypalContainerRef} className="w-full min-h-[100px]"></div>
-        </form>
+          
+          {isIdConfirmed && (
+            <>
+              {isLoading && 
+                <div className="flex items-center justify-center text-muted-foreground">
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Loading payment options...
+                </div>
+              }
+              <div id={paypalButtonContainerId} ref={paypalContainerRef} className="w-full min-h-[100px]"></div>
+            </>
+          )}
+        </div>
       </div>
     </>
   );
