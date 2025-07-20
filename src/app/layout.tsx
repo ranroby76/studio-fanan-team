@@ -24,11 +24,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Fanan Team", url: siteConfig.url }],
   creator: "Fanan Team",
   metadataBase: new URL(siteConfig.url),
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
-  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -68,6 +63,8 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Impact&display=swap" rel="stylesheet" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#121212" />
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen">
         <ThemeProvider
