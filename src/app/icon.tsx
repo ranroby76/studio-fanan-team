@@ -19,7 +19,7 @@ export default function Icon() {
       <div
         style={{
           fontSize: 24,
-          background: '#F9A825', // Use a primary color from the theme
+          background: '#673AB7', // Use a primary color from the theme
           width: '100%',
           height: '100%',
           display: 'flex',
