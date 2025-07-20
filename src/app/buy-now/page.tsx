@@ -48,7 +48,7 @@ export default function BuyNowPage() {
                         alt="Mad MIDI Machines Pack"
                         width={400}
                         height={60}
-                        className="object-contain"
+                        className="object-contain h-full w-auto"
                         data-ai-hint="synthesizer abstract"
                     />
                 </div>
@@ -64,7 +64,7 @@ export default function BuyNowPage() {
                         alt="Pro Pack"
                         width={400}
                         height={60}
-                        className="object-contain"
+                        className="object-contain h-full w-auto"
                         data-ai-hint="professional audio"
                     />
                 </div>

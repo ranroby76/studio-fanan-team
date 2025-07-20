@@ -25,7 +25,6 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const paypalContainerRef = useRef<HTMLDivElement>(null);
-  const customIdRef = useRef<HTMLInputElement>(null);
 
   const paypalButtonContainerId = `paypal-button-container-${price.replace('.', '')}`;
 
@@ -43,17 +42,17 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
         try {
           window.paypal.Buttons({
             createOrder: function(data: any, actions: any) {
-              const currentCustomId = customIdRef.current?.value;
-              if (!currentCustomId) {
-                alert('Please enter your ID before proceeding to payment.');
-                return false;
+              if (!customId || customId.trim() === '') {
+                alert('Please enter your Machine ID before proceeding to payment.');
+                // Return a rejected promise to stop the payment process
+                return actions.reject();
               }
               return actions.order.create({
                 purchase_units: [{
                   amount: {
                     value: price
                   },
-                  custom_id: currentCustomId
+                  custom_id: customId
                 }]
               });
             },
@@ -102,7 +101,7 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
         }
       }
     }
-  }, [scriptLoaded, price, paypalButtonContainerId]);
+  }, [scriptLoaded, price, paypalButtonContainerId, customId]);
 
   return (
     <>
@@ -134,11 +133,10 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
         <form id={`paypal-form-${price}`} onSubmit={(e) => e.preventDefault()}>
           <label htmlFor={`custom_unique_id-${price}`} className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
           <Input 
-            ref={customIdRef}
             type="text" 
             id={`custom_unique_id-${price}`}
             placeholder="Enter your ID here" 
-            defaultValue={customId}
+            value={customId}
             onChange={(e) => setCustomId(e.target.value)}
             required
             className="w-full px-3 py-2 mb-4"
