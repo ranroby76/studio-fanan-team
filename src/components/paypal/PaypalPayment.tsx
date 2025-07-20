@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { Loader2, ShieldCheck } from 'lucide-react';
+import { Loader2, ShieldCheck, Edit } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 declare global {
@@ -39,6 +39,11 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
   }, []);
 
   useEffect(() => {
+    // Clear any existing PayPal buttons when isIdConfirmed changes
+    if (paypalContainerRef.current) {
+      paypalContainerRef.current.innerHTML = '';
+    }
+    
     if (scriptLoaded && isIdConfirmed && window.paypal && paypalContainerRef.current) {
       const paypalContainer = paypalContainerRef.current;
       if (paypalContainer && paypalContainer.children.length === 0) {
@@ -119,6 +124,11 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
       setIsIdConfirmed(false);
     }
   };
+  
+  const handleIdChange = () => {
+    setIsIdConfirmed(false);
+    setIdError(null);
+  };
 
   return (
     <>
@@ -149,19 +159,23 @@ export default function PaypalPayment({ price, title }: PaypalPaymentProps) {
         <div className="space-y-4">
           <div>
             <label htmlFor={`custom_unique_id-${price}`} className="block text-sm font-medium text-foreground mb-2">Your Unique Machine ID</label>
-            <Input 
-              type="text" 
-              id={`custom_unique_id-${price}`}
-              placeholder="Enter your ID here" 
-              value={customId}
-              onChange={(e) => {
-                setCustomId(e.target.value);
-                if (isIdConfirmed) setIsIdConfirmed(false); // Force re-confirmation on change
-              }}
-              required
-              disabled={isIdConfirmed}
-              className="w-full px-3 py-2"
-            />
+            <div className="flex items-center gap-2">
+                <Input 
+                type="text" 
+                id={`custom_unique_id-${price}`}
+                placeholder="Enter your ID here" 
+                value={customId}
+                onChange={(e) => setCustomId(e.target.value)}
+                required
+                disabled={isIdConfirmed}
+                className="w-full px-3 py-2"
+                />
+                {isIdConfirmed && (
+                    <Button variant="outline" size="icon" onClick={handleIdChange} aria-label="Change Machine ID">
+                        <Edit className="h-4 w-4" />
+                    </Button>
+                )}
+            </div>
             {idError && <p className="text-sm text-destructive mt-1">{idError}</p>}
           </div>
 
