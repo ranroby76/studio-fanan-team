@@ -1,7 +1,7 @@
 // src/app/products/[slug]/page.tsx
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useParams, notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import type { Product, ImageDetails } from '@/lib/types';
@@ -18,6 +18,41 @@ import {
   DialogHeader,
 } from "@/components/ui/dialog";
 import { getProductBySlug } from '@/lib/product-service-server';
+import type { Metadata, ResolvingMetadata } from 'next';
+
+// This component fetches and sets metadata for the page.
+// NOTE: We cannot use the "use client" directive here because generateMetadata is a server-only function.
+// So we will have a separate client component for the page content.
+type Props = {
+  params: { slug: string }
+}
+ 
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = params.slug;
+  const product = await getProductBySlug(slug);
+ 
+  if (!product) {
+    return {
+      title: 'Product Not Found',
+    }
+  }
+ 
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || []
+ 
+  return {
+    title: product.title,
+    description: product.shortDescription,
+    openGraph: {
+      title: `${product.title} | Fanan Team`,
+      description: product.shortDescription,
+      images: [product.mainImage.url, ...previousImages],
+    },
+  }
+}
 
 const getYouTubeVideoId = (url: string): string | null => {
     if (!url) return null;
@@ -65,7 +100,7 @@ const renderDescription = (description: string) => {
     });
 };
 
-export default function ProductPage() {
+function ProductPageContent() {
   const params = useParams();
   const router = useRouter();
   const slug = typeof params.slug === 'string' ? params.slug : undefined;
@@ -282,5 +317,30 @@ export default function ProductPage() {
       )}
 
     </div>
+  );
+}
+
+
+export default function ProductPage() {
+  return (
+    <Suspense fallback={<div className="container mx-auto px-4 animate-fade-in space-y-8">
+        <Skeleton className="h-12 w-1/3" />
+        <Skeleton className="h-16 w-2/3 mx-auto" />
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div className="lg:col-span-3">
+                 <Skeleton className="w-full aspect-video" />
+                 <div className="flex gap-2 mt-2">
+                    <Skeleton className="h-20 w-20" />
+                    <Skeleton className="h-20 w-20" />
+                    <Skeleton className="h-20 w-20" />
+                 </div>
+            </div>
+            <div className="lg:col-span-2">
+                 <Skeleton className="h-96 w-full" />
+            </div>
+        </div>
+      </div>}>
+      <ProductPageContent />
+    </Suspense>
   );
 }

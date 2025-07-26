@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   keywords: ["Fanan Team", "VST", "VSTi", "MIDI plugins", "audio plugins", "music production", "synthesizer", "arranger keyboard", "DAW", "Fanan team plugins", "free VST"],
   authors: [{ name: "Fanan Team", url: siteConfig.url }],
   creator: "Fanan Team",
+  verification: {
+    google: 'google-site-verification-string', // Replace with your actual verification string
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
