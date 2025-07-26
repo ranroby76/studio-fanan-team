@@ -49,7 +49,7 @@ export async function generateMetadata(
     openGraph: {
       title: `${product.title} | Fanan Team`,
       description: product.shortDescription,
-      images: [product.mainImage.url, ...previousImages],
+      images: product.mainImage?.url ? [product.mainImage.url, ...previousImages] : previousImages,
     },
   }
 }
@@ -71,6 +71,7 @@ const getYouTubeVideoId = (url: string): string | null => {
 }
 
 const renderDescription = (description: string) => {
+    if (!description) return null;
     return description.split('\\n').map((line, index) => {
         const trimmedLine = line.trim();
         
@@ -100,84 +101,15 @@ const renderDescription = (description: string) => {
     });
 };
 
-function ProductPageContent() {
-  const params = useParams();
+function ProductPageContent({ product }: { product: Product }) {
   const router = useRouter();
-  const slug = typeof params.slug === 'string' ? params.slug : undefined;
+  const [selectedImage, setSelectedImage] = useState<ImageDetails | null>(product?.mainImage ?? null);
   
-  const [product, setProduct] = useState<Product | null>(null);
-  const [selectedImage, setSelectedImage] = useState<ImageDetails | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadProduct() {
-        if (slug) {
-          try {
-            // This is now an async server action call
-            const foundProduct = await getProductBySlug(slug);
-            if (foundProduct) {
-              setProduct(foundProduct);
-              if (foundProduct.mainImage && foundProduct.mainImage.url) {
-                setSelectedImage(foundProduct.mainImage);
-              }
-            } else {
-              notFound();
-            }
-          } catch (e) {
-            console.error("Failed to load product", e);
-            notFound();
-          } finally {
-            setIsLoading(false);
-          }
-        } else {
-            setIsLoading(false);
-        }
-    }
-    loadProduct();
-  }, [slug]);
-
   const packImages: Record<Product['pack'], string> = {
     "Max! Pack": "/images/pro pack.png",
     "Mad MIDI Machines Pack": "/images/mad midi machines.png",
     "Free Pack": "/images/free pack.png",
   };
-
-  if (isLoading) {
-    return (
-      <div className="container mx-auto px-4 animate-fade-in space-y-8">
-        <Skeleton className="h-12 w-1/3" />
-        <Skeleton className="h-16 w-2/3 mx-auto" />
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-3">
-                 <Skeleton className="w-full aspect-video" />
-                 <div className="flex gap-2 mt-2">
-                    <Skeleton className="h-20 w-20" />
-                    <Skeleton className="h-20 w-20" />
-                    <Skeleton className="h-20 w-20" />
-                 </div>
-            </div>
-            <div className="lg:col-span-2">
-                 <Skeleton className="h-96 w-full" />
-            </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!product) {
-    return (
-        <Card className="max-w-md mx-auto mt-10 shadow-lg border-destructive">
-            <CardHeader className="bg-destructive/10">
-                <CardTitle className="flex items-center gap-3 font-headline text-destructive">
-                    <ServerCrash /> Product Not Found
-                </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6">
-                <p className="text-center">The product you are looking for does not exist.</p>
-            </CardContent>
-        </Card>
-    );
-  }
 
   const allImages = [product.mainImage, ...product.thumbnails].filter(img => img && img.url) as ImageDetails[];
   const rawVideoIds = product.videoUrls?.map(getYouTubeVideoId).filter((id): id is string => !!id) || [];
@@ -321,26 +253,36 @@ function ProductPageContent() {
 }
 
 
-export default function ProductPage() {
-  return (
-    <Suspense fallback={<div className="container mx-auto px-4 animate-fade-in space-y-8">
-        <Skeleton className="h-12 w-1/3" />
-        <Skeleton className="h-16 w-2/3 mx-auto" />
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-3">
-                 <Skeleton className="w-full aspect-video" />
-                 <div className="flex gap-2 mt-2">
-                    <Skeleton className="h-20 w-20" />
-                    <Skeleton className="h-20 w-20" />
-                    <Skeleton className="h-20 w-20" />
-                 </div>
-            </div>
-            <div className="lg:col-span-2">
-                 <Skeleton className="h-96 w-full" />
-            </div>
+export default async function ProductPage({ params }: Props) {
+  const product = await getProductBySlug(params.slug);
+
+  if (!product) {
+      notFound();
+  }
+
+  const loadingSpinner = (
+    <div className="container mx-auto px-4 animate-fade-in space-y-8">
+      <Skeleton className="h-12 w-1/3" />
+      <Skeleton className="h-16 w-2/3 mx-auto" />
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div className="lg:col-span-3">
+          <Skeleton className="w-full aspect-video" />
+          <div className="flex gap-2 mt-2">
+            <Skeleton className="h-20 w-20" />
+            <Skeleton className="h-20 w-20" />
+            <Skeleton className="h-20 w-20" />
+          </div>
         </div>
-      </div>}>
-      <ProductPageContent />
+        <div className="lg:col-span-2">
+          <Skeleton className="h-96 w-full" />
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <Suspense fallback={loadingSpinner}>
+      <ProductPageContent product={product} />
     </Suspense>
   );
 }
