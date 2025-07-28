@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Fanan Team", url: siteConfig.url }],
   creator: "Fanan Team",
   verification: {
-    google: 'google-site-verification-string', // Replace with your actual verification string
+    // google: 'YOUR_GOOGLE_SITE_VERIFICATION_CODE_HERE', // Add your verification code
   },
   openGraph: {
     type: 'website',
@@ -50,6 +50,9 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
     creator: '@fananteam', // Replace with your actual Twitter handle if you have one
   },
+  icons: {
+    icon: '/icon.ico',
+  }
 };
 
 
