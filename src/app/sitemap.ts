@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getProducts } from '@/lib/product-service-server';
  
-const BASE_URL = 'https://fananteampro.com';
+const BASE_URL = 'https://fananteam.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages

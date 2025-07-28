@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fananteampro.com/sitemap.xml
+Sitemap: https://fananteam.com/sitemap.xml

@@ -10,8 +10,8 @@ import { AuthProvider } from '@/components/auth/AuthProvider';
 const siteConfig = {
   name: 'Fanan Team',
   description: 'Discover, manage, and purchase VSTi plugins, MIDI machines, and audio tools from Fanan Team. Explore our packs and find the perfect sound for your music production.',
-  url: 'https://fananteampro.com', // Replace with your final domain
-  ogImage: 'https://fananteampro.com/images/A3.png', // A default OG image
+  url: 'https://fananteam.com', // Replace with your final domain
+  ogImage: 'https://fananteam.com/images/A3.png', // A default OG image
 };
 
 export const metadata: Metadata = {
