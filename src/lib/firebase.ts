@@ -10,7 +10,7 @@ import { getAuth, type Auth } from "firebase/auth";
 // IMPORTANT: Replace with your actual Firebase project configuration.
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
-  authDomain: "fanan-team-hub.firebaseapp.com",
+  authDomain: "fananteam.com",
   projectId: "fanan-team-hub",
   storageBucket: "fanan-team-hub.appspot.com",
   messagingSenderId: "1038728897474",
