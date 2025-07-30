@@ -5,6 +5,7 @@ import { getProductBySlug, getProducts } from '@/lib/product-service-server';
 import type { Metadata, ResolvingMetadata } from 'next';
 import ProductPageContent from '@/components/product/ProductPageContent';
 import { Skeleton } from '@/components/ui/skeleton';
+import ProductSchema from '@/components/product/ProductSchema';
 
 type Props = {
   params: { slug: string }
@@ -75,6 +76,7 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <Suspense fallback={loadingSpinner}>
+      <ProductSchema product={product} />
       {/* The product data is fetched on the server and passed as a prop to the client component */}
       <ProductPageContent product={product} />
     </Suspense>
