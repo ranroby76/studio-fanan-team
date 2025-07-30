@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   keywords: ["Fanan Team", "VST", "VSTi", "MIDI plugins", "audio plugins", "music production", "synthesizer", "arranger keyboard", "DAW", "Fanan team plugins", "free VST"],
   authors: [{ name: "Fanan Team", url: siteConfig.url }],
   creator: "Fanan Team",
+  manifest: '/manifest.json',
   verification: {
     // google: 'YOUR_GOOGLE_SITE_VERIFICATION_CODE_HERE', // Add your verification code
   },
@@ -52,6 +53,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/icon.ico',
+    apple: '/icons/icon-192x192.png',
   }
 };
 
@@ -64,6 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="theme-color" content="#F9A825" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
