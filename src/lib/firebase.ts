@@ -3,17 +3,14 @@
 import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
 import { getAuth, type Auth } from "firebase/auth";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
+// Your web app's Firebase configuration is now sourced from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyAtmM8NZkILa_EnQ11KY5NLhGtgya5uEmE",
-  authDomain: "fanan-team-hub.firebaseapp.com",
-  projectId: "fanan-team-hub",
-  storageBucket: "fanan-team-hub.appspot.com",
-  messagingSenderId: "1038728897474",
-  appId: "1:1038728897474:web:f5c7af077b6a68fc7dac5b"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 
