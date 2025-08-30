@@ -64,8 +64,8 @@ export default function HomePage() {
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
           <div className="md:w-1/2">
              <Image
-              src="/images/introduce-playlisted.jpg"
-              alt="Playlisted App Screenshot"
+              src="/intruduce on fanan site.jpg"
+              alt="Screenshot of the Playlisted website interface"
               width={619}
               height={398}
               className="rounded-lg shadow-2xl object-cover w-full h-auto"
