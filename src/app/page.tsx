@@ -74,7 +74,7 @@ export default function HomePage() {
           </div>
           <div className="md:w-1/2 text-center md:text-left">
             <h2 className="text-4xl font-headline font-bold text-yellow-400">Playlisted Goes Online!</h2>
-            <p className="text-xl mt-4 text-gray-300">The external, video-supporting version of our beloved VST.</p>
+            <p className="text-xl mt-4 text-gray-300">The external, video-supporting version of our beloved VSTi.</p>
             <p className="mt-2 text-gray-400">
               Discover the new online version of Playlisted! Build smart, shareable playlists from your favorite links with video support, and communicate directly with your audio interface's drivers for a seamless experience.
             </p>
