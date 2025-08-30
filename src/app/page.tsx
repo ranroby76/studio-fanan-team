@@ -60,6 +60,33 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="w-full py-12 bg-gray-800 text-white">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+          <div className="md:w-1/2">
+             <Image
+              src="/images/introduce-playlisted.jpg"
+              alt="Playlisted App Screenshot"
+              width={619}
+              height={398}
+              className="rounded-lg shadow-2xl object-cover w-full h-auto"
+              data-ai-hint="playlist music app"
+            />
+          </div>
+          <div className="md:w-1/2 text-center md:text-left">
+            <h2 className="text-4xl font-headline font-bold text-yellow-400">Introducing Playlisted</h2>
+            <p className="text-xl mt-4 text-gray-300">Your Links, Your Playlists, Your Music.</p>
+            <p className="mt-2 text-gray-400">
+              Discover our new child site, Playlisted! The ultimate tool to build and enjoy playlists from your favorite links across the web.
+            </p>
+            <Button asChild size="lg" className="mt-6 bg-yellow-400 text-gray-900 hover:bg-yellow-300 font-bold">
+              <Link href="https://playlisted.fananteam.com" target="_blank" rel="noopener noreferrer">
+                Visit Playlisted <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl font-headline font-semibold text-primary">Our Plugins Packs</h2>
       </div>
