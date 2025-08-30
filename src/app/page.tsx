@@ -79,7 +79,7 @@ export default function HomePage() {
               Discover our new child site, Playlisted! The ultimate tool to build and enjoy playlists from your favorite links across the web.
             </p>
             <Button asChild size="lg" className="mt-6 bg-yellow-400 text-gray-900 hover:bg-yellow-300 font-bold">
-              <Link href="https://playlisted.fananteam.com" target="_blank" rel="noopener noreferrer">
+              <Link href="https://playlisted.site" target="_blank" rel="noopener noreferrer">
                 Visit Playlisted <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
