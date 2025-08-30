@@ -76,7 +76,7 @@ export default function HomePage() {
             <h2 className="text-4xl font-headline font-bold text-yellow-400">Introducing Playlisted</h2>
             <p className="text-xl mt-4 text-gray-300">Your Links, Your Playlists, Your Music.</p>
             <p className="mt-2 text-gray-400">
-              Discover our new child site, Playlisted! The ultimate tool to build and enjoy playlists from your favorite links across the web.
+              Discover Playlisted, our new child site! Build smart, shareable playlists from your favorite links, and communicate directly with your audio interface's drivers for a seamless experience.
             </p>
             <Button asChild size="lg" className="mt-6 bg-yellow-400 text-gray-900 hover:bg-yellow-300 font-bold">
               <Link href="https://playlisted.site" target="_blank" rel="noopener noreferrer">
