@@ -79,7 +79,7 @@ export default function HomePage() {
               Discover the new online version of Playlisted! Build smart, shareable playlists from your favorite links with video support, and communicate directly with your audio interface's drivers for a seamless experience.
             </p>
             <Button asChild size="lg" className="mt-6 bg-yellow-400 text-gray-900 hover:bg-yellow-300 font-bold">
-              <Link href="https://playlisted.site" target="_blank" rel="noopener noreferrer">
+              <Link href="https://studio--playlisted-store.us-central1.hosted.app/" target="_blank" rel="noopener noreferrer">
                 Visit Playlisted <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
