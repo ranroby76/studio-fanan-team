@@ -5,7 +5,7 @@ import Script from 'next/script';
 const ProductSchema = ({ product }: { product: Product }) => {
   const SITE_URL = 'https://fananteam.com';
 
-  // SAFEGUARD as per suggestion: Check if mainImage and url exist before using them.
+  // SAFEGUARD: Check if mainImage and url exist before using them.
   const rawUrl = product?.mainImage?.url;
   
   // If no image exists, we won't generate the image part of the schema.

@@ -88,9 +88,6 @@ const productFormSchema = z.object({
     path: ["downloadLink1"], // You can specify a path, but the message is generic enough.
 });
 
-// Helper type for fetching state
-type FetchingState = { [key: string]: boolean };
-
 const ImageInput = ({
   fieldName,
   register,
