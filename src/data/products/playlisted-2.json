@@ -1,0 +1,46 @@
+{
+  "id": "w1g91svwf",
+  "slug": "playlisted-2",
+  "title": "Playlisted 2",
+  "pack": "Mad MIDI Machines Pack",
+  "mainImage": {
+    "url": "/images/playlisted3.jpg",
+    "width": 1001,
+    "height": 702
+  },
+  "thumbnails": [
+    {
+      "url": "/images/playlisted4.jpg",
+      "width": 999,
+      "height": 183
+    }
+  ],
+  "description": "Playlisted is a unique VST instrument (VSTi3/AU/CLAP) designed to bridge the gap between music production and live performance. It transforms your Digital Audio Workstation (DAW) into a powerful, stable media player capable of handling audio and video playlists directly within your session. Instead of switching between your DAW and external media players like VLC or iTunes during a live set or practice session, Playlisted brings your backing tracks and reference videos right into your mixer channel—complete with professional audio processing features.\\n\\n##What Can It Do?\\nPlaylisted allows you to load lists of media files and play them back through your DAW's audio engine. This means you can process your backing tracks with your favorite VST effects, route them to specific outputs, and control everything via MIDI, all while keeping your hands on your instrument.\\n\\n## Key Features\\n#Real-Time Pitch Shifting: Change the key of any song by +/- 12 semitones instantly without changing the playback speed. Perfect for vocalists who need to adjust a backing track to their range on the fly.\\n#Variable Speed Control: Slow down or speed up tracks (0.1x to 2.1x) for practicing difficult solos or adjusting the energy of a live set.\\n#High-Performance Video Engine: Video decoding happens in a separate, protected process. This ensures that even if a video file is corrupt or heavy, it will never crash your DAW. The video plays in a dedicated, resizable \"Picture-in-Picture\" style window.\\n#MIDI Remote Control: Fully mappable for hands-free operation. Trigger Play, Pause, Stop, and Video Window toggle using your MIDI controller or pedalboard.\\n\\n## The Intelligent Playlist\\nThe heart of the plugin is its smart playlist system, designed specifically for the needs of live performers. How it Works? You can add individual files or set a \"Default Folder\" to quickly load your entire repertoire. The playlist interface is clean and dark-mode friendly, ensuring visibility on dimly lit stages.\\n\\n##Per-Track Controls\\n Every track in your playlist has an expandable \"Banner\" that gives you granular control over that specific file: Volume: Individual gain staging (up to +22dB) to balance louder and quieter tracks. Pitch & Speed; Settings are saved per track, so \"Song A\" can be pitched down -2 semitones while \"Song B\" plays at 1.1x speed. Auto-Wait; (Transition Logic): A game-changer for live sets. You can set a specific \"Wait\" time (e.g., 5 seconds) for each track. When the song finishes, Playlisted will visually count down that duration before automatically launching the next track—giving you just enough time to talk to the crowd or switch instruments.\\n\\n##Supported Media Formats\\nPlaylisted handles a wide variety of industry-standard formats:\\n\\nAudio: MP3, WAV, AIFF, FLAC, OGG, M4A\\n\\nVideo: MP4, AVI, MOV, MKV, WEBM, MPG, MPEG\\n\\n## Who is it For?\\nLive Performers: Singers and bands running backing tracks who need reliability and the ability to change keys instantly.\\nKaraoke Hosts: Run a professional karaoke setup entirely within a DAW, utilizing high-quality vocal chains for the singers.\\nMusicians in Practice: Slow down fast passages in video or audio files to learn complex parts.\\nProducers: Watch reference videos or score-to-picture without clogging up the DAW's main timeline.\\n\\n##Versions\\nFree Mode: Fully functional with access to all features (Pitch, Video, Speed), limited to 3 tracks per playlist.\\n\\nPro Mode: Unlocks unlimited tracks and playlists for full concert setlists.",
+  "shortDescription": "Media Playlist Player",
+  "formats": {
+    "vst": false,
+    "vsti": true,
+    "win32": false,
+    "win64": true,
+    "standAlone": false,
+    "mac": true,
+    "clap": true,
+    "ios": false,
+    "linux": false
+  },
+  "price": 22,
+  "downloadLinks": [
+    {
+      "id": "wyd1to88p",
+      "label": "Download Option 1",
+      "url": "https://icedrive.net/s/5b3ASgXVx5fabzgzjv78GfB9V1t4"
+    },
+    {
+      "id": "5zu6a1pkw",
+      "label": "Download Option 2",
+      "url": "https://mega.nz/file/GlMSRDZZ#qF5UgfeT5t4ENYtJaD-2XVItO_ZFsEi3NkrX_Z9TKjI"
+    }
+  ],
+  "demoLimitations": "Playlist is limited to 3 tracks",
+  "videoUrls": []
+}
