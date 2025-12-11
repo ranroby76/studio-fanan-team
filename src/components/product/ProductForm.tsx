@@ -20,7 +20,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { generateProductJsonString, transformProductToFormData, generateSlug } from '@/lib/product-service';
+import { generateProductJsonString, transformProductToFormData } from '@/lib/product-service';
+import { generateSlug } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
 const imageSchema = z.object({

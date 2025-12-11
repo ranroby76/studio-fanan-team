@@ -9,7 +9,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlusCircle, Edit3, Trash2, Loader2, PackageSearch, Package, Star, Box, Gift } from 'lucide-react';
 import type { Product, Pack } from '@/lib/types';
-import { formatTags, generateSlug } from '@/lib/product-service';
+import { formatTags } from '@/lib/product-service';
+import { generateSlug } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import {
   AlertDialog,

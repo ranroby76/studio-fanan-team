@@ -3,7 +3,8 @@ import type { Product } from '@/lib/types';
 import Script from 'next/script';
 
 const ProductSchema = ({ product }: { product: Product }) => {
-  if (!product) {
+  // Safeguard against missing product or formats, which would crash the server render.
+  if (!product || !product.formats) {
     return null;
   }
 

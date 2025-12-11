@@ -3,21 +3,9 @@
 
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { HelpCircle, Loader2 } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import dynamic from 'next/dynamic';
-
-// Dynamically import PaypalPayment component only on the client side
-const PaypalPayment = dynamic(() => import('@/components/paypal/PaypalPayment'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex flex-col items-center justify-center h-[350px] w-full max-w-sm p-6">
-      <Loader2 className="h-10 w-10 animate-spin text-primary mb-4" />
-      <p className="text-muted-foreground">Loading Payment Options...</p>
-    </div>
-  ),
-});
-
+import PaypalPayment from '@/components/paypal/PaypalPayment';
 
 export default function BuyNowPage() {
   // A5 dimensions: 1472x832 -> aspect-ratio: 1.768

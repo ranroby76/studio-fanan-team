@@ -1,5 +1,6 @@
 // src/lib/product-service.ts
 import type { Product, ProductFormData, DownloadLink, ImageDetails, Formats } from '@/lib/types';
+import { generateSlug } from '@/lib/utils';
 
 // This file contains only client-safe utility functions.
 // All file-system related functions have been moved to product-service-server.ts
@@ -7,14 +8,6 @@ import type { Product, ProductFormData, DownloadLink, ImageDetails, Formats } fr
 const IMAGE_PREFIX = '/images/';
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
-
-export const generateSlug = (title: string): string => {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '') // remove special chars
-    .trim()
-    .replace(/\s+/g, '-'); // replace spaces with hyphens
-};
 
 // --- JSON Generation for Editor (CLIENT-SIDE) ---
 
@@ -117,7 +110,7 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
       height: product.mainImage.height,
     },
     thumbnails: thumbnails,
-    description: product.description.replace(/\\n/g, '\n'),
+    description: (product.description || '').replace(/\\n/g, '\n'),
     shortDescription: product.shortDescription,
     formats: product.formats || { vst: false, vsti: false, win32: false, win64: false, standAlone: false, mac: false, clap: false, ios: false, linux: false },
     price: product.price,
