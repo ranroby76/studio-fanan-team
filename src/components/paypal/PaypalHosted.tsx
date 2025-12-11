@@ -3,6 +3,7 @@
 
 import { useEffect } from 'react';
 import Script from 'next/script';
+import { Input } from "@/components/ui/input";
 
 interface PaypalHostedProps {
   hostedButtonId: string;
