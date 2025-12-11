@@ -7,7 +7,6 @@ import { HelpCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import PaypalHosted from "@/components/paypal/PaypalHosted";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 export default function BuyNowPage() {
   // A5 dimensions: 1472x832 -> aspect-ratio: 1.768
