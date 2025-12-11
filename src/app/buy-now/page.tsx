@@ -100,7 +100,7 @@ export default function BuyNowPage() {
               </ol>
             </CardContent>
           </Card>
-        </Card>
+        </div>
       </div>
     </div>
   );
