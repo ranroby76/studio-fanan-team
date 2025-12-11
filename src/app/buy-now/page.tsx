@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HelpCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import PaypalPayment from '@/components/paypal/PaypalPayment';
+import PaypalHosted from "@/components/paypal/PaypalHosted";
 
 export default function BuyNowPage() {
   // A5 dimensions: 1472x832 -> aspect-ratio: 1.768
@@ -54,7 +54,7 @@ export default function BuyNowPage() {
                         data-ai-hint="synthesizer abstract"
                     />
                 </div>
-                <PaypalPayment price="22.00" title="$22" />
+                 <PaypalHosted hostedButtonId="YOUR_BUTTON_ID_HERE" price="$22" />
             </div>
             
             <Separator orientation="vertical" className="absolute left-1/2 top-0 h-full -translate-x-1/2 hidden md:block" />
@@ -70,7 +70,7 @@ export default function BuyNowPage() {
                         data-ai-hint="professional audio"
                     />
                 </div>
-                <PaypalPayment price="12.00" title="$12" />
+                <PaypalHosted hostedButtonId="YOUR_BUTTON_ID_HERE" price="$12" />
             </div>
         </div>
 
