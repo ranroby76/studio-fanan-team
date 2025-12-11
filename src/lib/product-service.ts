@@ -58,12 +58,12 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
   
   const mainImage: ImageDetails = {
     url: ensureImagePath(formData.mainImage.filename),
-    width: formData.mainImage.width || 0,
-    height: formData.mainImage.height || 0,
+    width: formData.mainImage.width,
+    height: formData.mainImage.height,
   };
 
   const thumbnails: ImageDetails[] = formData.thumbnails
-    .filter(thumb => thumb.filename && thumb.width && thumb.height)
+    .filter(thumb => thumb.filename)
     .map(thumb => ({
       url: ensureImagePath(thumb.filename),
       width: thumb.width || 0,
@@ -104,7 +104,8 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
     videoUrls.push('');
   }
 
-  const findLink = (label: string) => product.downloadLinks.find(l => l.label === label);
+  const productDownloadLinks = product.downloadLinks || [];
+  const findLink = (label: string) => productDownloadLinks.find(l => l.label === label);
 
   return {
     id: product.id,

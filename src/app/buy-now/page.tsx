@@ -1,10 +1,11 @@
 // src/app/buy-now/page.tsx
+"use client";
+
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HelpCircle, Loader2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import dynamic from 'next/dynamic';
-import { Skeleton } from "@/components/ui/skeleton";
 
 // Dynamically import PaypalPayment component only on the client side
 const PaypalPayment = dynamic(() => import('@/components/paypal/PaypalPayment'), {
