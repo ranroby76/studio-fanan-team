@@ -12,18 +12,17 @@ import { Loader2, PackageSearch, Star, Box, Gift, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
+const packConfig: Record<Pack, { logo: string, href: string, title: string, icon: React.ElementType, slug: string }> = {
+  "Mad MIDI Machines Pack": { logo: "/images/mad midi machines.png", href: "/products/packs/mad-midi-machines-pack", title: "Mad MIDI Machines", icon: Box, slug: 'mad-midi-machines-pack' },
+  "Max! Pack": { logo: "/images/pro pack.png", href: "/products/packs/max-pack", title: "Max! Pack", icon: Star, slug: 'max-pack' },
+  "Free Pack": { logo: "/images/free pack.png", href: "/products/packs/free-pack", title: "Free Pack", icon: Gift, slug: 'free-pack' },
+};
+
 
 interface ProductPackPageProps {
   pack: Pack;
   initialProducts: Product[];
 }
-
-const packConfig: Record<Pack, { logo: string, href: string, title: string, icon: React.ElementType }> = {
-  "Mad MIDI Machines Pack": { logo: "/images/mad midi machines.png", href: "/mad-midi-machine-pack", title: "Mad MIDI Machines", icon: Box },
-  "Max! Pack": { logo: "/images/pro pack.png", href: "/max-pack", title: "Max! Pack", icon: Star },
-  "Free Pack": { logo: "/images/free pack.png", href: "/free-pack", title: "Free Pack", icon: Gift },
-};
-
 
 export default function ProductPackPage({ pack, initialProducts }: ProductPackPageProps) {
   const [products, setProducts] = useState<Product[]>(initialProducts);
@@ -49,7 +48,7 @@ export default function ProductPackPage({ pack, initialProducts }: ProductPackPa
             </CardHeader>
             <CardContent className="p-2">
                 <nav className="flex flex-col space-y-1">
-                    {(Object.values(packConfig) as (typeof packConfig)[Pack][]).map(p => (
+                    {Object.values(packConfig).map(p => (
                          <Button
                             key={p.href}
                             variant={pathname === p.href ? 'default' : 'ghost'}

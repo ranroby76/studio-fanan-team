@@ -42,9 +42,9 @@ const mainNavLinks = [
 ];
 
 const productLinks = [
-    { href: '/mad-midi-machine-pack', label: 'Mad MIDI Machines' },
-    { href: '/max-pack', label: 'Max! Pack' },
-    { href: '/free-pack', label: 'Free Pack' },
+    { href: '/products/packs/mad-midi-machines-pack', label: 'Mad MIDI Machines' },
+    { href: '/products/packs/max-pack', label: 'Max! Pack' },
+    { href: '/products/packs/free-pack', label: 'Free Pack' },
 ];
 
 const homeLink = mainNavLinks.find(link => link.href === '/');
@@ -150,7 +150,7 @@ export default function Header() {
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className={cn(
                     "text-sm font-medium transition-colors duration-300 hover:text-primary hover:bg-primary/10",
-                    productLinks.some(link => pathname.startsWith(link.href)) ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
+                    pathname.startsWith('/products/packs') ? "text-primary bg-primary/10 font-semibold" : "text-foreground/70"
                 )}>
                     <Package size={18} />
                     <span className="ml-2">Products</span>

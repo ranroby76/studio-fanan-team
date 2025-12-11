@@ -12,9 +12,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/how-to-buy',
     '/buy-now',
     '/contact-us',
-    '/mad-midi-machine-pack',
-    '/max-pack',
-    '/free-pack'
+    '/products/packs/mad-midi-machines-pack',
+    '/products/packs/max-pack',
+    '/products/packs/free-pack'
   ].map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: new Date(),

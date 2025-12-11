@@ -116,7 +116,7 @@ export default function HomePage() {
       
       <div className="container mx-auto px-4">
         <div className="space-y-8 flex flex-col items-center">
-            <Link href="/mad-midi-machine-pack" className="block group">
+            <Link href="/products/packs/mad-midi-machines-pack" className="block group">
                 <Image
                     src="/images/mad midi machines.png"
                     alt="Mad MIDI Machines Pack"
@@ -126,7 +126,7 @@ export default function HomePage() {
                     data-ai-hint="synthesizer abstract"
                 />
             </Link>
-            <Link href="/max-pack" className="block group">
+            <Link href="/products/packs/max-pack" className="block group">
                 <Image
                     src="/images/pro pack.png"
                     alt="Max! Pack"
@@ -136,7 +136,7 @@ export default function HomePage() {
                     data-ai-hint="professional audio"
                 />
             </Link>
-             <Link href="/free-pack" className="block group w-10/12 md:w-auto">
+             <Link href="/products/packs/free-pack" className="block group w-10/12 md:w-auto">
                 <Image
                     src="/images/free pack.png"
                     alt="Free Pack"
