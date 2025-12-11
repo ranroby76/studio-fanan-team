@@ -39,22 +39,33 @@ export const getProductOrderForPack = async (pack: Pack): Promise<string[]> => {
 const getAllProductsUnordered = async (): Promise<Product[]> => {
     try {
         const filenames = await fs.readdir(PRODUCTS_DIR);
-        const products = await Promise.all(
-          filenames
+        const productPromises = filenames
             .filter(file => file.endsWith('.json'))
-            .map(async filename => {
-              const filePath = path.join(PRODUCTS_DIR, filename);
-              const fileContents = await fs.readFile(filePath, 'utf8');
-              const product = JSON.parse(fileContents) as Product;
-              return product;
-            })
-        );
+            .map(async (filename) => {
+                const filePath = path.join(PRODUCTS_DIR, filename);
+                try {
+                    const fileContents = await fs.readFile(filePath, 'utf8');
+                    const product = JSON.parse(fileContents) as Product;
+                    // Basic validation to ensure essential fields exist
+                    if (product && product.slug && product.title) {
+                        return product;
+                    }
+                    console.warn(`Skipping malformed product file: ${filename}`);
+                    return null;
+                } catch (parseError) {
+                    console.error(`Error parsing ${filename}:`, parseError);
+                    return null; // Skip this file if it's invalid JSON
+                }
+            });
+
+        const products = (await Promise.all(productPromises)).filter((p): p is Product => p !== null);
         return products;
-      } catch (error) {
+    } catch (error) {
         console.error("Could not read products directory:", error);
         return [];
-      }
+    }
 };
+
 
 export const getProducts = async (): Promise<Product[]> => {
     // This function now just gets all products. Sorting happens in getProductsForPack or other callers.
