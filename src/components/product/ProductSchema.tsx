@@ -5,12 +5,17 @@ import Script from 'next/script';
 const ProductSchema = ({ product }: { product: Product }) => {
   const SITE_URL = 'https://fananteam.com';
 
+  // Ensure the image URL is absolute for the schema
+  const imageUrl = product.mainImage.url.startsWith('http')
+    ? product.mainImage.url
+    : new URL(product.mainImage.url, SITE_URL).href;
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.title,
     description: product.shortDescription,
-    image: `${SITE_URL}${product.mainImage.url}`,
+    image: imageUrl,
     sku: product.id,
     brand: {
       '@type': 'Brand',
