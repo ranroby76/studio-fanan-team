@@ -26,7 +26,9 @@ export async function generateStaticParams() {
 }
 
 export default async function DynamicProductPackPage({ params }: { params: { packSlug: string } }) {
-  const packName = slugToPackName(params.packSlug);
+  // Await params to resolve the dynamic segment value
+  const resolvedParams = await params;
+  const packName = slugToPackName(resolvedParams.packSlug);
 
   if (!packName) {
     notFound();
