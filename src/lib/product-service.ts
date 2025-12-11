@@ -63,7 +63,7 @@ const transformFormDataToProduct = (formData: ProductFormData, existingId?: stri
   };
 
   const thumbnails: ImageDetails[] = formData.thumbnails
-    .filter(thumb => thumb.filename) // Only require a filename
+    .filter(thumb => thumb.filename && thumb.width && thumb.height)
     .map(thumb => ({
       url: ensureImagePath(thumb.filename),
       width: thumb.width || 0,

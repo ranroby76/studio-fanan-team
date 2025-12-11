@@ -28,8 +28,8 @@ export interface ImageDetails {
 
 export interface ImageFormData {
   filename: string;
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
 }
 
 

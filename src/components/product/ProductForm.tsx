@@ -2,7 +2,7 @@
 "use client";
 
 import type { Product, ProductFormData, Pack } from '@/lib/types';
-import { useForm, type SubmitHandler, Controller, type UseFormSetValue, type Path } from 'react-hook-form';
+import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from '@/components/ui/card';
-import { Loader2, Save, ClipboardCopy, Wand2 } from 'lucide-react';
+import { Loader2, Save, ClipboardCopy } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import {
   Select,
@@ -22,18 +22,27 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { generateProductJsonString, transformProductToFormData, generateSlug } from '@/lib/product-service';
 import { useToast } from '@/hooks/use-toast';
-import { getImageDimensions } from '@/lib/image-service';
 
 const imageSchema = z.object({
   filename: z.string(),
   width: z.coerce.number().optional(),
   height: z.coerce.number().optional(),
+}).refine(data => {
+  // If a filename is present, width and height must also be present and greater than 0
+  if (data.filename) {
+    return data.width && data.width > 0 && data.height && data.height > 0;
+  }
+  return true; // If no filename, it's valid (empty thumbnail)
+}, {
+  message: "Width and Height are required if a filename is provided.",
+  path: ["width"], // Point error to width field
 });
+
 
 const mainImageSchema = imageSchema.extend({
   filename: z.string().min(1, "A main image filename is required"),
-  width: z.coerce.number().optional(),
-  height: z.coerce.number().optional(),
+  width: z.coerce.number().min(1, "Width is required for the main image."),
+  height: z.coerce.number().min(1, "Height is required for the main image."),
 });
 
 const downloadLinkSchema = z.object({
@@ -272,7 +281,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
             <div>
               <Label htmlFor="mainImage.filename" className="font-semibold">Main Image</Label>
               <p className="text-xs text-muted-foreground mt-1">
-                Enter the filename (e.g. "my-image.png"). Width and Height are now optional.
+                Enter the filename (e.g. "my-image.png"), Width, and Height. These are required.
               </p>
               <ImageInput fieldName="mainImage" register={register} errors={errors.mainImage} />
             </div>
@@ -291,8 +300,8 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
             <div>
               <Label htmlFor="description" className="font-semibold">Product Description</Label>
               <Textarea id="description" {...register('description')} rows={5} className="mt-1" placeholder="Detailed description of the product..."/>
-              <p className="text-sm font-semibold text-muted-foreground mt-2">
-                Formatting: Use `##` at the start of a line for a headline, and `#` for a list item.
+              <p className="font-bold text-muted-foreground mt-2">
+                Formatting: Use `##` for headlines and `#` for list items.
               </p>
               {errors.description && <p className="text-sm text-destructive mt-1">{errors.description.message}</p>}
             </div>
