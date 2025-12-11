@@ -69,10 +69,11 @@ export default function ProductOrderClientPage({ initialProducts }: { initialPro
 
   useEffect(() => {
     setIsClient(true);
-    // Initial population of products into their respective packs
-    const maxPack = initialProducts.filter(p => p.pack === "Max! Pack");
-    const madMidiPack = initialProducts.filter(p => p.pack === "Mad MIDI Machines Pack");
-    const freePack = initialProducts.filter(p => p.pack === "Free Pack");
+    // Initial population of products into their respective packs, with a safeguard.
+    const validProducts = initialProducts.filter(p => p && p.pack);
+    const maxPack = validProducts.filter(p => p.pack === "Max! Pack");
+    const madMidiPack = validProducts.filter(p => p.pack === "Mad MIDI Machines Pack");
+    const freePack = validProducts.filter(p => p.pack === "Free Pack");
     setProductsByPack({
       "Max! Pack": maxPack,
       "Mad MIDI Machines Pack": madMidiPack,
