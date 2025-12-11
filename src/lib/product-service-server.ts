@@ -46,20 +46,35 @@ const getAllProductsUnordered = async (): Promise<Product[]> => {
                 try {
                     const fileContents = await fs.readFile(filePath, 'utf8');
                     const product = JSON.parse(fileContents) as Product;
-                    // Basic validation to ensure essential fields exist
-                    if (product && product.slug && product.title) {
+                    // --- ROBUSTNESS CHECK ---
+                    // Basic validation to ensure essential fields exist before returning.
+                    // This prevents crashes from malformed files.
+                    if (product && product.id && product.slug && product.title) {
                         return product;
                     }
-                    console.warn(`Skipping malformed product file: ${filename}`);
+                    console.warn(`[Data Validation] Skipping malformed product file: ${filename}. It's missing a required field like id, slug, or title.`);
                     return null;
                 } catch (parseError) {
-                    console.error(`Error parsing ${filename}:`, parseError);
+                    console.error(`[Data Validation] Error parsing ${filename}. It may be invalid JSON. Skipping file.`, parseError);
                     return null; // Skip this file if it's invalid JSON
                 }
             });
 
         const products = (await Promise.all(productPromises)).filter((p): p is Product => p !== null);
-        return products;
+        
+        // --- DUPLICATE SLUG CHECK ---
+        const seenSlugs = new Set<string>();
+        const uniqueProducts = products.filter(product => {
+            if (seenSlugs.has(product.slug)) {
+                console.warn(`[Data Validation] Duplicate slug "${product.slug}" found. Skipping duplicate product titled "${product.title}".`);
+                return false;
+            }
+            seenSlugs.add(product.slug);
+            return true;
+        });
+
+        return uniqueProducts;
+        
     } catch (error) {
         console.error("Could not read products directory:", error);
         return [];
@@ -74,7 +89,8 @@ export const getProducts = async (): Promise<Product[]> => {
 
 const sortProductsByOrder = (products: Product[], order: string[]): Product[] => {
     if (order.length === 0) {
-        return products;
+        // If no order is specified, sort alphabetically by title as a fallback.
+        return products.sort((a, b) => a.title.localeCompare(b.title));
     }
 
     const orderedProducts: Product[] = [];
@@ -87,7 +103,8 @@ const sortProductsByOrder = (products: Product[], order: string[]): Product[] =>
         }
     });
 
-    const remainingProducts = Array.from(productMap.values());
+    // Add any remaining products that weren't in the order file to the end, sorted alphabetically.
+    const remainingProducts = Array.from(productMap.values()).sort((a, b) => a.title.localeCompare(b.title));
     
     return [...orderedProducts, ...remainingProducts];
 }
