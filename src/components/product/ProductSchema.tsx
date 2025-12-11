@@ -3,6 +3,10 @@ import type { Product } from '@/lib/types';
 import Script from 'next/script';
 
 const ProductSchema = ({ product }: { product: Product }) => {
+  if (!product) {
+    return null;
+  }
+
   const SITE_URL = 'https://fananteam.com';
 
   // SAFEGUARD: Check if mainImage and url exist before using them.
