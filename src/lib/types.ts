@@ -6,6 +6,10 @@ export interface Formats {
   win32: boolean;
   win64: boolean;
   standAlone: boolean;
+  mac: boolean;
+  clap: boolean;
+  ios: boolean;
+  linux: boolean;
 }
 
 export interface DownloadLink {

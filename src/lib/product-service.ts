@@ -116,7 +116,7 @@ export const transformProductToFormData = (product: Product): ProductFormData =>
     thumbnails: thumbnails,
     description: product.description.replace(/\\n/g, '\n'),
     shortDescription: product.shortDescription,
-    formats: product.formats || { vst: false, vsti: false, win32: false, win64: false, standAlone: false },
+    formats: product.formats || { vst: false, vsti: false, win32: false, win64: false, standAlone: false, mac: false, clap: false, ios: false, linux: false },
     price: product.price,
     downloadLink1: { enabled: !!findLink(downloadLinkLabels[0]), url: findLink(downloadLinkLabels[0])?.url || '' },
     downloadLink2: { enabled: !!findLink(downloadLinkLabels[1]), url: findLink(downloadLinkLabels[1])?.url || '' },
@@ -148,6 +148,10 @@ export const formatTags = (formats: Formats | undefined) => {
     parts.push(`Windows ${winFormats.join('/')}`);
   }
 
+  if (formats.mac) parts.push('Mac');
+  if (formats.linux) parts.push('Linux');
+  if (formats.ios) parts.push('iOS');
+  if (formats.clap) parts.push('CLAP');
   if (formats.standAlone) parts.push('Stand-Alone');
   
   return parts.join(' | ');

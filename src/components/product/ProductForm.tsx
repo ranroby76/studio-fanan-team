@@ -52,6 +52,10 @@ const productFormSchema = z.object({
     win32: z.boolean(),
     win64: z.boolean(),
     standAlone: z.boolean(),
+    mac: z.boolean(),
+    clap: z.boolean(),
+    ios: z.boolean(),
+    linux: z.boolean(),
   }),
   mainImage: mainImageSchema,
   thumbnails: z.array(imageSchema).max(7),
@@ -176,7 +180,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
           title: '',
           shortDescription: '',
           pack: preselectedPack || "Max! Pack",
-          formats: { vst: false, vsti: false, win32: false, win64: false, standAlone: false },
+          formats: { vst: false, vsti: false, win32: false, win64: false, standAlone: false, mac: false, clap: false, ios: false, linux: false },
           mainImage: { filename: '', width: 0, height: 0 },
           thumbnails: Array(7).fill({ filename: '', width: 0, height: 0 }),
           description: '',
@@ -238,6 +242,10 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
       { id: 'win32', label: 'Windows 32bit' },
       { id: 'win64', label: 'Windows 64bit' },
       { id: 'standAlone', label: 'Stand-Alone' },
+      { id: 'mac', label: 'Mac' },
+      { id: 'clap', label: 'CLAP' },
+      { id: 'ios', label: 'iOS' },
+      { id: 'linux', label: 'Linux' },
   ];
 
   const downloadLinkFields = [
@@ -298,7 +306,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
 
                 <div>
                     <Label className="font-semibold mb-2 block">Formats</Label>
-                    <div className="flex flex-wrap gap-x-6 gap-y-4 items-center mt-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4 items-center mt-3">
                         {formatCheckboxes.map(item => (
                             <Controller
                                 key={item.id}
