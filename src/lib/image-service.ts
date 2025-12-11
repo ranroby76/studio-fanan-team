@@ -24,7 +24,7 @@ export const getImageDimensions = async (filename: string): Promise<DimensionRes
     return { error: 'Invalid filename format.' };
   }
   
-  // Convert filename to lowercase to handle case-insensitivity
+  // The filename should already be lowercase from the client, but we enforce it here as a fallback.
   const lowerCaseFilename = filename.toLowerCase();
   const imagePath = path.join(PUBLIC_DIR, 'images', lowerCaseFilename);
 

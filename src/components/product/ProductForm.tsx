@@ -102,8 +102,8 @@ const ImageInput = ({
   const { toast } = useToast();
 
   const handleFetchDimensions = async () => {
-    const filename = getValues(`${fieldName}.filename`);
-    if (!filename) {
+    const rawFilename = getValues(`${fieldName}.filename`);
+    if (!rawFilename) {
       toast({
         title: 'Filename Missing',
         description: 'Please enter a filename first.',
@@ -112,6 +112,10 @@ const ImageInput = ({
       return;
     }
     
+    // Enforce lowercase filenames on the client-side
+    const filename = rawFilename.toLowerCase();
+    setValue(`${fieldName}.filename`, filename, { shouldValidate: true });
+
     setFetchingState(prev => ({ ...prev, [fieldName]: true }));
     try {
       const result = await getImageDimensions(filename);
