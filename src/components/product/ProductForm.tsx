@@ -86,66 +86,11 @@ const ImageInput = ({
   fieldName,
   register,
   errors,
-  getValues,
-  setValue,
-  fetchingState,
-  setFetchingState,
 }: {
   fieldName: `mainImage` | `thumbnails.${number}`;
   register: any;
   errors?: any;
-  getValues: (name: Path<ProductFormData>) => any;
-  setValue: UseFormSetValue<ProductFormData>;
-  fetchingState: FetchingState;
-  setFetchingState: React.Dispatch<React.SetStateAction<FetchingState>>;
 }) => {
-  const { toast } = useToast();
-
-  const handleFetchDimensions = async () => {
-    const rawFilename = getValues(`${fieldName}.filename`);
-    if (!rawFilename) {
-      toast({
-        title: 'Filename Missing',
-        description: 'Please enter a filename first.',
-        variant: 'destructive',
-      });
-      return;
-    }
-    
-    // Enforce lowercase filenames on the client-side
-    const filename = rawFilename.toLowerCase();
-    setValue(`${fieldName}.filename`, filename, { shouldValidate: true });
-
-    setFetchingState(prev => ({ ...prev, [fieldName]: true }));
-    try {
-      const result = await getImageDimensions(filename);
-      if (result.error) {
-        toast({
-          title: 'Error',
-          description: result.error,
-          variant: 'destructive',
-        });
-         setValue(`${fieldName}.width`, undefined);
-         setValue(`${fieldName}.height`, undefined);
-      } else if (result.width && result.height) {
-        setValue(`${fieldName}.width`, result.width);
-        setValue(`${fieldName}.height`, result.height);
-        toast({
-          title: 'Success!',
-          description: `Dimensions set to ${result.width}x${result.height}.`,
-        });
-      }
-    } catch (e) {
-      toast({
-        title: 'Client Error',
-        description: 'An unexpected error occurred.',
-        variant: 'destructive',
-      });
-    } finally {
-      setFetchingState(prev => ({ ...prev, [fieldName]: false }));
-    }
-  };
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px_80px] gap-2 items-center">
       <Input
@@ -166,7 +111,6 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
   const [jsonOutput, setJsonOutput] = useState('');
   const [targetFilename, setTargetFilename] = useState('');
   const { toast } = useToast();
-  const [fetchingState, setFetchingState] = useState<FetchingState>({});
   
   const { control, register, handleSubmit, formState: { errors, isSubmitting }, reset, watch, setValue, getValues } = useForm<ProductFormData>({
     resolver: zodResolver(productFormSchema),
@@ -327,7 +271,10 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
             
             <div>
               <Label htmlFor="mainImage.filename" className="font-semibold">Main Image</Label>
-              <ImageInput fieldName="mainImage" register={register} errors={errors.mainImage} getValues={getValues} setValue={setValue} fetchingState={fetchingState} setFetchingState={setFetchingState} />
+              <p className="text-xs text-muted-foreground mt-1">
+                Enter the filename (e.g. "my-image.png"). Width and Height are now optional.
+              </p>
+              <ImageInput fieldName="mainImage" register={register} errors={errors.mainImage} />
             </div>
 
             <div className="space-y-2">
@@ -335,7 +282,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
                 {[...Array(7)].map((_, index) => (
                   <div key={index}>
-                      <ImageInput fieldName={`thumbnails.${index}`} register={register} errors={errors.thumbnails?.[index]} getValues={getValues} setValue={setValue} fetchingState={fetchingState} setFetchingState={setFetchingState} />
+                      <ImageInput fieldName={`thumbnails.${index}`} register={register} errors={errors.thumbnails?.[index]} />
                   </div>
                 ))}
               </div>
@@ -344,8 +291,8 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
             <div>
               <Label htmlFor="description" className="font-semibold">Product Description</Label>
               <Textarea id="description" {...register('description')} rows={5} className="mt-1" placeholder="Detailed description of the product..."/>
-              <p className="text-xs text-muted-foreground mt-1">
-                Use ## at the start of a line for a title, and # for a list item.
+              <p className="text-sm font-semibold text-muted-foreground mt-2">
+                Formatting: Use `##` at the start of a line for a headline, and `#` for a list item.
               </p>
               {errors.description && <p className="text-sm text-destructive mt-1">{errors.description.message}</p>}
             </div>
