@@ -23,6 +23,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { generateProductJsonString, transformProductToFormData } from '@/lib/product-service';
 import { generateSlug } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import ImageInput from './ImageInput'; // Import the new component
 
 const imageSchema = z.object({
   filename: z.string(),
@@ -88,38 +89,6 @@ const productFormSchema = z.object({
     message: "Enabled download links must have a valid URL.",
     path: ["downloadLink1"], // You can specify a path, but the message is generic enough.
 });
-
-const ImageInput = ({
-  fieldName,
-  register,
-  errors,
-  setValue,
-}: {
-  fieldName: `mainImage` | `thumbnails.${number}`;
-  register: any;
-  errors?: any;
-  setValue: any;
-}) => {
-
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    setValue(fieldName + '.filename', event.target.value.toLowerCase(), { shouldValidate: true });
-  };
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px_80px] gap-2 items-center">
-      <Input
-        {...register(`${fieldName}.filename`)}
-        placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
-        onBlur={handleBlur}
-      />
-      <Input {...register(`${fieldName}.width`)} type="number" placeholder="W" />
-      <Input {...register(`${fieldName}.height`)} type="number" placeholder="H" />
-      {errors?.filename && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.filename.message}</p>}
-      {errors?.width && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.width.message}</p>}
-      {errors?.height && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.height.message}</p>}
-    </div>
-  );
-};
 
 
 export default function ProductForm({ initialData, isEditing = false, preselectedPack }: { initialData?: Product; isEditing?: boolean; preselectedPack?: Pack; }) {
