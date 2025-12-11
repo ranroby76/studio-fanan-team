@@ -52,7 +52,6 @@ export const metadata: Metadata = {
     creator: '@fananteam', // Replace with your actual Twitter handle if you have one
   },
   icons: {
-    icon: '/icon.ico',
     apple: '/icons/icon-192x192.png',
   }
 };
