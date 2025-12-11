@@ -5,10 +5,13 @@ import Script from 'next/script';
 const ProductSchema = ({ product }: { product: Product }) => {
   const SITE_URL = 'https://fananteam.com';
 
-  // Ensure the image URL is absolute for the schema
-  const imageUrl = product.mainImage.url.startsWith('http')
-    ? product.mainImage.url
-    : new URL(product.mainImage.url, SITE_URL).href;
+  // SAFEGUARD as per suggestion: Check if mainImage and url exist before using them.
+  const rawUrl = product?.mainImage?.url;
+  
+  // If no image exists, we won't generate the image part of the schema.
+  const imageUrl = rawUrl
+    ? (rawUrl.startsWith('http') ? rawUrl : new URL(rawUrl, SITE_URL).href)
+    : '';
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -35,6 +38,11 @@ const ProductSchema = ({ product }: { product: Product }) => {
       reviewCount: '1',  // Default to 1 to signify existence
     },
   };
+
+  // Only include the image property if we have a valid URL.
+  if (!imageUrl) {
+    delete (structuredData as any).image;
+  }
 
   return (
     <Script

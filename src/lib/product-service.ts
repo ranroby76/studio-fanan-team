@@ -20,8 +20,10 @@ export const generateSlug = (title: string): string => {
 
 const ensureImagePath = (filename: string) => {
     if (!filename) return '';
-    if (filename.startsWith(IMAGE_PREFIX)) return filename;
-    return `${IMAGE_PREFIX}${filename}`;
+    // Ensure it's just the filename, not a full path
+    const justFilename = filename.split('/').pop() || '';
+    if (justFilename.startsWith(IMAGE_PREFIX)) return justFilename;
+    return `${IMAGE_PREFIX}${justFilename}`;
 };
 
 const stripImagePath = (prefixedUrl: string) => {
