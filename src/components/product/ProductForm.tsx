@@ -32,8 +32,8 @@ const imageSchema = z.object({
 
 const mainImageSchema = imageSchema.extend({
   filename: z.string().min(1, "A main image filename is required"),
-  width: z.coerce.number().min(1, "Width is required"),
-  height: z.coerce.number().min(1, "Height is required"),
+  width: z.coerce.number().optional(),
+  height: z.coerce.number().optional(),
 });
 
 const downloadLinkSchema = z.object({
@@ -125,6 +125,8 @@ const ImageInput = ({
           description: result.error,
           variant: 'destructive',
         });
+         setValue(`${fieldName}.width`, undefined);
+         setValue(`${fieldName}.height`, undefined);
       } else if (result.width && result.height) {
         setValue(`${fieldName}.width`, result.width);
         setValue(`${fieldName}.height`, result.height);
@@ -145,26 +147,16 @@ const ImageInput = ({
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_80px_80px] gap-2 items-center">
+    <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px_80px] gap-2 items-center">
       <Input
         {...register(`${fieldName}.filename`)}
         placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
       />
-      <Button
-        type="button"
-        variant="outline"
-        size="icon"
-        onClick={handleFetchDimensions}
-        disabled={fetchingState[fieldName]}
-        className="h-9 w-9"
-      >
-        {fetchingState[fieldName] ? <Loader2 className="h-4 w-4 animate-spin" /> : <Wand2 className="h-4 w-4" />}
-      </Button>
       <Input {...register(`${fieldName}.width`)} type="number" placeholder="W" />
       <Input {...register(`${fieldName}.height`)} type="number" placeholder="H" />
-      {errors?.filename && <p className="text-sm text-destructive mt-1 sm:col-span-4">{errors.filename.message}</p>}
-      {errors?.width && <p className="text-sm text-destructive mt-1 sm:col-span-4">{errors.width.message}</p>}
-      {errors?.height && <p className="text-sm text-destructive mt-1 sm:col-span-4">{errors.height.message}</p>}
+      {errors?.filename && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.filename.message}</p>}
+      {errors?.width && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.width.message}</p>}
+      {errors?.height && <p className="text-sm text-destructive mt-1 sm:col-span-3">{errors.height.message}</p>}
     </div>
   );
 };
