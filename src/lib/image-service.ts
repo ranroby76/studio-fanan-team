@@ -24,7 +24,9 @@ export const getImageDimensions = async (filename: string): Promise<DimensionRes
     return { error: 'Invalid filename format.' };
   }
   
-  const imagePath = path.join(PUBLIC_DIR, 'images', filename);
+  // Convert filename to lowercase to handle case-insensitivity
+  const lowerCaseFilename = filename.toLowerCase();
+  const imagePath = path.join(PUBLIC_DIR, 'images', lowerCaseFilename);
 
   try {
     // Check if the file exists first
@@ -40,9 +42,10 @@ export const getImageDimensions = async (filename: string): Promise<DimensionRes
     }
   } catch (error: any) {
     if (error.code === 'ENOENT') {
-      return { error: `File not found at: public/images/${filename}` };
+      // Provide a more helpful error message
+      return { error: `File not found. Ensure '${lowerCaseFilename}' exists in 'public/images/' (case-insensitive).` };
     }
-    console.error(`Error processing image ${filename}:`, error);
+    console.error(`Error processing image ${lowerCaseFilename}:`, error);
     return { error: 'An error occurred while reading the image file.' };
   }
 };
