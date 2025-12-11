@@ -28,14 +28,13 @@ const imageSchema = z.object({
   width: z.coerce.number().optional(),
   height: z.coerce.number().optional(),
 }).refine(data => {
-  // If a filename is present, width and height must also be present and greater than 0
   if (data.filename) {
-    return data.width && data.width > 0 && data.height && data.height > 0;
+    return data.width !== undefined && data.width > 0 && data.height !== undefined && data.height > 0;
   }
-  return true; // If no filename, it's valid (empty thumbnail)
+  return true;
 }, {
   message: "Width and Height are required if a filename is provided.",
-  path: ["width"], // Point error to width field
+  path: ["width"],
 });
 
 
@@ -44,6 +43,7 @@ const mainImageSchema = imageSchema.extend({
   width: z.coerce.number().min(1, "Width is required for the main image."),
   height: z.coerce.number().min(1, "Height is required for the main image."),
 });
+
 
 const downloadLinkSchema = z.object({
   enabled: z.boolean(),
@@ -95,16 +95,24 @@ const ImageInput = ({
   fieldName,
   register,
   errors,
+  setValue,
 }: {
   fieldName: `mainImage` | `thumbnails.${number}`;
   register: any;
   errors?: any;
+  setValue: any;
 }) => {
+
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    setValue(fieldName + '.filename', event.target.value.toLowerCase(), { shouldValidate: true });
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px_80px] gap-2 items-center">
       <Input
         {...register(`${fieldName}.filename`)}
         placeholder={fieldName.startsWith('main') ? "main-image.png" : "thumbnail.png"}
+        onBlur={handleBlur}
       />
       <Input {...register(`${fieldName}.width`)} type="number" placeholder="W" />
       <Input {...register(`${fieldName}.height`)} type="number" placeholder="H" />
@@ -281,9 +289,9 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
             <div>
               <Label htmlFor="mainImage.filename" className="font-semibold">Main Image</Label>
               <p className="text-xs text-muted-foreground mt-1">
-                Enter the filename (e.g. "my-image.png"), Width, and Height. These are required.
+                Enter the filename, Width, and Height. Filenames must be lowercase.
               </p>
-              <ImageInput fieldName="mainImage" register={register} errors={errors.mainImage} />
+              <ImageInput fieldName="mainImage" register={register} errors={errors.mainImage} setValue={setValue} />
             </div>
 
             <div className="space-y-2">
@@ -291,7 +299,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
                 {[...Array(7)].map((_, index) => (
                   <div key={index}>
-                      <ImageInput fieldName={`thumbnails.${index}`} register={register} errors={errors.thumbnails?.[index]} />
+                      <ImageInput fieldName={`thumbnails.${index}`} register={register} errors={errors.thumbnails?.[index]} setValue={setValue} />
                   </div>
                 ))}
               </div>
@@ -300,7 +308,7 @@ export default function ProductForm({ initialData, isEditing = false, preselecte
             <div>
               <Label htmlFor="description" className="font-semibold">Product Description</Label>
               <Textarea id="description" {...register('description')} rows={5} className="mt-1" placeholder="Detailed description of the product..."/>
-              <p className="font-bold text-muted-foreground mt-2">
+              <p className="font-bold text-accent mt-2">
                 Formatting: Use `##` for headlines and `#` for list items.
               </p>
               {errors.description && <p className="text-sm text-destructive mt-1">{errors.description.message}</p>}
