@@ -13,16 +13,7 @@ interface PaypalHostedProps {
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "";
 
 export default function PaypalHosted({ hostedButtonId, price }: PaypalHostedProps) {
-  useEffect(() => {
-    // This effect ensures the PayPal button gets re-rendered when the component mounts or props change.
-    // The PayPal SDK script scans the document for elements with the data-hosted-button-id attribute.
-    // @ts-ignore
-    if (window.paypal && typeof window.paypal.HostedButtons === 'function') {
-       // @ts-ignore
-      window.paypal.HostedButtons({ hosted_button_id: hostedButtonId }).render(`#paypal-container-${hostedButtonId}`);
-    }
-  }, [hostedButtonId]);
-
+  
   return (
     <div className="w-full max-w-sm p-6 rounded-lg">
       <Script 
@@ -30,7 +21,7 @@ export default function PaypalHosted({ hostedButtonId, price }: PaypalHostedProp
           strategy="afterInteractive"
           onLoad={() => {
               // @ts-ignore
-              if (window.paypal) {
+              if (window.paypal && typeof window.paypal.HostedButtons === 'function') {
                   // @ts-ignore
                   window.paypal.HostedButtons({ hosted_button_id: hostedButtonId }).render(`#paypal-container-${hostedButtonId}`);
               }
