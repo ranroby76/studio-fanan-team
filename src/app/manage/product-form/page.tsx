@@ -2,13 +2,26 @@
 "use client";
 
 import { Suspense } from 'react';
-import ProductForm from '@/components/product/ProductForm';
+// import ProductForm from '@/components/product/ProductForm'; // REMOVED standard import
 import { getProductById } from '@/lib/product-service-server';
 import type { Pack, Product } from '@/lib/types';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Loader2, AlertTriangle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import dynamic from 'next/dynamic';
+
+// Dynamically import ProductForm with SSR turned off
+const ProductForm = dynamic(() => import('@/components/product/ProductForm'), {
+    ssr: false,
+    loading: () => (
+        <div className="flex flex-col items-center justify-center min-h-[400px]">
+            <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
+            <p className="text-lg text-muted-foreground">Loading Form...</p>
+        </div>
+    ),
+});
+
 
 function ProductFormLoader() {
     const searchParams = useSearchParams();
