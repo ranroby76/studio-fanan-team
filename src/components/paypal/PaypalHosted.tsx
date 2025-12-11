@@ -9,7 +9,7 @@ interface PaypalHostedProps {
   price: string;
 }
 
-const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "YOUR_CLIENT_ID_HERE";
+const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "";
 
 export default function PaypalHosted({ hostedButtonId, price }: PaypalHostedProps) {
   useEffect(() => {
@@ -38,9 +38,21 @@ export default function PaypalHosted({ hostedButtonId, price }: PaypalHostedProp
       <h2 className="text-5xl font-bold text-center mb-4 text-primary">{price}</h2>
       <div id={`paypal-container-${hostedButtonId}`} className="w-full flex justify-center"></div>
       <div className="mt-4 w-full p-2 bg-muted border border-border rounded-md text-center">
+          <label htmlFor={`machineId-${hostedButtonId}`} className="text-sm mb-2 text-black dark:text-yellow-300 block">Enter Your Machine ID</label>
+          <Input
+            id={`machineId-${hostedButtonId}`}
+            type="text"
+            placeholder="Your unique machine ID..."
+            className="text-center bg-background"
+          />
+          <div className="text-xs text-muted-foreground mt-1">
+              Find this in the plugin's "REGISTER" window.
+          </div>
+      </div>
+      <div className="mt-2 w-full p-2 bg-muted border border-border rounded-md text-center">
           <div className="text-sm mb-2 text-black dark:text-yellow-300">Serial Number</div>
           <div className="font-bold text-green-600 text-lg min-h-[28px] flex items-center justify-center">
-              <span className="text-muted-foreground/80 italic text-sm">The serial will be sent to your email after purchase</span>
+              <span className="text-muted-foreground/80 italic text-sm">Your serial will be sent to your email</span>
           </div>
       </div>
     </div>
