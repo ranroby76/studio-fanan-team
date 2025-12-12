@@ -1,7 +1,7 @@
 // src/components/paypal/PaypalHosted.tsx
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import { Input } from "@/components/ui/input";
 
@@ -13,50 +13,55 @@ interface PaypalHostedProps {
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "";
 
 export default function PaypalHosted({ hostedButtonId, price }: PaypalHostedProps) {
-  // Use a ref to prevent double-rendering in React 18 strict mode
-  const rendered = useRef(false);
+  const [isSdkReady, setIsSdkReady] = useState(false);
+  const renderAttempted = useRef(false);
 
+  // 1. Reset logic when the Button ID changes (User navigates to new product)
   useEffect(() => {
-    // 1. Check if the SDK is already loaded on the window object
-    // @ts-ignore
-    if (window.paypal && window.paypal.HostedButtons && !rendered.current) {
-        renderButton();
-    }
-  }); // Run on every render check, handled by the ref check inside
-
-  const renderButton = () => {
-    const containerId = `#paypal-container-${hostedButtonId}`;
-    const container = document.querySelector(containerId);
+    renderAttempted.current = false; // Allow rendering again
+    const container = document.querySelector(`#paypal-container-${hostedButtonId}`);
+    if (container) container.innerHTML = ""; // Clean up old button
     
-    // Only render if container is empty to avoid duplicate buttons
-    if (container && container.childElementCount === 0) {
-      try {
-        // @ts-ignore
-        window.paypal.HostedButtons({ 
-            hosted_button_id: hostedButtonId 
-        }).render(containerId);
-        rendered.current = true;
-      } catch (err) {
-        console.error("PayPal Render Error:", err);
-      }
+    // If SDK is already there (from previous page visit), trigger render immediately
+    // @ts-ignore
+    if (window.paypal && window.paypal.HostedButtons) {
+        setIsSdkReady(true);
     }
-  };
+  }, [hostedButtonId]);
+
+  // 2. The Render Logic
+  useEffect(() => {
+    if (isSdkReady && !renderAttempted.current) {
+        const containerId = `#paypal-container-${hostedButtonId}`;
+        const container = document.querySelector(containerId);
+
+        if (container && container.childElementCount === 0) {
+            try {
+                // @ts-ignore
+                window.paypal.HostedButtons({
+                    hosted_button_id: hostedButtonId
+                }).render(containerId);
+                renderAttempted.current = true; // Mark as done for this ID
+            } catch (err) {
+                console.error("PayPal Render Error:", err);
+            }
+        }
+    }
+  }, [isSdkReady, hostedButtonId]);
 
   return (
     <div className="w-full max-w-sm p-6 rounded-lg">
       <Script 
           src={`https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&components=hosted-buttons&disable-funding=venmo&currency=USD`}
-          strategy="lazyOnload" // Changed to lazyOnload for better performance
-          onLoad={() => {
-              // This handles the very first load of the script
-              renderButton();
-          }}
+          strategy="afterInteractive" // Load sooner than lazyOnload
+          onLoad={() => setIsSdkReady(true)}
       />
       
       <h2 className="text-5xl font-bold text-center mb-4 text-primary">{price}</h2>
       
-      {/* Container needs a min-height to prevent layout shift */}
+      {/* Container with key ensures React re-creates div if ID changes */}
       <div 
+        key={hostedButtonId} 
         id={`paypal-container-${hostedButtonId}`} 
         className="w-full flex justify-center min-h-[50px] z-0 relative"
       ></div>
