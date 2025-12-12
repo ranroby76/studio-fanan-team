@@ -129,7 +129,7 @@ export default function PaypalButton({ price }: PaypalButtonProps) {
   }
 
   return (
-    <PayPalScriptProvider options={{ "client-id": PAYPAL_CLIENT_ID, currency: "USD" }}>
+    <PayPalScriptProvider options={{ "client-id": PAYPAL_CLIENT_ID, currency: "USD", "buyer-country": " " }}>
       <div className="w-full max-w-sm flex flex-col items-center gap-4">
         <div className="text-5xl font-bold text-center mb-4 text-primary">${price}</div>
         
