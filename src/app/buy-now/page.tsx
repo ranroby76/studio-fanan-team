@@ -51,7 +51,7 @@ export default function BuyNowPage() {
                         data-ai-hint="synthesizer abstract"
                     />
                 </div>
-                <PaypalButton hostedButtonId="6QCF2G32QQMGE" price="$22.00" />
+                <PaypalButton hostedButtonId="6QCF2G32QQMGE" price="22.00" />
             </div>
             
             <Separator orientation="vertical" className="absolute left-1/2 top-0 h-full -translate-x-1/2 hidden md:block" />
@@ -67,7 +67,7 @@ export default function BuyNowPage() {
                         data-ai-hint="professional audio"
                     />
                 </div>
-                <PaypalButton hostedButtonId="S68QVFV9UUEZG" price="$12.00" />
+                <PaypalButton hostedButtonId="S68QVFV9UUEZG" price="12.00" />
             </div>
         </div>
 

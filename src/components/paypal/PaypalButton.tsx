@@ -29,8 +29,7 @@ export default function PaypalButton({ hostedButtonId, price }: PaypalButtonProp
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          price: price.replace('$', ''),
-          // You can add more product details here if needed
+          price: price, // Pass the price directly
         }),
       });
       const order = await response.json();
@@ -100,7 +99,7 @@ export default function PaypalButton({ hostedButtonId, price }: PaypalButtonProp
   return (
     <PayPalScriptProvider options={{ "client-id": PAYPAL_CLIENT_ID, currency: "USD", components: "buttons" }}>
       <div className="w-full max-w-sm flex flex-col items-center gap-4">
-        <div className="text-5xl font-bold text-center mb-4 text-primary">{price}</div>
+        <div className="text-5xl font-bold text-center mb-4 text-primary">${price}</div>
         
         <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
             <label 
