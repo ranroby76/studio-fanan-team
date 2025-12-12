@@ -6,9 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HelpCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 
-const PaypalButton = ({ hostedButtonId }: { hostedButtonId: string }) => {
+const PaypalButton = ({ hostedButtonId, disabled }: { hostedButtonId: string, disabled: boolean }) => {
   const formAction = `https://www.paypal.com/ncp/payment/${hostedButtonId}`;
   
   const buttonStyle = {
@@ -19,12 +20,12 @@ const PaypalButton = ({ hostedButtonId }: { hostedButtonId: string }) => {
     padding: '0 2rem',
     height: '2.625rem',
     fontWeight: 'bold',
-    backgroundColor: '#FFD140',
+    backgroundColor: disabled ? '#A9A9A9' : '#FFD140', // Gray when disabled
     color: '#000000',
     fontFamily: '"Helvetica Neue", Arial, sans-serif',
     fontSize: '1rem',
     lineHeight: '1.25rem',
-    cursor: 'pointer',
+    cursor: disabled ? 'not-allowed' : 'pointer',
   } as const;
 
   const formStyle = {
@@ -37,7 +38,7 @@ const PaypalButton = ({ hostedButtonId }: { hostedButtonId: string }) => {
   return (
     <div>
       <form action={formAction} method="post" target="_blank" style={formStyle}>
-        <input style={buttonStyle} type="submit" value="Buy Now" />
+        <input style={buttonStyle} type="submit" value="Buy Now" disabled={disabled} />
         <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
         <section style={{ fontSize: '0.75rem' }}>
           Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style={{ height: '0.875rem', verticalAlign: 'middle' }} />
@@ -49,6 +50,12 @@ const PaypalButton = ({ hostedButtonId }: { hostedButtonId: string }) => {
 
 
 export default function BuyNowPage() {
+  const [machineId1, setMachineId1] = useState('');
+  const [machineId2, setMachineId2] = useState('');
+
+  const isButton1Disabled = machineId1.length < 4;
+  const isButton2Disabled = machineId2.length < 4;
+
   return (
     <div className="container mx-auto px-4 flex justify-center items-center">
       <div className="relative w-full max-w-5xl bg-muted/50 p-4 rounded-xl shadow-inner">
@@ -96,10 +103,17 @@ export default function BuyNowPage() {
                 <div className="text-5xl font-bold text-center mb-4 text-primary">$22</div>
                 <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
                     <label htmlFor="machineId-1" className="text-sm mb-2 text-black dark:text-yellow-300 block">Enter Your Machine ID</label>
-                    <Input id="machineId-1" type="text" placeholder="Your unique machine ID..." className="text-center bg-background" />
+                    <Input 
+                      id="machineId-1" 
+                      type="text" 
+                      placeholder="Your unique machine ID..." 
+                      className="text-center bg-background"
+                      value={machineId1}
+                      onChange={(e) => setMachineId1(e.target.value)}
+                    />
                     <div className="text-xs text-muted-foreground mt-1">Find this in the plugin's "REGISTER" window.</div>
                 </div>
-                <PaypalButton hostedButtonId="6QCF2G32QQMGE" />
+                <PaypalButton hostedButtonId="6QCF2G32QQMGE" disabled={isButton1Disabled} />
                 <div className="mt-2 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
                     <div className="text-sm mb-2 text-black dark:text-yellow-300">Serial Number</div>
                     <div className="font-bold text-green-600 text-lg min-h-[28px] flex items-center justify-center">
@@ -124,10 +138,17 @@ export default function BuyNowPage() {
                 <div className="text-5xl font-bold text-center mb-4 text-primary">$12</div>
                  <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
                     <label htmlFor="machineId-2" className="text-sm mb-2 text-black dark:text-yellow-300 block">Enter Your Machine ID</label>
-                    <Input id="machineId-2" type="text" placeholder="Your unique machine ID..." className="text-center bg-background" />
+                    <Input 
+                      id="machineId-2" 
+                      type="text" 
+                      placeholder="Your unique machine ID..." 
+                      className="text-center bg-background"
+                      value={machineId2}
+                      onChange={(e) => setMachineId2(e.target.value)}
+                    />
                     <div className="text-xs text-muted-foreground mt-1">Find this in the plugin's "REGISTER" window.</div>
                 </div>
-                <PaypalButton hostedButtonId="S68QVFV9UUEZG" />
+                <PaypalButton hostedButtonId="S68QVFV9UUEZG" disabled={isButton2Disabled} />
                  <div className="mt-2 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
                     <div className="text-sm mb-2 text-black dark:text-yellow-300">Serial Number</div>
                     <div className="font-bold text-green-600 text-lg min-h-[28px] flex items-center justify-center">
