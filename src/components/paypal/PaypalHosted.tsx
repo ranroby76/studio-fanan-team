@@ -63,7 +63,7 @@ export default function PaypalHosted({ hostedButtonId, price }: PaypalHostedProp
       <div 
         key={hostedButtonId} 
         id={`paypal-container-${hostedButtonId}`} 
-        className="w-full flex justify-center min-h-[50px] z-0 relative"
+        className="w-full flex justify-center min-h-[50px] z-10 relative"
       ></div>
 
       <div className="mt-4 w-full p-2 bg-muted border border-border rounded-md text-center">
