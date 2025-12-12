@@ -48,7 +48,10 @@ export default function PaypalButton({ price, hostedButtonId }: PaypalButtonProp
                 value: price
             },
             custom_id: machineId
-        }]
+        }],
+        application_context: {
+            shipping_preference: 'NO_SHIPPING'
+        }
     });
   };
 
