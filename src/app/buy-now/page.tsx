@@ -117,7 +117,12 @@ export default function BuyNowPage() {
                       value={machineId1}
                       onChange={(e) => setMachineId1(e.target.value)}
                     />
-                    <div className="text-xs text-muted-foreground mt-1">Find this in the plugin's "REGISTER" window.</div>
+                    <div 
+                      className="text-xs text-white mt-2 font-semibold"
+                      style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.8)' }}
+                    >
+                        Find this in the plugin's "REGISTER" window.
+                    </div>
                 </div>
                 <PaypalButton hostedButtonId="6QCF2G32QQMGE" disabled={isButton1Disabled} />
                 <div className="mt-2 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
@@ -157,7 +162,12 @@ export default function BuyNowPage() {
                       value={machineId2}
                       onChange={(e) => setMachineId2(e.target.value)}
                     />
-                    <div className="text-xs text-muted-foreground mt-1">Find this in the plugin's "REGISTER" window.</div>
+                    <div 
+                      className="text-xs text-white mt-2 font-semibold"
+                      style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.8)' }}
+                    >
+                        Find this in the plugin's "REGISTER" window.
+                    </div>
                 </div>
                 <PaypalButton hostedButtonId="S68QVFV9UUEZG" disabled={isButton2Disabled} />
                  <div className="mt-2 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
