@@ -24,6 +24,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  // Await params before accessing slug
   const slug = params.slug;
   const product = await getProductBySlug(slug);
  
@@ -48,6 +49,7 @@ export async function generateMetadata(
 
 // This is the main Server Component for the page.
 export default async function ProductPage({ params }: Props) {
+  // Await params before accessing slug
   const product = await getProductBySlug(params.slug);
 
   if (!product) {
