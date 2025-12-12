@@ -67,7 +67,7 @@ export default function BuyNowPage() {
                         data-ai-hint="professional audio"
                     />
                 </div>
-                <PaypalButton hostedButtonId="pro-pack" price="0.20" />
+                <PaypalButton hostedButtonId="pro-pack" price="12.00" />
             </div>
         </div>
 
