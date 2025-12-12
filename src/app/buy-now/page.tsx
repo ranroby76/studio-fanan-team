@@ -71,8 +71,10 @@ export default function BuyNowPage() {
             </div>
         </div>
 
-        <div className="mt-8">
-            {/* The Purchasing Instructions card is now part of the how-to-buy page, keeping this page clean. */}
+        <div className="mt-8 text-center text-muted-foreground p-4 bg-background/50 rounded-lg">
+            <p>
+                Don't know what to do? Read the <a href="/how-to-buy" className="font-semibold text-primary hover:underline">purchasing instructions</a> page.
+            </p>
         </div>
       </div>
     </div>

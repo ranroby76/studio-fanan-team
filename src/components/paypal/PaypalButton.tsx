@@ -145,7 +145,7 @@ export default function PaypalButton({ price, hostedButtonId }: PaypalButtonProp
             <Input 
               id={`machineId-${hostedButtonId}`}
               type="text" 
-              placeholder="Your unique machine ID..." 
+              placeholder="enter your id here" 
               className="text-center bg-background"
               value={machineId}
               onChange={(e) => setMachineId(e.target.value)}
