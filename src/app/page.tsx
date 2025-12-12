@@ -122,7 +122,7 @@ export default function HomePage() {
                     alt="Mad MIDI Machines Pack"
                     width={700}
                     height={104}
-                    className="h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="h-auto w-full max-w-[700px] rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="synthesizer abstract"
                 />
             </Link>
@@ -132,7 +132,7 @@ export default function HomePage() {
                     alt="Max! Pack"
                     width={700}
                     height={142}
-                    className="w-full h-auto rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="w-full h-auto max-w-[700px] rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="professional audio"
                 />
             </Link>
@@ -142,7 +142,7 @@ export default function HomePage() {
                     alt="Free Pack"
                     width={560}
                     height={114}
-                    className="h-auto w-full rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="h-auto w-full max-w-[560px] rounded-lg shadow-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     data-ai-hint="gift box"
                 />
             </Link>

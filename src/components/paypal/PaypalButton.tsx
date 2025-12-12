@@ -1,7 +1,7 @@
 // src/components/paypal/PaypalButton.tsx
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
