@@ -10,7 +10,6 @@ import emailjs from '@emailjs/browser';
 
 interface PaypalButtonProps {
   price: string;
-  hostedButtonId: string;
 }
 
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "";
@@ -19,7 +18,7 @@ const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
 const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
 
 
-export default function PaypalButton({ price, hostedButtonId }: PaypalButtonProps) {
+export default function PaypalButton({ price }: PaypalButtonProps) {
   const [machineId, setMachineId] = useState('');
   const [serialNumber, setSerialNumber] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -134,13 +133,13 @@ export default function PaypalButton({ price, hostedButtonId }: PaypalButtonProp
         
         <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
             <label 
-              htmlFor={`machineId-${hostedButtonId}`}
+              htmlFor={`machineId-${price}`}
               className={`mb-2 block transition-all duration-300 ${isButtonDisabled && !serialNumber ? 'blinking-text font-bold text-lg text-red-500 dark:text-red-400' : 'text-sm text-black dark:text-yellow-300'}`}
             >
               ENTER YOUR ID HERE FIRST!
             </label>
             <Input 
-              id={`machineId-${hostedButtonId}`}
+              id={`machineId-${price}`}
               type="text" 
               placeholder="Your unique machine ID..." 
               className="text-center bg-background"
@@ -165,12 +164,13 @@ export default function PaypalButton({ price, hostedButtonId }: PaypalButtonProp
           )}
           {!serialNumber && (
             <PayPalButtons
+              key={machineId}
               style={{ layout: "vertical", color: "gold", shape: "rect", label: "buynow" }}
               disabled={isButtonDisabled}
               createOrder={createOrder}
               onApprove={onApprove}
               onError={onError}
-              forceReRender={[machineId, isButtonDisabled]}
+              forceReRender={[machineId, price]}
             />
           )}
         </div>
