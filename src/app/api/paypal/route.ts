@@ -23,6 +23,7 @@ const generateAccessToken = async () => {
     body: 'grant_type=client_credentials',
     headers: {
       Authorization: `Basic ${auth}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
   });
 
