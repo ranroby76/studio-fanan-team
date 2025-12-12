@@ -5,11 +5,50 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HelpCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import PaypalHosted from "@/components/paypal/PaypalHosted";
+import { Input } from "@/components/ui/input";
+
+
+const PaypalButton = ({ hostedButtonId }: { hostedButtonId: string }) => {
+  const formAction = `https://www.paypal.com/ncp/payment/${hostedButtonId}`;
+  
+  const buttonStyle = {
+    textAlign: 'center',
+    border: 'none',
+    borderRadius: '0.25rem',
+    minWidth: '11.625rem',
+    padding: '0 2rem',
+    height: '2.625rem',
+    fontWeight: 'bold',
+    backgroundColor: '#FFD140',
+    color: '#000000',
+    fontFamily: '"Helvetica Neue", Arial, sans-serif',
+    fontSize: '1rem',
+    lineHeight: '1.25rem',
+    cursor: 'pointer',
+  } as const;
+
+  const formStyle = {
+    display: 'inline-grid',
+    justifyItems: 'center',
+    alignContent: 'start',
+    gap: '0.5rem',
+  } as const;
+
+  return (
+    <div>
+      <form action={formAction} method="post" target="_blank" style={formStyle}>
+        <input style={buttonStyle} type="submit" value="Buy Now" />
+        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+        <section style={{ fontSize: '0.75rem' }}>
+          Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style={{ height: '0.875rem', verticalAlign: 'middle' }} />
+        </section>
+      </form>
+    </div>
+  );
+};
+
 
 export default function BuyNowPage() {
-  // A5 dimensions: 1472x832 -> aspect-ratio: 1.768
-  // A6 dimensions: 1015x234 -> aspect-ratio: 4.337
   return (
     <div className="container mx-auto px-4 flex justify-center items-center">
       <div className="relative w-full max-w-5xl bg-muted/50 p-4 rounded-xl shadow-inner">
@@ -43,8 +82,8 @@ export default function BuyNowPage() {
         <Separator className="my-6" />
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <div className="flex flex-col items-center">
-                <div className="mb-4 flex items-center justify-center h-[60px]">
+            <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center justify-center h-[60px]">
                     <Image
                         src="/images/mad midi machines.png"
                         alt="Mad MIDI Machines Pack"
@@ -54,13 +93,25 @@ export default function BuyNowPage() {
                         data-ai-hint="synthesizer abstract"
                     />
                 </div>
-                 <PaypalHosted hostedButtonId="6QCF2G32QQMGE" price="$22" />
+                <div className="text-5xl font-bold text-center mb-4 text-primary">$22</div>
+                <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
+                    <label htmlFor="machineId-1" className="text-sm mb-2 text-black dark:text-yellow-300 block">Enter Your Machine ID</label>
+                    <Input id="machineId-1" type="text" placeholder="Your unique machine ID..." className="text-center bg-background" />
+                    <div className="text-xs text-muted-foreground mt-1">Find this in the plugin's "REGISTER" window.</div>
+                </div>
+                <PaypalButton hostedButtonId="6QCF2G32QQMGE" />
+                <div className="mt-2 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
+                    <div className="text-sm mb-2 text-black dark:text-yellow-300">Serial Number</div>
+                    <div className="font-bold text-green-600 text-lg min-h-[28px] flex items-center justify-center">
+                        <span className="text-muted-foreground/80 italic text-sm">Your serial will be sent to your email</span>
+                    </div>
+                </div>
             </div>
             
             <Separator orientation="vertical" className="absolute left-1/2 top-0 h-full -translate-x-1/2 hidden md:block" />
 
-            <div className="flex flex-col items-center">
-                <div className="mb-4 flex items-center justify-center h-[60px]">
+            <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center justify-center h-[60px]">
                     <Image
                         src="/images/pro pack.png"
                         alt="Pro Pack"
@@ -70,7 +121,19 @@ export default function BuyNowPage() {
                         data-ai-hint="professional audio"
                     />
                 </div>
-                <PaypalHosted hostedButtonId="6QCF2G32QQMGE" price="$12" />
+                <div className="text-5xl font-bold text-center mb-4 text-primary">$12</div>
+                 <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
+                    <label htmlFor="machineId-2" className="text-sm mb-2 text-black dark:text-yellow-300 block">Enter Your Machine ID</label>
+                    <Input id="machineId-2" type="text" placeholder="Your unique machine ID..." className="text-center bg-background" />
+                    <div className="text-xs text-muted-foreground mt-1">Find this in the plugin's "REGISTER" window.</div>
+                </div>
+                <PaypalButton hostedButtonId="S68QVFV9UUEZG" />
+                 <div className="mt-2 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
+                    <div className="text-sm mb-2 text-black dark:text-yellow-300">Serial Number</div>
+                    <div className="font-bold text-green-600 text-lg min-h-[28px] flex items-center justify-center">
+                        <span className="text-muted-foreground/80 italic text-sm">Your serial will be sent to your email</span>
+                    </div>
+                </div>
             </div>
         </div>
 
