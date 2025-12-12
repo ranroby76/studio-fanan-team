@@ -115,4 +115,13 @@
     white-space: nowrap;
     border-width: 0;
   }
+  
+  @keyframes blink-animation {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  .blinking-text {
+    animation: blink-animation 1.5s infinite;
+  }
 }

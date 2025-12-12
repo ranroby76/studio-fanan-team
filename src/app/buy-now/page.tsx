@@ -26,6 +26,7 @@ const PaypalButton = ({ hostedButtonId, disabled }: { hostedButtonId: string, di
     fontSize: '1rem',
     lineHeight: '1.25rem',
     cursor: disabled ? 'not-allowed' : 'pointer',
+    transition: 'background-color 0.3s ease',
   } as const;
 
   const formStyle = {
@@ -102,7 +103,12 @@ export default function BuyNowPage() {
                 </div>
                 <div className="text-5xl font-bold text-center mb-4 text-primary">$22</div>
                 <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
-                    <label htmlFor="machineId-1" className="text-sm mb-2 text-black dark:text-yellow-300 block">Enter Your Machine ID</label>
+                    <label 
+                      htmlFor="machineId-1" 
+                      className={`mb-2 block transition-all duration-300 ${isButton1Disabled ? 'blinking-text font-bold text-lg text-red-500 dark:text-red-400' : 'text-sm text-black dark:text-yellow-300'}`}
+                    >
+                      ENTER YOUR ID HERE FIRST!
+                    </label>
                     <Input 
                       id="machineId-1" 
                       type="text" 
@@ -137,7 +143,12 @@ export default function BuyNowPage() {
                 </div>
                 <div className="text-5xl font-bold text-center mb-4 text-primary">$12</div>
                  <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
-                    <label htmlFor="machineId-2" className="text-sm mb-2 text-black dark:text-yellow-300 block">Enter Your Machine ID</label>
+                    <label 
+                      htmlFor="machineId-2" 
+                       className={`mb-2 block transition-all duration-300 ${isButton2Disabled ? 'blinking-text font-bold text-lg text-red-500 dark:text-red-400' : 'text-sm text-black dark:text-yellow-300'}`}
+                    >
+                      ENTER YOUR ID HERE FIRST!
+                    </label>
                     <Input 
                       id="machineId-2" 
                       type="text" 
