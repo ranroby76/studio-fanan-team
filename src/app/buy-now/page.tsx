@@ -51,7 +51,7 @@ export default function BuyNowPage() {
                         data-ai-hint="synthesizer abstract"
                     />
                 </div>
-                <PaypalButton hostedButtonId="mad-midi-pack" price="22.00" />
+                <PaypalButton hostedButtonId="mad-midi-pack" price="0.20" />
             </div>
             
             <Separator orientation="vertical" className="absolute left-1/2 top-0 h-full -translate-x-1/2 hidden md:block" />
