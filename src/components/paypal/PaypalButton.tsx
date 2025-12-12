@@ -1,86 +1,114 @@
 // src/components/paypal/PaypalButton.tsx
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 interface PaypalButtonProps {
-  hostedButtonId: string;
   price: string;
+  hostedButtonId: string;
 }
 
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "";
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
 
-export default function PaypalButton({ hostedButtonId, price }: PaypalButtonProps) {
+
+export default function PaypalButton({ price, hostedButtonId }: PaypalButtonProps) {
   const [machineId, setMachineId] = useState('');
   const [serialNumber, setSerialNumber] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
-
-  const isButtonDisabled = machineId.length < 4 || isLoading || serialNumber !== '';
-
-  const createOrder = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/paypal', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          price: price, // Pass the price directly
-        }),
-      });
-      const order = await response.json();
-      if (order.id) {
-        return order.id;
-      } else {
-        throw new Error(order.error || 'Failed to create order.');
-      }
-    } catch (err: any) {
-      toast({
-        title: 'Order Creation Failed',
-        description: err.message,
-        variant: 'destructive',
-      });
-      setIsLoading(false);
-      return null;
+  
+  useEffect(() => {
+    if (EMAILJS_PUBLIC_KEY) {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
     }
+  }, []);
+
+  const isButtonDisabled = machineId.length < 4 || isProcessing || serialNumber !== '';
+  
+  const createOrder = (data: any, actions: any) => {
+    if (!machineId) {
+        toast({
+            title: "Machine ID is missing",
+            description: "Please enter your Machine ID before proceeding.",
+            variant: "destructive"
+        });
+        return actions.reject();
+    }
+    return actions.order.create({
+        purchase_units: [{
+            amount: {
+                value: price
+            },
+            custom_id: machineId
+        }]
+    });
   };
 
-  const onApprove = async (data: any) => {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/paypal', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          orderID: data.orderID,
-          machineId: machineId, // Pass the machine ID to the backend
-        }),
-      });
-      const details = await response.json();
-      if (details.error) {
-        throw new Error(details.error);
-      }
-      
-      // The backend returns the generated serial number upon successful capture
-      setSerialNumber(details.serialNumber);
-      
-      toast({
-        title: 'Payment Successful!',
-        description: 'Your serial number has been generated.',
-      });
-    } catch (err: any) {
-      toast({
-        title: 'Payment Capture Failed',
-        description: err.message,
-        variant: 'destructive',
-      });
-    } finally {
-      setIsLoading(false);
-    }
+  const onApprove = (data: any, actions: any) => {
+    setIsProcessing(true);
+    return actions.order.capture().then(function(details: any) {
+        const customId = details.purchase_units[0].custom_id;
+        const generatedSerial = Math.floor(((((((parseInt(customId) + 8354) * 2) + 1691) * 2) - 9097) * 0.1));
+        const finalSerialNumber = String(generatedSerial);
+
+        setSerialNumber(finalSerialNumber);
+        
+        toast({
+            title: 'Payment Successful!',
+            description: 'Your serial number has been generated and sent to your email.',
+        });
+
+        const customerEmail = details.payer.email_address;
+        const customerName = details.payer.name.given_name;
+
+        const templateParams = {
+            to_email: customerEmail,
+            to_name: customerName,
+            serial_number: finalSerialNumber,
+            amount: details.purchase_units[0].amount.value,
+            item_name: `Fanan Team Product (Price: $${price})`
+        };
+        
+        if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID) {
+          emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+              .then(
+                  function(response) {
+                      console.log("Email SUCCESS:", response);
+                  },
+                  function(error) {
+                      console.log("Email FAILED:", error);
+                       toast({
+                          title: 'Email Failed',
+                          description: 'Could not send serial number email. Please contact support.',
+                          variant: 'destructive',
+                      });
+                  }
+              );
+        } else {
+             console.error("EmailJS credentials not configured.");
+             toast({
+                title: 'Email Not Sent',
+                description: 'EmailJS is not configured. Please contact support for your serial number.',
+                variant: 'destructive',
+            });
+        }
+        setIsProcessing(false);
+    }).catch((err: any) => {
+        toast({
+            title: 'Payment Capture Failed',
+            description: 'There was an issue finalizing your payment. Please try again or contact support.',
+            variant: 'destructive',
+        });
+        setIsProcessing(false);
+    });
   };
 
   const onError = (err: any) => {
@@ -89,7 +117,7 @@ export default function PaypalButton({ hostedButtonId, price }: PaypalButtonProp
         description: 'An error occurred with the PayPal transaction. Please try again.',
         variant: 'destructive',
       });
-      setIsLoading(false);
+      setIsProcessing(false);
   }
 
   if (!PAYPAL_CLIENT_ID) {
@@ -97,7 +125,7 @@ export default function PaypalButton({ hostedButtonId, price }: PaypalButtonProp
   }
 
   return (
-    <PayPalScriptProvider options={{ "client-id": PAYPAL_CLIENT_ID, currency: "USD", components: "buttons" }}>
+    <PayPalScriptProvider options={{ "client-id": PAYPAL_CLIENT_ID, currency: "USD" }}>
       <div className="w-full max-w-sm flex flex-col items-center gap-4">
         <div className="text-5xl font-bold text-center mb-4 text-primary">${price}</div>
         
@@ -115,7 +143,7 @@ export default function PaypalButton({ hostedButtonId, price }: PaypalButtonProp
               className="text-center bg-background"
               value={machineId}
               onChange={(e) => setMachineId(e.target.value)}
-              disabled={isLoading || serialNumber !== ''}
+              disabled={isProcessing || serialNumber !== ''}
             />
             <div 
               className="text-xs text-white mt-2 font-semibold"
@@ -126,7 +154,7 @@ export default function PaypalButton({ hostedButtonId, price }: PaypalButtonProp
         </div>
 
         <div className="relative w-full min-h-[50px]">
-          {isLoading && (
+          {isProcessing && (
             <div className="absolute inset-0 flex items-center justify-center z-10 bg-background/50 backdrop-blur-sm rounded-md">
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
               <span className="ml-2">Processing...</span>
