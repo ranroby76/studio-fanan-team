@@ -2,61 +2,11 @@
 "use client";
 
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { HelpCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
-
-
-const PaypalButton = ({ hostedButtonId, disabled }: { hostedButtonId: string, disabled: boolean }) => {
-  const formAction = `https://www.paypal.com/ncp/payment/${hostedButtonId}`;
-  
-  const buttonStyle = {
-    textAlign: 'center',
-    border: 'none',
-    borderRadius: '0.25rem',
-    minWidth: '11.625rem',
-    padding: '0 2rem',
-    height: '2.625rem',
-    fontWeight: 'bold',
-    backgroundColor: disabled ? '#A9A9A9' : '#FFD140', // Gray when disabled
-    color: '#000000',
-    fontFamily: '"Helvetica Neue", Arial, sans-serif',
-    fontSize: '1rem',
-    lineHeight: '1.25rem',
-    cursor: disabled ? 'not-allowed' : 'pointer',
-    transition: 'background-color 0.3s ease',
-  } as const;
-
-  const formStyle = {
-    display: 'inline-grid',
-    justifyItems: 'center',
-    alignContent: 'start',
-    gap: '0.5rem',
-  } as const;
-
-  return (
-    <div>
-      <form action={formAction} method="post" target="_blank" style={formStyle}>
-        <input style={buttonStyle} type="submit" value="Buy Now" disabled={disabled} />
-        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-        <section style={{ fontSize: '0.75rem' }}>
-          Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style={{ height: '0.875rem', verticalAlign: 'middle' }} />
-        </section>
-      </form>
-    </div>
-  );
-};
+import PaypalButton from "@/components/paypal/PaypalButton";
 
 
 export default function BuyNowPage() {
-  const [machineId1, setMachineId1] = useState('');
-  const [machineId2, setMachineId2] = useState('');
-
-  const isButton1Disabled = machineId1.length < 4;
-  const isButton2Disabled = machineId2.length < 4;
-
   return (
     <div className="container mx-auto px-4 flex justify-center items-center">
       <div className="relative w-full max-w-5xl bg-muted/50 p-4 rounded-xl shadow-inner">
@@ -101,36 +51,7 @@ export default function BuyNowPage() {
                         data-ai-hint="synthesizer abstract"
                     />
                 </div>
-                <div className="text-5xl font-bold text-center mb-4 text-primary">$22</div>
-                <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
-                    <label 
-                      htmlFor="machineId-1" 
-                      className={`mb-2 block transition-all duration-300 ${isButton1Disabled ? 'blinking-text font-bold text-lg text-red-500 dark:text-red-400' : 'text-sm text-black dark:text-yellow-300'}`}
-                    >
-                      ENTER YOUR ID HERE FIRST!
-                    </label>
-                    <Input 
-                      id="machineId-1" 
-                      type="text" 
-                      placeholder="Your unique machine ID..." 
-                      className="text-center bg-background"
-                      value={machineId1}
-                      onChange={(e) => setMachineId1(e.target.value)}
-                    />
-                    <div 
-                      className="text-xs text-white mt-2 font-semibold"
-                      style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.8)' }}
-                    >
-                        Find this in the plugin's "REGISTER" window.
-                    </div>
-                </div>
-                <PaypalButton hostedButtonId="6QCF2G32QQMGE" disabled={isButton1Disabled} />
-                <div className="mt-2 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
-                    <div className="text-sm mb-2 text-black dark:text-yellow-300">Serial Number</div>
-                    <div className="font-bold text-green-600 text-lg min-h-[28px] flex items-center justify-center">
-                        <span className="text-muted-foreground/80 italic text-sm">Your serial will be sent to your email</span>
-                    </div>
-                </div>
+                <PaypalButton hostedButtonId="6QCF2G32QQMGE" price="$22.00" />
             </div>
             
             <Separator orientation="vertical" className="absolute left-1/2 top-0 h-full -translate-x-1/2 hidden md:block" />
@@ -146,64 +67,12 @@ export default function BuyNowPage() {
                         data-ai-hint="professional audio"
                     />
                 </div>
-                <div className="text-5xl font-bold text-center mb-4 text-primary">$12</div>
-                 <div className="mt-4 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
-                    <label 
-                      htmlFor="machineId-2" 
-                       className={`mb-2 block transition-all duration-300 ${isButton2Disabled ? 'blinking-text font-bold text-lg text-red-500 dark:text-red-400' : 'text-sm text-black dark:text-yellow-300'}`}
-                    >
-                      ENTER YOUR ID HERE FIRST!
-                    </label>
-                    <Input 
-                      id="machineId-2" 
-                      type="text" 
-                      placeholder="Your unique machine ID..." 
-                      className="text-center bg-background"
-                      value={machineId2}
-                      onChange={(e) => setMachineId2(e.target.value)}
-                    />
-                    <div 
-                      className="text-xs text-white mt-2 font-semibold"
-                      style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.8)' }}
-                    >
-                        Find this in the plugin's "REGISTER" window.
-                    </div>
-                </div>
-                <PaypalButton hostedButtonId="S68QVFV9UUEZG" disabled={isButton2Disabled} />
-                 <div className="mt-2 w-full max-w-sm p-2 bg-muted border border-border rounded-md text-center">
-                    <div className="text-sm mb-2 text-black dark:text-yellow-300">Serial Number</div>
-                    <div className="font-bold text-green-600 text-lg min-h-[28px] flex items-center justify-center">
-                        <span className="text-muted-foreground/80 italic text-sm">Your serial will be sent to your email</span>
-                    </div>
-                </div>
+                <PaypalButton hostedButtonId="S68QVFV9UUEZG" price="$12.00" />
             </div>
         </div>
 
         <div className="mt-8">
-          <Card className="bg-card/70 shadow-lg border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-2xl font-headline text-primary">
-                <HelpCircle className="h-8 w-8" />
-                Purchasing Instructions
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-foreground/90">
-              <ol className="list-decimal list-inside space-y-3 pl-2">
-                <li>
-                  <strong>Get Your Machine ID:</strong> Download and install any plugin from your desired bundle. Open it in your DAW and click the "REGISTER" button to find your unique Machine ID.
-                </li>
-                <li>
-                  <strong>Complete Your Purchase:</strong> Return to this page and enter your Machine ID into the corresponding text box for your chosen bundle. Click "BUY NOW" to complete the payment.
-                </li>
-                <li>
-                  <strong>Receive Your Serial Number:</strong> After a successful purchase, your serial number will instantly appear in the box above. It will also be sent to your email address for your records.
-                </li>
-                <li>
-                  <strong>Register Your Plugin:</strong> Copy the serial number, paste it into the plugin's registration window back in your DAW, and click "Save". Registering one plugin activates the entire bundle.
-                </li>
-              </ol>
-            </CardContent>
-          </Card>
+            {/* The Purchasing Instructions card is now part of the how-to-buy page, keeping this page clean. */}
         </div>
       </div>
     </div>
