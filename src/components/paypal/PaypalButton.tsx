@@ -45,7 +45,8 @@ export default function PaypalButton({ price, hostedButtonId }: PaypalButtonProp
     return actions.order.create({
         purchase_units: [{
             amount: {
-                value: price
+                value: price,
+                currency_code: 'USD'
             },
             custom_id: machineId
         }],
@@ -130,7 +131,7 @@ export default function PaypalButton({ price, hostedButtonId }: PaypalButtonProp
   }
 
   return (
-    <PayPalScriptProvider options={{ "client-id": PAYPAL_CLIENT_ID, currency: "USD" }}>
+    <PayPalScriptProvider options={{ "client-id": PAYPAL_CLIENT_ID }}>
       <div className="w-full max-w-sm flex flex-col items-center gap-4">
         <div className="text-5xl font-bold text-center mb-4 text-primary">${price}</div>
         
