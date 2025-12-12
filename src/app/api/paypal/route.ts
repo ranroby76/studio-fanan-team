@@ -4,10 +4,8 @@ import { NextResponse } from 'next/server';
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
 
-// Use PayPal's sandbox environment for testing, or production for live transactions
-const base = process.env.NODE_ENV === 'production' 
-    ? 'https://api-m.paypal.com' 
-    : 'https://api-m.sandbox.paypal.com';
+// Force production environment for PayPal API calls
+const base = 'https://api-m.paypal.com';
 
 /**
  * Generate an OAuth 2.0 access token for authenticating with PayPal's API.
@@ -28,6 +26,9 @@ const generateAccessToken = async () => {
   });
 
   const data = await response.json();
+  if (data.error) {
+    throw new Error(data.error_description || "Failed to generate PayPal access token.");
+  }
   return data.access_token;
 };
 
