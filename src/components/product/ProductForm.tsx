@@ -26,26 +26,18 @@ import { useToast } from '@/hooks/use-toast';
 import ImageInput from './ImageInput'; // Import the new component
 
 const imageSchema = z.object({
-  filename: z.string(),
+  filename: z.string().optional(),
   width: z.coerce.number().optional(),
   height: z.coerce.number().optional(),
-}).refine(data => {
-  if (data.filename) {
-    return data.width !== undefined && data.width > 0 && data.height !== undefined && data.height > 0;
-  }
-  return true;
-}, {
-  message: "Width and Height are required if a filename is provided.",
-  path: ["width"],
 });
 
-
-const mainImageSchema = imageSchema.extend({
+// This is the corrected way to extend the schema.
+// We merge the base schema with new, stricter rules for the main image.
+const mainImageSchema = imageSchema.merge(z.object({
   filename: z.string().min(1, "A main image filename is required"),
   width: z.coerce.number().min(1, "Width is required for the main image."),
   height: z.coerce.number().min(1, "Height is required for the main image."),
-});
-
+}));
 
 const downloadLinkSchema = z.object({
   enabled: z.boolean(),
