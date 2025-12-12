@@ -70,13 +70,15 @@ export default function PaypalButton({ price }: PaypalButtonProps) {
 
         const customerEmail = details.payer.email_address;
         const customerName = details.payer.name.given_name;
+        const countryCode = details.payer.address.country_code;
 
         const templateParams = {
             to_email: customerEmail,
             to_name: customerName,
             serial_number: finalSerialNumber,
             amount: details.purchase_units[0].amount.value,
-            item_name: `Fanan Team Product (Price: $${price})`
+            item_name: `Fanan Team Product (Price: $${price})`,
+            country_code: countryCode,
         };
         
         if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID) {
