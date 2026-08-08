@@ -1,15 +1,20 @@
 {
-  "generated_at": "2026-08-07T00:03:47.902Z",
-  "total_downloads": 28,
+  "generated_at": "2026-08-08T00:03:31.426Z",
+  "total_downloads": 54,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 8
+      "downloads": 9
     },
     {
       "title": "Colosseum",
       "pack": "Colosseum",
+      "downloads": 5
+    },
+    {
+      "title": "Saxophia gen3",
+      "pack": "Free Pack",
       "downloads": 5
     },
     {
@@ -18,42 +23,92 @@
       "downloads": 4
     },
     {
-      "title": "Gala SE ​",
+      "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 2
-    },
-    {
-      "title": "Saxophia gen3",
-      "pack": "Free Pack",
-      "downloads": 2
-    },
-    {
-      "title": "Villain",
-      "pack": "Free Pack",
-      "downloads": 2
+      "downloads": 4
     },
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 1
+      "downloads": 3
+    },
+    {
+      "title": "Gala SE ​",
+      "pack": "Free Pack",
+      "downloads": 3
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 1
+      "downloads": 3
     },
     {
-      "title": "Solina2k",
+      "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 1
+      "downloads": 3
     },
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 1
+      "downloads": 2
     },
     {
       "title": "Tropicana Fun",
+      "pack": "Free Pack",
+      "downloads": 2
+    },
+    {
+      "title": "Bella",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Bjorn",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Blue Lue",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Bonnie",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Djup",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Monica 3",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Quentin",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "RandRobin",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Rebellion",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "ScandiClavia 2",
+      "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 1
     },
@@ -70,26 +125,6 @@
     {
       "title": "Arpomaniac",
       "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Bella",
-      "pack": "Free Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Bjorn",
-      "pack": "Free Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Blue Lue",
-      "pack": "Free Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Bonnie",
-      "pack": "Free Pack",
       "downloads": 0
     },
     {
@@ -110,11 +145,6 @@
     {
       "title": "Concordia",
       "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Djup",
-      "pack": "Free Pack",
       "downloads": 0
     },
     {
@@ -158,11 +188,6 @@
       "downloads": 0
     },
     {
-      "title": "Monica 3",
-      "pack": "Free Pack",
-      "downloads": 0
-    },
-    {
       "title": "OnStage",
       "pack": "OnStage",
       "downloads": 0
@@ -178,27 +203,12 @@
       "downloads": 0
     },
     {
-      "title": "Quentin",
-      "pack": "Free Pack",
-      "downloads": 0
-    },
-    {
       "title": "Randomidi",
       "pack": "Max! Pack",
       "downloads": 0
     },
     {
       "title": "Randomidi free",
-      "pack": "Free Pack",
-      "downloads": 0
-    },
-    {
-      "title": "RandRobin",
-      "pack": "Free Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Rebellion",
       "pack": "Free Pack",
       "downloads": 0
     },
@@ -215,11 +225,6 @@
     {
       "title": "Sampler Arena",
       "pack": "Sampler Arena",
-      "downloads": 0
-    },
-    {
-      "title": "ScandiClavia 2",
-      "pack": "Free Pack",
       "downloads": 0
     },
     {
@@ -245,11 +250,6 @@
     {
       "title": "Truculentus",
       "pack": "Mad MIDI Machines",
-      "downloads": 0
-    },
-    {
-      "title": "Ymer",
-      "pack": "Free Pack",
       "downloads": 0
     },
     {
