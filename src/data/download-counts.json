@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-08T00:03:31.426Z",
-  "total_downloads": 54,
+  "generated_at": "2026-08-09T00:03:47.486Z",
+  "total_downloads": 66,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 9
+      "downloads": 11
     },
     {
       "title": "Colosseum",
@@ -18,8 +18,18 @@
       "downloads": 5
     },
     {
+      "title": "Villain",
+      "pack": "Free Pack",
+      "downloads": 5
+    },
+    {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
+      "downloads": 4
+    },
+    {
+      "title": "Midmid",
+      "pack": "Free Pack",
       "downloads": 4
     },
     {
@@ -29,6 +39,11 @@
     },
     {
       "title": "999 gen2",
+      "pack": "Free Pack",
+      "downloads": 3
+    },
+    {
+      "title": "Blue Lue",
       "pack": "Free Pack",
       "downloads": 3
     },
@@ -43,9 +58,9 @@
       "downloads": 3
     },
     {
-      "title": "Villain",
-      "pack": "Free Pack",
-      "downloads": 3
+      "title": "Callisto",
+      "pack": "Max! Pack",
+      "downloads": 2
     },
     {
       "title": "Spacelifter 4",
@@ -64,11 +79,6 @@
     },
     {
       "title": "Bjorn",
-      "pack": "Free Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Blue Lue",
       "pack": "Free Pack",
       "downloads": 1
     },
@@ -133,11 +143,6 @@
       "downloads": 0
     },
     {
-      "title": "Callisto",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
       "title": "Colosseum VSTi",
       "pack": "Colosseum",
       "downloads": 0
@@ -175,11 +180,6 @@
     {
       "title": "Midiverus",
       "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Midmid",
-      "pack": "Free Pack",
       "downloads": 0
     },
     {
