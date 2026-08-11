@@ -1,16 +1,21 @@
 {
-  "generated_at": "2026-08-10T00:04:12.683Z",
-  "total_downloads": 81,
+  "generated_at": "2026-08-11T00:03:55.516Z",
+  "total_downloads": 101,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 14
+      "downloads": 26
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 9
+      "downloads": 10
+    },
+    {
+      "title": "Midmid",
+      "pack": "Free Pack",
+      "downloads": 6
     },
     {
       "title": "Colosseum",
@@ -23,12 +28,17 @@
       "downloads": 5
     },
     {
-      "title": "Midmid",
+      "title": "RandRobin",
       "pack": "Free Pack",
       "downloads": 5
     },
     {
       "title": "Saxophia gen3",
+      "pack": "Free Pack",
+      "downloads": 5
+    },
+    {
+      "title": "Solina2k",
       "pack": "Free Pack",
       "downloads": 5
     },
@@ -43,7 +53,7 @@
       "downloads": 4
     },
     {
-      "title": "Solina2k",
+      "title": "Kitton 3",
       "pack": "Free Pack",
       "downloads": 4
     },
@@ -54,11 +64,6 @@
     },
     {
       "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 3
-    },
-    {
-      "title": "Kitton 3",
       "pack": "Free Pack",
       "downloads": 3
     },
@@ -104,11 +109,6 @@
     },
     {
       "title": "Quentin",
-      "pack": "Free Pack",
-      "downloads": 1
-    },
-    {
-      "title": "RandRobin",
       "pack": "Free Pack",
       "downloads": 1
     },
