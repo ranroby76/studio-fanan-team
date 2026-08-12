@@ -1,11 +1,21 @@
 {
-  "generated_at": "2026-08-11T00:03:55.516Z",
-  "total_downloads": 101,
+  "generated_at": "2026-08-12T00:04:35.491Z",
+  "total_downloads": 115,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 26
+      "downloads": 28
+    },
+    {
+      "title": "Midmid",
+      "pack": "Free Pack",
+      "downloads": 11
+    },
+    {
+      "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 10
     },
     {
       "title": "Villain",
@@ -13,7 +23,7 @@
       "downloads": 10
     },
     {
-      "title": "Midmid",
+      "title": "Saxophia gen3",
       "pack": "Free Pack",
       "downloads": 6
     },
@@ -29,16 +39,6 @@
     },
     {
       "title": "RandRobin",
-      "pack": "Free Pack",
-      "downloads": 5
-    },
-    {
-      "title": "Saxophia gen3",
-      "pack": "Free Pack",
-      "downloads": 5
-    },
-    {
-      "title": "Solina2k",
       "pack": "Free Pack",
       "downloads": 5
     },
@@ -78,6 +78,11 @@
       "downloads": 2
     },
     {
+      "title": "ScandiClavia 2",
+      "pack": "Free Pack",
+      "downloads": 2
+    },
+    {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
       "downloads": 2
@@ -114,11 +119,6 @@
     },
     {
       "title": "Rebellion",
-      "pack": "Free Pack",
-      "downloads": 1
-    },
-    {
-      "title": "ScandiClavia 2",
       "pack": "Free Pack",
       "downloads": 1
     },
