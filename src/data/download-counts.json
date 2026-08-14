@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-13T00:03:09.163Z",
-  "total_downloads": 142,
+  "generated_at": "2026-08-14T00:02:18.796Z",
+  "total_downloads": 148,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 40
+      "downloads": 45
     },
     {
       "title": "RandRobin",
@@ -30,7 +30,7 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 6
+      "downloads": 7
     },
     {
       "title": "Colosseum",
