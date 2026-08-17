@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-16T00:03:19.381Z",
-  "total_downloads": 187,
+  "generated_at": "2026-08-17T00:02:23.445Z",
+  "total_downloads": 199,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 56
+      "downloads": 58
     },
     {
       "title": "RandRobin",
@@ -16,6 +16,11 @@
       "title": "Kitton 3",
       "pack": "Free Pack",
       "downloads": 14
+    },
+    {
+      "title": "Blue Lue",
+      "pack": "Free Pack",
+      "downloads": 13
     },
     {
       "title": "Villain",
@@ -35,16 +40,11 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 9
+      "downloads": 10
     },
     {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 6
-    },
-    {
-      "title": "Blue Lue",
-      "pack": "Free Pack",
       "downloads": 6
     },
     {
@@ -73,6 +73,11 @@
       "downloads": 4
     },
     {
+      "title": "Tropicana Fun",
+      "pack": "Free Pack",
+      "downloads": 4
+    },
+    {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
       "downloads": 3
@@ -89,11 +94,6 @@
     },
     {
       "title": "Mini Ringo",
-      "pack": "Free Pack",
-      "downloads": 2
-    },
-    {
-      "title": "Tropicana Fun",
       "pack": "Free Pack",
       "downloads": 2
     },
