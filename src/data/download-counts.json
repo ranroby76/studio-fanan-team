@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-17T00:02:23.445Z",
-  "total_downloads": 199,
+  "generated_at": "2026-08-18T00:02:54.676Z",
+  "total_downloads": 229,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
@@ -10,7 +10,12 @@
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 16
+      "downloads": 17
+    },
+    {
+      "title": "Villain",
+      "pack": "Free Pack",
+      "downloads": 15
     },
     {
       "title": "Kitton 3",
@@ -23,7 +28,7 @@
       "downloads": 13
     },
     {
-      "title": "Villain",
+      "title": "Saxophia gen3",
       "pack": "Free Pack",
       "downloads": 13
     },
@@ -38,14 +43,9 @@
       "downloads": 11
     },
     {
-      "title": "Saxophia gen3",
-      "pack": "Free Pack",
-      "downloads": 10
-    },
-    {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 6
+      "downloads": 9
     },
     {
       "title": "Colosseum",
@@ -64,6 +64,11 @@
     },
     {
       "title": "AnyImage",
+      "pack": "Max! Pack",
+      "downloads": 4
+    },
+    {
+      "title": "Callisto",
       "pack": "Max! Pack",
       "downloads": 4
     },
@@ -88,14 +93,19 @@
       "downloads": 2
     },
     {
-      "title": "Callisto",
+      "title": "Mini Ringo",
+      "pack": "Free Pack",
+      "downloads": 2
+    },
+    {
+      "title": "Randomidi",
       "pack": "Max! Pack",
       "downloads": 2
     },
     {
-      "title": "Mini Ringo",
-      "pack": "Free Pack",
-      "downloads": 2
+      "title": "Arpomaniac",
+      "pack": "Max! Pack",
+      "downloads": 1
     },
     {
       "title": "Bella",
@@ -108,8 +118,18 @@
       "downloads": 1
     },
     {
+      "title": "Brunetta",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
       "title": "Colosseum VSTi",
       "pack": "Colosseum",
+      "downloads": 1
+    },
+    {
+      "title": "Concordia",
+      "pack": "Max! Pack",
       "downloads": 1
     },
     {
@@ -118,8 +138,38 @@
       "downloads": 1
     },
     {
+      "title": "Gala Duo",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Gala XL",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Kitton Stylist",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Midimotor",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Midiverus",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
       "title": "Monica 3",
       "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Playlisted",
+      "pack": "Max! Pack",
       "downloads": 1
     },
     {
@@ -138,8 +188,48 @@
       "downloads": 1
     },
     {
+      "title": "Ringo",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Rythmos",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "ScandiSoul 2",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Sultana 2",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Tropicana",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
       "title": "Ymer",
       "pack": "Free Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Yogi",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Yowlseq 2",
+      "pack": "Max! Pack",
+      "downloads": 1
+    },
+    {
+      "title": "Ziggy",
+      "pack": "Max! Pack",
       "downloads": 1
     },
     {
@@ -148,47 +238,7 @@
       "downloads": 0
     },
     {
-      "title": "Arpomaniac",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Brunetta",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Concordia",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Gala Duo",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Gala XL",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Kitton Stylist",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Midimotor",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
       "title": "Midisquid",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Midiverus",
       "pack": "Max! Pack",
       "downloads": 0
     },
@@ -198,28 +248,8 @@
       "downloads": 0
     },
     {
-      "title": "Playlisted",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Randomidi",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
       "title": "Randomidi free",
       "pack": "Free Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Ringo",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Rythmos",
-      "pack": "Max! Pack",
       "downloads": 0
     },
     {
@@ -228,43 +258,13 @@
       "downloads": 0
     },
     {
-      "title": "ScandiSoul 2",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
       "title": "Spacelifter 3",
       "pack": "Free Pack",
       "downloads": 0
     },
     {
-      "title": "Sultana 2",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Tropicana",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
       "title": "Truculentus",
       "pack": "Mad MIDI Machines",
-      "downloads": 0
-    },
-    {
-      "title": "Yogi",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Yowlseq 2",
-      "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Ziggy",
-      "pack": "Max! Pack",
       "downloads": 0
     },
     {
