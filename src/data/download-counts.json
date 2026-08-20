@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-19T00:03:18.787Z",
-  "total_downloads": 253,
+  "generated_at": "2026-08-20T00:02:58.767Z",
+  "total_downloads": 284,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
@@ -10,32 +10,32 @@
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 18
+      "downloads": 20
+    },
+    {
+      "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 17
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 16
+      "downloads": 17
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 15
+      "downloads": 16
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 14
+      "downloads": 15
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
       "downloads": 14
-    },
-    {
-      "title": "Solina2k",
-      "pack": "Free Pack",
-      "downloads": 13
     },
     {
       "title": "Midmid",
@@ -45,7 +45,12 @@
     {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 9
+      "downloads": 10
+    },
+    {
+      "title": "Rebellion",
+      "pack": "Free Pack",
+      "downloads": 8
     },
     {
       "title": "Gala SE ​",
@@ -53,24 +58,29 @@
       "downloads": 7
     },
     {
+      "title": "999 gen2",
+      "pack": "Free Pack",
+      "downloads": 6
+    },
+    {
+      "title": "Bella",
+      "pack": "Free Pack",
+      "downloads": 6
+    },
+    {
       "title": "Colosseum",
       "pack": "Colosseum",
       "downloads": 6
     },
     {
-      "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 5
-    },
-    {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 5
+      "downloads": 6
     },
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 5
+      "downloads": 6
     },
     {
       "title": "Tropicana Fun",
@@ -83,12 +93,27 @@
       "downloads": 4
     },
     {
+      "title": "Bjorn",
+      "pack": "Free Pack",
+      "downloads": 4
+    },
+    {
       "title": "Callisto",
       "pack": "Max! Pack",
       "downloads": 4
     },
     {
-      "title": "Bjorn",
+      "title": "Ymer",
+      "pack": "Free Pack",
+      "downloads": 4
+    },
+    {
+      "title": "Bonnie",
+      "pack": "Free Pack",
+      "downloads": 3
+    },
+    {
+      "title": "Djup",
       "pack": "Free Pack",
       "downloads": 3
     },
@@ -98,22 +123,12 @@
       "downloads": 3
     },
     {
-      "title": "Bella",
-      "pack": "Free Pack",
-      "downloads": 2
-    },
-    {
-      "title": "Bonnie",
-      "pack": "Free Pack",
-      "downloads": 2
-    },
-    {
-      "title": "Djup",
-      "pack": "Free Pack",
-      "downloads": 2
-    },
-    {
       "title": "Monica 3",
+      "pack": "Free Pack",
+      "downloads": 3
+    },
+    {
+      "title": "AnyText",
       "pack": "Free Pack",
       "downloads": 2
     },
@@ -128,19 +143,9 @@
       "downloads": 2
     },
     {
-      "title": "Rebellion",
-      "pack": "Free Pack",
+      "title": "Ziggy",
+      "pack": "Max! Pack",
       "downloads": 2
-    },
-    {
-      "title": "Ymer",
-      "pack": "Free Pack",
-      "downloads": 2
-    },
-    {
-      "title": "AnyText",
-      "pack": "Free Pack",
-      "downloads": 1
     },
     {
       "title": "Arpomaniac",
@@ -229,11 +234,6 @@
     },
     {
       "title": "Yowlseq 2",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Ziggy",
       "pack": "Max! Pack",
       "downloads": 1
     },
