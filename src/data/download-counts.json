@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-20T00:02:58.767Z",
-  "total_downloads": 284,
+  "generated_at": "2026-08-21T00:02:44.063Z",
+  "total_downloads": 304,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 59
+      "downloads": 61
     },
     {
       "title": "RandRobin",
@@ -13,7 +13,17 @@
       "downloads": 20
     },
     {
+      "title": "Saxophia gen3",
+      "pack": "Free Pack",
+      "downloads": 19
+    },
+    {
       "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 19
+    },
+    {
+      "title": "Kitton 3",
       "pack": "Free Pack",
       "downloads": 17
     },
@@ -23,19 +33,9 @@
       "downloads": 17
     },
     {
-      "title": "Kitton 3",
-      "pack": "Free Pack",
-      "downloads": 16
-    },
-    {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 15
-    },
-    {
-      "title": "Saxophia gen3",
-      "pack": "Free Pack",
-      "downloads": 14
+      "downloads": 16
     },
     {
       "title": "Midmid",
@@ -48,19 +48,29 @@
       "downloads": 10
     },
     {
+      "title": "Gala SE ​",
+      "pack": "Free Pack",
+      "downloads": 8
+    },
+    {
       "title": "Rebellion",
       "pack": "Free Pack",
       "downloads": 8
     },
     {
-      "title": "Gala SE ​",
+      "title": "999 gen2",
       "pack": "Free Pack",
       "downloads": 7
     },
     {
-      "title": "999 gen2",
+      "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 6
+      "downloads": 7
+    },
+    {
+      "title": "Spacelifter 4",
+      "pack": "Free Pack",
+      "downloads": 7
     },
     {
       "title": "Bella",
@@ -70,16 +80,6 @@
     {
       "title": "Colosseum",
       "pack": "Colosseum",
-      "downloads": 6
-    },
-    {
-      "title": "ScandiClavia 2",
-      "pack": "Free Pack",
-      "downloads": 6
-    },
-    {
-      "title": "Spacelifter 4",
-      "pack": "Free Pack",
       "downloads": 6
     },
     {
@@ -103,9 +103,19 @@
       "downloads": 4
     },
     {
+      "title": "Monica 3",
+      "pack": "Free Pack",
+      "downloads": 4
+    },
+    {
       "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 4
+    },
+    {
+      "title": "AnyText",
+      "pack": "Free Pack",
+      "downloads": 3
     },
     {
       "title": "Bonnie",
@@ -123,13 +133,8 @@
       "downloads": 3
     },
     {
-      "title": "Monica 3",
-      "pack": "Free Pack",
-      "downloads": 3
-    },
-    {
-      "title": "AnyText",
-      "pack": "Free Pack",
+      "title": "Playlisted",
+      "pack": "Max! Pack",
       "downloads": 2
     },
     {
@@ -139,6 +144,11 @@
     },
     {
       "title": "Randomidi",
+      "pack": "Max! Pack",
+      "downloads": 2
+    },
+    {
+      "title": "ScandiSoul 2",
       "pack": "Max! Pack",
       "downloads": 2
     },
@@ -193,8 +203,8 @@
       "downloads": 1
     },
     {
-      "title": "Playlisted",
-      "pack": "Max! Pack",
+      "title": "OnStage",
+      "pack": "OnStage",
       "downloads": 1
     },
     {
@@ -209,11 +219,6 @@
     },
     {
       "title": "Rythmos",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "ScandiSoul 2",
       "pack": "Max! Pack",
       "downloads": 1
     },
@@ -240,11 +245,6 @@
     {
       "title": "Midisquid",
       "pack": "Max! Pack",
-      "downloads": 0
-    },
-    {
-      "title": "OnStage",
-      "pack": "OnStage",
       "downloads": 0
     },
     {
