@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-22T00:03:23.316Z",
-  "total_downloads": 308,
+  "generated_at": "2026-08-23T00:04:33.499Z",
+  "total_downloads": 329,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
@@ -15,12 +15,22 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 20
+      "downloads": 22
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
+      "downloads": 20
+    },
+    {
+      "title": "Villain",
+      "pack": "Free Pack",
       "downloads": 19
+    },
+    {
+      "title": "Kitton 3",
+      "pack": "Free Pack",
+      "downloads": 18
     },
     {
       "title": "Blue Lue",
@@ -28,14 +38,9 @@
       "downloads": 17
     },
     {
-      "title": "Kitton 3",
+      "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 17
-    },
-    {
-      "title": "Villain",
-      "pack": "Free Pack",
-      "downloads": 17
+      "downloads": 13
     },
     {
       "title": "Midmid",
@@ -48,9 +53,19 @@
       "downloads": 10
     },
     {
-      "title": "Gala SE ​",
+      "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 8
+      "downloads": 9
+    },
+    {
+      "title": "Bella",
+      "pack": "Free Pack",
+      "downloads": 9
+    },
+    {
+      "title": "Spacelifter 4",
+      "pack": "Free Pack",
+      "downloads": 9
     },
     {
       "title": "Rebellion",
@@ -58,24 +73,9 @@
       "downloads": 8
     },
     {
-      "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 7
-    },
-    {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 7
-    },
-    {
-      "title": "Spacelifter 4",
-      "pack": "Free Pack",
-      "downloads": 7
-    },
-    {
-      "title": "Bella",
-      "pack": "Free Pack",
-      "downloads": 6
+      "downloads": 8
     },
     {
       "title": "Colosseum",
@@ -85,7 +85,7 @@
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 5
+      "downloads": 6
     },
     {
       "title": "AnyImage",
@@ -100,6 +100,11 @@
     {
       "title": "Callisto",
       "pack": "Max! Pack",
+      "downloads": 4
+    },
+    {
+      "title": "Mini Ringo",
+      "pack": "Free Pack",
       "downloads": 4
     },
     {
@@ -124,11 +129,6 @@
     },
     {
       "title": "Djup",
-      "pack": "Free Pack",
-      "downloads": 3
-    },
-    {
-      "title": "Mini Ringo",
       "pack": "Free Pack",
       "downloads": 3
     },
