@@ -1,26 +1,31 @@
 {
-  "generated_at": "2026-08-23T00:04:33.499Z",
-  "total_downloads": 329,
+  "generated_at": "2026-08-24T00:01:18.030Z",
+  "total_downloads": 347,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 61
-    },
-    {
-      "title": "RandRobin",
-      "pack": "Free Pack",
-      "downloads": 22
-    },
-    {
-      "title": "Solina2k",
-      "pack": "Free Pack",
-      "downloads": 22
+      "downloads": 63
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 20
+      "downloads": 25
+    },
+    {
+      "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 25
+    },
+    {
+      "title": "RandRobin",
+      "pack": "Free Pack",
+      "downloads": 23
+    },
+    {
+      "title": "Blue Lue",
+      "pack": "Free Pack",
+      "downloads": 21
     },
     {
       "title": "Villain",
@@ -33,14 +38,14 @@
       "downloads": 18
     },
     {
-      "title": "Blue Lue",
-      "pack": "Free Pack",
-      "downloads": 17
-    },
-    {
       "title": "Gala SE ​",
       "pack": "Free Pack",
       "downloads": 13
+    },
+    {
+      "title": "Bella",
+      "pack": "Free Pack",
+      "downloads": 12
     },
     {
       "title": "Midmid",
@@ -54,11 +59,6 @@
     },
     {
       "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 9
-    },
-    {
-      "title": "Bella",
       "pack": "Free Pack",
       "downloads": 9
     },
