@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-24T00:01:18.030Z",
-  "total_downloads": 347,
+  "generated_at": "2026-08-25T00:04:40.338Z",
+  "total_downloads": 352,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
@@ -8,24 +8,24 @@
       "downloads": 63
     },
     {
+      "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 27
+    },
+    {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
       "downloads": 25
     },
     {
-      "title": "Solina2k",
+      "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 25
+      "downloads": 23
     },
     {
       "title": "RandRobin",
       "pack": "Free Pack",
       "downloads": 23
-    },
-    {
-      "title": "Blue Lue",
-      "pack": "Free Pack",
-      "downloads": 21
     },
     {
       "title": "Villain",
@@ -53,14 +53,14 @@
       "downloads": 12
     },
     {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
+      "title": "999 gen2",
+      "pack": "Free Pack",
       "downloads": 10
     },
     {
-      "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 9
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
+      "downloads": 10
     },
     {
       "title": "Spacelifter 4",
