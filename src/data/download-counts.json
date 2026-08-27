@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-26T00:01:37.831Z",
-  "total_downloads": 359,
+  "generated_at": "2026-08-27T00:04:11.099Z",
+  "total_downloads": 370,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 64
+      "downloads": 67
     },
     {
       "title": "Solina2k",
@@ -30,7 +30,7 @@
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 20
+      "downloads": 22
     },
     {
       "title": "Kitton 3",
@@ -68,12 +68,17 @@
       "downloads": 10
     },
     {
-      "title": "Rebellion",
-      "pack": "Free Pack",
-      "downloads": 8
+      "title": "Callisto",
+      "pack": "Max! Pack",
+      "downloads": 9
     },
     {
       "title": "ScandiClavia 2",
+      "pack": "Free Pack",
+      "downloads": 9
+    },
+    {
+      "title": "Rebellion",
       "pack": "Free Pack",
       "downloads": 8
     },
@@ -95,11 +100,6 @@
     {
       "title": "Bjorn",
       "pack": "Free Pack",
-      "downloads": 4
-    },
-    {
-      "title": "Callisto",
-      "pack": "Max! Pack",
       "downloads": 4
     },
     {
