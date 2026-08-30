@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-08-29T00:00:59.959Z",
-  "total_downloads": 374,
+  "generated_at": "2026-08-30T00:03:09.483Z",
+  "total_downloads": 385,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 69
-    },
-    {
-      "title": "Saxophia gen3",
-      "pack": "Free Pack",
-      "downloads": 27
+      "downloads": 73
     },
     {
       "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 30
+    },
+    {
+      "title": "Saxophia gen3",
       "pack": "Free Pack",
       "downloads": 27
     },
@@ -35,7 +35,7 @@
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 18
+      "downloads": 20
     },
     {
       "title": "Gala SE ​",
@@ -88,6 +88,11 @@
       "downloads": 6
     },
     {
+      "title": "Mini Ringo",
+      "pack": "Free Pack",
+      "downloads": 6
+    },
+    {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
       "downloads": 6
@@ -104,11 +109,6 @@
     },
     {
       "title": "Bjorn",
-      "pack": "Free Pack",
-      "downloads": 4
-    },
-    {
-      "title": "Mini Ringo",
       "pack": "Free Pack",
       "downloads": 4
     },
