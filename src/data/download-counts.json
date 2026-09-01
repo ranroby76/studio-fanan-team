@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-31T00:04:22.632Z",
-  "total_downloads": 402,
+  "generated_at": "2026-09-01T00:04:23.861Z",
+  "total_downloads": 442,
   "plugins": [
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 81
+      "downloads": 84
     },
     {
       "title": "Solina2k",
@@ -15,7 +15,12 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 27
+      "downloads": 28
+    },
+    {
+      "title": "Villain",
+      "pack": "Free Pack",
+      "downloads": 26
     },
     {
       "title": "Blue Lue",
@@ -33,9 +38,9 @@
       "downloads": 22
     },
     {
-      "title": "Villain",
+      "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 22
+      "downloads": 19
     },
     {
       "title": "Bella",
@@ -48,9 +53,24 @@
       "downloads": 15
     },
     {
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
+      "downloads": 12
+    },
+    {
       "title": "Midmid",
       "pack": "Free Pack",
       "downloads": 12
+    },
+    {
+      "title": "Spacelifter 4",
+      "pack": "Free Pack",
+      "downloads": 12
+    },
+    {
+      "title": "ScandiClavia 2",
+      "pack": "Free Pack",
+      "downloads": 11
     },
     {
       "title": "999 gen2",
@@ -58,12 +78,7 @@
       "downloads": 10
     },
     {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 10
-    },
-    {
-      "title": "Spacelifter 4",
+      "title": "Tropicana Fun",
       "pack": "Free Pack",
       "downloads": 10
     },
@@ -73,7 +88,7 @@
       "downloads": 9
     },
     {
-      "title": "ScandiClavia 2",
+      "title": "Mini Ringo",
       "pack": "Free Pack",
       "downloads": 9
     },
@@ -86,16 +101,6 @@
       "title": "Rebellion",
       "pack": "Free Pack",
       "downloads": 8
-    },
-    {
-      "title": "Mini Ringo",
-      "pack": "Free Pack",
-      "downloads": 6
-    },
-    {
-      "title": "Tropicana Fun",
-      "pack": "Free Pack",
-      "downloads": 6
     },
     {
       "title": "Monica 3",
