@@ -1,56 +1,81 @@
 {
-  "generated_at": "2026-09-01T00:04:23.861Z",
-  "total_downloads": 442,
+  "generated_at": "2026-09-02T00:02:22.348Z",
+  "total_downloads": 782,
   "plugins": [
+    {
+      "title": "Domina",
+      "pack": "Free Pack",
+      "downloads": 280
+    },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 84
+      "downloads": 88
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 32
+      "downloads": 36
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 28
+      "downloads": 31
     },
     {
       "title": "Villain",
+      "pack": "Free Pack",
+      "downloads": 31
+    },
+    {
+      "title": "Kitton 3",
+      "pack": "Free Pack",
+      "downloads": 28
+    },
+    {
+      "title": "RandRobin",
+      "pack": "Free Pack",
+      "downloads": 27
+    },
+    {
+      "title": "Bella",
       "pack": "Free Pack",
       "downloads": 26
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 23
-    },
-    {
-      "title": "RandRobin",
-      "pack": "Free Pack",
-      "downloads": 23
-    },
-    {
-      "title": "Kitton 3",
-      "pack": "Free Pack",
-      "downloads": 22
-    },
-    {
-      "title": "Domina",
-      "pack": "Free Pack",
-      "downloads": 19
-    },
-    {
-      "title": "Bella",
-      "pack": "Free Pack",
-      "downloads": 16
+      "downloads": 25
     },
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 15
+      "downloads": 17
+    },
+    {
+      "title": "Spacelifter 4",
+      "pack": "Free Pack",
+      "downloads": 17
+    },
+    {
+      "title": "Midmid",
+      "pack": "Free Pack",
+      "downloads": 14
+    },
+    {
+      "title": "ScandiClavia 2",
+      "pack": "Free Pack",
+      "downloads": 13
+    },
+    {
+      "title": "Tropicana Fun",
+      "pack": "Free Pack",
+      "downloads": 13
+    },
+    {
+      "title": "999 gen2",
+      "pack": "Free Pack",
+      "downloads": 12
     },
     {
       "title": "Betelgeuse",
@@ -58,27 +83,12 @@
       "downloads": 12
     },
     {
-      "title": "Midmid",
+      "title": "Mini Ringo",
       "pack": "Free Pack",
       "downloads": 12
     },
     {
-      "title": "Spacelifter 4",
-      "pack": "Free Pack",
-      "downloads": 12
-    },
-    {
-      "title": "ScandiClavia 2",
-      "pack": "Free Pack",
-      "downloads": 11
-    },
-    {
-      "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 10
-    },
-    {
-      "title": "Tropicana Fun",
+      "title": "Rebellion",
       "pack": "Free Pack",
       "downloads": 10
     },
@@ -88,7 +98,7 @@
       "downloads": 9
     },
     {
-      "title": "Mini Ringo",
+      "title": "Monica 3",
       "pack": "Free Pack",
       "downloads": 9
     },
@@ -98,12 +108,27 @@
       "downloads": 8
     },
     {
-      "title": "Rebellion",
+      "title": "Djup",
       "pack": "Free Pack",
       "downloads": 8
     },
     {
-      "title": "Monica 3",
+      "title": "Bjorn",
+      "pack": "Free Pack",
+      "downloads": 6
+    },
+    {
+      "title": "Bonnie",
+      "pack": "Free Pack",
+      "downloads": 6
+    },
+    {
+      "title": "Ymer",
+      "pack": "Free Pack",
+      "downloads": 6
+    },
+    {
+      "title": "AnyText",
       "pack": "Free Pack",
       "downloads": 5
     },
@@ -113,38 +138,13 @@
       "downloads": 4
     },
     {
-      "title": "Bjorn",
+      "title": "Quentin",
       "pack": "Free Pack",
       "downloads": 4
-    },
-    {
-      "title": "Ymer",
-      "pack": "Free Pack",
-      "downloads": 4
-    },
-    {
-      "title": "AnyText",
-      "pack": "Free Pack",
-      "downloads": 3
-    },
-    {
-      "title": "Bonnie",
-      "pack": "Free Pack",
-      "downloads": 3
-    },
-    {
-      "title": "Djup",
-      "pack": "Free Pack",
-      "downloads": 3
     },
     {
       "title": "Playlisted",
       "pack": "Max! Pack",
-      "downloads": 2
-    },
-    {
-      "title": "Quentin",
-      "pack": "Free Pack",
       "downloads": 2
     },
     {
