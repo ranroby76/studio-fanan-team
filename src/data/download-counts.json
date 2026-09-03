@@ -1,81 +1,86 @@
 {
-  "generated_at": "2026-09-02T00:02:22.348Z",
-  "total_downloads": 782,
+  "generated_at": "2026-09-03T00:04:28.716Z",
+  "total_downloads": 1317,
   "plugins": [
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 280
+      "downloads": 742
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 88
+      "downloads": 90
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 36
-    },
-    {
-      "title": "Saxophia gen3",
-      "pack": "Free Pack",
-      "downloads": 31
+      "downloads": 40
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 31
+      "downloads": 37
+    },
+    {
+      "title": "Saxophia gen3",
+      "pack": "Free Pack",
+      "downloads": 36
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 28
-    },
-    {
-      "title": "RandRobin",
-      "pack": "Free Pack",
-      "downloads": 27
+      "downloads": 31
     },
     {
       "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 26
+      "downloads": 29
+    },
+    {
+      "title": "RandRobin",
+      "pack": "Free Pack",
+      "downloads": 29
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 25
-    },
-    {
-      "title": "Gala SE ​",
-      "pack": "Free Pack",
-      "downloads": 17
+      "downloads": 27
     },
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 17
+      "downloads": 21
     },
     {
-      "title": "Midmid",
+      "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 14
-    },
-    {
-      "title": "ScandiClavia 2",
-      "pack": "Free Pack",
-      "downloads": 13
+      "downloads": 20
     },
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 13
+      "downloads": 18
+    },
+    {
+      "title": "Mini Ringo",
+      "pack": "Free Pack",
+      "downloads": 17
     },
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 12
+      "downloads": 16
+    },
+    {
+      "title": "Midmid",
+      "pack": "Free Pack",
+      "downloads": 16
+    },
+    {
+      "title": "ScandiClavia 2",
+      "pack": "Free Pack",
+      "downloads": 15
     },
     {
       "title": "Betelgeuse",
@@ -83,23 +88,33 @@
       "downloads": 12
     },
     {
-      "title": "Mini Ringo",
+      "title": "Monica 3",
       "pack": "Free Pack",
       "downloads": 12
     },
     {
       "title": "Rebellion",
       "pack": "Free Pack",
+      "downloads": 12
+    },
+    {
+      "title": "Djup",
+      "pack": "Free Pack",
       "downloads": 10
+    },
+    {
+      "title": "Bjorn",
+      "pack": "Free Pack",
+      "downloads": 9
+    },
+    {
+      "title": "Bonnie",
+      "pack": "Free Pack",
+      "downloads": 9
     },
     {
       "title": "Callisto",
       "pack": "Max! Pack",
-      "downloads": 9
-    },
-    {
-      "title": "Monica 3",
-      "pack": "Free Pack",
       "downloads": 9
     },
     {
@@ -108,29 +123,19 @@
       "downloads": 8
     },
     {
-      "title": "Djup",
+      "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 8
     },
     {
-      "title": "Bjorn",
-      "pack": "Free Pack",
-      "downloads": 6
-    },
-    {
-      "title": "Bonnie",
-      "pack": "Free Pack",
-      "downloads": 6
-    },
-    {
-      "title": "Ymer",
-      "pack": "Free Pack",
-      "downloads": 6
-    },
-    {
       "title": "AnyText",
       "pack": "Free Pack",
-      "downloads": 5
+      "downloads": 7
+    },
+    {
+      "title": "Quentin",
+      "pack": "Free Pack",
+      "downloads": 6
     },
     {
       "title": "AnyImage",
@@ -138,9 +143,9 @@
       "downloads": 4
     },
     {
-      "title": "Quentin",
-      "pack": "Free Pack",
-      "downloads": 4
+      "title": "Colosseum VSTi",
+      "pack": "Colosseum",
+      "downloads": 3
     },
     {
       "title": "Playlisted",
@@ -170,11 +175,6 @@
     {
       "title": "Brunetta",
       "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Colosseum VSTi",
-      "pack": "Colosseum",
       "downloads": 1
     },
     {
