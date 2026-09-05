@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-04T00:05:23.341Z",
-  "total_downloads": 1710,
+  "generated_at": "2026-09-05T00:04:24.178Z",
+  "total_downloads": 1915,
   "plugins": [
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1030
+      "downloads": 1211
     },
     {
       "title": "Fanan Asio Driver",
@@ -15,37 +15,37 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 44
+      "downloads": 45
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 43
+      "downloads": 44
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 39
+      "downloads": 43
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 35
-    },
-    {
-      "title": "Bella",
-      "pack": "Free Pack",
-      "downloads": 33
+      "downloads": 40
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 33
+      "downloads": 37
+    },
+    {
+      "title": "Bella",
+      "pack": "Free Pack",
+      "downloads": 34
     },
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 32
+      "downloads": 33
     },
     {
       "title": "Spacelifter 4",
@@ -55,7 +55,7 @@
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 25
+      "downloads": 26
     },
     {
       "title": "Gala SE ​",
@@ -70,7 +70,7 @@
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 20
+      "downloads": 21
     },
     {
       "title": "Mini Ringo",
@@ -80,7 +80,7 @@
     {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 19
+      "downloads": 20
     },
     {
       "title": "Midmid",
@@ -90,7 +90,12 @@
     {
       "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 16
+      "downloads": 17
+    },
+    {
+      "title": "Rebellion",
+      "pack": "Free Pack",
+      "downloads": 15
     },
     {
       "title": "Djup",
@@ -98,9 +103,9 @@
       "downloads": 14
     },
     {
-      "title": "Rebellion",
-      "pack": "Free Pack",
-      "downloads": 14
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
+      "downloads": 13
     },
     {
       "title": "Bonnie",
@@ -111,11 +116,6 @@
       "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 13
-    },
-    {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 12
     },
     {
       "title": "Bjorn",
@@ -150,6 +150,11 @@
     {
       "title": "Playlisted",
       "pack": "Max! Pack",
+      "downloads": 2
+    },
+    {
+      "title": "Playlisted 2",
+      "pack": "Mad MIDI Machines",
       "downloads": 2
     },
     {
@@ -210,11 +215,6 @@
     {
       "title": "OnStage",
       "pack": "OnStage",
-      "downloads": 1
-    },
-    {
-      "title": "Playlisted 2",
-      "pack": "Mad MIDI Machines",
       "downloads": 1
     },
     {
