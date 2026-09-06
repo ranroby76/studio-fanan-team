@@ -1,19 +1,24 @@
 {
-  "generated_at": "2026-09-05T00:04:24.178Z",
-  "total_downloads": 1915,
+  "generated_at": "2026-09-06T00:03:08.500Z",
+  "total_downloads": 2021,
   "plugins": [
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1211
+      "downloads": 1304
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 94
+      "downloads": 95
     },
     {
       "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 47
+    },
+    {
+      "title": "Saxophia gen3",
       "pack": "Free Pack",
       "downloads": 45
     },
@@ -21,11 +26,6 @@
       "title": "Villain",
       "pack": "Free Pack",
       "downloads": 44
-    },
-    {
-      "title": "Saxophia gen3",
-      "pack": "Free Pack",
-      "downloads": 43
     },
     {
       "title": "Blue Lue",
@@ -48,6 +48,11 @@
       "downloads": 33
     },
     {
+      "title": "Gala SE ​",
+      "pack": "Free Pack",
+      "downloads": 26
+    },
+    {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
       "downloads": 26
@@ -58,14 +63,14 @@
       "downloads": 26
     },
     {
-      "title": "Gala SE ​",
+      "title": "Quentin",
       "pack": "Free Pack",
       "downloads": 24
     },
     {
-      "title": "Quentin",
+      "title": "Mini Ringo",
       "pack": "Free Pack",
-      "downloads": 24
+      "downloads": 22
     },
     {
       "title": "999 gen2",
@@ -73,14 +78,9 @@
       "downloads": 21
     },
     {
-      "title": "Mini Ringo",
-      "pack": "Free Pack",
-      "downloads": 20
-    },
-    {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 20
+      "downloads": 21
     },
     {
       "title": "Midmid",
@@ -93,6 +93,11 @@
       "downloads": 17
     },
     {
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
+      "downloads": 16
+    },
+    {
       "title": "Rebellion",
       "pack": "Free Pack",
       "downloads": 15
@@ -101,11 +106,6 @@
       "title": "Djup",
       "pack": "Free Pack",
       "downloads": 14
-    },
-    {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 13
     },
     {
       "title": "Bonnie",
