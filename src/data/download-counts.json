@@ -1,26 +1,31 @@
 {
-  "generated_at": "2026-09-06T00:03:08.500Z",
-  "total_downloads": 2021,
+  "generated_at": "2026-09-07T00:00:35.699Z",
+  "total_downloads": 2100,
   "plugins": [
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1304
+      "downloads": 1355
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 95
-    },
-    {
-      "title": "Solina2k",
-      "pack": "Free Pack",
-      "downloads": 47
+      "downloads": 96
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 45
+      "downloads": 52
+    },
+    {
+      "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 48
+    },
+    {
+      "title": "Blue Lue",
+      "pack": "Free Pack",
+      "downloads": 44
     },
     {
       "title": "Villain",
@@ -28,14 +33,9 @@
       "downloads": 44
     },
     {
-      "title": "Blue Lue",
-      "pack": "Free Pack",
-      "downloads": 40
-    },
-    {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 37
+      "downloads": 38
     },
     {
       "title": "Bella",
@@ -50,22 +50,27 @@
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 26
+      "downloads": 27
     },
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 26
+      "downloads": 27
     },
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 26
+      "downloads": 27
     },
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 24
+      "downloads": 25
+    },
+    {
+      "title": "999 gen2",
+      "pack": "Free Pack",
+      "downloads": 22
     },
     {
       "title": "Mini Ringo",
@@ -73,13 +78,13 @@
       "downloads": 22
     },
     {
-      "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 21
-    },
-    {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
+      "downloads": 22
+    },
+    {
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
       "downloads": 21
     },
     {
@@ -90,12 +95,7 @@
     {
       "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 17
-    },
-    {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 16
+      "downloads": 18
     },
     {
       "title": "Rebellion",
@@ -123,6 +123,11 @@
       "downloads": 12
     },
     {
+      "title": "Colosseum",
+      "pack": "Colosseum",
+      "downloads": 10
+    },
+    {
       "title": "AnyText",
       "pack": "Free Pack",
       "downloads": 9
@@ -131,11 +136,6 @@
       "title": "Callisto",
       "pack": "Max! Pack",
       "downloads": 9
-    },
-    {
-      "title": "Colosseum",
-      "pack": "Colosseum",
-      "downloads": 8
     },
     {
       "title": "AnyImage",
