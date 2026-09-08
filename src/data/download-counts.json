@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-07T00:00:35.699Z",
-  "total_downloads": 2100,
+  "generated_at": "2026-09-08T00:04:32.321Z",
+  "total_downloads": 2197,
   "plugins": [
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1355
+      "downloads": 1404
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 96
+      "downloads": 125
     },
     {
       "title": "Saxophia gen3",
@@ -20,40 +20,40 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 48
+      "downloads": 50
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 44
+      "downloads": 49
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 44
+      "downloads": 46
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 38
+      "downloads": 40
     },
     {
       "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 34
+      "downloads": 35
     },
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 33
-    },
-    {
-      "title": "Gala SE ​",
-      "pack": "Free Pack",
-      "downloads": 27
+      "downloads": 34
     },
     {
       "title": "Spacelifter 4",
+      "pack": "Free Pack",
+      "downloads": 28
+    },
+    {
+      "title": "Gala SE ​",
       "pack": "Free Pack",
       "downloads": 27
     },
@@ -65,12 +65,12 @@
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 25
+      "downloads": 26
     },
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 22
+      "downloads": 24
     },
     {
       "title": "Mini Ringo",
@@ -88,12 +88,12 @@
       "downloads": 21
     },
     {
-      "title": "Midmid",
+      "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 18
+      "downloads": 19
     },
     {
-      "title": "Monica 3",
+      "title": "Midmid",
       "pack": "Free Pack",
       "downloads": 18
     },
@@ -103,14 +103,14 @@
       "downloads": 15
     },
     {
-      "title": "Djup",
+      "title": "Bonnie",
       "pack": "Free Pack",
       "downloads": 14
     },
     {
-      "title": "Bonnie",
+      "title": "Djup",
       "pack": "Free Pack",
-      "downloads": 13
+      "downloads": 14
     },
     {
       "title": "Ymer",
@@ -246,6 +246,11 @@
       "title": "Yowlseq 2",
       "pack": "Max! Pack",
       "downloads": 1
+    },
+    {
+      "title": "Grex Ballada",
+      "pack": "Free Pack",
+      "downloads": 0
     },
     {
       "title": "Midisquid",
