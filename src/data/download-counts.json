@@ -1,84 +1,99 @@
 {
-  "generated_at": "2026-09-08T00:04:32.321Z",
-  "total_downloads": 2197,
+  "generated_at": "2026-09-09T00:04:34.850Z",
+  "total_downloads": 2512,
   "plugins": [
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1404
+      "downloads": 1462
+    },
+    {
+      "title": "Grex Ballada",
+      "pack": "Free Pack",
+      "downloads": 165
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 125
-    },
-    {
-      "title": "Saxophia gen3",
-      "pack": "Free Pack",
-      "downloads": 52
-    },
-    {
-      "title": "Solina2k",
-      "pack": "Free Pack",
-      "downloads": 50
+      "downloads": 129
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 49
+      "downloads": 58
+    },
+    {
+      "title": "Saxophia gen3",
+      "pack": "Free Pack",
+      "downloads": 58
+    },
+    {
+      "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 54
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 46
-    },
-    {
-      "title": "Kitton 3",
-      "pack": "Free Pack",
-      "downloads": 40
-    },
-    {
-      "title": "Bella",
-      "pack": "Free Pack",
-      "downloads": 35
+      "downloads": 49
     },
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 34
+      "downloads": 43
     },
     {
-      "title": "Spacelifter 4",
+      "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 28
+      "downloads": 42
     },
     {
-      "title": "Gala SE ​",
+      "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 27
-    },
-    {
-      "title": "Tropicana Fun",
-      "pack": "Free Pack",
-      "downloads": 27
+      "downloads": 40
     },
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 26
+      "downloads": 33
+    },
+    {
+      "title": "Gala SE ​",
+      "pack": "Free Pack",
+      "downloads": 31
+    },
+    {
+      "title": "Spacelifter 4",
+      "pack": "Free Pack",
+      "downloads": 31
+    },
+    {
+      "title": "Tropicana Fun",
+      "pack": "Free Pack",
+      "downloads": 30
     },
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 24
+      "downloads": 27
     },
     {
       "title": "Mini Ringo",
       "pack": "Free Pack",
-      "downloads": 22
+      "downloads": 25
     },
     {
       "title": "ScandiClavia 2",
+      "pack": "Free Pack",
+      "downloads": 25
+    },
+    {
+      "title": "Midmid",
+      "pack": "Free Pack",
+      "downloads": 22
+    },
+    {
+      "title": "Monica 3",
       "pack": "Free Pack",
       "downloads": 22
     },
@@ -88,49 +103,39 @@
       "downloads": 21
     },
     {
-      "title": "Monica 3",
-      "pack": "Free Pack",
-      "downloads": 19
-    },
-    {
-      "title": "Midmid",
+      "title": "Rebellion",
       "pack": "Free Pack",
       "downloads": 18
     },
     {
-      "title": "Rebellion",
-      "pack": "Free Pack",
-      "downloads": 15
-    },
-    {
       "title": "Bonnie",
       "pack": "Free Pack",
-      "downloads": 14
+      "downloads": 17
     },
     {
       "title": "Djup",
       "pack": "Free Pack",
-      "downloads": 14
+      "downloads": 17
     },
     {
       "title": "Ymer",
       "pack": "Free Pack",
-      "downloads": 13
+      "downloads": 16
     },
     {
       "title": "Bjorn",
       "pack": "Free Pack",
-      "downloads": 12
+      "downloads": 14
+    },
+    {
+      "title": "AnyText",
+      "pack": "Free Pack",
+      "downloads": 10
     },
     {
       "title": "Colosseum",
       "pack": "Colosseum",
       "downloads": 10
-    },
-    {
-      "title": "AnyText",
-      "pack": "Free Pack",
-      "downloads": 9
     },
     {
       "title": "Callisto",
@@ -145,6 +150,11 @@
     {
       "title": "Colosseum VSTi",
       "pack": "Colosseum",
+      "downloads": 3
+    },
+    {
+      "title": "Rythmos",
+      "pack": "Max! Pack",
       "downloads": 3
     },
     {
@@ -223,11 +233,6 @@
       "downloads": 1
     },
     {
-      "title": "Rythmos",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
       "title": "Sultana 2",
       "pack": "Max! Pack",
       "downloads": 1
@@ -246,11 +251,6 @@
       "title": "Yowlseq 2",
       "pack": "Max! Pack",
       "downloads": 1
-    },
-    {
-      "title": "Grex Ballada",
-      "pack": "Free Pack",
-      "downloads": 0
     },
     {
       "title": "Midisquid",
