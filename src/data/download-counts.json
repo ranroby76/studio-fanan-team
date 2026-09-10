@@ -1,119 +1,119 @@
 {
-  "generated_at": "2026-09-09T00:04:34.850Z",
-  "total_downloads": 2512,
+  "generated_at": "2026-09-10T00:02:12.312Z",
+  "total_downloads": 3131,
   "plugins": [
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1462
+      "downloads": 1531
     },
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 165
+      "downloads": 642
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 129
+      "downloads": 141
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 58
+      "downloads": 61
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 58
+      "downloads": 61
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 54
+      "downloads": 59
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 49
-    },
-    {
-      "title": "RandRobin",
-      "pack": "Free Pack",
-      "downloads": 43
+      "downloads": 55
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 42
+      "downloads": 46
+    },
+    {
+      "title": "RandRobin",
+      "pack": "Free Pack",
+      "downloads": 46
     },
     {
       "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 40
+      "downloads": 44
     },
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 33
-    },
-    {
-      "title": "Gala SE ​",
-      "pack": "Free Pack",
-      "downloads": 31
+      "downloads": 35
     },
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 31
+      "downloads": 34
     },
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 30
+      "downloads": 34
+    },
+    {
+      "title": "Gala SE ​",
+      "pack": "Free Pack",
+      "downloads": 33
     },
     {
       "title": "999 gen2",
+      "pack": "Free Pack",
+      "downloads": 29
+    },
+    {
+      "title": "ScandiClavia 2",
       "pack": "Free Pack",
       "downloads": 27
     },
     {
       "title": "Mini Ringo",
       "pack": "Free Pack",
-      "downloads": 25
-    },
-    {
-      "title": "ScandiClavia 2",
-      "pack": "Free Pack",
-      "downloads": 25
-    },
-    {
-      "title": "Midmid",
-      "pack": "Free Pack",
-      "downloads": 22
-    },
-    {
-      "title": "Monica 3",
-      "pack": "Free Pack",
-      "downloads": 22
+      "downloads": 26
     },
     {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 21
+      "downloads": 24
+    },
+    {
+      "title": "Midmid",
+      "pack": "Free Pack",
+      "downloads": 23
+    },
+    {
+      "title": "Monica 3",
+      "pack": "Free Pack",
+      "downloads": 23
     },
     {
       "title": "Rebellion",
       "pack": "Free Pack",
-      "downloads": 18
-    },
-    {
-      "title": "Bonnie",
-      "pack": "Free Pack",
-      "downloads": 17
+      "downloads": 21
     },
     {
       "title": "Djup",
+      "pack": "Free Pack",
+      "downloads": 20
+    },
+    {
+      "title": "Bonnie",
       "pack": "Free Pack",
       "downloads": 17
     },
@@ -128,13 +128,13 @@
       "downloads": 14
     },
     {
-      "title": "AnyText",
-      "pack": "Free Pack",
-      "downloads": 10
-    },
-    {
       "title": "Colosseum",
       "pack": "Colosseum",
+      "downloads": 11
+    },
+    {
+      "title": "AnyText",
+      "pack": "Free Pack",
       "downloads": 10
     },
     {
@@ -143,19 +143,29 @@
       "downloads": 9
     },
     {
+      "title": "Colosseum VSTi",
+      "pack": "Colosseum",
+      "downloads": 5
+    },
+    {
       "title": "AnyImage",
       "pack": "Max! Pack",
       "downloads": 4
     },
     {
-      "title": "Colosseum VSTi",
-      "pack": "Colosseum",
+      "title": "Concordia",
+      "pack": "Max! Pack",
       "downloads": 3
     },
     {
       "title": "Rythmos",
       "pack": "Max! Pack",
       "downloads": 3
+    },
+    {
+      "title": "Midiverus",
+      "pack": "Max! Pack",
+      "downloads": 2
     },
     {
       "title": "Playlisted",
@@ -193,11 +203,6 @@
       "downloads": 1
     },
     {
-      "title": "Concordia",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
       "title": "Gala Duo",
       "pack": "Max! Pack",
       "downloads": 1
@@ -214,11 +219,6 @@
     },
     {
       "title": "Midimotor",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Midiverus",
       "pack": "Max! Pack",
       "downloads": 1
     },
