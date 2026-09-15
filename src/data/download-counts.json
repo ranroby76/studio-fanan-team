@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-09-14T00:02:35.188Z",
-  "total_downloads": 4231,
+  "generated_at": "2026-09-15T00:03:50.731Z",
+  "total_downloads": 4424,
   "plugins": [
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1632
+      "downloads": 1653
     },
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 1489
+      "downloads": 1629
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 155
+      "downloads": 157
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 82
+      "downloads": 89
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 74
+      "downloads": 78
     },
     {
       "title": "Solina2k",
@@ -55,12 +55,17 @@
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 41
+      "downloads": 42
     },
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 39
+      "downloads": 40
+    },
+    {
+      "title": "Spacelifter 4",
+      "pack": "Free Pack",
+      "downloads": 35
     },
     {
       "title": "Tropicana Fun",
@@ -68,9 +73,9 @@
       "downloads": 35
     },
     {
-      "title": "Spacelifter 4",
+      "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 34
+      "downloads": 33
     },
     {
       "title": "999 gen2",
@@ -81,11 +86,6 @@
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
       "downloads": 32
-    },
-    {
-      "title": "ScandiClavia 2",
-      "pack": "Free Pack",
-      "downloads": 31
     },
     {
       "title": "Midmid",
@@ -130,7 +130,7 @@
     {
       "title": "Callisto",
       "pack": "Max! Pack",
-      "downloads": 13
+      "downloads": 14
     },
     {
       "title": "Colosseum",
@@ -165,12 +165,42 @@
     {
       "title": "Rythmos",
       "pack": "Max! Pack",
+      "downloads": 4
+    },
+    {
+      "title": "Gala Duo",
+      "pack": "Max! Pack",
+      "downloads": 3
+    },
+    {
+      "title": "Randomidi",
+      "pack": "Max! Pack",
       "downloads": 3
     },
     {
       "title": "ScandiSoul 2",
       "pack": "Max! Pack",
       "downloads": 3
+    },
+    {
+      "title": "Arpomaniac",
+      "pack": "Max! Pack",
+      "downloads": 2
+    },
+    {
+      "title": "Brunetta",
+      "pack": "Max! Pack",
+      "downloads": 2
+    },
+    {
+      "title": "Gala XL",
+      "pack": "Max! Pack",
+      "downloads": 2
+    },
+    {
+      "title": "Kitton Stylist",
+      "pack": "Max! Pack",
+      "downloads": 2
     },
     {
       "title": "Midiverus",
@@ -188,7 +218,17 @@
       "downloads": 2
     },
     {
-      "title": "Randomidi",
+      "title": "Ringo",
+      "pack": "Max! Pack",
+      "downloads": 2
+    },
+    {
+      "title": "Sultana 2",
+      "pack": "Max! Pack",
+      "downloads": 2
+    },
+    {
+      "title": "Tropicana",
       "pack": "Max! Pack",
       "downloads": 2
     },
@@ -198,29 +238,9 @@
       "downloads": 2
     },
     {
-      "title": "Arpomaniac",
+      "title": "Yowlseq 2",
       "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Brunetta",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Gala Duo",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Gala XL",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Kitton Stylist",
-      "pack": "Max! Pack",
-      "downloads": 1
+      "downloads": 2
     },
     {
       "title": "Midimotor",
@@ -233,27 +253,12 @@
       "downloads": 1
     },
     {
-      "title": "Ringo",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Sultana 2",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Tropicana",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
       "title": "Yogi",
       "pack": "Max! Pack",
       "downloads": 1
     },
     {
-      "title": "Yowlseq 2",
+      "title": "Zoe 2",
       "pack": "Max! Pack",
       "downloads": 1
     },
@@ -275,11 +280,6 @@
     {
       "title": "Spacelifter 3",
       "pack": "Free Pack",
-      "downloads": 0
-    },
-    {
-      "title": "Zoe 2",
-      "pack": "Max! Pack",
       "downloads": 0
     }
   ]
