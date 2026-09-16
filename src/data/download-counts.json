@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-09-15T00:03:50.731Z",
-  "total_downloads": 4424,
+  "generated_at": "2026-09-16T00:04:49.553Z",
+  "total_downloads": 4565,
   "plugins": [
-    {
-      "title": "Domina",
-      "pack": "Free Pack",
-      "downloads": 1653
-    },
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 1629
+      "downloads": 1750
+    },
+    {
+      "title": "Domina",
+      "pack": "Free Pack",
+      "downloads": 1665
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 157
+      "downloads": 160
     },
     {
       "title": "Saxophia gen3",
@@ -25,12 +25,12 @@
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 78
+      "downloads": 79
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 66
+      "downloads": 67
     },
     {
       "title": "Villain",
@@ -45,7 +45,7 @@
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 53
+      "downloads": 54
     },
     {
       "title": "RandRobin",
@@ -75,16 +75,16 @@
     {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
+      "downloads": 34
+    },
+    {
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
       "downloads": 33
     },
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 32
-    },
-    {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
       "downloads": 32
     },
     {
