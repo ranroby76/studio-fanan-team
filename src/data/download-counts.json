@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-16T00:04:49.553Z",
-  "total_downloads": 4565,
+  "generated_at": "2026-09-17T00:03:05.007Z",
+  "total_downloads": 4640,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 1750
+      "downloads": 1794
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1665
+      "downloads": 1684
     },
     {
       "title": "Fanan Asio Driver",
@@ -20,7 +20,7 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 89
+      "downloads": 91
     },
     {
       "title": "Blue Lue",
@@ -38,14 +38,14 @@
       "downloads": 62
     },
     {
+      "title": "Kitton 3",
+      "pack": "Free Pack",
+      "downloads": 56
+    },
+    {
       "title": "Bella",
       "pack": "Free Pack",
       "downloads": 55
-    },
-    {
-      "title": "Kitton 3",
-      "pack": "Free Pack",
-      "downloads": 54
     },
     {
       "title": "RandRobin",
@@ -63,6 +63,16 @@
       "downloads": 40
     },
     {
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
+      "downloads": 36
+    },
+    {
+      "title": "Monica 3",
+      "pack": "Free Pack",
+      "downloads": 35
+    },
+    {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
       "downloads": 35
@@ -78,22 +88,12 @@
       "downloads": 34
     },
     {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 33
-    },
-    {
       "title": "999 gen2",
       "pack": "Free Pack",
       "downloads": 32
     },
     {
       "title": "Midmid",
-      "pack": "Free Pack",
-      "downloads": 30
-    },
-    {
-      "title": "Monica 3",
       "pack": "Free Pack",
       "downloads": 30
     },
