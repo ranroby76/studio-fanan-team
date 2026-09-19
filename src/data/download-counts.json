@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-18T00:00:34.894Z",
-  "total_downloads": 4708,
+  "generated_at": "2026-09-19T00:03:26.159Z",
+  "total_downloads": 4864,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 1849
+      "downloads": 1918
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1689
+      "downloads": 1745
     },
     {
       "title": "Fanan Asio Driver",
@@ -20,27 +20,27 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 93
+      "downloads": 94
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 81
+      "downloads": 83
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 67
+      "downloads": 68
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 62
+      "downloads": 64
     },
     {
       "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 57
+      "downloads": 59
     },
     {
       "title": "Kitton 3",
@@ -55,22 +55,22 @@
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 42
+      "downloads": 44
     },
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 40
+      "downloads": 41
     },
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 37
+      "downloads": 41
     },
     {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 36
+      "downloads": 40
     },
     {
       "title": "Monica 3",
@@ -81,6 +81,11 @@
       "title": "Spacelifter 4",
       "pack": "Free Pack",
       "downloads": 35
+    },
+    {
+      "title": "Mini Ringo",
+      "pack": "Free Pack",
+      "downloads": 34
     },
     {
       "title": "ScandiClavia 2",
@@ -98,9 +103,9 @@
       "downloads": 30
     },
     {
-      "title": "Mini Ringo",
+      "title": "Bonnie",
       "pack": "Free Pack",
-      "downloads": 27
+      "downloads": 23
     },
     {
       "title": "Rebellion",
@@ -113,24 +118,19 @@
       "downloads": 21
     },
     {
-      "title": "Bonnie",
-      "pack": "Free Pack",
-      "downloads": 20
-    },
-    {
       "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 17
     },
     {
+      "title": "Callisto",
+      "pack": "Max! Pack",
+      "downloads": 16
+    },
+    {
       "title": "Bjorn",
       "pack": "Free Pack",
       "downloads": 15
-    },
-    {
-      "title": "Callisto",
-      "pack": "Max! Pack",
-      "downloads": 14
     },
     {
       "title": "Colosseum",
