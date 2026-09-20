@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-19T00:03:26.159Z",
-  "total_downloads": 4864,
+  "generated_at": "2026-09-20T00:02:40.866Z",
+  "total_downloads": 4945,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 1918
+      "downloads": 1948
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1745
+      "downloads": 1776
     },
     {
       "title": "Fanan Asio Driver",
@@ -20,17 +20,17 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 94
+      "downloads": 98
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 83
+      "downloads": 87
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 68
+      "downloads": 69
     },
     {
       "title": "Villain",
@@ -45,12 +45,17 @@
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 56
+      "downloads": 58
     },
     {
       "title": "RandRobin",
       "pack": "Free Pack",
       "downloads": 47
+    },
+    {
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
+      "downloads": 45
     },
     {
       "title": "Gala SE ​",
@@ -66,11 +71,6 @@
       "title": "Tropicana Fun",
       "pack": "Free Pack",
       "downloads": 41
-    },
-    {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 40
     },
     {
       "title": "Monica 3",
@@ -95,7 +95,7 @@
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 32
+      "downloads": 33
     },
     {
       "title": "Midmid",
@@ -103,12 +103,12 @@
       "downloads": 30
     },
     {
-      "title": "Bonnie",
+      "title": "Rebellion",
       "pack": "Free Pack",
-      "downloads": 23
+      "downloads": 24
     },
     {
-      "title": "Rebellion",
+      "title": "Bonnie",
       "pack": "Free Pack",
       "downloads": 23
     },
@@ -118,14 +118,14 @@
       "downloads": 21
     },
     {
+      "title": "Callisto",
+      "pack": "Max! Pack",
+      "downloads": 18
+    },
+    {
       "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 17
-    },
-    {
-      "title": "Callisto",
-      "pack": "Max! Pack",
-      "downloads": 16
     },
     {
       "title": "Bjorn",
