@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-09-20T00:02:40.866Z",
-  "total_downloads": 4945,
+  "generated_at": "2026-09-21T00:03:30.959Z",
+  "total_downloads": 5023,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 1948
+      "downloads": 1995
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1776
+      "downloads": 1790
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 160
+      "downloads": 167
     },
     {
       "title": "Saxophia gen3",
@@ -25,17 +25,17 @@
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 87
+      "downloads": 88
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 69
+      "downloads": 70
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 64
+      "downloads": 66
     },
     {
       "title": "Bella",
@@ -63,14 +63,14 @@
       "downloads": 44
     },
     {
-      "title": "Quentin",
-      "pack": "Free Pack",
-      "downloads": 41
-    },
-    {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 41
+      "downloads": 43
+    },
+    {
+      "title": "Quentin",
+      "pack": "Free Pack",
+      "downloads": 42
     },
     {
       "title": "Monica 3",
@@ -83,6 +83,11 @@
       "downloads": 35
     },
     {
+      "title": "999 gen2",
+      "pack": "Free Pack",
+      "downloads": 34
+    },
+    {
       "title": "Mini Ringo",
       "pack": "Free Pack",
       "downloads": 34
@@ -91,11 +96,6 @@
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
       "downloads": 34
-    },
-    {
-      "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 33
     },
     {
       "title": "Midmid",
@@ -173,6 +173,11 @@
       "downloads": 3
     },
     {
+      "title": "OnStage",
+      "pack": "OnStage",
+      "downloads": 3
+    },
+    {
       "title": "Randomidi",
       "pack": "Max! Pack",
       "downloads": 3
@@ -245,11 +250,6 @@
     {
       "title": "Midimotor",
       "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "OnStage",
-      "pack": "OnStage",
       "downloads": 1
     },
     {
