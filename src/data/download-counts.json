@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-09-23T00:02:46.956Z",
-  "total_downloads": 5178,
+  "generated_at": "2026-09-24T00:02:58.177Z",
+  "total_downloads": 5278,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2091
+      "downloads": 2166
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1815
+      "downloads": 1819
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 181
+      "downloads": 184
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 100
+      "downloads": 103
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 88
+      "downloads": 90
     },
     {
       "title": "Solina2k",
@@ -33,14 +33,14 @@
       "downloads": 72
     },
     {
+      "title": "Kitton 3",
+      "pack": "Free Pack",
+      "downloads": 69
+    },
+    {
       "title": "Villain",
       "pack": "Free Pack",
       "downloads": 66
-    },
-    {
-      "title": "Kitton 3",
-      "pack": "Free Pack",
-      "downloads": 62
     },
     {
       "title": "Bella",
@@ -78,14 +78,14 @@
       "downloads": 37
     },
     {
-      "title": "Spacelifter 4",
+      "title": "999 gen2",
       "pack": "Free Pack",
       "downloads": 35
     },
     {
-      "title": "999 gen2",
+      "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 34
+      "downloads": 35
     },
     {
       "title": "Mini Ringo",
@@ -103,6 +103,11 @@
       "downloads": 32
     },
     {
+      "title": "Djup",
+      "pack": "Free Pack",
+      "downloads": 25
+    },
+    {
       "title": "Rebellion",
       "pack": "Free Pack",
       "downloads": 24
@@ -113,14 +118,9 @@
       "downloads": 23
     },
     {
-      "title": "Djup",
-      "pack": "Free Pack",
-      "downloads": 23
-    },
-    {
       "title": "Callisto",
       "pack": "Max! Pack",
-      "downloads": 18
+      "downloads": 19
     },
     {
       "title": "Ymer",
@@ -153,6 +153,11 @@
       "downloads": 7
     },
     {
+      "title": "Gala Duo",
+      "pack": "Max! Pack",
+      "downloads": 5
+    },
+    {
       "title": "AnyImage",
       "pack": "Max! Pack",
       "downloads": 4
@@ -171,11 +176,6 @@
       "title": "Sampler Arena",
       "pack": "Sampler Arena",
       "downloads": 4
-    },
-    {
-      "title": "Gala Duo",
-      "pack": "Max! Pack",
-      "downloads": 3
     },
     {
       "title": "OnStage",
