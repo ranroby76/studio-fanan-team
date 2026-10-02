@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-01T00:04:29.569Z",
-  "total_downloads": 5721,
+  "generated_at": "2026-10-02T00:03:03.425Z",
+  "total_downloads": 5743,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2338
+      "downloads": 2341
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1915
+      "downloads": 1923
     },
     {
       "title": "Fanan Asio Driver",
@@ -20,7 +20,7 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 122
+      "downloads": 126
     },
     {
       "title": "Blue Lue",
@@ -30,12 +30,12 @@
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 89
+      "downloads": 91
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 78
+      "downloads": 80
     },
     {
       "title": "Villain",
@@ -48,12 +48,12 @@
       "downloads": 62
     },
     {
-      "title": "RandRobin",
+      "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 51
+      "downloads": 52
     },
     {
-      "title": "Tropicana Fun",
+      "title": "RandRobin",
       "pack": "Free Pack",
       "downloads": 51
     },
@@ -63,14 +63,14 @@
       "downloads": 49
     },
     {
-      "title": "Quentin",
-      "pack": "Free Pack",
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
       "downloads": 46
     },
     {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 45
+      "title": "Quentin",
+      "pack": "Free Pack",
+      "downloads": 46
     },
     {
       "title": "Spacelifter 4",
@@ -125,7 +125,7 @@
     {
       "title": "Callisto",
       "pack": "Max! Pack",
-      "downloads": 19
+      "downloads": 20
     },
     {
       "title": "Bjorn",
