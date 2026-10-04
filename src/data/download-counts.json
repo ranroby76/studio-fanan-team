@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-10-03T00:04:02.257Z",
-  "total_downloads": 5815,
+  "generated_at": "2026-10-04T00:03:14.424Z",
+  "total_downloads": 5853,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2367
+      "downloads": 2386
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1934
+      "downloads": 1935
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 223
+      "downloads": 226
     },
     {
       "title": "Saxophia gen3",
@@ -25,17 +25,17 @@
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 103
+      "downloads": 104
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 94
+      "downloads": 95
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 81
+      "downloads": 82
     },
     {
       "title": "Villain",
@@ -50,6 +50,11 @@
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
+      "downloads": 55
+    },
+    {
+      "title": "Gala SE ​",
+      "pack": "Free Pack",
       "downloads": 53
     },
     {
@@ -58,14 +63,9 @@
       "downloads": 52
     },
     {
-      "title": "Gala SE ​",
-      "pack": "Free Pack",
-      "downloads": 51
-    },
-    {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 47
+      "downloads": 51
     },
     {
       "title": "Betelgeuse",
@@ -83,19 +83,19 @@
       "downloads": 44
     },
     {
+      "title": "Mini Ringo",
+      "pack": "Free Pack",
+      "downloads": 41
+    },
+    {
       "title": "999 gen2",
       "pack": "Free Pack",
       "downloads": 40
     },
     {
-      "title": "Mini Ringo",
-      "pack": "Free Pack",
-      "downloads": 39
-    },
-    {
       "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 39
+      "downloads": 40
     },
     {
       "title": "Midmid",
@@ -115,7 +115,7 @@
     {
       "title": "Djup",
       "pack": "Free Pack",
-      "downloads": 28
+      "downloads": 29
     },
     {
       "title": "Ymer",
