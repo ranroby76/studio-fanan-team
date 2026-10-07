@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-10-06T00:03:12.996Z",
-  "total_downloads": 5899,
+  "generated_at": "2026-10-07T00:04:28.614Z",
+  "total_downloads": 5956,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2406
+      "downloads": 2424
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1945
+      "downloads": 1946
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 229
+      "downloads": 249
     },
     {
       "title": "Saxophia gen3",
@@ -48,19 +48,19 @@
       "downloads": 70
     },
     {
+      "title": "Gala SE ​",
+      "pack": "Free Pack",
+      "downloads": 60
+    },
+    {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
       "downloads": 57
     },
     {
-      "title": "Gala SE ​",
-      "pack": "Free Pack",
-      "downloads": 54
-    },
-    {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 54
+      "downloads": 56
     },
     {
       "title": "Quentin",
@@ -75,7 +75,7 @@
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 46
+      "downloads": 47
     },
     {
       "title": "ScandiClavia 2",
@@ -120,7 +120,7 @@
     {
       "title": "Ymer",
       "pack": "Free Pack",
-      "downloads": 21
+      "downloads": 22
     },
     {
       "title": "Callisto",
@@ -130,7 +130,7 @@
     {
       "title": "Bjorn",
       "pack": "Free Pack",
-      "downloads": 17
+      "downloads": 18
     },
     {
       "title": "AnyText",
@@ -158,6 +158,11 @@
       "downloads": 7
     },
     {
+      "title": "Sultana 2",
+      "pack": "Max! Pack",
+      "downloads": 7
+    },
+    {
       "title": "Gala Duo",
       "pack": "Max! Pack",
       "downloads": 5
@@ -178,6 +183,11 @@
       "downloads": 4
     },
     {
+      "title": "Grex",
+      "pack": "Grex",
+      "downloads": 3
+    },
+    {
       "title": "OnStage",
       "pack": "OnStage",
       "downloads": 3
@@ -189,11 +199,6 @@
     },
     {
       "title": "ScandiSoul 2",
-      "pack": "Max! Pack",
-      "downloads": 3
-    },
-    {
-      "title": "Sultana 2",
       "pack": "Max! Pack",
       "downloads": 3
     },
