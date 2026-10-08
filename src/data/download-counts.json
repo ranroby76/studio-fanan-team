@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-10-07T00:04:28.614Z",
-  "total_downloads": 5956,
+  "generated_at": "2026-10-08T00:01:17.702Z",
+  "total_downloads": 5996,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2424
+      "downloads": 2435
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1946
+      "downloads": 1949
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 249
+      "downloads": 251
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 128
+      "downloads": 129
     },
     {
       "title": "Blue Lue",
@@ -30,7 +30,7 @@
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 97
+      "downloads": 98
     },
     {
       "title": "Solina2k",
@@ -70,7 +70,7 @@
     {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 47
+      "downloads": 48
     },
     {
       "title": "Spacelifter 4",
@@ -88,12 +88,12 @@
       "downloads": 41
     },
     {
-      "title": "999 gen2",
+      "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 40
+      "downloads": 41
     },
     {
-      "title": "Monica 3",
+      "title": "999 gen2",
       "pack": "Free Pack",
       "downloads": 40
     },
@@ -105,7 +105,7 @@
     {
       "title": "Bonnie",
       "pack": "Free Pack",
-      "downloads": 31
+      "downloads": 32
     },
     {
       "title": "Rebellion",
@@ -133,6 +133,11 @@
       "downloads": 18
     },
     {
+      "title": "Grex",
+      "pack": "Grex",
+      "downloads": 14
+    },
+    {
       "title": "AnyText",
       "pack": "Free Pack",
       "downloads": 13
@@ -145,16 +150,16 @@
     {
       "title": "Ziggy",
       "pack": "Max! Pack",
+      "downloads": 9
+    },
+    {
+      "title": "Concordia",
+      "pack": "Max! Pack",
       "downloads": 8
     },
     {
       "title": "Colosseum VSTi",
       "pack": "Colosseum",
-      "downloads": 7
-    },
-    {
-      "title": "Concordia",
-      "pack": "Max! Pack",
       "downloads": 7
     },
     {
@@ -178,13 +183,18 @@
       "downloads": 4
     },
     {
+      "title": "Gala XL",
+      "pack": "Max! Pack",
+      "downloads": 4
+    },
+    {
       "title": "Rythmos",
       "pack": "Max! Pack",
       "downloads": 4
     },
     {
-      "title": "Grex",
-      "pack": "Grex",
+      "title": "Arpomaniac",
+      "pack": "Max! Pack",
       "downloads": 3
     },
     {
@@ -203,9 +213,9 @@
       "downloads": 3
     },
     {
-      "title": "Arpomaniac",
+      "title": "Tropicana",
       "pack": "Max! Pack",
-      "downloads": 2
+      "downloads": 3
     },
     {
       "title": "Brunetta",
@@ -213,12 +223,12 @@
       "downloads": 2
     },
     {
-      "title": "Gala XL",
+      "title": "Kitton Stylist",
       "pack": "Max! Pack",
       "downloads": 2
     },
     {
-      "title": "Kitton Stylist",
+      "title": "Midimotor",
       "pack": "Max! Pack",
       "downloads": 2
     },
@@ -243,29 +253,19 @@
       "downloads": 2
     },
     {
-      "title": "Tropicana",
-      "pack": "Max! Pack",
+      "title": "Truculentus",
+      "pack": "Mad MIDI Machines",
       "downloads": 2
     },
     {
-      "title": "Truculentus",
-      "pack": "Mad MIDI Machines",
+      "title": "Yogi",
+      "pack": "Max! Pack",
       "downloads": 2
     },
     {
       "title": "Yowlseq 2",
       "pack": "Max! Pack",
       "downloads": 2
-    },
-    {
-      "title": "Midimotor",
-      "pack": "Max! Pack",
-      "downloads": 1
-    },
-    {
-      "title": "Yogi",
-      "pack": "Max! Pack",
-      "downloads": 1
     },
     {
       "title": "Zoe 2",
