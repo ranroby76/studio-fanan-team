@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-10-11T00:04:28.441Z",
-  "total_downloads": 6070,
+  "generated_at": "2026-10-12T00:04:28.389Z",
+  "total_downloads": 6087,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2483
+      "downloads": 2485
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1953
+      "downloads": 1961
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 254
+      "downloads": 255
     },
     {
       "title": "Saxophia gen3",
@@ -35,12 +35,12 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 84
+      "downloads": 86
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 78
+      "downloads": 79
     },
     {
       "title": "Bella",
@@ -55,7 +55,7 @@
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 57
+      "downloads": 58
     },
     {
       "title": "RandRobin",
@@ -83,6 +83,11 @@
       "downloads": 45
     },
     {
+      "title": "999 gen2",
+      "pack": "Free Pack",
+      "downloads": 41
+    },
+    {
       "title": "Mini Ringo",
       "pack": "Free Pack",
       "downloads": 41
@@ -91,11 +96,6 @@
       "title": "Monica 3",
       "pack": "Free Pack",
       "downloads": 41
-    },
-    {
-      "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 40
     },
     {
       "title": "Midmid",
@@ -128,13 +128,13 @@
       "downloads": 22
     },
     {
-      "title": "Bjorn",
-      "pack": "Free Pack",
-      "downloads": 18
-    },
-    {
       "title": "Grex",
       "pack": "Grex",
+      "downloads": 19
+    },
+    {
+      "title": "Bjorn",
+      "pack": "Free Pack",
       "downloads": 18
     },
     {
