@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-13T00:03:52.285Z",
-  "total_downloads": 6107,
+  "generated_at": "2026-10-14T00:04:26.867Z",
+  "total_downloads": 6135,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2496
+      "downloads": 2511
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1964
+      "downloads": 1966
     },
     {
       "title": "Fanan Asio Driver",
@@ -20,7 +20,7 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 130
+      "downloads": 131
     },
     {
       "title": "Blue Lue",
@@ -30,7 +30,7 @@
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 101
+      "downloads": 102
     },
     {
       "title": "Solina2k",
@@ -40,12 +40,12 @@
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 79
+      "downloads": 81
     },
     {
       "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 70
+      "downloads": 71
     },
     {
       "title": "Gala SE ​",
@@ -73,14 +73,14 @@
       "downloads": 48
     },
     {
-      "title": "Spacelifter 4",
+      "title": "ScandiClavia 2",
       "pack": "Free Pack",
       "downloads": 47
     },
     {
-      "title": "ScandiClavia 2",
+      "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 46
+      "downloads": 47
     },
     {
       "title": "Mini Ringo",
@@ -130,7 +130,7 @@
     {
       "title": "Grex",
       "pack": "Grex",
-      "downloads": 19
+      "downloads": 20
     },
     {
       "title": "Bjorn",
@@ -138,13 +138,13 @@
       "downloads": 18
     },
     {
-      "title": "AnyText",
-      "pack": "Free Pack",
-      "downloads": 13
-    },
-    {
       "title": "Colosseum",
       "pack": "Colosseum",
+      "downloads": 16
+    },
+    {
+      "title": "AnyText",
+      "pack": "Free Pack",
       "downloads": 13
     },
     {
@@ -203,6 +203,11 @@
       "downloads": 3
     },
     {
+      "title": "Playlisted 2",
+      "pack": "Mad MIDI Machines",
+      "downloads": 3
+    },
+    {
       "title": "Randomidi",
       "pack": "Max! Pack",
       "downloads": 3
@@ -240,11 +245,6 @@
     {
       "title": "Playlisted",
       "pack": "Max! Pack",
-      "downloads": 2
-    },
-    {
-      "title": "Playlisted 2",
-      "pack": "Mad MIDI Machines",
       "downloads": 2
     },
     {
