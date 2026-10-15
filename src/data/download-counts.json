@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-10-14T00:04:26.867Z",
-  "total_downloads": 6135,
+  "generated_at": "2026-10-15T00:02:27.095Z",
+  "total_downloads": 6166,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2511
+      "downloads": 2518
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1966
+      "downloads": 1970
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 256
+      "downloads": 262
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 131
+      "downloads": 134
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 106
+      "downloads": 107
     },
     {
       "title": "Kitton 3",
@@ -35,17 +35,17 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 86
+      "downloads": 87
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 81
+      "downloads": 83
     },
     {
       "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 71
+      "downloads": 72
     },
     {
       "title": "Gala SE ​",
@@ -55,12 +55,12 @@
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 60
+      "downloads": 61
     },
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 56
+      "downloads": 57
     },
     {
       "title": "Quentin",
@@ -100,7 +100,7 @@
     {
       "title": "Midmid",
       "pack": "Free Pack",
-      "downloads": 36
+      "downloads": 37
     },
     {
       "title": "Bonnie",
@@ -110,7 +110,7 @@
     {
       "title": "Rebellion",
       "pack": "Free Pack",
-      "downloads": 31
+      "downloads": 32
     },
     {
       "title": "Djup",
@@ -123,14 +123,14 @@
       "downloads": 22
     },
     {
-      "title": "Ymer",
-      "pack": "Free Pack",
+      "title": "Grex",
+      "pack": "Grex",
       "downloads": 22
     },
     {
-      "title": "Grex",
-      "pack": "Grex",
-      "downloads": 20
+      "title": "Ymer",
+      "pack": "Free Pack",
+      "downloads": 22
     },
     {
       "title": "Bjorn",
