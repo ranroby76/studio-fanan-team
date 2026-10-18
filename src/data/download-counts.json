@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-17T00:04:02.774Z",
-  "total_downloads": 6183,
+  "generated_at": "2026-10-18T00:04:53.541Z",
+  "total_downloads": 6222,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2527
+      "downloads": 2539
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1971
+      "downloads": 1972
     },
     {
       "title": "Fanan Asio Driver",
@@ -20,17 +20,17 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 136
+      "downloads": 138
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 107
+      "downloads": 109
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 103
+      "downloads": 105
     },
     {
       "title": "Solina2k",
@@ -40,7 +40,7 @@
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 85
+      "downloads": 87
     },
     {
       "title": "Bella",
@@ -48,24 +48,34 @@
       "downloads": 72
     },
     {
-      "title": "Gala SE ​",
-      "pack": "Free Pack",
-      "downloads": 61
-    },
-    {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 61
+      "downloads": 63
+    },
+    {
+      "title": "Gala SE ​",
+      "pack": "Free Pack",
+      "downloads": 62
     },
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 57
+      "downloads": 58
     },
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 52
+      "downloads": 54
+    },
+    {
+      "title": "ScandiClavia 2",
+      "pack": "Free Pack",
+      "downloads": 50
+    },
+    {
+      "title": "Spacelifter 4",
+      "pack": "Free Pack",
+      "downloads": 49
     },
     {
       "title": "Betelgeuse",
@@ -73,27 +83,17 @@
       "downloads": 48
     },
     {
-      "title": "ScandiClavia 2",
-      "pack": "Free Pack",
-      "downloads": 47
-    },
-    {
-      "title": "Spacelifter 4",
-      "pack": "Free Pack",
-      "downloads": 47
-    },
-    {
       "title": "Mini Ringo",
       "pack": "Free Pack",
-      "downloads": 42
-    },
-    {
-      "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 41
+      "downloads": 44
     },
     {
       "title": "Monica 3",
+      "pack": "Free Pack",
+      "downloads": 44
+    },
+    {
+      "title": "999 gen2",
       "pack": "Free Pack",
       "downloads": 41
     },
@@ -118,6 +118,11 @@
       "downloads": 29
     },
     {
+      "title": "Ymer",
+      "pack": "Free Pack",
+      "downloads": 24
+    },
+    {
       "title": "Callisto",
       "pack": "Max! Pack",
       "downloads": 22
@@ -125,11 +130,6 @@
     {
       "title": "Grex",
       "pack": "Grex",
-      "downloads": 22
-    },
-    {
-      "title": "Ymer",
-      "pack": "Free Pack",
       "downloads": 22
     },
     {
