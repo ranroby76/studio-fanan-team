@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-19T00:03:23.326Z",
-  "total_downloads": 6244,
+  "generated_at": "2026-10-20T00:01:26.546Z",
+  "total_downloads": 6250,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2544
+      "downloads": 2547
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1977
+      "downloads": 1978
     },
     {
       "title": "Fanan Asio Driver",
@@ -118,6 +118,11 @@
       "downloads": 30
     },
     {
+      "title": "Grex",
+      "pack": "Grex",
+      "downloads": 24
+    },
+    {
       "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 24
@@ -125,11 +130,6 @@
     {
       "title": "Callisto",
       "pack": "Max! Pack",
-      "downloads": 22
-    },
-    {
-      "title": "Grex",
-      "pack": "Grex",
       "downloads": 22
     },
     {
