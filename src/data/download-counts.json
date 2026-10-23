@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-10-22T00:04:17.404Z",
-  "total_downloads": 6280,
+  "generated_at": "2026-10-23T00:04:13.983Z",
+  "total_downloads": 6287,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2553
+      "downloads": 2555
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1980
+      "downloads": 1981
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 265
+      "downloads": 266
     },
     {
       "title": "Saxophia gen3",
@@ -35,7 +35,7 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 88
+      "downloads": 89
     },
     {
       "title": "Villain",
@@ -50,7 +50,7 @@
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 66
+      "downloads": 67
     },
     {
       "title": "Tropicana Fun",
@@ -168,13 +168,13 @@
       "downloads": 7
     },
     {
-      "title": "Gala Duo",
-      "pack": "Max! Pack",
-      "downloads": 5
-    },
-    {
       "title": "Sampler Arena",
       "pack": "Sampler Arena",
+      "downloads": 6
+    },
+    {
+      "title": "Gala Duo",
+      "pack": "Max! Pack",
       "downloads": 5
     },
     {
