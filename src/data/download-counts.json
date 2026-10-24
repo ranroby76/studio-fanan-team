@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-23T00:04:13.983Z",
-  "total_downloads": 6287,
+  "generated_at": "2026-10-24T00:04:53.992Z",
+  "total_downloads": 6302,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2555
+      "downloads": 2559
     },
     {
       "title": "Domina",
@@ -40,7 +40,7 @@
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 88
+      "downloads": 89
     },
     {
       "title": "Bella",
@@ -50,7 +50,7 @@
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 67
+      "downloads": 70
     },
     {
       "title": "Tropicana Fun",
@@ -80,7 +80,7 @@
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 49
+      "downloads": 50
     },
     {
       "title": "Monica 3",
@@ -100,7 +100,7 @@
     {
       "title": "Midmid",
       "pack": "Free Pack",
-      "downloads": 40
+      "downloads": 41
     },
     {
       "title": "Bonnie",
@@ -110,7 +110,7 @@
     {
       "title": "Rebellion",
       "pack": "Free Pack",
-      "downloads": 33
+      "downloads": 34
     },
     {
       "title": "Djup",
@@ -118,13 +118,13 @@
       "downloads": 30
     },
     {
-      "title": "Grex",
-      "pack": "Grex",
-      "downloads": 24
-    },
-    {
       "title": "Ymer",
       "pack": "Free Pack",
+      "downloads": 25
+    },
+    {
+      "title": "Grex",
+      "pack": "Grex",
       "downloads": 24
     },
     {
@@ -140,7 +140,7 @@
     {
       "title": "Colosseum",
       "pack": "Colosseum",
-      "downloads": 16
+      "downloads": 17
     },
     {
       "title": "AnyText",
@@ -153,14 +153,14 @@
       "downloads": 9
     },
     {
-      "title": "Concordia",
-      "pack": "Max! Pack",
+      "title": "Colosseum VSTi",
+      "pack": "Colosseum",
       "downloads": 8
     },
     {
-      "title": "Colosseum VSTi",
-      "pack": "Colosseum",
-      "downloads": 7
+      "title": "Concordia",
+      "pack": "Max! Pack",
+      "downloads": 8
     },
     {
       "title": "Sultana 2",
@@ -198,6 +198,11 @@
       "downloads": 3
     },
     {
+      "title": "Kitton Stylist",
+      "pack": "Max! Pack",
+      "downloads": 3
+    },
+    {
       "title": "OnStage",
       "pack": "OnStage",
       "downloads": 3
@@ -224,11 +229,6 @@
     },
     {
       "title": "Brunetta",
-      "pack": "Max! Pack",
-      "downloads": 2
-    },
-    {
-      "title": "Kitton Stylist",
       "pack": "Max! Pack",
       "downloads": 2
     },
