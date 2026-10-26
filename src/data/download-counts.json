@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-10-25T01:03:59.797Z",
-  "total_downloads": 6336,
+  "generated_at": "2026-10-26T01:04:28.169Z",
+  "total_downloads": 6372,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2565
+      "downloads": 2572
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1984
+      "downloads": 1985
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 267
+      "downloads": 278
     },
     {
       "title": "Saxophia gen3",
@@ -35,7 +35,7 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 90
+      "downloads": 91
     },
     {
       "title": "Villain",
@@ -45,17 +45,17 @@
     {
       "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 74
+      "downloads": 75
     },
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 71
+      "downloads": 72
     },
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 65
+      "downloads": 67
     },
     {
       "title": "RandRobin",
@@ -70,7 +70,7 @@
     {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 54
+      "downloads": 55
     },
     {
       "title": "ScandiClavia 2",
@@ -80,17 +80,17 @@
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 50
+      "downloads": 52
     },
     {
       "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 46
+      "downloads": 47
     },
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 45
+      "downloads": 46
     },
     {
       "title": "Mini Ringo",
@@ -100,7 +100,7 @@
     {
       "title": "Midmid",
       "pack": "Free Pack",
-      "downloads": 41
+      "downloads": 42
     },
     {
       "title": "Bonnie",
@@ -118,14 +118,14 @@
       "downloads": 31
     },
     {
+      "title": "Grex",
+      "pack": "Grex",
+      "downloads": 31
+    },
+    {
       "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 26
-    },
-    {
-      "title": "Grex",
-      "pack": "Grex",
-      "downloads": 25
     },
     {
       "title": "Callisto",
