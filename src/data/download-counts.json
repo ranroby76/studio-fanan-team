@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-10-27T01:02:47.302Z",
-  "total_downloads": 6389,
+  "generated_at": "2026-10-28T01:04:32.838Z",
+  "total_downloads": 6422,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2575
+      "downloads": 2582
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1987
+      "downloads": 1991
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 281
+      "downloads": 284
     },
     {
       "title": "Saxophia gen3",
@@ -25,17 +25,17 @@
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 111
+      "downloads": 112
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 108
+      "downloads": 110
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 92
+      "downloads": 93
     },
     {
       "title": "Villain",
@@ -50,12 +50,12 @@
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 73
+      "downloads": 74
     },
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 67
+      "downloads": 69
     },
     {
       "title": "RandRobin",
@@ -65,7 +65,7 @@
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 56
+      "downloads": 58
     },
     {
       "title": "Betelgeuse",
@@ -75,7 +75,7 @@
     {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 52
+      "downloads": 54
     },
     {
       "title": "Spacelifter 4",
@@ -85,7 +85,7 @@
     {
       "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 48
+      "downloads": 49
     },
     {
       "title": "999 gen2",
@@ -95,7 +95,7 @@
     {
       "title": "Mini Ringo",
       "pack": "Free Pack",
-      "downloads": 45
+      "downloads": 46
     },
     {
       "title": "Midmid",
@@ -108,6 +108,11 @@
       "downloads": 35
     },
     {
+      "title": "Grex",
+      "pack": "Grex",
+      "downloads": 35
+    },
+    {
       "title": "Rebellion",
       "pack": "Free Pack",
       "downloads": 35
@@ -115,12 +120,7 @@
     {
       "title": "Djup",
       "pack": "Free Pack",
-      "downloads": 31
-    },
-    {
-      "title": "Grex",
-      "pack": "Grex",
-      "downloads": 31
+      "downloads": 32
     },
     {
       "title": "Ymer",
@@ -135,7 +135,7 @@
     {
       "title": "Bjorn",
       "pack": "Free Pack",
-      "downloads": 19
+      "downloads": 20
     },
     {
       "title": "Colosseum",
