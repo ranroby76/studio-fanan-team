@@ -1,71 +1,71 @@
 {
-  "generated_at": "2026-10-29T01:04:12.144Z",
-  "total_downloads": 6436,
+  "generated_at": "2026-10-30T01:02:26.089Z",
+  "total_downloads": 6525,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2585
+      "downloads": 2595
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1992
+      "downloads": 1995
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 284
+      "downloads": 287
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 150
+      "downloads": 155
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 112
+      "downloads": 114
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 110
-    },
-    {
-      "title": "Solina2k",
-      "pack": "Free Pack",
-      "downloads": 93
+      "downloads": 112
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 92
+      "downloads": 98
+    },
+    {
+      "title": "Solina2k",
+      "pack": "Free Pack",
+      "downloads": 94
     },
     {
       "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 75
+      "downloads": 76
     },
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 74
+      "downloads": 75
     },
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 70
+      "downloads": 72
     },
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 60
+      "downloads": 62
     },
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 59
+      "downloads": 60
     },
     {
       "title": "Betelgeuse",
@@ -75,57 +75,57 @@
     {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 54
+      "downloads": 55
     },
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 53
+      "downloads": 54
     },
     {
       "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 49
+      "downloads": 51
     },
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 46
+      "downloads": 47
     },
     {
       "title": "Mini Ringo",
       "pack": "Free Pack",
-      "downloads": 46
+      "downloads": 47
     },
     {
       "title": "Midmid",
       "pack": "Free Pack",
-      "downloads": 45
-    },
-    {
-      "title": "Grex",
-      "pack": "Grex",
-      "downloads": 36
+      "downloads": 46
     },
     {
       "title": "Bonnie",
       "pack": "Free Pack",
-      "downloads": 35
+      "downloads": 39
+    },
+    {
+      "title": "Grex",
+      "pack": "Grex",
+      "downloads": 38
     },
     {
       "title": "Rebellion",
       "pack": "Free Pack",
-      "downloads": 35
+      "downloads": 36
     },
     {
       "title": "Djup",
       "pack": "Free Pack",
-      "downloads": 32
+      "downloads": 34
     },
     {
       "title": "Ymer",
       "pack": "Free Pack",
-      "downloads": 26
+      "downloads": 27
     },
     {
       "title": "Callisto",
@@ -135,7 +135,7 @@
     {
       "title": "Bjorn",
       "pack": "Free Pack",
-      "downloads": 20
+      "downloads": 21
     },
     {
       "title": "Colosseum",
@@ -143,9 +143,19 @@
       "downloads": 18
     },
     {
+      "title": "Tomahawk Sampler Library",
+      "pack": "Sonify",
+      "downloads": 15
+    },
+    {
       "title": "AnyText",
       "pack": "Free Pack",
-      "downloads": 13
+      "downloads": 14
+    },
+    {
+      "title": "Sonify (Windows)",
+      "pack": "Sonify",
+      "downloads": 11
     },
     {
       "title": "Colosseum VSTi",
@@ -253,6 +263,16 @@
       "downloads": 2
     },
     {
+      "title": "Sonify (Linux)",
+      "pack": "Sonify",
+      "downloads": 2
+    },
+    {
+      "title": "Sonify (macOS (Apple Silicon))",
+      "pack": "Sonify",
+      "downloads": 2
+    },
+    {
       "title": "Truculentus",
       "pack": "Mad MIDI Machines",
       "downloads": 2
@@ -266,6 +286,11 @@
       "title": "Yowlseq 2",
       "pack": "Max! Pack",
       "downloads": 2
+    },
+    {
+      "title": "Sonify (macOS (Intel))",
+      "pack": "Sonify",
+      "downloads": 1
     },
     {
       "title": "Zoe 2",
