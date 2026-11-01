@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-31T01:03:01.088Z",
-  "total_downloads": 6560,
+  "generated_at": "2026-11-01T01:02:59.489Z",
+  "total_downloads": 6584,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2602
+      "downloads": 2607
     },
     {
       "title": "Domina",
@@ -20,7 +20,7 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 157
+      "downloads": 162
     },
     {
       "title": "Blue Lue",
@@ -30,7 +30,7 @@
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 112
+      "downloads": 114
     },
     {
       "title": "Villain",
@@ -60,7 +60,7 @@
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 62
+      "downloads": 63
     },
     {
       "title": "Quentin",
@@ -113,19 +113,24 @@
       "downloads": 39
     },
     {
-      "title": "Rebellion",
-      "pack": "Free Pack",
-      "downloads": 36
-    },
-    {
       "title": "Djup",
       "pack": "Free Pack",
-      "downloads": 35
+      "downloads": 37
+    },
+    {
+      "title": "Rebellion",
+      "pack": "Free Pack",
+      "downloads": 37
     },
     {
       "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 27
+    },
+    {
+      "title": "Tomahawk Sampler Library",
+      "pack": "Sonify",
+      "downloads": 23
     },
     {
       "title": "Callisto",
@@ -143,14 +148,9 @@
       "downloads": 18
     },
     {
-      "title": "Tomahawk Sampler Library",
-      "pack": "Sonify",
-      "downloads": 18
-    },
-    {
       "title": "Sonify (Windows)",
       "pack": "Sonify",
-      "downloads": 15
+      "downloads": 18
     },
     {
       "title": "AnyText",
