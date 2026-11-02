@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-01T01:02:59.489Z",
-  "total_downloads": 6584,
+  "generated_at": "2026-11-02T01:03:46.544Z",
+  "total_downloads": 6606,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2607
+      "downloads": 2611
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 1999
+      "downloads": 2000
     },
     {
       "title": "Fanan Asio Driver",
@@ -20,17 +20,17 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 162
+      "downloads": 165
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 114
+      "downloads": 116
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 114
+      "downloads": 116
     },
     {
       "title": "Villain",
@@ -60,7 +60,7 @@
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 63
+      "downloads": 64
     },
     {
       "title": "Quentin",
@@ -70,12 +70,12 @@
     {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 55
+      "downloads": 57
     },
     {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 55
+      "downloads": 57
     },
     {
       "title": "Spacelifter 4",
@@ -85,10 +85,15 @@
     {
       "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 51
+      "downloads": 52
     },
     {
       "title": "999 gen2",
+      "pack": "Free Pack",
+      "downloads": 49
+    },
+    {
+      "title": "Mini Ringo",
       "pack": "Free Pack",
       "downloads": 48
     },
@@ -98,14 +103,9 @@
       "downloads": 47
     },
     {
-      "title": "Mini Ringo",
-      "pack": "Free Pack",
-      "downloads": 47
-    },
-    {
       "title": "Grex",
       "pack": "Grex",
-      "downloads": 41
+      "downloads": 42
     },
     {
       "title": "Bonnie",
@@ -145,7 +145,7 @@
     {
       "title": "Colosseum",
       "pack": "Colosseum",
-      "downloads": 18
+      "downloads": 19
     },
     {
       "title": "Sonify (Windows)",
