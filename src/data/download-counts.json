@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-02T01:03:46.544Z",
-  "total_downloads": 6606,
+  "generated_at": "2026-11-03T01:01:32.876Z",
+  "total_downloads": 6629,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2611
+      "downloads": 2617
     },
     {
       "title": "Domina",
@@ -20,17 +20,17 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 165
+      "downloads": 166
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 116
+      "downloads": 118
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 116
+      "downloads": 117
     },
     {
       "title": "Villain",
@@ -40,7 +40,7 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 95
+      "downloads": 96
     },
     {
       "title": "Bella",
@@ -70,12 +70,12 @@
     {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 57
+      "downloads": 59
     },
     {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 57
+      "downloads": 58
     },
     {
       "title": "Spacelifter 4",
@@ -90,22 +90,22 @@
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 49
+      "downloads": 50
     },
     {
       "title": "Mini Ringo",
       "pack": "Free Pack",
-      "downloads": 48
+      "downloads": 49
     },
     {
       "title": "Midmid",
       "pack": "Free Pack",
-      "downloads": 47
+      "downloads": 48
     },
     {
       "title": "Grex",
       "pack": "Grex",
-      "downloads": 42
+      "downloads": 44
     },
     {
       "title": "Bonnie",
@@ -128,14 +128,14 @@
       "downloads": 27
     },
     {
+      "title": "Callisto",
+      "pack": "Max! Pack",
+      "downloads": 24
+    },
+    {
       "title": "Tomahawk Sampler Library",
       "pack": "Sonify",
       "downloads": 23
-    },
-    {
-      "title": "Callisto",
-      "pack": "Max! Pack",
-      "downloads": 22
     },
     {
       "title": "Bjorn",
@@ -150,7 +150,7 @@
     {
       "title": "Sonify (Windows)",
       "pack": "Sonify",
-      "downloads": 18
+      "downloads": 19
     },
     {
       "title": "AnyText",
@@ -238,6 +238,11 @@
       "downloads": 3
     },
     {
+      "title": "Sonify (macOS (Apple Silicon))",
+      "pack": "Sonify",
+      "downloads": 3
+    },
+    {
       "title": "Tropicana",
       "pack": "Max! Pack",
       "downloads": 3
@@ -265,11 +270,6 @@
     {
       "title": "Ringo",
       "pack": "Max! Pack",
-      "downloads": 2
-    },
-    {
-      "title": "Sonify (macOS (Apple Silicon))",
-      "pack": "Sonify",
       "downloads": 2
     },
     {
