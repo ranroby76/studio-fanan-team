@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-03T01:01:32.876Z",
-  "total_downloads": 6629,
+  "generated_at": "2026-11-04T01:02:39.507Z",
+  "total_downloads": 6668,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2617
+      "downloads": 2635
     },
     {
       "title": "Domina",
@@ -20,7 +20,7 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 166
+      "downloads": 167
     },
     {
       "title": "Blue Lue",
@@ -35,7 +35,7 @@
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 98
+      "downloads": 101
     },
     {
       "title": "Solina2k",
@@ -80,12 +80,17 @@
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 55
+      "downloads": 56
     },
     {
       "title": "Monica 3",
       "pack": "Free Pack",
       "downloads": 52
+    },
+    {
+      "title": "Midmid",
+      "pack": "Free Pack",
+      "downloads": 51
     },
     {
       "title": "999 gen2",
@@ -95,12 +100,7 @@
     {
       "title": "Mini Ringo",
       "pack": "Free Pack",
-      "downloads": 49
-    },
-    {
-      "title": "Midmid",
-      "pack": "Free Pack",
-      "downloads": 48
+      "downloads": 50
     },
     {
       "title": "Grex",
@@ -115,12 +115,17 @@
     {
       "title": "Djup",
       "pack": "Free Pack",
-      "downloads": 37
+      "downloads": 38
     },
     {
       "title": "Rebellion",
       "pack": "Free Pack",
-      "downloads": 37
+      "downloads": 38
+    },
+    {
+      "title": "Tomahawk Sampler Library",
+      "pack": "Sonify",
+      "downloads": 29
     },
     {
       "title": "Ymer",
@@ -133,23 +138,18 @@
       "downloads": 24
     },
     {
-      "title": "Tomahawk Sampler Library",
-      "pack": "Sonify",
-      "downloads": 23
-    },
-    {
       "title": "Bjorn",
       "pack": "Free Pack",
       "downloads": 21
     },
     {
-      "title": "Colosseum",
-      "pack": "Colosseum",
-      "downloads": 19
-    },
-    {
       "title": "Sonify (Windows)",
       "pack": "Sonify",
+      "downloads": 20
+    },
+    {
+      "title": "Colosseum",
+      "pack": "Colosseum",
       "downloads": 19
     },
     {
@@ -193,17 +193,22 @@
       "downloads": 5
     },
     {
+      "title": "Rythmos",
+      "pack": "Max! Pack",
+      "downloads": 5
+    },
+    {
+      "title": "Sonify (Linux)",
+      "pack": "Sonify",
+      "downloads": 5
+    },
+    {
       "title": "Arpomaniac",
       "pack": "Max! Pack",
       "downloads": 4
     },
     {
       "title": "Gala XL",
-      "pack": "Max! Pack",
-      "downloads": 4
-    },
-    {
-      "title": "Rythmos",
       "pack": "Max! Pack",
       "downloads": 4
     },
@@ -230,11 +235,6 @@
     {
       "title": "ScandiSoul 2",
       "pack": "Max! Pack",
-      "downloads": 3
-    },
-    {
-      "title": "Sonify (Linux)",
-      "pack": "Sonify",
       "downloads": 3
     },
     {
