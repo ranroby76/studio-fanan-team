@@ -1,36 +1,36 @@
 {
-  "generated_at": "2026-11-04T01:02:39.507Z",
-  "total_downloads": 6668,
+  "generated_at": "2026-11-05T01:05:05.490Z",
+  "total_downloads": 6692,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2635
+      "downloads": 2638
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 2000
+      "downloads": 2002
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 291
+      "downloads": 295
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 167
+      "downloads": 169
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 118
+      "downloads": 119
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 117
+      "downloads": 118
     },
     {
       "title": "Villain",
@@ -63,14 +63,14 @@
       "downloads": 64
     },
     {
-      "title": "Quentin",
-      "pack": "Free Pack",
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
       "downloads": 60
     },
     {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 59
+      "title": "Quentin",
+      "pack": "Free Pack",
+      "downloads": 60
     },
     {
       "title": "ScandiClavia 2",
@@ -80,12 +80,12 @@
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 56
+      "downloads": 57
     },
     {
       "title": "Monica 3",
       "pack": "Free Pack",
-      "downloads": 52
+      "downloads": 53
     },
     {
       "title": "Midmid",
@@ -105,12 +105,12 @@
     {
       "title": "Grex",
       "pack": "Grex",
-      "downloads": 44
+      "downloads": 48
     },
     {
       "title": "Bonnie",
       "pack": "Free Pack",
-      "downloads": 39
+      "downloads": 40
     },
     {
       "title": "Djup",
@@ -125,7 +125,7 @@
     {
       "title": "Tomahawk Sampler Library",
       "pack": "Sonify",
-      "downloads": 29
+      "downloads": 31
     },
     {
       "title": "Ymer",
@@ -145,7 +145,7 @@
     {
       "title": "Sonify (Windows)",
       "pack": "Sonify",
-      "downloads": 20
+      "downloads": 21
     },
     {
       "title": "Colosseum",
