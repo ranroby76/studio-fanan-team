@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-06T01:04:10.697Z",
-  "total_downloads": 6702,
+  "generated_at": "2026-11-07T01:02:42.825Z",
+  "total_downloads": 6725,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2639
+      "downloads": 2648
     },
     {
       "title": "Domina",
@@ -23,24 +23,24 @@
       "downloads": 169
     },
     {
+      "title": "Kitton 3",
+      "pack": "Free Pack",
+      "downloads": 120
+    },
+    {
       "title": "Blue Lue",
       "pack": "Free Pack",
       "downloads": 119
     },
     {
-      "title": "Kitton 3",
-      "pack": "Free Pack",
-      "downloads": 118
-    },
-    {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 102
+      "downloads": 103
     },
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 97
+      "downloads": 100
     },
     {
       "title": "Bella",
@@ -55,7 +55,7 @@
     {
       "title": "Tropicana Fun",
       "pack": "Free Pack",
-      "downloads": 72
+      "downloads": 73
     },
     {
       "title": "RandRobin",
@@ -63,13 +63,13 @@
       "downloads": 64
     },
     {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 60
-    },
-    {
       "title": "Quentin",
       "pack": "Free Pack",
+      "downloads": 61
+    },
+    {
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
       "downloads": 60
     },
     {
@@ -93,19 +93,19 @@
       "downloads": 51
     },
     {
-      "title": "999 gen2",
+      "title": "Mini Ringo",
       "pack": "Free Pack",
-      "downloads": 50
+      "downloads": 51
     },
     {
-      "title": "Mini Ringo",
+      "title": "999 gen2",
       "pack": "Free Pack",
       "downloads": 50
     },
     {
       "title": "Grex",
       "pack": "Grex",
-      "downloads": 48
+      "downloads": 49
     },
     {
       "title": "Bonnie",
@@ -113,19 +113,19 @@
       "downloads": 40
     },
     {
-      "title": "Djup",
+      "title": "Rebellion",
       "pack": "Free Pack",
-      "downloads": 38
+      "downloads": 39
     },
     {
-      "title": "Rebellion",
+      "title": "Djup",
       "pack": "Free Pack",
       "downloads": 38
     },
     {
       "title": "Tomahawk Sampler Library",
       "pack": "Sonify",
-      "downloads": 32
+      "downloads": 33
     },
     {
       "title": "Ymer",
@@ -175,7 +175,7 @@
     {
       "title": "Sultana 2",
       "pack": "Max! Pack",
-      "downloads": 7
+      "downloads": 8
     },
     {
       "title": "Sampler Arena",
@@ -213,6 +213,11 @@
       "downloads": 4
     },
     {
+      "title": "Sonify (macOS (Apple Silicon))",
+      "pack": "Sonify",
+      "downloads": 4
+    },
+    {
       "title": "Kitton Stylist",
       "pack": "Max! Pack",
       "downloads": 3
@@ -235,11 +240,6 @@
     {
       "title": "ScandiSoul 2",
       "pack": "Max! Pack",
-      "downloads": 3
-    },
-    {
-      "title": "Sonify (macOS (Apple Silicon))",
-      "pack": "Sonify",
       "downloads": 3
     },
     {
