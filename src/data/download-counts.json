@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-08T01:02:21.785Z",
-  "total_downloads": 6771,
+  "generated_at": "2026-11-09T01:05:05.242Z",
+  "total_downloads": 6795,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2659
+      "downloads": 2671
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 2009
+      "downloads": 2012
     },
     {
       "title": "Fanan Asio Driver",
@@ -23,14 +23,14 @@
       "downloads": 172
     },
     {
+      "title": "Blue Lue",
+      "pack": "Free Pack",
+      "downloads": 123
+    },
+    {
       "title": "Kitton 3",
       "pack": "Free Pack",
       "downloads": 121
-    },
-    {
-      "title": "Blue Lue",
-      "pack": "Free Pack",
-      "downloads": 120
     },
     {
       "title": "Villain",
@@ -50,7 +50,7 @@
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 76
+      "downloads": 77
     },
     {
       "title": "Tropicana Fun",
@@ -88,6 +88,11 @@
       "downloads": 55
     },
     {
+      "title": "Grex",
+      "pack": "Grex",
+      "downloads": 52
+    },
+    {
       "title": "Midmid",
       "pack": "Free Pack",
       "downloads": 52
@@ -101,11 +106,6 @@
       "title": "999 gen2",
       "pack": "Free Pack",
       "downloads": 51
-    },
-    {
-      "title": "Grex",
-      "pack": "Grex",
-      "downloads": 49
     },
     {
       "title": "Bonnie",
@@ -133,14 +133,14 @@
       "downloads": 28
     },
     {
-      "title": "Callisto",
-      "pack": "Max! Pack",
+      "title": "Bjorn",
+      "pack": "Free Pack",
       "downloads": 24
     },
     {
-      "title": "Bjorn",
-      "pack": "Free Pack",
-      "downloads": 22
+      "title": "Callisto",
+      "pack": "Max! Pack",
+      "downloads": 24
     },
     {
       "title": "Sonify (Windows)",
