@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-09T01:05:05.242Z",
-  "total_downloads": 6795,
+  "generated_at": "2026-11-10T01:04:09.023Z",
+  "total_downloads": 6807,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2671
+      "downloads": 2675
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 2012
+      "downloads": 2013
     },
     {
       "title": "Fanan Asio Driver",
@@ -35,7 +35,7 @@
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 104
+      "downloads": 105
     },
     {
       "title": "Solina2k",
@@ -60,7 +60,12 @@
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 65
+      "downloads": 66
+    },
+    {
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
+      "downloads": 62
     },
     {
       "title": "Quentin",
@@ -73,11 +78,6 @@
       "downloads": 62
     },
     {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 60
-    },
-    {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
       "downloads": 58
@@ -86,6 +86,11 @@
       "title": "Monica 3",
       "pack": "Free Pack",
       "downloads": 55
+    },
+    {
+      "title": "999 gen2",
+      "pack": "Free Pack",
+      "downloads": 52
     },
     {
       "title": "Grex",
@@ -101,11 +106,6 @@
       "title": "Mini Ringo",
       "pack": "Free Pack",
       "downloads": 52
-    },
-    {
-      "title": "999 gen2",
-      "pack": "Free Pack",
-      "downloads": 51
     },
     {
       "title": "Bonnie",
@@ -125,7 +125,7 @@
     {
       "title": "Tomahawk Sampler Library",
       "pack": "Sonify",
-      "downloads": 34
+      "downloads": 35
     },
     {
       "title": "Ymer",
@@ -145,7 +145,7 @@
     {
       "title": "Sonify (Windows)",
       "pack": "Sonify",
-      "downloads": 21
+      "downloads": 22
     },
     {
       "title": "Colosseum",
