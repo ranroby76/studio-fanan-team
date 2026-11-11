@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-10T01:04:09.023Z",
-  "total_downloads": 6807,
+  "generated_at": "2026-11-11T01:00:47.700Z",
+  "total_downloads": 6818,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2675
+      "downloads": 2677
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 2013
+      "downloads": 2015
     },
     {
       "title": "Fanan Asio Driver",
@@ -30,7 +30,7 @@
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 121
+      "downloads": 122
     },
     {
       "title": "Villain",
@@ -40,7 +40,7 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 102
+      "downloads": 103
     },
     {
       "title": "Bella",
@@ -125,12 +125,17 @@
     {
       "title": "Tomahawk Sampler Library",
       "pack": "Sonify",
-      "downloads": 35
+      "downloads": 37
     },
     {
       "title": "Ymer",
       "pack": "Free Pack",
       "downloads": 28
+    },
+    {
+      "title": "Sonify (Windows)",
+      "pack": "Sonify",
+      "downloads": 25
     },
     {
       "title": "Bjorn",
@@ -141,11 +146,6 @@
       "title": "Callisto",
       "pack": "Max! Pack",
       "downloads": 24
-    },
-    {
-      "title": "Sonify (Windows)",
-      "pack": "Sonify",
-      "downloads": 22
     },
     {
       "title": "Colosseum",
