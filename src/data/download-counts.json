@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-11-17T01:03:44.381Z",
-  "total_downloads": 6939,
+  "generated_at": "2026-11-18T01:05:56.292Z",
+  "total_downloads": 6954,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2727
+      "downloads": 2733
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 2018
+      "downloads": 2020
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 298
+      "downloads": 300
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 174
+      "downloads": 176
     },
     {
       "title": "Blue Lue",
@@ -60,7 +60,7 @@
     {
       "title": "RandRobin",
       "pack": "Free Pack",
-      "downloads": 66
+      "downloads": 68
     },
     {
       "title": "ScandiClavia 2",
@@ -198,6 +198,11 @@
       "downloads": 6
     },
     {
+      "title": "Sonify (Linux)",
+      "pack": "Sonify",
+      "downloads": 6
+    },
+    {
       "title": "AnyImage",
       "pack": "Max! Pack",
       "downloads": 5
@@ -210,11 +215,6 @@
     {
       "title": "Randomidi",
       "pack": "Max! Pack",
-      "downloads": 5
-    },
-    {
-      "title": "Sonify (Linux)",
-      "pack": "Sonify",
       "downloads": 5
     },
     {
