@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-19T01:02:36.679Z",
-  "total_downloads": 6968,
+  "generated_at": "2026-11-20T01:04:45.197Z",
+  "total_downloads": 6988,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2741
+      "downloads": 2748
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 2020
+      "downloads": 2021
     },
     {
       "title": "Fanan Asio Driver",
@@ -20,7 +20,7 @@
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 178
+      "downloads": 180
     },
     {
       "title": "Blue Lue",
@@ -33,14 +33,14 @@
       "downloads": 124
     },
     {
-      "title": "Villain",
+      "title": "Solina2k",
       "pack": "Free Pack",
       "downloads": 109
     },
     {
-      "title": "Solina2k",
+      "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 108
+      "downloads": 109
     },
     {
       "title": "Bella",
@@ -58,6 +58,11 @@
       "downloads": 76
     },
     {
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
+      "downloads": 71
+    },
+    {
       "title": "RandRobin",
       "pack": "Free Pack",
       "downloads": 68
@@ -66,11 +71,6 @@
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
       "downloads": 65
-    },
-    {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 64
     },
     {
       "title": "Quentin",
@@ -113,12 +113,12 @@
       "downloads": 42
     },
     {
-      "title": "Bonnie",
+      "title": "Rebellion",
       "pack": "Free Pack",
-      "downloads": 41
+      "downloads": 42
     },
     {
-      "title": "Rebellion",
+      "title": "Bonnie",
       "pack": "Free Pack",
       "downloads": 41
     },
@@ -155,7 +155,7 @@
     {
       "title": "AnyText",
       "pack": "Free Pack",
-      "downloads": 15
+      "downloads": 16
     },
     {
       "title": "Colosseum VSTi",
