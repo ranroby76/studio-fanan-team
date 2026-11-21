@@ -1,36 +1,41 @@
 {
-  "generated_at": "2026-11-20T01:04:45.197Z",
-  "total_downloads": 6988,
+  "generated_at": "2026-11-21T01:04:21.152Z",
+  "total_downloads": 7012,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2748
+      "downloads": 2757
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 2021
+      "downloads": 2022
     },
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 300
+      "downloads": 301
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 180
+      "downloads": 181
     },
     {
       "title": "Blue Lue",
       "pack": "Free Pack",
-      "downloads": 124
+      "downloads": 126
     },
     {
       "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 124
+      "downloads": 126
+    },
+    {
+      "title": "Villain",
+      "pack": "Free Pack",
+      "downloads": 110
     },
     {
       "title": "Solina2k",
@@ -38,17 +43,12 @@
       "downloads": 109
     },
     {
-      "title": "Villain",
+      "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 109
+      "downloads": 82
     },
     {
       "title": "Bella",
-      "pack": "Free Pack",
-      "downloads": 79
-    },
-    {
-      "title": "Gala SE ​",
       "pack": "Free Pack",
       "downloads": 79
     },
@@ -85,7 +85,7 @@
     {
       "title": "Spacelifter 4",
       "pack": "Free Pack",
-      "downloads": 59
+      "downloads": 60
     },
     {
       "title": "Monica 3",
@@ -93,12 +93,12 @@
       "downloads": 56
     },
     {
-      "title": "999 gen2",
+      "title": "Midmid",
       "pack": "Free Pack",
-      "downloads": 53
+      "downloads": 55
     },
     {
-      "title": "Midmid",
+      "title": "999 gen2",
       "pack": "Free Pack",
       "downloads": 53
     },
@@ -130,7 +130,7 @@
     {
       "title": "Sonify (Windows)",
       "pack": "Sonify",
-      "downloads": 28
+      "downloads": 29
     },
     {
       "title": "Ymer",
