@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-22T01:04:24.776Z",
-  "total_downloads": 7029,
+  "generated_at": "2026-11-23T01:04:29.591Z",
+  "total_downloads": 7061,
   "plugins": [
     {
       "title": "Grex Ballada",
       "pack": "Free Pack",
-      "downloads": 2768
+      "downloads": 2781
     },
     {
       "title": "Domina",
       "pack": "Free Pack",
-      "downloads": 2022
+      "downloads": 2024
     },
     {
       "title": "Fanan Asio Driver",
@@ -23,19 +23,19 @@
       "downloads": 181
     },
     {
-      "title": "Blue Lue",
+      "title": "Kitton 3",
       "pack": "Free Pack",
-      "downloads": 128
+      "downloads": 129
     },
     {
-      "title": "Kitton 3",
+      "title": "Blue Lue",
       "pack": "Free Pack",
       "downloads": 128
     },
     {
       "title": "Villain",
       "pack": "Free Pack",
-      "downloads": 110
+      "downloads": 112
     },
     {
       "title": "Solina2k",
@@ -45,12 +45,12 @@
     {
       "title": "Gala SE ​",
       "pack": "Free Pack",
-      "downloads": 82
+      "downloads": 87
     },
     {
       "title": "Bella",
       "pack": "Free Pack",
-      "downloads": 79
+      "downloads": 81
     },
     {
       "title": "Tropicana Fun",
@@ -60,7 +60,7 @@
     {
       "title": "Betelgeuse",
       "pack": "Mad MIDI Machines",
-      "downloads": 71
+      "downloads": 72
     },
     {
       "title": "RandRobin",
@@ -90,7 +90,7 @@
     {
       "title": "Midmid",
       "pack": "Free Pack",
-      "downloads": 56
+      "downloads": 58
     },
     {
       "title": "Monica 3",
@@ -108,6 +108,11 @@
       "downloads": 52
     },
     {
+      "title": "Bonnie",
+      "pack": "Free Pack",
+      "downloads": 42
+    },
+    {
       "title": "Djup",
       "pack": "Free Pack",
       "downloads": 42
@@ -118,24 +123,19 @@
       "downloads": 42
     },
     {
-      "title": "Bonnie",
-      "pack": "Free Pack",
-      "downloads": 41
-    },
-    {
       "title": "Tomahawk Sampler Library",
       "pack": "Sonify",
       "downloads": 40
     },
     {
+      "title": "Ymer",
+      "pack": "Free Pack",
+      "downloads": 30
+    },
+    {
       "title": "Sonify (Windows)",
       "pack": "Sonify",
       "downloads": 29
-    },
-    {
-      "title": "Ymer",
-      "pack": "Free Pack",
-      "downloads": 28
     },
     {
       "title": "Callisto",
@@ -155,7 +155,7 @@
     {
       "title": "AnyText",
       "pack": "Free Pack",
-      "downloads": 16
+      "downloads": 17
     },
     {
       "title": "Colosseum VSTi",
