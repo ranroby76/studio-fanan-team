@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-25T01:04:41.445Z",
-  "total_downloads": 7093,
+  "generated_at": "2026-11-26T01:02:53.737Z",
+  "total_downloads": 7107,
   "plugins": [
     {
       "title": "Grex Ballada",
@@ -15,12 +15,12 @@
     {
       "title": "Fanan Asio Driver",
       "pack": "Fanan Asio Driver",
-      "downloads": 302
+      "downloads": 304
     },
     {
       "title": "Saxophia gen3",
       "pack": "Free Pack",
-      "downloads": 184
+      "downloads": 185
     },
     {
       "title": "Kitton 3",
@@ -40,7 +40,7 @@
     {
       "title": "Solina2k",
       "pack": "Free Pack",
-      "downloads": 109
+      "downloads": 110
     },
     {
       "title": "Gala SE ​",
@@ -53,14 +53,14 @@
       "downloads": 82
     },
     {
-      "title": "Tropicana Fun",
-      "pack": "Free Pack",
+      "title": "Betelgeuse",
+      "pack": "Mad MIDI Machines",
       "downloads": 77
     },
     {
-      "title": "Betelgeuse",
-      "pack": "Mad MIDI Machines",
-      "downloads": 73
+      "title": "Tropicana Fun",
+      "pack": "Free Pack",
+      "downloads": 77
     },
     {
       "title": "RandRobin",
@@ -70,12 +70,12 @@
     {
       "title": "ScandiClavia 2",
       "pack": "Free Pack",
-      "downloads": 65
+      "downloads": 66
     },
     {
       "title": "Quentin",
       "pack": "Free Pack",
-      "downloads": 63
+      "downloads": 64
     },
     {
       "title": "Grex",
@@ -100,7 +100,7 @@
     {
       "title": "999 gen2",
       "pack": "Free Pack",
-      "downloads": 53
+      "downloads": 55
     },
     {
       "title": "Mini Ringo",
@@ -155,7 +155,7 @@
     {
       "title": "AnyText",
       "pack": "Free Pack",
-      "downloads": 17
+      "downloads": 18
     },
     {
       "title": "Colosseum VSTi",
@@ -183,6 +183,11 @@
       "downloads": 7
     },
     {
+      "title": "Sampler Arena",
+      "pack": "Sampler Arena",
+      "downloads": 7
+    },
+    {
       "title": "Arpomaniac",
       "pack": "Max! Pack",
       "downloads": 6
@@ -190,11 +195,6 @@
     {
       "title": "Playlisted 2",
       "pack": "Mad MIDI Machines",
-      "downloads": 6
-    },
-    {
-      "title": "Sampler Arena",
-      "pack": "Sampler Arena",
       "downloads": 6
     },
     {
